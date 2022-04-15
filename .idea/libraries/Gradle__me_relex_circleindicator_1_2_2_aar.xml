@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="Gradle: me.relex:circleindicator:1.2.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/09f5c571625465b6fe97e62aa7853f15/jetified-circleindicator-1.2.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/09f5c571625465b6fe97e62aa7853f15/jetified-circleindicator-1.2.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/09f5c571625465b6fe97e62aa7853f15/jetified-circleindicator-1.2.2/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-2/files-2.1/52649d0cd789c82bf609d5ddfcd7e9d7/jetified-circleindicator-1.2.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-2/files-2.1/52649d0cd789c82bf609d5ddfcd7e9d7/jetified-circleindicator-1.2.2/res" />
+      <root url="file://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-2/files-2.1/52649d0cd789c82bf609d5ddfcd7e9d7/jetified-circleindicator-1.2.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.relex/circleindicator/1.2.2/5ac222ac0e9b3d4488b1ad300c23e2271e8a5e0d/circleindicator-1.2.2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/modules-2/files-2.1/me.relex/circleindicator/1.2.2/5ac222ac0e9b3d4488b1ad300c23e2271e8a5e0d/circleindicator-1.2.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.relex/circleindicator/1.2.2/739ce17f5368373ddbce9d5ec0fd3aa82eecf4b/circleindicator-1.2.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/modules-2/files-2.1/me.relex/circleindicator/1.2.2/739ce17f5368373ddbce9d5ec0fd3aa82eecf4b/circleindicator-1.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
