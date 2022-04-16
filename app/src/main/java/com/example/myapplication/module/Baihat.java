@@ -1,6 +1,8 @@
 package com.example.myapplication.module;
 
-public class Baihat {
+import java.io.Serializable;
+
+public class Baihat implements Serializable {
     private String tenBaihat;
     private String hinhBaihat;
     private String idAlbum;
@@ -77,8 +79,17 @@ public class Baihat {
         this.linkBaihat = linkBaihat;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Baihat{" +
+                "tenBaihat='" + tenBaihat + '\'' +
+                ", hinhBaihat='" + hinhBaihat + '\'' +
+                ", idAlbum='" + idAlbum + '\'' +
+                ", idBaihat='" + idBaihat + '\'' +
+                ", idPlaylist='" + idPlaylist + '\'' +
+                ", caSi='" + caSi + '\'' +
+                ", linkBaihat='" + linkBaihat + '\'' +
+                '}';
+    }
 }
 

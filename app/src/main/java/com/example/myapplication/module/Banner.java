@@ -1,6 +1,8 @@
 package com.example.myapplication.module;
 
-public class Banner {
+import java.io.Serializable;
+
+public class Banner implements Serializable {
     private String id;
     private String hinhAnh;
     private String noiDung;

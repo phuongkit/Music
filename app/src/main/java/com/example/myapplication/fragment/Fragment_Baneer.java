@@ -46,12 +46,13 @@ public class Fragment_Baneer extends Fragment {
         return view;
     }
     private void GetDetail() {
-        ArrayList<Banner> banners =new ArrayList<>();
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("banner");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Banner> banners =new ArrayList<>();
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 for (DataSnapshot data:dataSnapshot.getChildren()) {

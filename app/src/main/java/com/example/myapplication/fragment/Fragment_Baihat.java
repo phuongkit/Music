@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,11 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.myapplication.PlaybaihatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.CustomBaihatAdapter;
-import com.example.myapplication.adapter.CustomBannerAdapter;
-import com.example.myapplication.adapter.PlaybaihatAdapter;
 import com.example.myapplication.module.Baihat;
-import com.example.myapplication.module.Banner;
-import com.example.myapplication.module.Hinhdianhac;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,7 +29,7 @@ public class Fragment_Baihat extends Fragment {
     ListView lvPlayList;
     TextView tvTitlePlayList, tvXemThem;
     ArrayList<Baihat> baihats;
-    ArrayList<Hinhdianhac> hinhdia;
+//    ArrayList<Hinhdianhac> hinhdia;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,13 +41,11 @@ public class Fragment_Baihat extends Fragment {
         lvPlayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Baihat baihat=baihats.get(i);
-                String hinhdia=baihat.getHinhBaihat();
-                String link=baihat.getLinkBaihat();
                 Intent intent = new Intent(getActivity(), PlaybaihatActivity.class);
-                intent.putExtra("link",link);
-                intent.putExtra("hinhdia",hinhdia);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("baihats", baihats);
+                bundle.putInt("index", i);
+                intent.putExtra("bundle", bundle);
                 startActivity(intent);
             }
         });
