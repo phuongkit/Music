@@ -2,6 +2,7 @@ package com.example.myapplication.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +12,20 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.Dao.BaiHatDao;
+import com.example.myapplication.Dao.AlbumDao;
+import com.example.myapplication.Dao.ChuDeDao;
+import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.TheLoaiDao;
 import com.example.myapplication.PlaybaihatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.CustomBaihatAdapter;
+import com.example.myapplication.module.Chude;
 import com.example.myapplication.module.Baihat;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.example.myapplication.module.Theloai;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Fragment_Baihat extends Fragment {
     CustomBaihatAdapter customBaihatAdapter;
@@ -54,25 +58,36 @@ public class Fragment_Baihat extends Fragment {
 
     private void GetDetail() {
         baihats =new ArrayList<>();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("baihat");
-        myRef.addValueEventListener(new ValueEventListener() {
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("baihat");
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                for (DataSnapshot data:dataSnapshot.getChildren()) {
+//                    Baihat value = data.getValue(Baihat.class);
+//                    baihats.add(value);
+//                }
+//                customBaihatAdapter = new CustomBaihatAdapter(getActivity(),android.R.layout.simple_list_item_1, baihats);
+//                lvPlayList.setAdapter(customBaihatAdapter);
+////                editText.setText(value.toString());
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//            }
+//        });
+        BaiHatDao baiHatDao = new BaiHatDao();
+        baiHatDao.getAll(new RetrievalEventListener<List<Baihat>>() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                for (DataSnapshot data:dataSnapshot.getChildren()) {
-                    Baihat value = data.getValue(Baihat.class);
-                    baihats.add(value);
-                }
+            public void OnDataRetrieved(List<Baihat> baiHats) {
+                Log.d("DAO",baiHats.toString());
+                baihats = new ArrayList<>();
+                baihats = (ArrayList<Baihat>) baiHats;
                 customBaihatAdapter = new CustomBaihatAdapter(getActivity(),android.R.layout.simple_list_item_1, baihats);
                 lvPlayList.setAdapter(customBaihatAdapter);
-//                editText.setText(value.toString());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
             }
         });
     }

@@ -1,8 +1,13 @@
 package com.example.myapplication.module;
 
+import com.google.firebase.database.Exclude;
+
 import java.io.Serializable;
 
 public class Baihat implements Serializable {
+    @Exclude
+    public String id;
+
     private String tenBaihat;
     private String hinhBaihat;
     private String idAlbum;
@@ -72,7 +77,8 @@ public class Baihat implements Serializable {
         this.hinhBaihat = hinhBaihat;
     }
 
-    public Baihat(String tenBaihat, String hinhBaihat, String caSi, String linkBaihat) {
+    public Baihat(String idBaihat, String tenBaihat, String hinhBaihat, String caSi, String linkBaihat) {
+        this.idBaihat = idBaihat;
         this.tenBaihat = tenBaihat;
         this.hinhBaihat = hinhBaihat;
         this.caSi = caSi;

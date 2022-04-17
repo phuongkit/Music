@@ -1,9 +1,14 @@
 package com.example.myapplication.module;
 
+import com.google.firebase.database.Exclude;
+
 import java.io.Serializable;
 
 public class Banner implements Serializable {
-    private String id;
+    @Exclude
+    public String id;
+
+    private String idBanner;
     private String hinhAnh;
     private String noiDung;
     private Baihat baihat;
@@ -12,19 +17,19 @@ public class Banner implements Serializable {
 
     }
 
-    public Banner(String id, String hinhAnh, String noiDung, Baihat baihat) {
-        this.id = id;
+    public Banner(String idBanner, String hinhAnh, String noiDung, Baihat baihat) {
+        this.idBanner = idBanner;
         this.hinhAnh = hinhAnh;
         this.noiDung = noiDung;
         this.baihat = baihat;
     }
 
-    public String getId() {
-        return id;
+    public String getIdBanner() {
+        return idBanner;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdBanner(String idBanner) {
+        this.idBanner = idBanner;
     }
 
     public String getHinhAnh() {
@@ -49,5 +54,16 @@ public class Banner implements Serializable {
 
     public void setBaihat(Baihat baihat) {
         this.baihat = baihat;
+    }
+
+    @Override
+    public String toString() {
+        return "Banner{" +
+                "id='" + id + '\'' +
+                ", idBanner='" + idBanner + '\'' +
+                ", hinhAnh='" + hinhAnh + '\'' +
+                ", noiDung='" + noiDung + '\'' +
+                ", baihat=" + baihat +
+                '}';
     }
 }

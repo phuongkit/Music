@@ -40,7 +40,6 @@ public class PlaybaihatActivity extends AppCompatActivity {
         hinhbaihats=new ArrayList<>();
         UNI();
         playbaihatAdapter = new PlaybaihatAdapter(this, baihats, index);
-        Log.d("AAA", playbaihatAdapter.toString());
         viewPager.setAdapter(playbaihatAdapter);
     }
     public void UNI(){
@@ -56,9 +55,5 @@ public class PlaybaihatActivity extends AppCompatActivity {
 ////        for (int i = 0; i < hinhnhacs.size(); i++) {
 ////            hinhbaihats.add(new Hinhdianhac(links.get(i), hinhnhacs.get(i)));
 ////        }
-    }
-
-    public void btnPrevious_click(View view) {
-
     }
 }

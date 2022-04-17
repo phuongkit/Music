@@ -2,25 +2,17 @@ package com.example.myapplication.adapter;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
-import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
-import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,28 +23,17 @@ import androidx.annotation.RequiresApi;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.bumptech.glide.request.target.Target;
-import com.bumptech.glide.signature.ObjectKey;
 import com.example.myapplication.R;
 import com.example.myapplication.module.Baihat;
-import com.example.myapplication.module.Hinhdianhac;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -106,20 +87,20 @@ public class PlaybaihatAdapter extends PagerAdapter {
     }
 
     private void control() {
-//        btnPause.setBackgroundResource(R.drawable.iconpause);
         btnPause.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
                 ImageButton btn = (ImageButton) view;
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
-//                    objectAnimator.pause();
+                    objectAnimator.pause();
                     btn.setBackgroundResource(R.drawable.iconplay);
                     Log.d("PPP", "Pause Music");
                 }
                 else {
                     mediaPlayer.start();
-//                    objectAnimator.start();
+                    objectAnimator.pause();
                     btn.setBackgroundResource(R.drawable.iconpause);
                     Log.d("PPP", "Play Music");
                 }
@@ -133,14 +114,6 @@ public class PlaybaihatAdapter extends PagerAdapter {
                     url = baihats.get(index).getLinkBaihat();
                     urlImage = baihats.get(index).getHinhBaihat();
                     Log.d("PPP", "Next Music:" + index);
-//                    Glide.with(context).load(baihats.get(index).getHinhBaihat())
-//                            .error(ic_launcher_background)
-//                            .apply(new RequestOptions()
-//                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-//                                    .skipMemoryCache(true))
-//                            .into(imageViewDiaNhac);
-//            imageViewDiaNhac.setImageBitmap(null);
-//            Picasso.with(context).load(baihats.get(index).getHinhBaihat()).into(imageViewDiaNhac);
                     PlayNhacMp3(url, urlImage);
                 }
                 else {
@@ -157,13 +130,6 @@ public class PlaybaihatAdapter extends PagerAdapter {
                     url = baihats.get(index).getLinkBaihat();
                     urlImage = baihats.get(index).getHinhBaihat();
                     Log.d("KKK", "Previous Music:"+baihats.get(index).getHinhBaihat());
-//                    Glide.with(context).load(baihats.get(index).getHinhBaihat())
-//                            .error(ic_launcher_background)
-//                            .apply(new RequestOptions()
-//                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-//                                    .skipMemoryCache(true))
-//                            .into(imageViewDiaNhac);
-//                    Picasso.with(context).load(baihats.get(index).getHinhBaihat()).into(imageViewDiaNhac);
                     PlayNhacMp3(url, urlImage);
                 }
                 else {
@@ -200,15 +166,7 @@ public class PlaybaihatAdapter extends PagerAdapter {
         btnNext = view.findViewById(R.id.btnNext);
         btnPrevious = view.findViewById(R.id.btnPrevious);
         imageViewDiaNhac = view.findViewById(R.id.imageViewDiaNhac);
-        Glide.with(context).load(baihats.get(index).getHinhBaihat())
-                .error(ic_launcher_background)
-                .apply(new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .skipMemoryCache(true))
-                .into(imageViewDiaNhac);
 //        Picasso.with(context).load(baihats.get(index).getHinhBaihat()).into(imageViewDiaNhac);
-//        Glide.with(context).load(baihats.get(this.index).getHinhBaihat()).error(ic_launcher_background).into(imageViewDiaNhac);
-//        Picasso.with(context).load("").into(imageViewDiaNhac);
         objectAnimator = ObjectAnimator.ofFloat(imageViewDiaNhac, "rotation", 0f, 360f);
         objectAnimator.setDuration(10000);
         objectAnimator.setRepeatCount(ValueAnimator.INFINITE);
@@ -225,33 +183,20 @@ public class PlaybaihatAdapter extends PagerAdapter {
     }
 
     public void PlayNhacMp3(String url, String urlImage) {
-        Glide.with(context)
-                .load(urlImage)
-//                .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
-//                .diskCacheStrategy(DiskCacheStrategy.NONE)
-//                .skipMemoryCache(true)
-                .listener(new RequestListener<Drawable>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        Log.d("PPP", dataSource.toString());
-                        imageViewDiaNhac.setImageDrawable(resource);
-                        return false;
-                    }
-                })
-                .placeholder(R.drawable.icondianhac)
-                .error(R.drawable.ic_launcher_background);
+        Glide.with(context).load(baihats.get(index).getHinhBaihat())
+                .error(ic_launcher_background)
+                .apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(true))
+                .into(imageViewDiaNhac);
 //                .into(imageViewDiaNhac);
 //        imageViewDiaNhac.setImageBitmap(getBitmapFromURL(url));
-//        if (mediaPlayer != null) {
-//            mediaPlayer.stop();
-//            mediaPlayer.reset();
-//            mediaPlayer.release();
-//        }
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+            mediaPlayer.release();
+        }
+        mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 //        mediaPlayer.setAudioAttributes(
 //                new AudioAttributes
@@ -282,7 +227,6 @@ public class PlaybaihatAdapter extends PagerAdapter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        PlaybaihatAdapter.this.notifyDataSetChanged();
 //        Log.d("PPP", "Time:" + mediaPlayer.getDuration());
 //        TimeSong();
 //        updateTim e();
