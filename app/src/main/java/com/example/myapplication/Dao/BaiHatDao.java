@@ -1,16 +1,8 @@
 package com.example.myapplication.Dao;
 
-import android.util.Log;
-
 import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
-import com.example.myapplication.module.Baihat;
+import com.example.myapplication.Module.Baihat;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class BaiHatDao extends FirebaseDao<Baihat>{ 
     public BaiHatDao(){

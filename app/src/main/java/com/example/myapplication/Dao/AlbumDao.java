@@ -1,10 +1,7 @@
 package com.example.myapplication.Dao;
 
-import com.example.myapplication.Dao.FirebaseDao;
 import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
-import com.example.myapplication.module.Album;
-import com.example.myapplication.module.Baihat;
-import com.example.myapplication.module.Album;
+import com.example.myapplication.Module.Album;
 import com.google.firebase.database.DataSnapshot;
 
 public class AlbumDao extends FirebaseDao<Album> {
@@ -27,6 +24,8 @@ public class AlbumDao extends FirebaseDao<Album> {
         album.setTenAlbum(dataSnapshot.child("tenAlbum").getValue().toString());
         //       ↓                           ↓
         album.setTenCasiAlbum(dataSnapshot.child("tenCaSiAlbum").getValue().toString());
+        //       ↓                           ↓
+        album.setHinh(dataSnapshot.child("hinh").getValue().toString());
 
         // Now we have parsed all of the attributes of the Album object. We will feed it to the callback
         retrievalEventListener.OnDataRetrieved(album);

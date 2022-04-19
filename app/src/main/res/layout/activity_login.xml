@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.LoginActivity">
+
+
+    <TextView
+        android:id="@+id/txtTitleLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="LOGIN"
+        android:textAlignment="center"
+        android:textSize="25dp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email:" />
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="319dp"
+                android:layout_height="wrap_content"
+                android:hint="Enter Email"
+                android:imeOptions="actionNext"
+                android:maxLength="50"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                tools:ignore="TouchTargetSizeCheck" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password:" />
+
+            <EditText
+                android:id="@+id/edtPassWord"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:hint="Enter password"
+                android:imeOptions="actionDone"
+                android:ems="10"
+                android:inputType="textPassword"
+                tools:ignore="TouchTargetSizeCheck" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="15dp">
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Login" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="CANCEL" />
+
+    </LinearLayout>
+
+    <TextView
+        android:padding="16dp"
+        android:id="@+id/txtLogNotify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp" />
+
+</LinearLayout>

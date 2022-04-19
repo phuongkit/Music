@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="AAA" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Log" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -39,26 +39,74 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a74400b-26de-4a97-92e9-643db9a92054" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/AlbumDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/BaiHatDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/BannerDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/ChuDeDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/FirebaseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/Listeners/AbstractEventListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/Listeners/EventListenersListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/Listeners/RetrievalEventListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/Listeners/TaskListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/TheLoaiDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Album.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Chude.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Theloai.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_browser_browser_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_api_phone_17_4_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_safetynet_17_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_21_0_3_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_interop_20_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_klinkerapps_link_builder_2_0_5_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_13_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_2_71.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_2_71.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_2_71.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/render.experimental.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/LoginActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/LoginDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/PersonalFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/AccountType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Listeners/OnLoadMoreListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_search_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/account_type_item.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_personal.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_header_nav.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/loadingitem.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/login_dialog_item.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/nav_menu.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_interop_19_0_2_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/Music6.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Music6.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/PlaybaihatActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/PlaybaihatActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/adapter/PlaybaihatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/adapter/PlaybaihatAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragment/Fragment_Baihat.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragment/Fragment_Baihat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Baihat.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Baihat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Banner.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Banner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/AlbumDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/AlbumDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/BaiHatDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/BaiHatDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/BannerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/BannerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/ChuDeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/ChuDeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/TheLoaiDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/TheLoaiDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/PlaybaihatActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/PlaybaihatActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/adapter/CustomBaihatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/CustomBaihatAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/adapter/CustomBannerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/CustomBannerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/adapter/MainViewPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/MainViewPagerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/adapter/PlaybaihatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/PlaybaihatAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragment/Fragment_Baihat.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/Fragment_Baihat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragment/Fragment_Baneer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/Fragment_Baneer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragment/Fragment_Login.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragment/Fragment_TChu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/Fragment_TChu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragment/Fragment_TKiem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/Fragment_TKiem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Album.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Baihat.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Baihat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Banner.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Banner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Chude.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Chude.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Hinhdianhac.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Hinhdianhac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/module/Theloai.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Theloai.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dianhac_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dianhac_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_trangchu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_trangchu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,9 +159,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
-        <option value="layoutResourceFile" />
+        <option value="valueResourceFile" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="layoutResourceFile_vertical" />
+        <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -134,13 +185,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="R9JN5025E9J" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2022-04-15T07:07:33.144Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_30" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2022-04-19T03:32:10.116Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Android/AndroidStudioProjects/DemoListView" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/values" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Build Variants" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -153,19 +205,29 @@
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
+    <key name="android.template.-1515880598">
+      <recent name="com.example.myapplication" />
+    </key>
+    <key name="android.template.657213855">
+      <recent name="com.example.myapplication" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Git\Music\app\src\main\res\drawable-v24" />
+      <recent name="D:\Git\Music\app\src\main\res\drawable" />
       <recent name="E:\Users\colal\AndroidStudioProjects\Music6\app\src\main\res\drawable-v24" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.myapplication.Dao" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Git\Music\app\src\main\res\layout" />
+      <recent name="D:\Git\Music\app\src\main\res\drawable" />
       <recent name="E:\Users\colal\AndroidStudioProjects\Music6\app\src\main\res\layout" />
       <recent name="E:\Users\colal\AndroidStudioProjects\Music6\app\src\main\res\drawable-v24" />
       <recent name="E:\Users\colal\AndroidStudioProjects\Music6\app\src\main\java\com\example\myapplication\fragment" />
-      <recent name="E:\Users\colal\AndroidStudioProjects\Music6\app" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.myapplication.Module.Listeners" />
       <recent name="com.example.myapplication.module" />
       <recent name="com.example.myapplication.fragment" />
       <recent name="com.example.myapplication.adapter" />
@@ -289,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650122125829</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Thêm DAO, fix button pause">
+      <created>1650217617465</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650217617466</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -322,7 +391,8 @@
     </ignored-roots>
     <MESSAGE value="init project" />
     <MESSAGE value="chức năng play, next, privious nhạc" />
-    <option name="LAST_COMMIT_MESSAGE" value="chức năng play, next, privious nhạc" />
+    <MESSAGE value="Thêm DAO, fix button pause" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thêm DAO, fix button pause" />
   </component>
   <component name="WindowStateProjectService">
     <state x="286" y="154" key="#PSD" timestamp="1650001906080">
@@ -337,10 +407,10 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="223" y="63" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.816@0.0.1536.816" timestamp="1649846422224" />
-    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1650213204901">
+    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1650357380539">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.816@0.0.1536.816" timestamp="1650213204901" />
+    <state x="574" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.816@0.0.1536.816" timestamp="1650357380539" />
     <state x="498" y="198" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1649948993480">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
@@ -353,34 +423,34 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="298" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.816@0.0.1536.816" timestamp="1650202804486" />
-    <state x="499" y="155" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1650202198910">
+    <state x="499" y="155" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1650356528368">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="499" y="155" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.816@0.0.1536.816" timestamp="1650202198910" />
+    <state x="499" y="155" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.816@0.0.1536.816" timestamp="1650356528368" />
     <state x="93" y="93" width="1350" height="630" key="AVDManager" timestamp="1650006572201">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="93" y="93" width="1350" height="630" key="AVDManager/0.0.1536.816@0.0.1536.816" timestamp="1650006572201" />
-    <state x="349" y="163" key="AndroidCreateResourceDirectoryDialog" timestamp="1650033169729">
+    <state x="349" y="163" key="AndroidCreateResourceDirectoryDialog" timestamp="1650297577990">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="349" y="163" key="AndroidCreateResourceDirectoryDialog/0.0.1536.816@0.0.1536.816" timestamp="1650033169729" />
-    <state x="400" y="327" key="AndroidCreateResourceFileDialog" timestamp="1650081376208">
+    <state x="349" y="163" key="AndroidCreateResourceDirectoryDialog/0.0.1536.816@0.0.1536.816" timestamp="1650297577990" />
+    <state x="400" y="287" key="AndroidCreateResourceFileDialog" timestamp="1650350834068">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="400" y="327" key="AndroidCreateResourceFileDialog/0.0.1536.816@0.0.1536.816" timestamp="1650081376208" />
-    <state x="614" y="198" key="AndroidCreateXmlResourceDialog" timestamp="1650010460847">
+    <state x="400" y="287" key="AndroidCreateResourceFileDialog/0.0.1536.816@0.0.1536.816" timestamp="1650350834068" />
+    <state x="614" y="198" key="AndroidCreateXmlResourceDialog" timestamp="1650343083696">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="614" y="198" key="AndroidCreateXmlResourceDialog/0.0.1536.816@0.0.1536.816" timestamp="1650010460847" />
-    <state x="560" y="155" key="AndroidProcessChooserDialog" timestamp="1650075601757">
+    <state x="614" y="198" key="AndroidCreateXmlResourceDialog/0.0.1536.816@0.0.1536.816" timestamp="1650343083696" />
+    <state x="560" y="155" key="AndroidProcessChooserDialog" timestamp="1650357567023">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="560" y="155" key="AndroidProcessChooserDialog/0.0.1536.816@0.0.1536.816" timestamp="1650075601757" />
-    <state x="85" y="315" key="FileChooserDialogImpl" timestamp="1650212275895">
+    <state x="560" y="155" key="AndroidProcessChooserDialog/0.0.1536.816@0.0.1536.816" timestamp="1650357567023" />
+    <state x="85" y="300" key="FileChooserDialogImpl" timestamp="1650293279056">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="85" y="315" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1650212275895" />
+    <state x="85" y="300" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1650293279056" />
     <state x="647" y="306" key="Github.ShareDialog" timestamp="1650000566133">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
@@ -389,22 +459,22 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="469" y="107" key="Github.UntrackedFilesDialog/0.0.1536.816@0.0.1536.816" timestamp="1650000573928" />
-    <state width="1491" height="357" key="GridCell.Tab.0.bottom" timestamp="1650216480927">
+    <state width="1491" height="371" key="GridCell.Tab.0.bottom" timestamp="1650360374555">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1491" height="357" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1650216480927" />
-    <state width="1491" height="357" key="GridCell.Tab.0.center" timestamp="1650216480927">
+    <state width="1491" height="371" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1650360374555" />
+    <state width="1491" height="371" key="GridCell.Tab.0.center" timestamp="1650360374555">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1491" height="357" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1650216480927" />
-    <state width="1491" height="357" key="GridCell.Tab.0.left" timestamp="1650216480927">
+    <state width="1491" height="371" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1650360374555" />
+    <state width="1491" height="371" key="GridCell.Tab.0.left" timestamp="1650360374554">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1491" height="357" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1650216480927" />
-    <state width="1491" height="357" key="GridCell.Tab.0.right" timestamp="1650216480927">
+    <state width="1491" height="371" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1650360374554" />
+    <state width="1491" height="371" key="GridCell.Tab.0.right" timestamp="1650360374555">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1491" height="357" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1650216480927" />
+    <state width="1491" height="371" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1650360374555" />
     <state width="1491" height="327" key="GridCell.Tab.1.bottom" timestamp="1649950444971">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
@@ -425,13 +495,29 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="277" y="53" key="SettingsEditor/0.0.1536.816@0.0.1536.816" timestamp="1650000534219" />
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1650122379632">
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1650342922887">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1650122379632" />
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1650342922887" />
+    <state x="584" y="186" key="chooseDestDirectoryDialog" timestamp="1650270996327">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="584" y="186" key="chooseDestDirectoryDialog/0.0.1536.816@0.0.1536.816" timestamp="1650270996327" />
+    <state x="578" y="322" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1650357699922">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="578" y="322" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.816@0.0.1536.816" timestamp="1650357699922" />
+    <state x="475" y="166" key="refactoring.ChangeSignatureDialog" timestamp="1650297849994">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="475" y="166" key="refactoring.ChangeSignatureDialog/0.0.1536.816@0.0.1536.816" timestamp="1650297849994" />
     <state x="426" y="187" key="run.anything.popup" timestamp="1650204992140">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="426" y="187" key="run.anything.popup/0.0.1536.816@0.0.1536.816" timestamp="1650204992140" />
+    <state x="431" y="137" key="search.everywhere.popup" timestamp="1650277623753">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="431" y="137" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1650277623753" />
   </component>
 </project>

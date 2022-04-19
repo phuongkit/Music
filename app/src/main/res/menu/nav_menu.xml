@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_personal"
+            android:title="Cá nhân" />
+        <item
+            android:id="@+id/nav_home"
+            android:title="Trang chủ" />
+        <item
+            android:id="@+id/nav_search"
+            android:title="Tìm kiếm" />
+        <item
+            android:id="@+id/nav_playlist"
+            android:title="Playlist" />
+    </group>
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/nav_myprofile"
+                android:title="Hồ sơ của tôi" />
+            <item
+                android:id="@+id/nav_changepassword"
+                android:title="Thay đổi mật khẩu" />
+            <item
+                android:id="@+id/nav_signout"
+                android:title="Đăng xuất" />
+        </menu>
+    </item>
+</menu>

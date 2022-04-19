@@ -1,8 +1,8 @@
 package com.example.myapplication.Dao;
 
 import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
-import com.example.myapplication.module.Baihat;
-import com.example.myapplication.module.Banner;
+import com.example.myapplication.Module.Baihat;
+import com.example.myapplication.Module.Banner;
 import com.google.firebase.database.DataSnapshot;
 
 public class BannerDao  extends FirebaseDao<Banner>{
