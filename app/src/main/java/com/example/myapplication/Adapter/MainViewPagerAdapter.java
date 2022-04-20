@@ -1,6 +1,8 @@
 package com.example.myapplication.Adapter;
 
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -21,15 +23,15 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public androidx.fragment.app.Fragment createFragment(int position) {
+        Log.d("Test", position + ":" + titles.length);
         switch (position){
             case 0:
+            case 3:
                 return new PersonalFragment();
             case 1:
                 return new Fragment_TChu();
             case 2:
                 return new Fragment_TKiem();
-            case 3:
-                return new PersonalFragment();
 
         }
         return new Fragment_TChu();

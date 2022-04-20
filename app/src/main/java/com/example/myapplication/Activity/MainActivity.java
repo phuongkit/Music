@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
@@ -19,6 +20,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -27,6 +29,11 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Adapter.CustomBaihatAdapter;
+import com.example.myapplication.Dao.BaiHatDao;
+import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Fragment.Fragment_TKiem;
+import com.example.myapplication.Module.Baihat;
 import com.example.myapplication.R;
 import com.example.myapplication.Adapter.MainViewPagerAdapter;
 import com.google.android.material.navigation.NavigationView;
@@ -36,6 +43,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final int FRAGMENT_PERSONAL = 0;
@@ -87,19 +97,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
+                List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
+                Bundle args = new Bundle();
+                args.putString("query", s);
+                if (fragmentList.get(FRAGMENT_SEARCH) instanceof Fragment_TKiem) {
+                    fragmentList.get(FRAGMENT_SEARCH).setArguments(args);
+                    ((Fragment_TKiem) fragmentList.get(2)).setBundle();
 
+                }
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-//                provinceAdapter.getFilter().filter(s);
+                List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
+                Bundle args = new Bundle();
+                args.putString("filter", s);
+                if (fragmentList.get(FRAGMENT_SEARCH) instanceof Fragment_TKiem) {
+                    fragmentList.get(FRAGMENT_SEARCH).setArguments(args);
+                    ((Fragment_TKiem) fragmentList.get(2)).setBundle();
+
+                }
                 return false;
             }
         });
-
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tabLayout.selectTab(tabLayout.getTabAt(FRAGMENT_SEARCH));
+            }
+        });
         return super.onCreateOptionsMenu(menu);
     }
+
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.appbarSearch:
+//                tabLayout.selectTab(tabLayout.getTabAt(FRAGMENT_SEARCH));
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     private void init(){
         context = MainActivity.this;
