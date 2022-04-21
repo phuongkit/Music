@@ -3,7 +3,6 @@ package com.example.myapplication.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,14 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.klinker.android.link_builder.Link;
 import com.klinker.android.link_builder.LinkBuilder;
 
@@ -54,6 +51,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edtEmail.getText().toString().trim();
                 String password = edtPassword.getText().toString().trim();
+                if (email.equals("") || email.equals(null)) {
+                    edtEmail.requestFocus();
+                    return;
+                }
+                else if (password.equals("") || password.equals(null)) {
+                    edtPassword.requestFocus();
+                    return;
+                }
                 if (login) {
                     mAuth.signInWithEmailAndPassword(email, password)
                             .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -66,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.d("Log", "signInWithEmail:failure", task.getException());
-                                        Link log_Link = new Link("đăng ký")
+                                        Link log_Link = new Link(getString(R.string.strHeaderSignUp))
                                                 .setTextColor(Color.parseColor("#FF0080"))                  // optional, defaults to holo blue
                                                 .setTextColorOfHighlightedLink(Color.parseColor("#0D3D0C")) // optional, defaults to holo blue
                                                 .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
@@ -79,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         init();
                                                     }
                                                 });
-                                        txtLogNotify.setText("Đăng nhập tài khoản thất bại!Vui lòng thử lại hoặc đăng ký");
+                                        txtLogNotify.setText(getString(R.string.strSignInFailed) + getString(R.string.strHeaderSignUp));
                                         LinkBuilder.on(txtLogNotify).addLink(log_Link).build();
                                     }
                                 }
@@ -93,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d("Log", "createUserWithEmail:success");
-                                        Link log_Link = new Link("Đăng nhập")
+                                        Link log_Link = new Link(getString(R.string.strHeaderSignIn))
                                                 .setTextColor(Color.parseColor("#FF0080"))                  // optional, defaults to holo blue
                                                 .setTextColorOfHighlightedLink(Color.parseColor("#0D3D0C")) // optional, defaults to holo blue
                                                 .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
@@ -106,14 +111,14 @@ public class LoginActivity extends AppCompatActivity {
                                                         init();
                                                     }
                                                 });
-                                        txtLogNotify.setText("Đăng ký tài khoản thành công!Đăng nhập");
+                                        txtLogNotify.setText(getString(R.string.strSignUpSuccess) + " " + getString(R.string.strHeaderSignIn));
                                         LinkBuilder.on(txtLogNotify).addLink(log_Link).build();
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.d("Log", "createUserWithEmail:failure", task.getException());
 //                                        Toast.makeText(LoginActivity.this, "Authentication failed.",
 //                                                Toast.LENGTH_SHORT).show();
-                                        Link log_Link = new Link("đăng nhập")
+                                        Link log_Link = new Link(getString(R.string.strHeaderSignIn))
                                                 .setTextColor(Color.parseColor("#FF0080"))                  // optional, defaults to holo blue
                                                 .setTextColorOfHighlightedLink(Color.parseColor("#0D3D0C")) // optional, defaults to holo blue
                                                 .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
@@ -126,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         init();
                                                     }
                                                 });
-                                        txtLogNotify.setText("Đăng ký tài khoản thất bại!Vui lòng thử lại hoặc đăng nhập");
+                                        txtLogNotify.setText(getString(R.string.strSignUpFailed) + " " + getString(R.string.strHeaderSignIn));
                                         LinkBuilder.on(txtLogNotify).addLink(log_Link).build();
                                     }
                                 }
@@ -144,9 +149,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void init() {
         if (login) {
-            txtTitleLogin.setText("Login");
-            btnLogin.setText("Login");
-            Link log_Link = new Link("Đăng ký")
+            txtTitleLogin.setText(getString(R.string.strHeaderSignIn));
+            btnLogin.setText(getString(R.string.strHeaderSignIn));
+            Link log_Link = new Link(getString(R.string.strHeaderSignUp))
                     .setTextColor(Color.parseColor("#FF0080"))                  // optional, defaults to holo blue
                     .setTextColorOfHighlightedLink(Color.parseColor("#0D3D0C")) // optional, defaults to holo blue
                     .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
@@ -159,12 +164,12 @@ public class LoginActivity extends AppCompatActivity {
                             init();
                         }
                     });
-            txtLogNotify.setText("Bạn chưa có tài khoản?Đăng ký");
+            txtLogNotify.setText(getString(R.string.strIsSignIn) + " " + getString(R.string.strHeaderSignUp));
             LinkBuilder.on(txtLogNotify).addLink(log_Link).build();
         } else {
-            txtTitleLogin.setText("Sign up");
-            btnLogin.setText("Sign up");
-            Link log_Link = new Link("Đăng nhập")
+            txtTitleLogin.setText(getString(R.string.strHeaderSignUp));
+            btnLogin.setText(getString(R.string.strHeaderSignUp));
+            Link log_Link = new Link(getString(R.string.strHeaderSignIn))
                     .setTextColor(Color.parseColor("#FF0080"))                  // optional, defaults to holo blue
                     .setTextColorOfHighlightedLink(Color.parseColor("#0D3D0C")) // optional, defaults to holo blue
                     .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
@@ -177,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
                             init();
                         }
                     });
-            txtLogNotify.setText("Bạn đã có tài khoản?Đăng nhập");
+            txtLogNotify.setText(getString(R.string.strIsSignUp) + " " + getString(R.string.strHeaderSignIn));
             LinkBuilder.on(txtLogNotify).addLink(log_Link).build();
         }
     }

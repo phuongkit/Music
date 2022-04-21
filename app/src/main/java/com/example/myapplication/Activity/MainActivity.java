@@ -2,7 +2,6 @@ package com.example.myapplication.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -11,29 +10,18 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.widget.ImageButton;
 import android.widget.SearchView;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.Adapter.CustomBaihatAdapter;
-import com.example.myapplication.Dao.BaiHatDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
-import com.example.myapplication.Fragment.Fragment_TKiem;
-import com.example.myapplication.Module.Baihat;
+import com.example.myapplication.Fragment.SearchFragment;
 import com.example.myapplication.R;
 import com.example.myapplication.Adapter.MainViewPagerAdapter;
 import com.google.android.material.navigation.NavigationView;
@@ -41,8 +29,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,14 +50,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     Activity context;
     LoginDialog dialog;
-    private String[] titles=new String[]{"Cá nhân","Trang chủ","Tìm kiếm","Playlist"};
+    private ArrayList<String> titles = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        titles.add(getString(R.string.strHeaderPersonal));
+        titles.add(getString(R.string.strHeaderHomePage));
+        titles.add(getString(R.string.strHeaderSearch));
+        titles.add(getString(R.string.strHeaderPlaylist));
         mapping();
         init();
-
     }
 
     @Override
@@ -100,9 +90,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
                 Bundle args = new Bundle();
                 args.putString("query", s);
-                if (fragmentList.get(FRAGMENT_SEARCH) instanceof Fragment_TKiem) {
+                if (fragmentList.get(FRAGMENT_SEARCH) instanceof SearchFragment) {
                     fragmentList.get(FRAGMENT_SEARCH).setArguments(args);
-                    ((Fragment_TKiem) fragmentList.get(2)).setBundle();
+                    ((SearchFragment) fragmentList.get(2)).setBundle();
 
                 }
                 return false;
@@ -113,9 +103,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
                 Bundle args = new Bundle();
                 args.putString("filter", s);
-                if (fragmentList.get(FRAGMENT_SEARCH) instanceof Fragment_TKiem) {
+                if (fragmentList.get(FRAGMENT_SEARCH) instanceof SearchFragment) {
                     fragmentList.get(FRAGMENT_SEARCH).setArguments(args);
-                    ((Fragment_TKiem) fragmentList.get(2)).setBundle();
+                    ((SearchFragment) fragmentList.get(2)).setBundle();
 
                 }
                 return false;
@@ -144,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         context = MainActivity.this;
         mainViewPagerAdapter = new MainViewPagerAdapter(this);
         viewPager2.setAdapter(mainViewPagerAdapter);
-        new TabLayoutMediator(tabLayout,viewPager2,((tab, position) -> tab.setText(titles[position]))).attach();
+        new TabLayoutMediator(tabLayout,viewPager2,((tab, position) -> tab.setText(titles.get(position)))).attach();
         tabLayout.getTabAt(FRAGMENT_PERSONAL).setIcon(R.drawable.ic_person);
         tabLayout.getTabAt(FRAGMENT_HOME).setIcon(R.drawable.icontrangchu);
         tabLayout.getTabAt(FRAGMENT_SEARCH).setIcon(R.drawable.icontimkiem);

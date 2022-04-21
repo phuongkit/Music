@@ -5,10 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +14,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,8 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Module.AccountType;
 import com.example.myapplication.Module.Listeners.OnLoadMoreListener;
 import com.example.myapplication.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.klinker.android.link_builder.Link;
 import com.klinker.android.link_builder.LinkBuilder;
 
@@ -45,7 +39,6 @@ public class LoginDialog extends Dialog {
     ArrayList<AccountType> accountTypes;
     ArrayList<AccountType> accountTypess;
     AccountTypeAdapter accountTypeAdapter;
-//    AccountTypeAdapter
 
     public LoginDialog(Activity context) {
         super(context);
@@ -65,30 +58,28 @@ public class LoginDialog extends Dialog {
         window.setGravity(Gravity.BOTTOM);
     }
 
+    public String getString(int resId) {
+        return context.getString(resId);
+    }
+
     private void init() {
         if (login) {
-            txtTittleLogin.setText("Đăng nhập vào " + context.getString(R.string.app_name));
-            txtInfoTittleLogin.setText("Quản lý tài khoản, kiểm tra thông báo, tương tác, bình luân trên các bài hát, v.v.");
+            txtTittleLogin.setText((getString(R.string.strHeaderSignIn) + " " + getString(R.string.app_name)));
+            txtInfoTittleLogin.setText(getString(R.string.strSignInDetail));
             txtPolicy.setText("");
 
-            Link log_Link = new Link("Đăng ký")
+            Link log_Link = new Link(getString(R.string.strHeaderSignUp))
                     .setTextColor(Color.parseColor("#FF0080"))                  // optional, defaults to holo blue
                     .setTextColorOfHighlightedLink(Color.parseColor("#0D3D0C")) // optional, defaults to holo blue
                     .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
                     .setUnderlined(false)                                       // optional, defaults to true
                     .setBold(true);                                           // optional, defaults to false
-//                    .setOnLongClickListener(new Link.OnLongClickListener() {
-//                        @Override
-//                        public void onLongClick(String clickedText) {
-//                            // long clicked
-//                        }
-//                    })
-            btnOtherLogin.setText("Bạn không có tài khoản?Đăng ký");
+            btnOtherLogin.setText(getString(R.string.strIsSignIn) + " " + getString(R.string.strHeaderSignUp));
             LinkBuilder.on(btnOtherLogin).addLink(log_Link).build();
         } else {
-            txtTittleLogin.setText("Đăng ký " + context.getString(R.string.app_name));
-            txtInfoTittleLogin.setText("Tạo hồ sơ, theo dõi các tài khoản khác, nghe nhạc của chính bạn, v.v.");
-            Link terms_Of_Service_Link = new Link("Điều khoản dịch vụ")
+            txtTittleLogin.setText(getString(R.string.strHeaderSignUp) + " " + context.getString(R.string.app_name));
+            txtInfoTittleLogin.setText(getString(R.string.strSignUpDetail));
+            Link terms_Of_Service_Link = new Link(getString(R.string.strTermsOfService))
                     .setTextColor(Color.parseColor("#000000"))                  // optional, defaults to holo blue
                     .setTextColorOfHighlightedLink(Color.parseColor("#0D3D0C")) // optional, defaults to holo blue
                     .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
@@ -102,7 +93,7 @@ public class LoginDialog extends Dialog {
                             context.startActivity(browserIntent);
                         }
                     });
-            Link privacy_Policy_Link = new Link("Chính sách Quyền riêng tư")
+            Link privacy_Policy_Link = new Link(getString(R.string.strPrivacyPolicy))
                     .setTextColor(Color.parseColor("#000000"))                  // optional, defaults to holo blue
                     .setTextColorOfHighlightedLink(Color.parseColor("#0D3D0C")) // optional, defaults to holo blue
                     .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
@@ -117,25 +108,19 @@ public class LoginDialog extends Dialog {
                         }
                     });
 
-            txtPolicy.setText("Bằng cách tiếp tục, bạn đồng ý với Điều khoản dịch vụ của chúng tôi và thừa nhận rằng bạn đã đọc Chính sách Quyền riêng tư để tìm hiểu cách chúng tôi thu thập, sử dụng và chia sẽ dữ liệu của bạn.");
+            txtPolicy.setText(getString(R.string.strTermsAndPermissions));
             LinkBuilder.on(txtPolicy).addLink(terms_Of_Service_Link).build();
             LinkBuilder.on(txtPolicy).addLink(privacy_Policy_Link).build();
 
             txtPolicy.setMovementMethod(LinkMovementMethod.getInstance());
 
-            Link log_Link = new Link("Đăng nhập")
+            Link log_Link = new Link(getString(R.string.strHeaderSignIn))
                     .setTextColor(Color.parseColor("#FF0080"))                  // optional, defaults to holo blue
                     .setTextColorOfHighlightedLink(Color.parseColor("#0D3D0C")) // optional, defaults to holo blue
                     .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
                     .setUnderlined(false)                                       // optional, defaults to true
                     .setBold(true);                                            // optional, defaults to false
-//                    .setOnLongClickListener(new Link.OnLongClickListener() {
-//                        @Override
-//                        public void onLongClick(String clickedText) {
-//                            // long clicked
-//                        }
-//                    })
-            btnOtherLogin.setText("Bạn đã có tài khoản?Đăng nhập");
+            btnOtherLogin.setText(getString(R.string.strIsSignUp) + " " + getString(R.string.strHeaderSignIn));
             LinkBuilder.on(btnOtherLogin).addLink(log_Link).build();
         }
     }
@@ -152,21 +137,16 @@ public class LoginDialog extends Dialog {
             public void onLoadMore() {
                 accountTypess.add(null);
                 accountTypeAdapter.notifyItemInserted(accountTypess.size() - 1);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        accountTypess.remove(accountTypess.size() - 1);
-                        accountTypeAdapter.notifyItemRemoved(accountTypess.size());
-                        int index = accountTypess.size();
+                accountTypess.remove(accountTypess.size() - 1);
+                accountTypeAdapter.notifyItemRemoved(accountTypess.size());
+                int index = accountTypess.size();
 //                        int end = index + 5 > accountTypes.size() ? accountTypes.size() : index + 5;
-                        int end = accountTypes.size();
-                        for (int i = index; i < end; i++) {
-                            accountTypess.add(accountTypes.get(i));
-                        }
-                        accountTypeAdapter.notifyDataSetChanged();
-                        accountTypeAdapter.isLoading = false;
-                    }
-                }, 500);
+                int end = accountTypes.size();
+                for (int i = index; i < end; i++) {
+                    accountTypess.add(accountTypes.get(i));
+                }
+                accountTypeAdapter.notifyDataSetChanged();
+                accountTypeAdapter.isLoading = false;
             }
         });
         btnOtherLogin.setOnClickListener(new View.OnClickListener() {
@@ -195,12 +175,12 @@ public class LoginDialog extends Dialog {
         recyclerViewAccountType.setAdapter(accountTypeAdapter);
         accountTypes = new ArrayList<>();
         accountTypess = new ArrayList<>();
-        accountTypes.add(new AccountType(1 + "", "Sử dụng với email", R.drawable.ic_user1));
-        accountTypes.add(new AccountType(2 + "", "Tiếp tục với Google", R.drawable.ic_google));
-        accountTypes.add(new AccountType(3 + "", "Tiếp tục với facebook", R.drawable.ic_facebook));
-        accountTypes.add(new AccountType(4 + "", "Tiếp tục với Twitter", R.drawable.ic_twitter));
-        accountTypes.add(new AccountType(5 + "", "Tiếp tục với Instagram", R.drawable.ic_instagram));
-        accountTypes.add(new AccountType(6 + "", "Tiếp tục với Line", R.drawable.ic_line));
+        accountTypes.add(new AccountType(1 + "", getString(R.string.strUseEmail), R.drawable.ic_user1));
+        accountTypes.add(new AccountType(2 + "", getString(R.string.strContinueGoogle), R.drawable.ic_google));
+        accountTypes.add(new AccountType(3 + "", getString(R.string.strContinueFacebook), R.drawable.ic_facebook));
+        accountTypes.add(new AccountType(4 + "", getString(R.string.strContinueTwitter), R.drawable.ic_twitter));
+        accountTypes.add(new AccountType(5 + "", getString(R.string.strContinueInstagram), R.drawable.ic_instagram));
+        accountTypes.add(new AccountType(6 + "", getString(R.string.strContinueLine), R.drawable.ic_line));
         int index = 0;
         int end = 3;
         for (int i = index; i < end; i++) {
@@ -213,8 +193,8 @@ public class LoginDialog extends Dialog {
 
     class AccountTypeAdapter extends RecyclerView.Adapter<AccountTypeViewHolder> {
 
-        private final int VIEW_TYPE_ITEM = 0;
-        private final int VIEW_TYPE_LOADING = 1;
+//        private final int VIEW_TYPE_ITEM = 0;
+//        private final int VIEW_TYPE_LOADING = 1;
         OnLoadMoreListener onLoadMoreListener;
         public boolean isLoading = false;
         int visibleThrehold = 3;
@@ -268,7 +248,6 @@ public class LoginDialog extends Dialog {
         public AccountTypeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View accountTypeView = LayoutInflater.from(context).inflate(R.layout.account_type_item, parent, false);
             return new AccountTypeViewHolder(accountTypeView);
-//            return null;
         }
 
 //        @NonNull
@@ -295,9 +274,7 @@ public class LoginDialog extends Dialog {
             holder.setItemClickListener(new ItemClickListener() {
                 @Override
                 public void onClick(View view, int position, boolean isLongClick) {
-                    if (isLongClick) {
-//                        Toast.makeText(context, "Long Click: "+listData.get(position), Toast.LENGTH_SHORT).show();
-                    } else {
+                    if (!isLongClick) {
                         switch (accountType.getIdAccountType()) {
                             case "1":
                                 Intent intent = new Intent(context, LoginActivity.class);
@@ -331,25 +308,25 @@ public class LoginDialog extends Dialog {
             return accountTypess == null ? 0 : accountTypess.size();
         }
 
-        @Override
-        public int getItemViewType(int position) {
-            return accountTypess.get(position) == null ? VIEW_TYPE_LOADING : VIEW_TYPE_ITEM;
-        }
+//        @Override
+//        public int getItemViewType(int position) {
+//            return accountTypess.get(position) == null ? VIEW_TYPE_LOADING : VIEW_TYPE_ITEM;
+//        }
     }
 
     public interface ItemClickListener {
         void onClick(View view, int position, boolean isLongClick);
     }
 
-    static class LoadingViewHolder extends RecyclerView.ViewHolder {
-
-        public ProgressBar progressBar;
-
-        public LoadingViewHolder(@NonNull View itemView) {
-            super(itemView);
-            progressBar = itemView.findViewById(R.id.progressBar);
-        }
-    }
+//    static class LoadingViewHolder extends RecyclerView.ViewHolder {
+//
+//        public ProgressBar progressBar;
+//
+//        public LoadingViewHolder(@NonNull View itemView) {
+//            super(itemView);
+//            progressBar = itemView.findViewById(R.id.progressBar);
+//        }
+//    }
 
     static class AccountTypeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 

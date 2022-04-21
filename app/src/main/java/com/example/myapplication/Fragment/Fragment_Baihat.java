@@ -28,7 +28,6 @@ public class Fragment_Baihat extends Fragment {
     ListView lvPlayList;
     TextView tvTitlePlayList, tvXemThem;
     ArrayList<Baihat> baihats;
-    //    ArrayList<Hinhdianhac> hinhdia;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

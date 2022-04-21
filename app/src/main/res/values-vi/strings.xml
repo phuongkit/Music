@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Music6</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">Mở navigation drawer</string>
+    <string name="navigation_drawer_close">Đóng navigation drawer</string>
+
+    <string name="strHeaderPersonal">Cá nhân</string>
+    <string name="strHeaderHomePage">Trang chủ</string>
+    <string name="strHeaderSearch">Tìm kiếm</string>
+
+    <string name="strSignInDetail">Quản lý tài khoản, kiểm tra thông báo, tương tác, bình luân trên các bài hát, v.v.</string>
+    <string name="strSignUpDetail">Tạo hồ sơ, theo dõi các tài khoản khác, nghe nhạc của chính bạn, v.v.</string>
+    <string name="strTermsAndPermissions">Bằng cách tiếp tục, bạn đồng ý với Điều khoản dịch vụ của chúng tôi và thừa nhận rằng bạn đã đọc Chính sách Quyền riêng tư để tìm hiểu cách chúng tôi thu thập, sử dụng và chia sẽ dữ liệu của bạn.</string>
+    <string name="strPrivacyPolicy">Chính sách Quyền riêng tư</string>
+    <string name="strTermsOfService">Điều khoản dịch vụ</string>
+
+    <string name="strUseEmail">Sử dụng với Email</string>
+    <string name="strContinueGoogle">Tiếp tục với Google</string>
+    <string name="strContinueFacebook">Tiếp tục với Facebook</string>
+    <string name="strContinueTwitter">Tiếp tục với Twitter</string>
+    <string name="strContinueInstagram">Tiếp tục với Instagram</string>
+    <string name="strContinueLine">Tiếp tục với Line</string>
+
+    <string name="strHeaderSignIn">Đăng nhập</string>
+    <string name="strHeaderSignUp">Đăng ký</string>
+    <string name="strHeaderEmail">Email</string>
+    <string name="strHeaderPassword">Mật khẩu</string>
+    <string name="strHeaderUsername">Tên đăng nhập</string>
+    <string name="strHintEmail">Nhập vào email</string>
+    <string name="strHintPassword">Nhập vào mật khẩu</string>
+    <string name="strHintUsername">Nhập vào tên đăng nhập</string>
+
+    <string name="strIsSignIn">Mới đến </string>
+    <string name="strIsSignUp">Đã liên kết với </string>
+
+    <string name="strSignInFailed">Đăng nhập thất bại. Vui lòng thử lại hoặc </string>
+    <string name="strSignUpFailed">Đăng ký thất bại. Vui lòng thử lại hoặc </string>
+    <string name="strSignUpSuccess">Đăng ký thành công! </string>
+
+    <string name="strHeaderAccount">Tài khoản</string>
+    <string name="strContentMyProfile">Hồ sơ của tôi</string>
+    <string name="strContentChangePassword">Thay đổi mật khẩu</string>
+    <string name="strContentSignout">Đăng xuất</string>
+
+    <string name="strHeaderLibary">Thư viện</string>
+    <string name="strHeaderMusic">Bài hát</string>
+    <string name="strHeaderOnDevice">Trên thiết bị</string>
+    <string name="strHeaderPlaylist">Danh sách nhạc</string>
+    <string name="strHeaderHistory">Bài hát gần đây</string>
+</resources>

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="LOGIN"
+        android:text="@string/strHeaderSignIn"
         android:textAlignment="center"
         android:textSize="25dp" />
 
@@ -28,13 +28,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email:" />
+                android:text="@string/strHeaderEmail" />
 
             <EditText
                 android:id="@+id/edtEmail"
                 android:layout_width="319dp"
                 android:layout_height="wrap_content"
-                android:hint="Enter Email"
+                android:hint="@string/strHintEmail"
                 android:imeOptions="actionNext"
                 android:maxLength="50"
                 android:ems="10"
@@ -50,13 +50,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password:" />
+                android:text="@string/strHeaderPassword" />
 
             <EditText
                 android:id="@+id/edtPassWord"
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:hint="Enter password"
+                android:hint="@string/strHintPassword"
                 android:imeOptions="actionDone"
                 android:ems="10"
                 android:inputType="textPassword"

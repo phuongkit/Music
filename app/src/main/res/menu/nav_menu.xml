@@ -4,28 +4,28 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_personal"
-            android:title="Cá nhân" />
+            android:title="@string/strHeaderPersonal" />
         <item
             android:id="@+id/nav_home"
-            android:title="Trang chủ" />
+            android:title="@string/strHeaderHomePage" />
         <item
             android:id="@+id/nav_search"
-            android:title="Tìm kiếm" />
+            android:title="@string/strHeaderSearch" />
         <item
             android:id="@+id/nav_playlist"
-            android:title="Playlist" />
+            android:title="@string/strHeaderPlaylist" />
     </group>
-    <item android:title="Account">
+    <item android:title="@string/strHeaderAccount">
         <menu>
             <item
                 android:id="@+id/nav_myprofile"
-                android:title="Hồ sơ của tôi" />
+                android:title="@string/strContentMyProfile" />
             <item
                 android:id="@+id/nav_changepassword"
-                android:title="Thay đổi mật khẩu" />
+                android:title="@string/strContentChangePassword" />
             <item
                 android:id="@+id/nav_signout"
-                android:title="Đăng xuất" />
+                android:title="@string/strContentSignout" />
         </menu>
     </item>
 </menu>

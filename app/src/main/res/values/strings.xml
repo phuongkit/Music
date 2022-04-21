@@ -2,6 +2,51 @@
     <string name="app_name">Music6</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="navigation_drawer_open">Mở navigation drawer</string>
-    <string name="navigation_drawer_close">Đóng navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="strHeaderPersonal">Personal</string>
+    <string name="strHeaderHomePage">Home Page</string>
+    <string name="strHeaderSearch">Search</string>
+
+    <string name="strSignInDetail">Manage accounts, check notifications, interact, comment on songs, and more.</string>
+    <string name="strSignUpDetail">Create profiles, follow other accounts, listen to your own music, and more.</string>
+    <string name="strTermsAndPermissions">By continuing, you agree to our Terms of Service and acknowledge that you have read the Privacy Policy to learn how we collect, use and share your data.</string>
+    <string name="strPrivacyPolicy">Privacy Policy</string>
+    <string name="strTermsOfService">Terms of Service</string>
+
+    <string name="strUseEmail">Use with Email</string>
+    <string name="strContinueGoogle">Continue with Google</string>
+    <string name="strContinueFacebook">Continue with Facebook</string>
+    <string name="strContinueTwitter">Continue with Twitter</string>
+    <string name="strContinueInstagram">Continue with Instagram</string>
+    <string name="strContinueLine">Continue with Line</string>
+
+
+    <string name="strHeaderSignIn">Sign in</string>
+    <string name="strHeaderSignUp">Sign up</string>
+    <string name="strHeaderEmail">Email</string>
+    <string name="strHeaderPassword">Password</string>
+    <string name="strHeaderUsername">Username</string>
+    <string name="strHintEmail">Enter Email</string>
+    <string name="strHintPassword">Enter Password</string>
+    <string name="strHintUsername">Enter Username</string>
+
+    <string name="strIsSignIn">Don\'t have an account?</string>
+    <string name="strIsSignUp">Already have an account?</string>
+
+    <string name="strSignInFailed">Sign in failed. Please try again or</string>
+    <string name="strSignUpFailed">Sign up failed. Please try again or</string>
+    <string name="strSignUpSuccess">Sign up success! </string>
+
+    <string name="strHeaderAccount">Account</string>
+    <string name="strContentMyProfile">My Profile</string>
+    <string name="strContentChangePassword">Change Password</string>
+    <string name="strContentSignout">Sign Out</string>
+
+    <string name="strHeaderLibary">Libary</string>
+    <string name="strHeaderMusic">Music</string>
+    <string name="strHeaderOnDevice">On-device</string>
+    <string name="strHeaderPlaylist">Playlist</string>
+    <string name="strHeaderHistory">Recent songs</string>
 </resources>
