@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class Fragment_Baneer extends Fragment {
+public class BannerFragment extends Fragment {
     View view;
     ViewPager viewPager;
     CustomBannerAdapter customBannerAdapter;
@@ -35,13 +35,12 @@ public class Fragment_Baneer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment__banner, container, false);
+        view = inflater.inflate(R.layout.fragment_banner, container, false);
         mapping();
         GetDetail();
         return view;
     }
     private void GetDetail() {
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("banner");
         myRef.addValueEventListener(new ValueEventListener() {
@@ -56,6 +55,22 @@ public class Fragment_Baneer extends Fragment {
                 }
                 customBannerAdapter = new CustomBannerAdapter(getActivity(), banners);
                 viewPager.setAdapter(customBannerAdapter);
+//                viewPager.getAdapter().notifyDataSetChanged();
+
+                circleIndicator.setViewPager(viewPager);
+                handler = new Handler();
+                runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        currentItem = viewPager.getCurrentItem();
+                        currentItem = (currentItem+1) % viewPager.getAdapter().getCount();
+                        viewPager.setCurrentItem(currentItem, true);
+                        handler.postDelayed(runnable, 4500);
+                    }
+
+                };
+                handler.postDelayed(runnable, 3000);
+
 //                editText.setText(value.toString());
             }
 
@@ -65,18 +80,6 @@ public class Fragment_Baneer extends Fragment {
             }
         });
 
-        circleIndicator.setViewPager(viewPager);
-        handler = new Handler();
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                currentItem = viewPager.getCurrentItem();
-                currentItem = (currentItem+1) % viewPager.getAdapter().getCount();
-                viewPager.setCurrentItem(currentItem, true);
-                handler.postDelayed(runnable, 4500);
-            }
-        };
-        handler.postDelayed(runnable, 3000);
     }
 
     private void mapping() {

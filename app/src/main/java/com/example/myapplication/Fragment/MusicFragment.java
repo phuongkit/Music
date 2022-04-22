@@ -22,7 +22,7 @@ import com.example.myapplication.Module.Baihat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fragment_Baihat extends Fragment {
+public class MusicFragment extends Fragment {
     CustomBaihatAdapter customBaihatAdapter;
     View view;
     ListView lvPlayList;
@@ -32,7 +32,7 @@ public class Fragment_Baihat extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_baihat, container, false);
+        view = inflater.inflate(R.layout.fragment_music, container, false);
         mapping();
         GetDetail();
         baihats =new ArrayList<>();

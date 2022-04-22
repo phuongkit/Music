@@ -25,28 +25,8 @@ public class BannerDao  extends FirebaseDao<Banner>{
         banner.setHinhAnh(dataSnapshot.child("hinhAnh").getValue().toString());
         //       ↓                           ↓
         banner.setNoiDung(dataSnapshot.child("noiDung").getValue().toString());
-
-        Baihat baihat = new Baihat();
-        baihat.id = dataSnapshot.child("baihat").getKey();
-        //  ----------------------------------------------------------------------------------------
-        // | IMPORTANT NOTE: make sure that the variable name is EXACTLY the same as the node name. |
-        //  ----------------------------------------------------------------------------------------
         //       ↓                           ↓
-        baihat.setTenBaihat(dataSnapshot.child("baihat").child("tenBaihat").getValue().toString());
-        //       ↓                           ↓
-        baihat.setHinhBaihat(dataSnapshot.child("baihat").child("hinhBaihat").getValue().toString());
-        //       ↓                           ↓
-        baihat.setIdAlbum(dataSnapshot.child("baihat").child("idAlbum").getValue().toString());
-        //       ↓                           ↓
-        baihat.setIdBaihat(dataSnapshot.child("baihat").child("idBaihat").getValue().toString());
-        //       ↓                           ↓
-        baihat.setIdPlaylist(dataSnapshot.child("baihat").child("idPlaylist").getValue().toString());
-        //       ↓                           ↓
-        baihat.setCaSi(dataSnapshot.child("baihat").child("caSi").getValue().toString());
-        //       ↓                           ↓
-        baihat.setLinkBaihat(dataSnapshot.child("baihat").child("linkBaihat").getValue().toString());
-        //       ↓                           ↓
-        banner.setBaihat(baihat);
+        banner.setIdBaihat(dataSnapshot.child("idBaihat").child("linkBaihat").getValue().toString());
 
         // Now we have parsed all of the attributes of the banner object. We will feed it to the callback
         retrievalEventListener.OnDataRetrieved(banner);

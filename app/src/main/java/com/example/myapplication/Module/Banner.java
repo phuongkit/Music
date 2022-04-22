@@ -11,17 +11,17 @@ public class Banner implements Serializable {
     private String idBanner;
     private String hinhAnh;
     private String noiDung;
-    private Baihat baihat;
+    private String idBaihat;
 
     public Banner(){
 
     }
 
-    public Banner(String idBanner, String hinhAnh, String noiDung, Baihat baihat) {
+    public Banner(String idBanner, String hinhAnh, String noiDung, String idBaihat) {
         this.idBanner = idBanner;
         this.hinhAnh = hinhAnh;
         this.noiDung = noiDung;
-        this.baihat = baihat;
+        this.idBaihat = idBaihat;
     }
 
     public String getIdBanner() {
@@ -48,12 +48,12 @@ public class Banner implements Serializable {
         this.noiDung = noiDung;
     }
 
-    public Baihat getBaihat() {
-        return baihat;
+    public String getIdBaihat() {
+        return idBaihat;
     }
 
-    public void setBaihat(Baihat baihat) {
-        this.baihat = baihat;
+    public void setIdBaihat(String idBaihat) {
+        this.idBaihat = idBaihat;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class Banner implements Serializable {
                 ", idBanner='" + idBanner + '\'' +
                 ", hinhAnh='" + hinhAnh + '\'' +
                 ", noiDung='" + noiDung + '\'' +
-                ", baihat=" + baihat +
+                ", idBaihat='" + idBaihat + '\'' +
                 '}';
     }
 }

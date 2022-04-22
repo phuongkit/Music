@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.PersonalFragment">
+    android:orientation="vertical"
+    tools:context=".Fragment.PersonalFragment"
+    android:padding="16dp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/txtHeaderLibary"
         android:layout_width="match_parent"
-        android:layout_height="654dp"
+        android:layout_height="wrap_content"
         android:text="@string/strHeaderLibary" />
 
-</FrameLayout>
+    <GridView
+        android:id="@+id/gvLibary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="3">
+    </GridView>
+
+    <TextView
+        android:id="@+id/txtHeaderLibary2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/strHeaderLibary" />
+</LinearLayout>

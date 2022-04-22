@@ -12,13 +12,13 @@
         android:layout_height="wrap_content">
         <fragment
             android:id="@+id/framentBanner"
-            android:name="com.example.myapplication.Fragment.Fragment_Baneer"
+            android:name="com.example.myapplication.Fragment.BannerFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
         <fragment
             android:id="@+id/framentBaihat"
-            android:name="com.example.myapplication.Fragment.Fragment_Baihat"
+            android:name="com.example.myapplication.Fragment.MusicFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />

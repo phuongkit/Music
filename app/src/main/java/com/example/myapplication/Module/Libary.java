@@ -4,29 +4,29 @@ import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
 
-public class AccountType implements Serializable {
+public class Libary implements Serializable {
     @Exclude
     public String id;
 
-    private String idAccountType;
+    private int idLibary;
     private String name;
     private int idIcon;
 
-    public AccountType() {
+    public Libary() {
     }
 
-    public AccountType(String idAccountType, String name, int idIcon) {
-        this.idAccountType = idAccountType;
+    public Libary(int idLibary, String name, int idIcon) {
+        this.idLibary = idLibary;
         this.name = name;
         this.idIcon = idIcon;
     }
 
-    public String getIdAccountType() {
-        return idAccountType;
+    public int getIdLibary() {
+        return idLibary;
     }
 
-    public void setIdAccountType(String idAccountType) {
-        this.idAccountType = idAccountType;
+    public void setIdLibary(int idLibary) {
+        this.idLibary = idLibary;
     }
 
     public String getName() {
@@ -47,11 +47,11 @@ public class AccountType implements Serializable {
 
     @Override
     public String toString() {
-        return "AccountType{" +
+        return "Libary{" +
                 "id=" + id +
-                ", idAccountType='" + idAccountType + '\'' +
+                ", idLibary=" + idLibary +
                 ", name='" + name + '\'' +
-                ", idIcon='" + idIcon + '\'' +
+                ", idIcon=" + idIcon +
                 '}';
     }
 }

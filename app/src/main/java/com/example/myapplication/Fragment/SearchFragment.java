@@ -1,14 +1,17 @@
 package com.example.myapplication.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.Activity.PlaybaihatActivity;
 import com.example.myapplication.Dao.BaiHatDao;
 import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
 import com.example.myapplication.R;
@@ -32,6 +35,17 @@ public class SearchFragment extends Fragment {
         lvSearch = view.findViewById(R.id.lvSearch);
         customBaihatAdapter = new CustomBaihatAdapter(getActivity(), android.R.layout.simple_list_item_1, baihats1);
         lvSearch.setAdapter(customBaihatAdapter);
+        lvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity(), PlaybaihatActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("baihats", baihats1);
+                bundle.putInt("index", i);
+                intent.putExtra("bundle", bundle);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -86,6 +100,7 @@ public class SearchFragment extends Fragment {
                 customBaihatAdapter.clear();
                 customBaihatAdapter.addAll(baihats);
                 customBaihatAdapter.getFilter().filter(filter);
+
             }
         });
     }

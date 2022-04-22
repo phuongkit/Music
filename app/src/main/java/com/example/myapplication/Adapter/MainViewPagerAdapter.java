@@ -1,7 +1,6 @@
 package com.example.myapplication.Adapter;
 
 
-import android.util.Log;
 import android.util.SparseArray;
 
 import androidx.annotation.NonNull;
@@ -9,10 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.myapplication.Fragment.Fragment_TChu;
+import com.example.myapplication.Fragment.HomeFragment;
 import com.example.myapplication.Fragment.SearchFragment;
 import com.example.myapplication.Fragment.PersonalFragment;
-import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
@@ -40,7 +38,7 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
 //        titles = new String[5];
 //        titles.
         registeredFragments.append(0, new PersonalFragment());
-        registeredFragments.append(1, new Fragment_TChu());
+        registeredFragments.append(1, new HomeFragment());
         registeredFragments.append(2, new SearchFragment());
         registeredFragments.append(3, new PersonalFragment());
     }
@@ -52,12 +50,12 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
 //            case 3:
 //                return new PersonalFragment();
 //            case 1:
-//                return new Fragment_TChu();
+//                return new HomeFragment();
 //            case 2:
 //                return new SearchFragment();
 //
 //        }
-//        return new Fragment_TChu();
+//        return new HomeFragment();
         return position < 0 || position + 1 > registeredFragments.size() ? registeredFragments.get(1) : registeredFragments.get(position);
     }
 

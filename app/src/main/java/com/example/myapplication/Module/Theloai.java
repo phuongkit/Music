@@ -11,16 +11,16 @@ public class Theloai implements Serializable {
     private String idTheloai;
     private String hinh;
     private String ten;
-    private Chude chude;
+    private String idChude;
 
     public Theloai() {
     }
 
-    public Theloai(String idTheloai, String hinh, String ten, Chude chude) {
+    public Theloai(String idTheloai, String hinh, String ten, String idChude) {
         this.idTheloai = idTheloai;
         this.hinh = hinh;
         this.ten = ten;
-        this.chude = chude;
+        this.idChude = idChude;
     }
 
     public String getIdTheloai() {
@@ -47,12 +47,12 @@ public class Theloai implements Serializable {
         this.ten = ten;
     }
 
-    public Chude getChude() {
-        return chude;
+    public String getIdChude() {
+        return idChude;
     }
 
-    public void setChude(Chude chude) {
-        this.chude = chude;
+    public void setIdChude(String idChude) {
+        this.idChude = idChude;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Theloai implements Serializable {
                 ", idTheloai='" + idTheloai + '\'' +
                 ", hinh='" + hinh + '\'' +
                 ", ten='" + ten + '\'' +
-                ", chude=" + chude +
+                ", idChude='" + idChude + '\'' +
                 '}';
     }
 }

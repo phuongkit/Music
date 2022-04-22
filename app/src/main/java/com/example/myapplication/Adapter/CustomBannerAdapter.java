@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.myapplication.Dao.BaiHatDao;
+import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Module.Baihat;
 import com.example.myapplication.R;
 import com.example.myapplication.Module.Banner;
 import com.squareup.picasso.Picasso;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 public class CustomBannerAdapter extends PagerAdapter {
     Context context;
     ArrayList<Banner> arrayListBanner;
+    Baihat baiHat;
 
     public CustomBannerAdapter(Context context, ArrayList<Banner> arrayListBanner) {
         this.context = context;
@@ -49,8 +53,16 @@ public class CustomBannerAdapter extends PagerAdapter {
         TextView tvNoiDung = view.findViewById(R.id.NoiDung1);
 
         Picasso.with(context).load(arrayListBanner.get(position).getHinhAnh()).into(imageBackgroundBanner);
-        Picasso.with(context).load(arrayListBanner.get(position).getBaihat().getHinhBaihat()).into(imgSongBanner);
-        tvTitleSongBanner.setText(arrayListBanner.get(position).getBaihat().getTenBaihat());
+        baiHat = new Baihat();
+        BaiHatDao baiHatDao = new BaiHatDao();
+        baiHatDao.get(arrayListBanner.get(position).getIdBaihat(), new RetrievalEventListener<Baihat>() {
+            @Override
+            public void OnDataRetrieved(Baihat baihat) {
+                baiHat = baihat;
+            }
+        });
+        Picasso.with(context).load(baiHat.getHinhBaihat()).into(imgSongBanner);
+        tvTitleSongBanner.setText(baiHat.getTenBaihat());
         tvNoiDung.setText(arrayListBanner.get(position).getNoiDung());
 
 

@@ -25,20 +25,8 @@ public class TheLoaiDao extends FirebaseDao<Theloai> {
         theloai.setHinh(dataSnapshot.child("hinh").getValue().toString());
         //       ↓                           ↓
         theloai.setTen(dataSnapshot.child("ten").getValue().toString());
-
-        Chude chude = new Chude();
-        chude.id = dataSnapshot.child("chude").getKey();
-        //  ----------------------------------------------------------------------------------------
-        // | IMPORTANT NOTE: make sure that the variable name is EXACTLY the same as the node name. |
-        //  ----------------------------------------------------------------------------------------
         //       ↓                           ↓
-        chude.setIdChude(dataSnapshot.child("chude").child("idChude").getValue().toString());
-        //       ↓                           ↓
-        chude.setHinh(dataSnapshot.child("chude").child("hinh").getValue().toString());
-        //       ↓                           ↓
-        chude.setTen(dataSnapshot.child("chude").child("ten").getValue().toString());
-        //       ↓                           ↓
-        theloai.setChude(chude);
+        theloai.setIdChude(dataSnapshot.child("idChude").getValue().toString());
 
         // Now we have parsed all of the attributes of the Theloai object. We will feed it to the callback
         retrievalEventListener.OnDataRetrieved(theloai);
