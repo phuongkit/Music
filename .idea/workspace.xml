@@ -39,40 +39,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a74400b-26de-4a97-92e9-643db9a92054" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/CircularDianhacAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/LibaryAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Libary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/controlmucsic_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_music_disc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/libary_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/PlaybaihatActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/PlaybaihatActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/CustomBannerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/CustomBannerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/MainViewPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/MainViewPagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/BannerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/BannerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/TheLoaiDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Dao/TheLoaiDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/Fragment_Baihat.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/MusicFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/Fragment_Baneer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/BannerFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/Fragment_TChu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/HomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/PersonalFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/PersonalFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/SearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Fragment/SearchFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/AccountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/AccountType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Banner.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Banner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Hinhdianhac.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Hinhdianhac.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Theloai.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Module/Theloai.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_playmucsic.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_playmucsic.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment__banner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_banner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_baihat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_music.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_personal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_trangchu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_header_nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_header_nav.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R9JN5025E9J]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -338,7 +314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650556669872</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update play music">
+      <created>1650634821649</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650634821649</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -375,7 +358,8 @@
     <MESSAGE value="Thêm tài khoản" />
     <MESSAGE value="up Search, add Search Filter, Change search view" />
     <MESSAGE value="Update multi language, Add english language" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update multi language, Add english language" />
+    <MESSAGE value="update play music" />
+    <option name="LAST_COMMIT_MESSAGE" value="update play music" />
   </component>
   <component name="WindowStateProjectService">
     <state x="286" y="154" key="#PSD" timestamp="1650001906080">
@@ -410,10 +394,10 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="499" y="155" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.816@0.0.1536.816" timestamp="1650356528368" />
-    <state x="93" y="93" width="1350" height="630" key="AVDManager" timestamp="1650006572201">
+    <state x="93" y="93" width="1350" height="630" key="AVDManager" timestamp="1650674949947">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="93" y="93" width="1350" height="630" key="AVDManager/0.0.1536.816@0.0.1536.816" timestamp="1650006572201" />
+    <state x="93" y="93" width="1350" height="630" key="AVDManager/0.0.1536.816@0.0.1536.816" timestamp="1650674949947" />
     <state x="349" y="163" key="AndroidCreateResourceDirectoryDialog" timestamp="1650297577990">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
@@ -442,22 +426,22 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="469" y="107" key="Github.UntrackedFilesDialog/0.0.1536.816@0.0.1536.816" timestamp="1650000573928" />
-    <state width="1491" height="204" key="GridCell.Tab.0.bottom" timestamp="1650633474123">
+    <state width="1491" height="204" key="GridCell.Tab.0.bottom" timestamp="1650675102501">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1491" height="204" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1650633474123" />
-    <state width="1491" height="204" key="GridCell.Tab.0.center" timestamp="1650633474123">
+    <state width="1491" height="204" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1650675102501" />
+    <state width="1491" height="204" key="GridCell.Tab.0.center" timestamp="1650675102501">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1491" height="204" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1650633474123" />
-    <state width="1491" height="204" key="GridCell.Tab.0.left" timestamp="1650633474123">
+    <state width="1491" height="204" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1650675102501" />
+    <state width="1491" height="204" key="GridCell.Tab.0.left" timestamp="1650675102501">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1491" height="204" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1650633474123" />
-    <state width="1491" height="204" key="GridCell.Tab.0.right" timestamp="1650633474123">
+    <state width="1491" height="204" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1650675102501" />
+    <state width="1491" height="204" key="GridCell.Tab.0.right" timestamp="1650675102501">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1491" height="204" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1650633474123" />
+    <state width="1491" height="204" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1650675102501" />
     <state width="1491" height="327" key="GridCell.Tab.1.bottom" timestamp="1649950444971">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
@@ -478,10 +462,10 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="277" y="53" key="SettingsEditor/0.0.1536.816@0.0.1536.816" timestamp="1650000534219" />
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1650556687289">
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1650634831291">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1650556687289" />
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1650634831291" />
     <state x="584" y="186" key="chooseDestDirectoryDialog" timestamp="1650270996327">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
