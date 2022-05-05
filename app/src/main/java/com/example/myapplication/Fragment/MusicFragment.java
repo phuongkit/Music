@@ -84,6 +84,7 @@ public class MusicFragment extends Fragment {
                 lvPlayList.setAdapter(customBaihatAdapter);
             }
         });
+
     }
 
     private void mapping() {

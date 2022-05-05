@@ -77,11 +77,26 @@ public class Baihat implements Serializable {
         this.hinhBaihat = hinhBaihat;
     }
 
-    public Baihat(String idBaihat, String tenBaihat, String hinhBaihat, String caSi, String linkBaihat) {
+
+
+    public Baihat( String idBaihat,String tenBaihat,String caSi, String hinhBaihat, String idAlbum, String idPlaylist,  String linkBaihat) {
         this.idBaihat = idBaihat;
         this.tenBaihat = tenBaihat;
-        this.hinhBaihat = hinhBaihat;
         this.caSi = caSi;
+        this.hinhBaihat = hinhBaihat;
+        this.idAlbum = idAlbum;
+        this.idPlaylist = idPlaylist;
+
+        this.linkBaihat = linkBaihat;
+    }
+    public Baihat(String tenBaihat,String caSi, String hinhBaihat, String idAlbum, String idPlaylist,  String linkBaihat) {
+
+        this.tenBaihat = tenBaihat;
+        this.caSi = caSi;
+        this.hinhBaihat = hinhBaihat;
+        this.idAlbum = idAlbum;
+        this.idPlaylist = idPlaylist;
+
         this.linkBaihat = linkBaihat;
     }
 

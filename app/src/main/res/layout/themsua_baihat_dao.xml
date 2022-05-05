@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtTitleLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/strHeaderSignIn"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        tools:ignore="MissingConstraints" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/txtIdbaihat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID:" />
+
+            <EditText
+                android:id="@+id/edtIdbaihat"
+                android:layout_width="319dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="EnterID"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
+                tools:ignore="TouchTargetSizeCheck" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/txtTenbaihat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ten Bai" />
+
+            <EditText
+                android:id="@+id/edtTenbaihat"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="EnterTenBai"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                tools:ignore="TouchTargetSizeCheck" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/txtCasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Casi"></TextView>
+
+            <EditText
+                android:id="@+id/edtCasi"
+                android:layout_width="319dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Casi"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
+                tools:ignore="TouchTargetSizeCheck" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/txtHinhbaihat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hinh"></TextView>
+
+            <EditText
+                android:id="@+id/edtHinhbaihat"
+                android:layout_width="319dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Hinh"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
+                tools:ignore="TouchTargetSizeCheck" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/txtspinerbaihat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IDAlbum" />
+
+            <Spinner
+                android:id="@+id/spinerbaihat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></Spinner>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/txtIdplaylist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IDPlaylist"></TextView>
+
+            <EditText
+                android:id="@+id/edtIdplaylist"
+                android:layout_width="319dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Playlist"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
+                tools:ignore="TouchTargetSizeCheck" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/txtLinkbaihat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LinkBaihat"></TextView>
+
+            <EditText
+                android:id="@+id/edtLinkbaihat"
+                android:layout_width="319dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Link"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
+                tools:ignore="TouchTargetSizeCheck" />
+        </TableRow>
+    </TableLayout>
+
+
+    <TextView
+        android:id="@+id/txtLogNotify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnSuabaihat"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Repair"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.265"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.157"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnAddbaihat"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:paddingTop="5dp"
+        android:text="ADD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCancel"
+        app:layout_constraintHorizontal_bias="0.715"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.154"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="CANCEL"
+        android:layout_marginTop="2sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintStart_toEndOf="@+id/btnSuabaihat"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.16"
+        tools:ignore="MissingConstraints"
+        android:paddingRight="6dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

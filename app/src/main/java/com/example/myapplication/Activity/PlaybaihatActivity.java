@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
@@ -38,7 +39,7 @@ public class PlaybaihatActivity extends AppCompatActivity {
     ArrayList<Hinhdianhac> hinhbaihats;
     ArrayList<Baihat> baihats = new ArrayList<>();
     Baihat baihat;
-    int index;
+    int index,dem=0;
     MediaPlayer mediaPlayer = new MediaPlayer();
     View view;
     Toolbar toolbarPlayMusic;
@@ -92,6 +93,8 @@ public class PlaybaihatActivity extends AppCompatActivity {
         Bundle bundle = intent.getBundleExtra("bundle");
         baihats = (ArrayList<Baihat>) bundle.getSerializable("baihats");
         index = bundle.getInt("index", -1);
+        imgRandom.setImageResource(R.drawable.iconsuffle);
+        imgRepeat.setImageResource(R.drawable.iconrepeat);
 //        hinhbaihats.add(new Hinhdianhac(link,hinhnhac,position));
 ////        for (int i = 0; i < hinhnhacs.size(); i++) {
 ////            hinhbaihats.add(new Hinhdianhac(links.get(i), hinhnhacs.get(i)));
@@ -165,26 +168,10 @@ public class PlaybaihatActivity extends AppCompatActivity {
                     mediaPlayer.pause();
                     btnPause.setImageResource(R.drawable.iconplay);
                     circularDianhacAdapter.objectAnimator.pause();
-
-//                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
-//                    Bundle bundle=new Bundle();
-//                    bundle.putString("imageDianhac", getCheckIndex());
-//                    bundle.putString("animator","pause");
-//                    fragment_dianhac.setArguments(bundle);
-//                    FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-//                    fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
                 } else {
                     mediaPlayer.start();
                     btnPause.setImageResource(R.drawable.iconpause);
                     circularDianhacAdapter.objectAnimator.resume();
-
-//                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
-//                    Bundle bundle=new Bundle();
-//                    bundle.putString("imageDianhac",getCheckIndex());
-//                    bundle.putString("animator","resume");
-//                    fragment_dianhac.setArguments(bundle);
-//                    FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-//                    fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
                 }
             }
         });
@@ -248,12 +235,19 @@ public class PlaybaihatActivity extends AppCompatActivity {
                         mediaPlayer.release();
                         mediaPlayer = null;
                     }
-                    if (checkRandom == true) {
+                    if (checkRandom) {
                         Random random = new Random();
                         int vitri = random.nextInt(baihats.size());
                         position = vitri;
-                    } else {
-                        position = (position + 1) % baihats.size();
+                    }  else{
+                        if (repeat){
+                            Log.d("OOO", String.valueOf(position));
+                            position = (position) % baihats.size();
+                            Log.d("OOO", String.valueOf(position));
+                        }
+                        else{
+                            position = (position + 1) % baihats.size();
+                        }
                     }
                     tvTotalTimeSong.setText("");
                     new PlayMp3().execute(baihats.get(position).getLinkBaihat());
@@ -300,20 +294,17 @@ public class PlaybaihatActivity extends AppCompatActivity {
                         int vitri = random.nextInt(baihats.size());
                         position = vitri;
                     } else {
-                        position = position - 1 < 0 ? baihats.size() - 1 : position - 1;
+                        if (repeat == true)
+                        {
+                            position = (position) % baihats.size();
+                        } else {
+                            position = position - 1 < 0 ? baihats.size() - 1 : position - 1;
+                        }
                     }
+
                     new PlayMp3().execute(baihats.get(position).getLinkBaihat());
                     hinhbaihats.add(new Hinhdianhac(baihats.get(position).getHinhBaihat()));
                     circularDianhacAdapter.setUrl(baihats.get(position).getHinhBaihat());
-
-//                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
-//                    Bundle bundle=new Bundle();
-//                    setCheckIndex(baihats.get(position).getHinhBaihat());
-//                    bundle.putString("imageDianhac",getCheckIndex());
-//                    bundle.putString("animator","resume");
-//                    fragment_dianhac.setArguments(bundle);
-//                    FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-//                    fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
                     getSupportActionBar().setTitle(baihats.get(position).getTenBaihat());
                     updateTime();
                 }
@@ -342,7 +333,7 @@ public class PlaybaihatActivity extends AppCompatActivity {
                     seekBarTime.setProgress(mediaPlayer.getCurrentPosition());
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
                     tvTimeSong.setText(simpleDateFormat.format(mediaPlayer.getCurrentPosition()));
-                    handler.postDelayed(this, 600);
+                    handler.postDelayed(this, 900);
                     mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                         @Override
                         public void onCompletion(MediaPlayer mp) {
@@ -362,6 +353,7 @@ public class PlaybaihatActivity extends AppCompatActivity {
             @SuppressLint("ResourceType")
             @Override
             public void run() {
+
                 if (next == true) {
                     if (baihats.size() > 0) {
                         if (mediaPlayer.isPlaying() || mediaPlayer != null) {
@@ -369,25 +361,25 @@ public class PlaybaihatActivity extends AppCompatActivity {
                             mediaPlayer.release();
                             mediaPlayer = null;
                         }
-                        if (checkRandom == true) {
+                        if (checkRandom) {
                             Random random = new Random();
                             int index = position;
                             while (index == position) {
                                 index = random.nextInt(baihats.size());
                             }
                             position = index;
-                        } else {
-                            position = (position + 1) % baihats.size();
-                        }
+                        } else
+                            {
+                                if (repeat){
+                                    position = (position) % baihats.size();
+                                 }
+                            else{
+                                position = (position + 1) % baihats.size();
+                                 }
+                            }
                         new PlayMp3().execute(baihats.get(position).getLinkBaihat());
                         hinhbaihats.add(new Hinhdianhac(baihats.get(position).getHinhBaihat()));
                         circularDianhacAdapter.setUrl(baihats.get(position).getHinhBaihat());
-//                        Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
-//                        Bundle bundle=new Bundle();
-//                        bundle.putString("imageDianhac",baihats.get(position).getHinhBaihat());
-//                        fragment_dianhac.setArguments(bundle);
-//                        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-//                        fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
                         getSupportActionBar().setTitle(baihats.get(position).getTenBaihat());
                         viewPagerPlayMusic.getAdapter().notifyDataSetChanged();
                     }
@@ -450,6 +442,7 @@ public class PlaybaihatActivity extends AppCompatActivity {
 //        fragment_dianhac = (Fragment_dianhac) viewPagerPlayListMusicAdapter.getItem(0);
         if (baihats.size() > 0) {
             getSupportActionBar().setTitle(baihats.get(index).getTenBaihat());
+            position=index;
             new PlayMp3().execute(baihats.get(index).getLinkBaihat());
             btnPause.setImageResource(R.drawable.iconpause);
             circularDianhacAdapter.setUrl(baihats.get(index).getHinhBaihat());

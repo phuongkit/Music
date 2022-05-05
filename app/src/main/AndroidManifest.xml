@@ -14,8 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Activity.admin.ThemSuaDao"/>
         <activity android:name=".Activity.LoginActivity"/>
         <activity android:name=".Activity.PlaybaihatActivity" />
+        <activity android:name=".Activity.admin.BaihatDaoActivity" />
+        <activity android:name=".Activity.admin.BannerDaoActivity" />
+        <activity android:name=".Activity.admin.AlbumDaoActivity" />
+        <activity android:name=".Activity.admin.TheloaiDaoActivity" />
+        <activity android:name=".Activity.admin.ChudeDaoActivity" />
         <activity android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>

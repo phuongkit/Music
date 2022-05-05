@@ -15,7 +15,7 @@ public class Chude implements Serializable {
     public Chude() {
     }
 
-    public Chude(String idChude, String hinh, String ten) {
+    public Chude(String idChude, String ten,String hinh) {
         this.idChude = idChude;
         this.hinh = hinh;
         this.ten = ten;

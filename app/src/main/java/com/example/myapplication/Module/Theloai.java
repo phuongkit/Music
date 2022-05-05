@@ -16,7 +16,7 @@ public class Theloai implements Serializable {
     public Theloai() {
     }
 
-    public Theloai(String idTheloai, String hinh, String ten, String idChude) {
+    public Theloai(String idTheloai, String ten, String hinh, String idChude) {
         this.idTheloai = idTheloai;
         this.hinh = hinh;
         this.ten = ten;

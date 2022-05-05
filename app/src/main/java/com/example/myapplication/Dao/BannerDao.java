@@ -26,7 +26,7 @@ public class BannerDao  extends FirebaseDao<Banner>{
         //       ↓                           ↓
         banner.setNoiDung(dataSnapshot.child("noiDung").getValue().toString());
         //       ↓                           ↓
-        banner.setIdBaihat(dataSnapshot.child("idBaihat").child("linkBaihat").getValue().toString());
+        banner.setIdBaihat(dataSnapshot.child("idBaihat").getValue().toString());
 
         // Now we have parsed all of the attributes of the banner object. We will feed it to the callback
         retrievalEventListener.OnDataRetrieved(banner);

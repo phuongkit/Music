@@ -4,23 +4,24 @@ import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
 
-public class Album  implements Serializable {
+public class Album implements Serializable {
     @Exclude
     public String id;
 
     private String idAlbum;
     private String tenAlbum;
-    private String tenCaSiAlbum;
     private String hinh;
+    private String tenCaSiAlbum;
 
     public Album() {
     }
 
-    public Album(String idAlbum, String tenAlbum, String tenCaSiAlbum, String hinh) {
+    public Album(String idAlbum, String tenAlbum,String tenCaSiAlbum,String hinh ) {
         this.idAlbum = idAlbum;
         this.tenAlbum = tenAlbum;
         this.tenCaSiAlbum = tenCaSiAlbum;
         this.hinh = hinh;
+
     }
 
     public String getIdAlbum() {
@@ -39,11 +40,11 @@ public class Album  implements Serializable {
         this.tenAlbum = tenAlbum;
     }
 
-    public String getTenCasiAlbum() {
+    public String getTenCaSiAlbum() {
         return tenCaSiAlbum;
     }
 
-    public void setTenCasiAlbum(String tenCaSiAlbum) {
+    public void setTenCaSiAlbum(String tenCaSiAlbum) {
         this.tenCaSiAlbum = tenCaSiAlbum;
     }
 

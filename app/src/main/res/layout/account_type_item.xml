@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imgAccountType"
         android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_height="16dp"
         android:layout_weight="1"
         app:srcCompat="@drawable/ic_user1" />
 

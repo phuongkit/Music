@@ -6,10 +6,10 @@ plugins {
 android {
     signingConfigs {
         myconfig {
-            storeFile file('D:\\OneDrive - Unicorn\\Desktop\\file text\\Music_keystore.jks')
-            storePassword '123456'
-            keyAlias 'phuongkit'
-            keyPassword '123456'
+            storeFile file('C:\\Users\\colal\\Desktop\\Keystore\\Music_keystore.jks')
+            storePassword '123456789'
+            keyAlias 'Music'
+            keyPassword '123456789'
         }
     }
     compileSdkVersion 32
@@ -44,6 +44,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

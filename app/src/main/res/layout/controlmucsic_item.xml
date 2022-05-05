@@ -73,13 +73,14 @@
                         android:background="@null"
                         android:scaleType="fitXY"
                         android:src="@drawable/iconshuffled"/>
-                    <ImageButton
-                        android:id="@+id/btnPrevious"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginRight="15dp"
-                        android:scaleType="fitXY"
-                        android:background="@drawable/iconpreview"/>
+
+            <ImageButton
+                android:id="@+id/btnPrevious"
+                android:layout_width="35dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/iconpreview"
+                android:scaleType="fitXY" />
                     <ImageButton
                         android:id="@+id/btnPause2"
                         android:layout_width="70dp"

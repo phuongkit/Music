@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -17,11 +18,21 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Activity.admin.AlbumDaoActivity;
+import com.example.myapplication.Activity.admin.BaihatDaoActivity;
+import com.example.myapplication.Activity.admin.BannerDaoActivity;
+import com.example.myapplication.Activity.admin.ChudeDaoActivity;
+import com.example.myapplication.Activity.admin.TheloaiDaoActivity;
+import com.example.myapplication.Dao.BannerDao;
+import com.example.myapplication.Dao.ChuDeDao;
 import com.example.myapplication.Fragment.SearchFragment;
+import com.example.myapplication.Module.Banner;
+import com.example.myapplication.Module.Theloai;
 import com.example.myapplication.R;
 import com.example.myapplication.Adapter.MainViewPagerAdapter;
 import com.google.android.material.navigation.NavigationView;
@@ -47,21 +58,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout mdrawerLayout;
     NavigationView navigationView;
     TextView txtAccountName, txtAccountEmail;
+    Button testchoi;
     Toolbar toolbar;
     Activity context;
     LoginDialog dialog;
+    MainActivity mainActivity;
+
     private ArrayList<String> titles = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mainActivity=this;
         titles.add(getString(R.string.strHeaderPersonal));
         titles.add(getString(R.string.strHeaderHomePage));
         titles.add(getString(R.string.strHeaderSearch));
         titles.add(getString(R.string.strHeaderPlaylist));
         mapping();
         init();
+
+        testchoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), ChudeDaoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -188,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.navigation_view);
         txtAccountName = navigationView.getHeaderView(0).findViewById(R.id.txtAccountName);
         txtAccountEmail = navigationView.getHeaderView(0).findViewById(R.id.txtAccountEmail);
+        testchoi = navigationView.getHeaderView(0).findViewById(R.id.testchoi);
     }
 
     @Override

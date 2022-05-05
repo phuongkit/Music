@@ -1,6 +1,7 @@
 package com.example.myapplication.Adapter;
 
 
+import android.app.Activity;
 import android.util.SparseArray;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
 //    private String[] titles;//=new String[]{"Cá nhân","Trang chủ","Tìm kiếm","Playlist"};
 
     SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
+    SparseArray<Activity> registeredActivitys = new SparseArray<Activity>();
 
     private String getString(int resId) {
         return fragmentActivity.getString(resId);
@@ -40,7 +42,8 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
         registeredFragments.append(0, new PersonalFragment());
         registeredFragments.append(1, new HomeFragment());
         registeredFragments.append(2, new SearchFragment());
-        registeredFragments.append(3, new PersonalFragment());
+//        registeredFragments.append(3, new PersonalFragment());
+        registeredFragments.append(3, new HomeFragment());
     }
     @NonNull
     @Override

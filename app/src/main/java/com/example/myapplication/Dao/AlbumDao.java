@@ -23,7 +23,7 @@ public class AlbumDao extends FirebaseDao<Album> {
         //       ↓                           ↓
         album.setTenAlbum(dataSnapshot.child("tenAlbum").getValue().toString());
         //       ↓                           ↓
-        album.setTenCasiAlbum(dataSnapshot.child("tenCaSiAlbum").getValue().toString());
+        album.setTenCaSiAlbum(dataSnapshot.child("tenCaSiAlbum").getValue().toString());
         //       ↓                           ↓
         album.setHinh(dataSnapshot.child("hinh").getValue().toString());
 
