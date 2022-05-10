@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.SongDaoActivity;
 import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
 import com.example.myapplication.Dao.SongDao;
@@ -72,7 +73,7 @@ public class CustomSongDaoAdapter extends ArrayAdapter<Song> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Song song = getItem(position);
-        Picasso.with(getContext()).load(song.getImage()).into(viewHolder.imgViewtop);
+        Glide.with(getContext()).load(song.getImage()).into(viewHolder.imgViewtop);
         viewHolder.imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

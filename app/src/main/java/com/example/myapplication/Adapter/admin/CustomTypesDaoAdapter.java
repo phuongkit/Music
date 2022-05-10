@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.TypesDaoActivity;
 import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
 import com.example.myapplication.Dao.Listeners.TaskListener;
@@ -65,7 +66,7 @@ public class CustomTypesDaoAdapter extends ArrayAdapter<Types> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Types types = getItem(position);
-        Picasso.with(getContext()).load(types.getImage()).into(viewHolder.imgViewtop);
+        Glide.with(getContext()).load(types.getImage()).into(viewHolder.imgViewtop);
         viewHolder.imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

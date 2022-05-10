@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
 import com.example.myapplication.Activity.admin.UserDaoActivity;
 import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
@@ -71,7 +72,7 @@ public class CustomUserDaoAdapter extends ArrayAdapter<User> {
             viewHolder = (CustomUserDaoAdapter.ViewHolder) convertView.getTag();
         }
         User user = getItem(position);
-        Picasso.with(getContext()).load(user.getAvatar()).error(R.drawable.ic_person).into(viewHolder.imgViewtop);
+        Glide.with(getContext()).load(user.getAvatar()).error(R.drawable.ic_person).into(viewHolder.imgViewtop);
         viewHolder.imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

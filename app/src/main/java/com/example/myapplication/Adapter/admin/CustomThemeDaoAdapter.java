@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.ThemeDaoActivity;
 import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
 import com.example.myapplication.Dao.ThemeDao;
@@ -74,7 +75,7 @@ public class CustomThemeDaoAdapter extends ArrayAdapter<Theme> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Theme theme = getItem(position);
-        Picasso.with(getContext()).load(theme.getImage()).into(viewHolder.imgViewtop);
+        Glide.with(getContext()).load(theme.getImage()).into(viewHolder.imgViewtop);
         viewHolder.imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

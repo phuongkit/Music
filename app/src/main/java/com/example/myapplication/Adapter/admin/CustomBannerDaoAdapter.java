@@ -16,13 +16,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.BannerDaoActivity;
 import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
 import com.example.myapplication.Dao.BannerDao;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Module.Banner;
 import com.example.myapplication.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -66,7 +66,7 @@ public class CustomBannerDaoAdapter extends ArrayAdapter<Banner> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Banner banner = getItem(position);
-        Picasso.with(getContext()).load(banner.getImage()).into(viewHolder.imgViewtop);
+        Glide.with(getContext()).load(banner.getImage()).into(viewHolder.imgViewtop);
         viewHolder.imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

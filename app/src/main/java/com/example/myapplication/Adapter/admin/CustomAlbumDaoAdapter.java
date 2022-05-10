@@ -15,13 +15,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.AlbumDaoActivity;
 import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
 import com.example.myapplication.Dao.AlbumDao;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Module.Album;
 import com.example.myapplication.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -64,7 +64,7 @@ public class CustomAlbumDaoAdapter extends ArrayAdapter<Album> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Album album = getItem(position);
-        Picasso.with(getContext()).load(album.getImage()).into(viewHolder.imgViewtop);
+        Glide.with(getContext()).load(album.getImage()).into(viewHolder.imgViewtop);
         viewHolder.imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
