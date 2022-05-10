@@ -3,6 +3,13 @@ package com.example.myapplication.Activity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.AnimatedImageDrawable;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -20,6 +27,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.Adapter.CircularDianhacAdapter;
@@ -28,12 +37,15 @@ import com.example.myapplication.Module.Hinhdianhac;
 import com.example.myapplication.R;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class PlaybaihatActivity extends AppCompatActivity {
     Context context;
+    ConstraintLayout layout_controlMusic;
     CircularDianhacAdapter circularDianhacAdapter;
     ArrayList<Hinhdianhac> hinhbaihats;
     ArrayList<Song> songs = new ArrayList<>();
@@ -63,6 +75,9 @@ public class PlaybaihatActivity extends AppCompatActivity {
     boolean checkRandom = false;
     boolean next = false;
     int position = 0;
+    int count = 0;
+    AnimatedVectorDrawableCompat avd;
+    AnimatedVectorDrawable avd2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,13 +159,38 @@ public class PlaybaihatActivity extends AppCompatActivity {
             }
         }, 100);
         btnPause.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onClick(View v) {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            public void onClick(View view) {
+                if (count == 0) {
+                    btnPause.setImageDrawable(getResources().getDrawable(R.drawable.avd_pause_to_play));
+                    Drawable drawable = btnPause.getDrawable();
+                    if (drawable instanceof AnimatedVectorDrawableCompat) {
+                        avd = (AnimatedVectorDrawableCompat) drawable;
+                        avd.start();
+                    } else if (drawable instanceof AnimatedVectorDrawable) {
+                        avd2 = (AnimatedVectorDrawable) drawable;
+                        avd2.start();
+                    }
+                    count++;
+
+                } else {
+                    btnPause.setImageDrawable(getResources().getDrawable(R.drawable.avd_play_to_pause));
+                    Drawable drawable = btnPause.getDrawable();
+                    if (drawable instanceof AnimatedVectorDrawableCompat) {
+                        avd = (AnimatedVectorDrawableCompat) drawable;
+                        avd.start();
+                    } else if (drawable instanceof AnimatedVectorDrawable) {
+                        avd2 = (AnimatedVectorDrawable) drawable;
+                        avd2.start();
+                    }
+                    count--;
+
+                }
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
-                    btnPause.setImageResource(R.drawable.iconplay);
-                    circularDianhacAdapter.objectAnimator.pause();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                        circularDianhacAdapter.objectAnimator.pause();
+                    }
 
 //                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
 //                    Bundle bundle=new Bundle();
@@ -161,8 +201,9 @@ public class PlaybaihatActivity extends AppCompatActivity {
 //                    fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
                 } else {
                     mediaPlayer.start();
-                    btnPause.setImageResource(R.drawable.iconpause);
-                    circularDianhacAdapter.objectAnimator.resume();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                        circularDianhacAdapter.objectAnimator.resume();
+                    }
 
 //                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
 //                    Bundle bundle=new Bundle();
@@ -407,6 +448,7 @@ public class PlaybaihatActivity extends AppCompatActivity {
         btnPause = findViewById(R.id.btnPause2);
         btnNext = findViewById(R.id.btnNext);
         btnPrevious = findViewById(R.id.btnPrevious);
+        layout_controlMusic = findViewById(R.id.layout_controlmusic);
     }
 
     private void init() {
@@ -437,10 +479,27 @@ public class PlaybaihatActivity extends AppCompatActivity {
         if (songs.size() > 0) {
             getSupportActionBar().setTitle(songs.get(index).getName());
             new PlayMp3().execute(songs.get(index).getLinkSong());
-            btnPause.setImageResource(R.drawable.iconpause);
+            btnPause.setImageResource(R.drawable.avd_pause_to_play);
             circularDianhacAdapter.setUrl(songs.get(index).getImage());
         }
     }
 
+    private void setBackgroud(String url) {
+        URL ur = null;
 
+        try {
+            ur = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        Bitmap bitmap = null;
+        try {
+            bitmap = BitmapFactory.decodeStream(ur.openConnection().getInputStream());
+            BitmapDrawable background = new BitmapDrawable(getResources(), bitmap);
+            layout_controlMusic.setBackground(background);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

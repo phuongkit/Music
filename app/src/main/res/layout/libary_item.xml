@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:layout_centerInParent="true"
     android:theme="@style/CardView.Light"
-    android:background="@drawable/rounded_edge">
+    android:background="@drawable/custom_libary_button">
 
     <ImageView
         android:id="@+id/imgContentLibary"

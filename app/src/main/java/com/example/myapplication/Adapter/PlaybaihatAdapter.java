@@ -89,6 +89,7 @@ public class PlaybaihatAdapter extends PagerAdapter {
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
                     objectAnimator.pause();
+                    btn.setBackgroundResource(avd_pause_to_play);
                     btn.setBackgroundResource(R.drawable.iconplay);
                     Log.d("PPP", "Pause Music");
                 }
@@ -96,6 +97,7 @@ public class PlaybaihatAdapter extends PagerAdapter {
                     mediaPlayer.start();
                     objectAnimator.pause();
                     btn.setBackgroundResource(R.drawable.iconpause);
+                    btn.setBackgroundResource(avd_play_to_pause);
                     Log.d("PPP", "Play Music");
                 }
             }
@@ -160,7 +162,7 @@ public class PlaybaihatAdapter extends PagerAdapter {
     }
 
     public void PlayNhacMp3(String url, String urlImage) {
-        btnPause.setBackgroundResource(iconpause);
+        btnPause.setBackgroundResource(avd_play_to_pause);
         Glide.with(context).load(songs.get(index).getImage())
                 .error(ic_launcher_background)
                 .apply(new RequestOptions()

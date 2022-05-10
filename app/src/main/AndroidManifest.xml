@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -17,6 +19,7 @@
         <activity android:name=".Activity.ListMusicActivity"></activity>
         <activity android:name=".Activity.PlaylistActivity" />
         <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.ProfileActivity" />
         <activity android:name=".Activity.PlaybaihatActivity" />
         <activity android:name=".Activity.admin.UserDaoActivity" />
         <activity android:name=".Activity.admin.SongDaoActivity" />

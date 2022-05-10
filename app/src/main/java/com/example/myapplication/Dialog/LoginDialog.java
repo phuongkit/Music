@@ -49,14 +49,9 @@ public class LoginDialog extends Dialog {
         init();
         addEvents();
         ViewGroup.LayoutParams params = getWindow().getAttributes();
-//        params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-//        params.height = ViewGroup.LayoutParams.MATCH_PARENT;
-//        getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
         int width = (int) (context.getResources().getDisplayMetrics().widthPixels * 1.00);
         int height = (int) (context.getResources().getDisplayMetrics().heightPixels * 0.90);
         getWindow().setLayout(width, height);
-        Window window = getWindow();
-        window.setGravity(Gravity.BOTTOM);
     }
 
     public String getString(int resId) {

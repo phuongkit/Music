@@ -18,10 +18,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.AlbumDaoActivity;
 import com.example.myapplication.Activity.admin.SongDaoActivity;
 import com.example.myapplication.Activity.admin.BannerDaoActivity;
@@ -30,6 +32,7 @@ import com.example.myapplication.Activity.admin.TypesDaoActivity;
 import com.example.myapplication.Activity.admin.UserDaoActivity;
 import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
 import com.example.myapplication.Dao.UserDao;
+import com.example.myapplication.Dialog.changePassworDialog;
 import com.example.myapplication.Dialog.LoginDialog;
 import com.example.myapplication.Fragment.SearchFragment;
 import com.example.myapplication.Module.User;
@@ -45,6 +48,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    public static final int MY_REQUEST_CODE = 10;
     private static final int FRAGMENT_PERSONAL = 0;
     private static final int FRAGMENT_HOME = 1;
     private static final int FRAGMENT_SEARCH = 2;
@@ -61,11 +65,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout mdrawerLayout;
     NavigationView navigationView;
     TextView txtAccountName, txtAccountEmail;
+    public  static ImageView imgAvatar;
     Toolbar toolbar;
     Menu menuNav;
 
     Activity context;
     LoginDialog dialog;
+    changePassworDialog changePassworDialog;
     private ArrayList<String> titles = new ArrayList<>();
 
     @Override
@@ -184,9 +190,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }, 500);
                 } else {
                     Log.d("Log", "Display: " + user.getDisplayName() + "; Email: " + user.getEmail());
+                    txtAccountName.setText(user.getDisplayName());
                     txtAccountName.setText("Admin");
 //                    txtAccountName.setText(user.getDisplayName());
                     txtAccountEmail.setText(user.getEmail());
+                    Glide.with(context).load(user.getPhotoUrl()).error(R.mipmap.ic_launcher).into(imgAvatar);
                     mdrawerLayout.openDrawer(GravityCompat.START);
                 }
             }
@@ -205,6 +213,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.navigation_view);
         txtAccountName = navigationView.getHeaderView(0).findViewById(R.id.txtAccountName);
         txtAccountEmail = navigationView.getHeaderView(0).findViewById(R.id.txtAccountEmail);
+        imgAvatar = navigationView.getHeaderView(0).findViewById(R.id.imgAvatar);
         menuNav = navigationView.getMenu();
     }
 
@@ -234,8 +243,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 return true;
             case R.id.nav_myprofile:
+                intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.nav_changepassword:
+                changePassworDialog = new changePassworDialog(context);
+                changePassworDialog.show();
                 return true;
             case R.id.nav_signout:
                 FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -316,34 +329,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-//    @Override
-//    protected void onResume() {
-////        Log.d("Test", "1");
-//        super.onResume();
-//    }
-
     @Override
     protected void onRestart() {
-//        Log.d("Test", "2");
         super.onRestart();
         setIfAdmin();
     }
-
-//    @Override
-//    protected void onStart() {
-////        Log.d("Test", "3");
-//        super.onStart();
-//    }
-
-//    @Override
-//    protected void onPause() {
-//        Log.d("Test", "4");
-//        super.onPause();
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        Log.d("Test", "5");
-//        super.onStop();
-//    }
 }

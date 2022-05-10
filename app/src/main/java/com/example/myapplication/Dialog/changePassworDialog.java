@@ -39,7 +39,10 @@ public class changePassworDialog extends Dialog {
         mapping();
         addEvents();
         int width = (int) (context.getResources().getDisplayMetrics().widthPixels * 1.00);
-        int height = (int) (context.getResources().getDisplayMetrics().heightPixels * 0.5);
+        int paddingDp = 400;
+        float density = context.getResources().getDisplayMetrics().density;
+        int height = (int) (paddingDp * density);
+//        int height = (int) (context.getResources().getDisplayMetrics().densityDpi);
         getWindow().setLayout(width, height);
         Window window = getWindow();
         window.setGravity(Gravity.CENTER);
@@ -72,8 +75,7 @@ public class changePassworDialog extends Dialog {
         String txtpassNew = passNew.getText().toString();
         String txtpassRetype = passRetype.getText().toString();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
-        }
+        if (user == null) return;
         else {
             if(txtpassOld.equals(""))
             {
@@ -85,28 +87,33 @@ public class changePassworDialog extends Dialog {
             else if(txtpassRetype.equals("")){
                 Toast.makeText(context, "Không bỏ trống", Toast.LENGTH_SHORT).show();
             }
-            AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(),txtpassOld);
-            user.reauthenticate(credential)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+            if(txtpassNew.equals(txtpassRetype)){
+                AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(),txtpassOld);
+                user.reauthenticate(credential)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
 
-                        }
-                    })
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            //Toast.makeText(context,"ngu2", Toast.LENGTH_SHORT).show();
-                            user.updatePassword(txtpassNew);
-                            Toast.makeText(context, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context,"ngu", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            }
+                        })
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                //Toast.makeText(context,"ngu2", Toast.LENGTH_SHORT).show();
+                                user.updatePassword(txtpassNew);
+                                Toast.makeText(context, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(context, "Mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }else {
+                Toast.makeText(context, "Mật khẩu mới không trùng nhau vui lòng nhập lại", Toast.LENGTH_SHORT).show();
+            }
+
 
         }
     }

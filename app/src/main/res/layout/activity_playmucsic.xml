@@ -2,15 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <androidx.viewpager.widget.ViewPager
-        android:background="@drawable/custom_background_banner"
         android:id="@+id/myViewpagerplaymucsic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        >
-    </androidx.viewpager.widget.ViewPager>
+        android:background="@drawable/gradient_backgroud"></androidx.viewpager.widget.ViewPager>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/circle_view"
+        android:alpha="0.9">
 
+    </LinearLayout>
 
 </RelativeLayout>

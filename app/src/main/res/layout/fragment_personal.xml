@@ -1,33 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Fragment.PersonalFragment"
-    android:padding="16dp">
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:background="@drawable/gradien_home"
+    android:padding="16dp"
+    tools:context=".Fragment.PersonalFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/txtHeaderLibary"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/strHeaderLibary"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:padding="8dp"/>
+        android:orientation="vertical">
 
-    <GridView
-        android:id="@+id/gvLibary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:numColumns="2">
-    </GridView>
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:background="@drawable/logo" />
 
-    <TextView
-        android:id="@+id/txtHeaderLibary2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/strHeaderLibary" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/txtHeaderLibary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/strHeaderLibary"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <GridView
+            android:id="@+id/gvLibary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:horizontalSpacing="16dp"
+            android:numColumns="2"
+            android:verticalSpacing="16dp"/>
+
+        <TextView
+            android:id="@+id/txtHeaderLibary2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/strHeaderLibary" />
+    </LinearLayout>
+</ScrollView>

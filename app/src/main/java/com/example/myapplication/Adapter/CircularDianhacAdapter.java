@@ -1,13 +1,20 @@
 package com.example.myapplication.Adapter;
 
+
+
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -18,6 +25,9 @@ import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.Module.Hinhdianhac;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -32,7 +42,7 @@ public class CircularDianhacAdapter extends PagerAdapter {
     CircleImageView imageViewDiaNhac;
     ArrayList<Hinhdianhac> hinhdianhacs;
     public ObjectAnimator objectAnimator;
-
+    LinearLayout layout_discMusic;
     ArrayList<Hinhdianhac> arrayHinhdianhac;
 
     public CircularDianhacAdapter(Context context, ArrayList<Hinhdianhac> arrayHinhdianhac) {
@@ -81,6 +91,8 @@ public class CircularDianhacAdapter extends PagerAdapter {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.fragment_music_disc, null);
         imageViewDiaNhac = view.findViewById(R.id.imageViewDiaNhac2);
+        layout_discMusic = view.findViewById(R.id.layout_discMusic);
+
         Glide.with(context).load(getUrl()).error(R.drawable.ic_launcher_background).into(imageViewDiaNhac);
         objectAnimator = ObjectAnimator.ofFloat(imageViewDiaNhac, "rotation", 0f, 360f);
         objectAnimator.setDuration(10000);
@@ -92,6 +104,7 @@ public class CircularDianhacAdapter extends PagerAdapter {
         container.addView(view);
         return view;
     }
+
 
 
     @Override

@@ -2,36 +2,42 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MainActivity"
-    tools:openDrawer="start">
+    android:id="@+id/drawer_layout"
+    tools:openDrawer="start"
+    tools:context=".Activity.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/gradien_home"
+        >
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/design_default_color_primary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
+            android:background="@android:color/transparent"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            >
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolBar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            </androidx.appcompat.widget.Toolbar>
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/myViewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@color/white">
 
         </androidx.viewpager2.widget.ViewPager2>
 
@@ -39,7 +45,8 @@
             android:id="@+id/myTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:background="#333"
+            android:alpha="0.8"
             app:tabIconTint="#9E9E9E"
             app:tabIndicatorColor="#f21"
             app:tabIndicatorHeight="2dp"
@@ -48,13 +55,6 @@
             app:tabTextColor="#9E9E9E">
 
         </com.google.android.material.tabs.TabLayout>
-
-        <!--        <FrameLayout-->
-        <!--            android:id="@+id/content_frame"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent">-->
-
-        <!--        </FrameLayout>-->
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -62,6 +62,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:itemTextColor="@color/white"
+        android:alpha="0.86"
+        android:background="@drawable/radius_topleft_topright"
         app:headerLayout="@layout/layout_header_nav"
-        app:menu="@menu/nav_menu"></com.google.android.material.navigation.NavigationView>
+        app:menu="@menu/nav_menu">
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>
