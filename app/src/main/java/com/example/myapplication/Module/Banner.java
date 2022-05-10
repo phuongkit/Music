@@ -6,64 +6,71 @@ import java.io.Serializable;
 
 public class Banner implements Serializable {
     @Exclude
-    public String id;
+    public String key;
 
-    private String idBanner;
-    private String hinhAnh;
-    private String noiDung;
-    private String idBaihat;
+    private String id;
+    private String name;
+    private String image;
+    private String idSong;
 
     public Banner(){
 
     }
 
-    public Banner(String idBanner, String hinhAnh, String noiDung, String idBaihat) {
-        this.idBanner = idBanner;
-        this.hinhAnh = hinhAnh;
-        this.noiDung = noiDung;
-        this.idBaihat = idBaihat;
+    public Banner(String id, String name, String image, String idSong) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.idSong = idSong;
     }
 
-    public String getIdBanner() {
-        return idBanner;
+    public void update(String id, String name, String image, String idSong) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.idSong = idSong;
     }
 
-    public void setIdBanner(String idBanner) {
-        this.idBanner = idBanner;
+    public String getId() {
+        return id;
     }
 
-    public String getHinhAnh() {
-        return hinhAnh;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setHinhAnh(String hinhAnh) {
-        this.hinhAnh = hinhAnh;
+    public String getName() {
+        return name;
     }
 
-    public String getNoiDung() {
-        return noiDung;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNoiDung(String noiDung) {
-        this.noiDung = noiDung;
+    public String getImage() {
+        return image;
     }
 
-    public String getIdBaihat() {
-        return idBaihat;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setIdBaihat(String idBaihat) {
-        this.idBaihat = idBaihat;
+    public String getIdSong() {
+        return idSong;
+    }
+
+    public void setIdSong(String idSong) {
+        this.idSong = idSong;
     }
 
     @Override
     public String toString() {
         return "Banner{" +
                 "id='" + id + '\'' +
-                ", idBanner='" + idBanner + '\'' +
-                ", hinhAnh='" + hinhAnh + '\'' +
-                ", noiDung='" + noiDung + '\'' +
-                ", idBaihat='" + idBaihat + '\'' +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", idSong='" + idSong + '\'' +
                 '}';
     }
 }

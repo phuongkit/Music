@@ -14,18 +14,18 @@ public class AlbumDao extends FirebaseDao<Album> {
     protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrievalEventListener<Album> retrievalEventListener) {
         // Create a new Album object to populate data
         final Album album = new Album();
-        album.id = dataSnapshot.getKey();
+        album.key = dataSnapshot.getKey();
         //  ----------------------------------------------------------------------------------------
         // | IMPORTANT NOTE: make sure that the variable name is EXACTLY the same as the node name. |
         //  ----------------------------------------------------------------------------------------
         //       ↓                           ↓
-        album.setIdAlbum(dataSnapshot.child("idAlbum").getValue().toString());
+        album.setId(dataSnapshot.child("id").getValue().toString());
         //       ↓                           ↓
-        album.setTenAlbum(dataSnapshot.child("tenAlbum").getValue().toString());
+        album.setName(dataSnapshot.child("name").getValue().toString());
         //       ↓                           ↓
-        album.setTenCasiAlbum(dataSnapshot.child("tenCaSiAlbum").getValue().toString());
+        album.setSinger(dataSnapshot.child("singer").getValue().toString());
         //       ↓                           ↓
-        album.setHinh(dataSnapshot.child("hinh").getValue().toString());
+        album.setImage(dataSnapshot.child("image").getValue().toString());
 
         // Now we have parsed all of the attributes of the Album object. We will feed it to the callback
         retrievalEventListener.OnDataRetrieved(album);

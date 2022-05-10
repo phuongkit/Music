@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">Music6</string>
     <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="strHeaderAdmin">Admin</string>
+    <string name="strHeaderCustomer">Customer</string>
+
+    <string name="strBtnAdd">Add</string>
+    <string name="strBtnSave">Save</string>
+    <string name="strBtnCancel">Cancel</string>
+    <string name="strBtnDelete">Delete</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -25,12 +34,6 @@
 
     <string name="strHeaderSignIn">Sign in</string>
     <string name="strHeaderSignUp">Sign up</string>
-    <string name="strHeaderEmail">Email</string>
-    <string name="strHeaderPassword">Password</string>
-    <string name="strHeaderUsername">Username</string>
-    <string name="strHintEmail">Enter Email</string>
-    <string name="strHintPassword">Enter Password</string>
-    <string name="strHintUsername">Enter Username</string>
 
     <string name="strIsSignIn">Don\'t have an account?</string>
     <string name="strIsSignUp">Already have an account?</string>
@@ -45,8 +48,54 @@
     <string name="strContentSignout">Sign Out</string>
 
     <string name="strHeaderLibary">Libary</string>
-    <string name="strHeaderMusic">Music</string>
     <string name="strHeaderOnDevice">On-device</string>
-    <string name="strHeaderPlaylist">Playlist</string>
     <string name="strHeaderHistory">Recent songs</string>
+
+    <string name="strCreatePlaylist">Create new playlist</string>
+    <string name="strUpdatePlaylist">Update playlist</string>
+    <string name="strPlaylistName">Playlist name</string>
+    <string name="strHintPlaylistName">Enter the name of the playlist</string>
+
+    <string name="strRequiredEmail">Invalid email address</string>
+    <string name="strRequiredPassword">Use 6 or more characters for your password</string>
+
+    <string name="noValue">No initial value yet</string>
+
+    <string name="strHeaderUser">User</string>
+    <string name="strHeaderSong">Song</string>
+    <string name="strHeaderBanner">Banner</string>
+    <string name="strHeaderAlbum">Album</string>
+    <string name="strHeaderTheme">Theme</string>
+    <string name="strHeaderCategory">Category</string>
+    <string name="strHeaderPlaylist">Playlist</string>
+
+    <string name="strHeaderId">id</string>
+    <string name="strHeaderName">Name</string>
+    <string name="strHeaderImage">Image</string>
+
+    <string name="strHintId">Enter id</string>
+    <string name="strHintName">Enter name</string>
+    <string name="strHintImage">Enter image</string>
+
+    <string name="strHeaderDisplayName">Display name</string>
+    <string name="strHeaderPassword">password</string>
+    <string name="strHeaderEmail">email</string>
+    <string name="strHeaderPhone">phone</string>
+    <string name="strHeaderAvatar">avatar</string>
+
+    <string name="strHintDisplayName">Enter display name</string>
+    <string name="strHintPassword">Enter password</string>
+    <string name="strHintEmail">Enter email</string>
+    <string name="strHintPhone">Enter phone</string>
+    <string name="strHintAvatar">Enter link avatar</string>
+
+    <string name="strHeaderSinger">Singer</string>
+    <string name="strHeaderLinkSong">Link song</string>
+    <string name="strHeaderDateCreated">Date created</string>
+    <string name="strHeaderPermission">Permission</string>
+
+    <string name="strHintSinger">Enter singer</string>
+    <string name="strHintLinkSong">Link song</string>
+    <string name="strHintDateCreated">Date created</string>
+
 </resources>

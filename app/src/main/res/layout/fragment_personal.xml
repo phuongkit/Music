@@ -12,7 +12,11 @@
         android:id="@+id/txtHeaderLibary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/strHeaderLibary" />
+        android:text="@string/strHeaderLibary"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="8dp"/>
 
     <GridView
         android:id="@+id/gvLibary"

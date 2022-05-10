@@ -27,10 +27,8 @@
     <string name="strHeaderSignUp">Đăng ký</string>
     <string name="strHeaderEmail">Email</string>
     <string name="strHeaderPassword">Mật khẩu</string>
-    <string name="strHeaderUsername">Tên đăng nhập</string>
     <string name="strHintEmail">Nhập vào email</string>
     <string name="strHintPassword">Nhập vào mật khẩu</string>
-    <string name="strHintUsername">Nhập vào tên đăng nhập</string>
 
     <string name="strIsSignIn">Mới đến </string>
     <string name="strIsSignUp">Đã liên kết với </string>
@@ -45,8 +43,48 @@
     <string name="strContentSignout">Đăng xuất</string>
 
     <string name="strHeaderLibary">Thư viện</string>
-    <string name="strHeaderMusic">Bài hát</string>
+    <string name="strHeaderSong">Bài hát</string>
     <string name="strHeaderOnDevice">Trên thiết bị</string>
     <string name="strHeaderPlaylist">Danh sách nhạc</string>
     <string name="strHeaderHistory">Bài hát gần đây</string>
+    <string name="strCreatePlaylist">Tạo mới danh sách phát</string>
+    <string name="strUpdatePlaylist">Cập nhật danh sách phát</string>
+    <string name="strPlaylistName">Tên danh sách phát</string>
+    <string name="strHintPlaylistName">Nhập tên của danh sách phát</string>
+    <string name="strRequiredPassword">Sử dụng 6 ký tự trở lên cho mật khẩu của bạn</string>
+    <string name="strRequiredEmail">Địa chỉ email không hợp lệ</string>
+    <string name="noValue">Chưa có giá trị ban đầu</string>
+    <string name="strHeaderId">id</string>
+    <string name="strHeaderDisplayName">Tên hiển thị</string>
+    <string name="strHeaderPhone">Số điện thoại</string>
+    <string name="strHeaderAvatar">Ảnh đại diện</string>
+    <string name="strHintId">Nhập vào id</string>
+    <string name="strHintDisplayName">Nhập vào tên hiển thị</string>
+    <string name="strHintPhone">Nhập vào số điện thoại</string>
+    <string name="strHintAvatar">Nhập vào đường dẫn ảnh đại diện</string>
+
+    <string name="strHeaderAlbum">Album</string>
+    <string name="strHeaderName">Tên</string>
+    <string name="strHeaderImage">Hình ảnh</string>
+    <string name="strHeaderSinger">Ca sĩ</string>
+    <string name="strHeaderLinkSong">Đường dẫn nhạc</string>
+    <string name="strHeaderUser">Người dùng</string>
+    <string name="strHeaderBanner">Ảnh bìa</string>
+    <string name="strHeaderTheme">Chu đề</string>
+    <string name="strHeaderCategory">Thể loại</string>
+    <string name="strHintName">Nhập vào tên</string>
+    <string name="strHintImage">Nhập vào hình ảnh</string>
+    <string name="strHeaderDateCreated">Ngày tạo</string>
+    <string name="strHintSinger">Nhập vào ca sĩ</string>
+    <string name="strHintLinkSong">Nhập vào đường dẫn bài hát</string>
+    <string name="strHintDateCreated">Nhập vào ngày tạo</string>
+    <string name="strHeaderPermission">Quyền</string>
+    <string name="strHeaderAdmin">Người quản trị</string>
+    <string name="strHeaderCustomer">Khách hàng</string>
+    <string name="strBtnDelete">Xóa</string>
+    <string name="strBtnSave">Lưu</string>
+    <string name="strBtnAdd">Thêm</string>
+    <string name="strBtnCancel">Hủy bỏ</string>
+
+
 </resources>

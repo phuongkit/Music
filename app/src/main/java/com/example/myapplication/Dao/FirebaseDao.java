@@ -1,11 +1,10 @@
 package com.example.myapplication.Dao;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
+import com.example.myapplication.Module.MusicObject;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -23,8 +22,7 @@ public abstract class FirebaseDao<T> {
     protected static final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
     protected String tableName;
 
-    public FirebaseDao(String tableName)
-    {
+    public FirebaseDao(String tableName) {
         this.tableName = tableName;
     }
 

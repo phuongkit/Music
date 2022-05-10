@@ -8,24 +8,24 @@ public class Libary implements Serializable {
     @Exclude
     public String id;
 
-    private int idLibary;
+    private String idLibary;
     private String name;
     private int idIcon;
 
     public Libary() {
     }
 
-    public Libary(int idLibary, String name, int idIcon) {
+    public Libary(String idLibary, String name, int idIcon) {
         this.idLibary = idLibary;
         this.name = name;
         this.idIcon = idIcon;
     }
 
-    public int getIdLibary() {
+    public String getIdLibary() {
         return idLibary;
     }
 
-    public void setIdLibary(int idLibary) {
+    public void setIdLibary(String idLibary) {
         this.idLibary = idLibary;
     }
 

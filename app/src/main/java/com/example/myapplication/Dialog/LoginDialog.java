@@ -1,4 +1,4 @@
-package com.example.myapplication.Activity;
+package com.example.myapplication.Dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Activity.LoginActivity;
 import com.example.myapplication.Module.AccountType;
 import com.example.myapplication.Module.Listeners.OnLoadMoreListener;
 import com.example.myapplication.R;
@@ -43,7 +44,7 @@ public class LoginDialog extends Dialog {
     public LoginDialog(Activity context) {
         super(context);
         this.context = context;
-        setContentView(R.layout.login_dialog_item);
+        setContentView(R.layout.login_dialog);
         addControls();
         init();
         addEvents();

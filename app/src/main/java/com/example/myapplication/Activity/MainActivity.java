@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -21,7 +22,17 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Activity.admin.AlbumDaoActivity;
+import com.example.myapplication.Activity.admin.SongDaoActivity;
+import com.example.myapplication.Activity.admin.BannerDaoActivity;
+import com.example.myapplication.Activity.admin.ThemeDaoActivity;
+import com.example.myapplication.Activity.admin.TypesDaoActivity;
+import com.example.myapplication.Activity.admin.UserDaoActivity;
+import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.UserDao;
+import com.example.myapplication.Dialog.LoginDialog;
 import com.example.myapplication.Fragment.SearchFragment;
+import com.example.myapplication.Module.User;
 import com.example.myapplication.R;
 import com.example.myapplication.Adapter.MainViewPagerAdapter;
 import com.google.android.material.navigation.NavigationView;
@@ -39,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final int FRAGMENT_SEARCH = 2;
     private static final int FRAGMENT_PLAYLIST = 3;
 
+    public static final int ROLE_ADMIN = 0;
+    public static final int ROLE_USER = 1;
+
     private int mCurrentFragment = 1;
 
     MainViewPagerAdapter mainViewPagerAdapter;
@@ -48,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     TextView txtAccountName, txtAccountEmail;
     Toolbar toolbar;
+    Menu menuNav;
+
     Activity context;
     LoginDialog dialog;
     private ArrayList<String> titles = new ArrayList<>();
@@ -68,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+
+        setIfAdmin();
 
         MenuItem searchItem = menu.findItem(R.id.appbarSearch);
         SearchView searchView = (SearchView) searchItem.getActionView();
@@ -130,11 +148,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    private void init(){
+    private void init() {
         context = MainActivity.this;
         mainViewPagerAdapter = new MainViewPagerAdapter(this);
         viewPager2.setAdapter(mainViewPagerAdapter);
-        new TabLayoutMediator(tabLayout,viewPager2,((tab, position) -> tab.setText(titles.get(position)))).attach();
+        new TabLayoutMediator(tabLayout, viewPager2, ((tab, position) -> tab.setText(titles.get(position)))).attach();
         tabLayout.getTabAt(FRAGMENT_PERSONAL).setIcon(R.drawable.ic_person);
         tabLayout.getTabAt(FRAGMENT_HOME).setIcon(R.drawable.icontrangchu);
         tabLayout.getTabAt(FRAGMENT_SEARCH).setIcon(R.drawable.icontimkiem);
@@ -164,8 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             dialog.show();
                         }
                     }, 500);
-                }
-                else {
+                } else {
                     Log.d("Log", "Display: " + user.getDisplayName() + "; Email: " + user.getEmail());
                     txtAccountName.setText("Admin");
 //                    txtAccountName.setText(user.getDisplayName());
@@ -180,61 +197,153 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.getMenu().findItem(R.id.nav_home).setChecked(true);
     }
 
-    private void mapping(){
-        tabLayout=findViewById(R.id.myTabLayout);
-        viewPager2=findViewById(R.id.myViewpager);
+    private void mapping() {
+        tabLayout = findViewById(R.id.myTabLayout);
+        viewPager2 = findViewById(R.id.myViewpager);
         toolbar = findViewById(R.id.toolBar);
         mdrawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         txtAccountName = navigationView.getHeaderView(0).findViewById(R.id.txtAccountName);
         txtAccountEmail = navigationView.getHeaderView(0).findViewById(R.id.txtAccountEmail);
+        menuNav = navigationView.getMenu();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        Intent intent;
         switch (id) {
             case R.id.nav_personal:
                 if (mCurrentFragment != FRAGMENT_PERSONAL) {
                     tabLayout.selectTab(tabLayout.getTabAt(FRAGMENT_PERSONAL));
                 }
-                break;
+                return true;
             case R.id.nav_home:
                 if (mCurrentFragment != FRAGMENT_HOME) {
                     tabLayout.selectTab(tabLayout.getTabAt(FRAGMENT_HOME));
                 }
-                break;
+                return true;
             case R.id.nav_search:
                 if (mCurrentFragment != FRAGMENT_SEARCH) {
                     tabLayout.selectTab(tabLayout.getTabAt(FRAGMENT_SEARCH));
                 }
-                break;
+                return true;
             case R.id.nav_playlist:
                 if (mCurrentFragment != FRAGMENT_PLAYLIST) {
                     tabLayout.selectTab(tabLayout.getTabAt(FRAGMENT_PLAYLIST));
                 }
-                break;
+                return true;
             case R.id.nav_myprofile:
-                break;
+                return true;
             case R.id.nav_changepassword:
-                break;
+                return true;
             case R.id.nav_signout:
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 auth.signOut();
 //                mdrawerLayout.openDrawer(GravityCompat.END);
                 mdrawerLayout.closeDrawers();
-                break;
+                return true;
+            case R.id.nav_admin:
+                return true;
+            case R.id.nav_account_manager:
+                intent = new Intent(getApplication(), UserDaoActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.nav_music_manager:
+                intent = new Intent(this, SongDaoActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.nav_banner_manager:
+                intent = new Intent(this, BannerDaoActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.nav_theme_manager:
+                intent = new Intent(this, ThemeDaoActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.nav_category_manager:
+                intent = new Intent(this, TypesDaoActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.nav_album_manager:
+                intent = new Intent(this, AlbumDaoActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.nav_playlist_manager:
+//                intent = new Intent(getApplication(), AlbumDaoActivity.class);
+//                startActivity(intent);
+                return true;
         }
-        return true;
+        return false;
+    }
+
+    public void setIfAdmin() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        MenuItem searchItem = menuNav.findItem(R.id.nav_admin);
+        if (user != null) {
+            String uid = user.getUid();
+            UserDao userDao = new UserDao();
+            userDao.getAll(new RetrievalEventListener<List<User>>() {
+                @Override
+                public void OnDataRetrieved(List<User> users) {
+                    for (User userDb : users) {
+                        if (userDb.getId().equals(uid)) {
+                            if (userDb.getRole() == ROLE_ADMIN) {
+                                Log.i("Info", "Node Admin");
+                                searchItem.setVisible(true);
+                            } else if (userDb.getRole() == ROLE_USER) {
+                                Log.i("Info", "Node User");
+                                searchItem.setVisible(false);
+                            }
+                            break;
+                        }
+                    }
+                }
+            });
+        }
+        else {
+            Log.i("Info", "Node Anonymous");
+            searchItem.setVisible(false);
+        }
     }
 
     @Override
     public void onBackPressed() {
         if (mdrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mdrawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
+
+//    @Override
+//    protected void onResume() {
+////        Log.d("Test", "1");
+//        super.onResume();
+//    }
+
+    @Override
+    protected void onRestart() {
+//        Log.d("Test", "2");
+        super.onRestart();
+        setIfAdmin();
+    }
+
+//    @Override
+//    protected void onStart() {
+////        Log.d("Test", "3");
+//        super.onStart();
+//    }
+
+//    @Override
+//    protected void onPause() {
+//        Log.d("Test", "4");
+//        super.onPause();
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        Log.d("Test", "5");
+//        super.onStop();
+//    }
 }

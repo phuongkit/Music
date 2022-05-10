@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
         <item
@@ -26,6 +27,33 @@
             <item
                 android:id="@+id/nav_signout"
                 android:title="@string/strContentSignout" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/nav_admin"
+        android:title="Admin">
+        <menu>
+            <item
+                android:id="@+id/nav_account_manager"
+                android:title="Quản lý tài khoản" />
+            <item
+                android:id="@+id/nav_music_manager"
+                android:title="Quản lý bài hát" />
+            <item
+                android:id="@+id/nav_banner_manager"
+                android:title="Quản lý banner" />
+            <item
+                android:id="@+id/nav_theme_manager"
+                android:title="Quản lý chủ đề" />
+            <item
+                android:id="@+id/nav_category_manager"
+                android:title="Quản lý thể loại" />
+            <item
+                android:id="@+id/nav_album_manager"
+                android:title="Quản lý album" />
+            <item
+                android:id="@+id/nav_playlist_manager"
+                android:title="Quản lý danh sách nhạc" />
         </menu>
     </item>
 </menu>

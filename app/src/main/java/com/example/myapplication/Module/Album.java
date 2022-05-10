@@ -6,63 +6,70 @@ import java.io.Serializable;
 
 public class Album  implements Serializable {
     @Exclude
-    public String id;
+    public String key;
 
-    private String idAlbum;
-    private String tenAlbum;
-    private String tenCaSiAlbum;
-    private String hinh;
+    private String id;
+    private String name;
+    private String image;
+    private String singer;
 
     public Album() {
     }
 
-    public Album(String idAlbum, String tenAlbum, String tenCaSiAlbum, String hinh) {
-        this.idAlbum = idAlbum;
-        this.tenAlbum = tenAlbum;
-        this.tenCaSiAlbum = tenCaSiAlbum;
-        this.hinh = hinh;
+    public Album(String id, String name, String image, String singer) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.singer = singer;
     }
 
-    public String getIdAlbum() {
-        return idAlbum;
+    public void update(String id, String name, String image, String singer) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.singer = singer;
     }
 
-    public void setIdAlbum(String idAlbum) {
-        this.idAlbum = idAlbum;
+    public String getId() {
+        return id;
     }
 
-    public String getTenAlbum() {
-        return tenAlbum;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setTenAlbum(String tenAlbum) {
-        this.tenAlbum = tenAlbum;
+    public String getName() {
+        return name;
     }
 
-    public String getTenCasiAlbum() {
-        return tenCaSiAlbum;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setTenCasiAlbum(String tenCaSiAlbum) {
-        this.tenCaSiAlbum = tenCaSiAlbum;
+    public String getImage() {
+        return image;
     }
 
-    public String getHinh() {
-        return hinh;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setHinh(String hinh) {
-        this.hinh = hinh;
+    public String getSinger() {
+        return singer;
+    }
+
+    public void setSinger(String singer) {
+        this.singer = singer;
     }
 
     @Override
     public String toString() {
         return "Album{" +
-                "id='" + id + '\'' +
-                ", idAlbum='" + idAlbum + '\'' +
-                ", tenAlbum='" + tenAlbum + '\'' +
-                ", tenCaSiAlbum='" + tenCaSiAlbum + '\'' +
-                ", hinh='" + hinh + '\'' +
+                "id='" + key + '\'' +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", singer='" + singer + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

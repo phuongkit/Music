@@ -1,0 +1,109 @@
+package com.example.myapplication.Module;
+
+import com.google.firebase.database.Exclude;
+
+import java.io.Serializable;
+
+public class User implements Serializable {
+    @Exclude
+    public String key;
+
+    private String id;
+    private String displayName;
+    private String password;
+    private String email;
+    private String phone;
+    private String avatar;
+    private Integer role = 1;
+
+    public User() {
+    }
+
+    public User(String id, String displayName, String password, String email, String phone, String avatar) {
+        this.id = id;
+        this.displayName = displayName;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.avatar = avatar;
+    }
+
+    public void update(String id, String displayName, String password, String email, String phone, String avatar) {
+        this.id = id;
+        this.displayName = displayName;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.avatar = avatar;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "key='" + key + '\'' +
+                ", id='" + id + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", role=" + role +
+                "}\n";
+    }
+}

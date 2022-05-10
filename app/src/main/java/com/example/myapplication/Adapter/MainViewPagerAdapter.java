@@ -45,17 +45,6 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public androidx.fragment.app.Fragment createFragment(int position) {
-//        switch (position){
-//            case 0:
-//            case 3:
-//                return new PersonalFragment();
-//            case 1:
-//                return new HomeFragment();
-//            case 2:
-//                return new SearchFragment();
-//
-//        }
-//        return new HomeFragment();
         return position < 0 || position + 1 > registeredFragments.size() ? registeredFragments.get(1) : registeredFragments.get(position);
     }
 

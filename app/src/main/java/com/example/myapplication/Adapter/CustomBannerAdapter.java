@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.example.myapplication.Dao.BaiHatDao;
+import com.example.myapplication.Dao.SongDao;
 import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
-import com.example.myapplication.Module.Baihat;
+import com.example.myapplication.Module.Song;
 import com.example.myapplication.R;
 import com.example.myapplication.Module.Banner;
 import com.squareup.picasso.Picasso;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class CustomBannerAdapter extends PagerAdapter {
     Context context;
     ArrayList<Banner> arrayListBanner;
-    Baihat baiHat;
+    Song song;
 
     public CustomBannerAdapter(Context context, ArrayList<Banner> arrayListBanner) {
         this.context = context;
@@ -52,21 +52,21 @@ public class CustomBannerAdapter extends PagerAdapter {
         TextView tvTitleSongBanner = view.findViewById(R.id.TitleBaiHat1);
         TextView tvNoiDung = view.findViewById(R.id.NoiDung1);
 
-        Picasso.with(context).load(arrayListBanner.get(position).getHinhAnh()).into(imageBackgroundBanner);
-        baiHat = new Baihat();
-        BaiHatDao baiHatDao = new BaiHatDao();
-        baiHatDao.get(arrayListBanner.get(position).getIdBaihat(), new RetrievalEventListener<Baihat>() {
+        Picasso.with(context).load(arrayListBanner.get(position).getImage()).into(imageBackgroundBanner);
+        song = new Song();
+        SongDao songDao = new SongDao();
+        songDao.get(arrayListBanner.get(position).getIdSong(), new RetrievalEventListener<Song>() {
             @Override
-            public void OnDataRetrieved(Baihat baihat) {
-                baiHat = baihat;
+            public void OnDataRetrieved(Song Song) {
+                song = Song;
             }
         });
-        Picasso.with(context).load(baiHat.getHinhBaihat()).into(imgSongBanner);
-        tvTitleSongBanner.setText(baiHat.getTenBaihat());
-        tvNoiDung.setText(arrayListBanner.get(position).getNoiDung());
+        Picasso.with(context).load(song.getImage()).into(imgSongBanner);
+        tvTitleSongBanner.setText(song.getName());
+        tvNoiDung.setText(arrayListBanner.get(position).getName());
 
 
-        Picasso.with(context).load(arrayListBanner.get(position).getHinhAnh()).into(imageBackgroundBanner);
+        Picasso.with(context).load(arrayListBanner.get(position).getImage()).into(imageBackgroundBanner);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

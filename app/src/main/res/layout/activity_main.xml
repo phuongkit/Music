@@ -2,11 +2,11 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layout"
-    tools:openDrawer="start"
-    tools:context=".Activity.MainActivity">
+    tools:context=".Activity.MainActivity"
+    tools:openDrawer="start">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,12 +49,12 @@
 
         </com.google.android.material.tabs.TabLayout>
 
-<!--        <FrameLayout-->
-<!--            android:id="@+id/content_frame"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/content_frame"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent">-->
 
-<!--        </FrameLayout>-->
+        <!--        </FrameLayout>-->
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -63,6 +63,5 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/layout_header_nav"
-        app:menu="@menu/nav_menu">
-    </com.google.android.material.navigation.NavigationView>
+        app:menu="@menu/nav_menu"></com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>
