@@ -1,6 +1,6 @@
 package com.example.myapplication.Dao;
 
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Module.Playlist_Song;
 import com.google.firebase.database.DataSnapshot;
 
@@ -11,7 +11,7 @@ public class Playlist_SongDao extends FirebaseDao<Playlist_Song> {
     }
 
     @Override
-    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrievalEventListener<Playlist_Song> retrievalEventListener) {
+    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrieValEventListener<Playlist_Song> retrievalEventListener) {
         // Create a new Chude object to populate data
         final Playlist_Song playlist_Song = new Playlist_Song();
         playlist_Song.key = dataSnapshot.getKey();

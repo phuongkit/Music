@@ -1,6 +1,6 @@
 package com.example.myapplication.Dao;
 
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Module.Theme;
 import com.google.firebase.database.DataSnapshot;
 
@@ -11,7 +11,7 @@ public class ThemeDao extends FirebaseDao<Theme> {
     }
 
     @Override
-    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrievalEventListener<Theme> retrievalEventListener) {
+    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrieValEventListener<Theme> retrievalEventListener) {
         // Create a new Theme object to populate data
         final Theme theme = new Theme();
         theme.key = dataSnapshot.getKey();

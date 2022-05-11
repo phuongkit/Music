@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,15 +23,17 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplication.Adapter.admin.SpinnerDaoAdapter;
 import com.example.myapplication.Dao.AlbumDao;
+import com.example.myapplication.Dao.Listeners.RetrieNewKeyEventListener;
 import com.example.myapplication.Dao.SongDao;
 import com.example.myapplication.Dao.BannerDao;
 import com.example.myapplication.Dao.ThemeDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Dao.PlaylistDao;
 import com.example.myapplication.Dao.TypesDao;
 import com.example.myapplication.Dao.UserDao;
 import com.example.myapplication.Module.Album;
+import com.example.myapplication.Module.MusicObject;
 import com.example.myapplication.Module.Song;
 import com.example.myapplication.Module.Banner;
 import com.example.myapplication.Module.Item;
@@ -46,6 +47,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThemSuaDaoActivity extends AppCompatActivity {
+
+    MusicObject musicObject = new MusicObject();
 
     User user;
     ArrayList<User> users;
@@ -446,7 +449,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_SONG:
                 AlbumDao alBumDao = new AlbumDao();
-                alBumDao.getAll(new RetrievalEventListener<List<Album>>() {
+                alBumDao.getAll(new RetrieValEventListener<List<Album>>() {
                     @Override
                     public void OnDataRetrieved(List<Album> Albums) {
                         albums = new ArrayList<>();
@@ -481,7 +484,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     }
                 });
                 PlaylistDao playlistDao = new PlaylistDao();
-                playlistDao.getAll(new RetrievalEventListener<List<Playlist>>() {
+                playlistDao.getAll(new RetrieValEventListener<List<Playlist>>() {
                     @SuppressLint("ResourceType")
                     @Override
                     public void OnDataRetrieved(List<Playlist> Playlists) {
@@ -519,7 +522,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_BANNER:
                 SongDao songDao = new SongDao();
-                songDao.getAll(new RetrievalEventListener<List<Song>>() {
+                songDao.getAll(new RetrieValEventListener<List<Song>>() {
                     @Override
                     public void OnDataRetrieved(List<Song> baihatss) {
                         songs = new ArrayList<>();
@@ -556,7 +559,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_CATEGORY:
                 ThemeDao chudeDao = new ThemeDao();
-                chudeDao.getAll(new RetrievalEventListener<List<Theme>>() {
+                chudeDao.getAll(new RetrieValEventListener<List<Theme>>() {
                     @Override
                     public void OnDataRetrieved(List<Theme> chudess) {
                         themes = new ArrayList<>();
@@ -689,71 +692,96 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
         switch (mCurrentModule) {
             case MODULE_SONG:
                 SongDao songDao = new SongDao();
-                songDao.save(song, songDao.GetNewKey(), new TaskListener() {
+                songDao.getNewKey(new RetrieNewKeyEventListener() {
                     @Override
-                    public void OnSuccess() {
-                        Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
-                    }
+                    public void OnNewKeyRetrieved(String newKey) {
+                        songDao.save(song, newKey, new TaskListener() {
+                            @Override
+                            public void OnSuccess() {
+                                Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                            }
 
-                    @Override
-                    public void OnFail() {
-                        Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void OnFail() {
+                                Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
                 break;
             case MODULE_BANNER:
                 BannerDao bannerDao = new BannerDao();
-                bannerDao.save(banner, bannerDao.GetNewKey(), new TaskListener() {
+                bannerDao.getNewKey(new RetrieNewKeyEventListener() {
                     @Override
-                    public void OnSuccess() {
-                        Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
-                    }
+                    public void OnNewKeyRetrieved(String newKey) {
+                        bannerDao.save(banner, newKey, new TaskListener() {
+                            @Override
+                            public void OnSuccess() {
+                                Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                            }
 
-                    @Override
-                    public void OnFail() {
-                        Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void OnFail() {
+                                Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
                 break;
             case MODULE_ALBUM:
                 AlbumDao albumDao = new AlbumDao();
-                albumDao.save(album, albumDao.GetNewKey(), new TaskListener() {
+                albumDao.getNewKey(new RetrieNewKeyEventListener() {
                     @Override
-                    public void OnSuccess() {
-                        Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
-                    }
+                    public void OnNewKeyRetrieved(String newKey) {
+                        albumDao.save(album, newKey, new TaskListener() {
+                            @Override
+                            public void OnSuccess() {
+                                Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                            }
 
-                    @Override
-                    public void OnFail() {
-                        Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void OnFail() {
+                                Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
                 break;
             case MODULE_THEME:
                 ThemeDao themeDao = new ThemeDao();
-                themeDao.save(theme, themeDao.GetNewKey(), new TaskListener() {
+                themeDao.getNewKey(new RetrieNewKeyEventListener() {
                     @Override
-                    public void OnSuccess() {
-                        Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
-                    }
+                    public void OnNewKeyRetrieved(String newKey) {
+                        themeDao.save(theme, newKey, new TaskListener() {
+                            @Override
+                            public void OnSuccess() {
+                                Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                            }
 
-                    @Override
-                    public void OnFail() {
-                        Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void OnFail() {
+                                Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
                 break;
             case MODULE_CATEGORY:
                 TypesDao typesDao = new TypesDao();
-                typesDao.save(types, typesDao.GetNewKey(), new TaskListener() {
+                typesDao.getNewKey(new RetrieNewKeyEventListener() {
                     @Override
-                    public void OnSuccess() {
-                        Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
-                    }
+                    public void OnNewKeyRetrieved(String newKey) {
+                        typesDao.save(types, newKey, new TaskListener() {
+                            @Override
+                            public void OnSuccess() {
+                                Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                            }
 
-                    @Override
-                    public void OnFail() {
-                        Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void OnFail() {
+                                Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
                 break;
@@ -768,7 +796,6 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 btnUpdate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Log.d("Test", "Node C");
                         String id = editTexts.get(0).getText().toString();
                         String displayName = editTexts.get(1).getText().toString();
                         String password = editTexts.get(2).getText().toString();
@@ -776,7 +803,6 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                         String phone = editTexts.get(4).getText().toString();
                         String avatar = editTexts.get(5).getText().toString();
                         user = new User(id, displayName, password, email, phone, avatar);
-                        Log.d("Test", "Node D");
                         postDao();
                         Intent intent1 = new Intent(activity, UserDaoActivity.class);
                         startActivity(intent1);
@@ -888,7 +914,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
         switch (mCurrentModule) {
             case MODULE_USER:
                 UserDao userDao = new UserDao();
-                userDao.get(key, new RetrievalEventListener<User>() {
+                userDao.get(key, new RetrieValEventListener<User>() {
                     @Override
                     public void OnDataRetrieved(User User) {
                         user = new User();
@@ -925,7 +951,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_SONG:
                 SongDao songDao = new SongDao();
-                songDao.get(key, new RetrievalEventListener<Song>() {
+                songDao.get(key, new RetrieValEventListener<Song>() {
                     @Override
                     public void OnDataRetrieved(Song Song) {
                         song = new Song();
@@ -965,7 +991,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_BANNER:
                 BannerDao bannerDao = new BannerDao();
-                bannerDao.get(key, new RetrievalEventListener<Banner>() {
+                bannerDao.get(key, new RetrieValEventListener<Banner>() {
                     @Override
                     public void OnDataRetrieved(Banner Banner) {
                         banner = new Banner();
@@ -998,7 +1024,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_ALBUM:
                 AlbumDao albumDao = new AlbumDao();
-                albumDao.get(key, new RetrievalEventListener<Album>() {
+                albumDao.get(key, new RetrieValEventListener<Album>() {
                     @Override
                     public void OnDataRetrieved(Album Album) {
                         album = new Album();
@@ -1030,7 +1056,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_THEME:
                 ThemeDao themeDao = new ThemeDao();
-                themeDao.get(key, new RetrievalEventListener<Theme>() {
+                themeDao.get(key, new RetrieValEventListener<Theme>() {
                     @Override
                     public void OnDataRetrieved(Theme Theme) {
                         theme = new Theme();
@@ -1060,7 +1086,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_CATEGORY:
                 TypesDao typesDao = new TypesDao();
-                typesDao.get(key, new RetrievalEventListener<Types>() {
+                typesDao.get(key, new RetrieValEventListener<Types>() {
                     @Override
                     public void OnDataRetrieved(Types Types) {
                         types = new Types();

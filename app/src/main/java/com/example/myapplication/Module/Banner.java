@@ -4,11 +4,7 @@ import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
 
-public class Banner implements Serializable {
-    @Exclude
-    public String key;
-
-    private String id;
+public class Banner extends MusicObject implements Serializable {
     private String name;
     private String image;
     private String idSong;
@@ -18,25 +14,17 @@ public class Banner implements Serializable {
     }
 
     public Banner(String id, String name, String image, String idSong) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.image = image;
         this.idSong = idSong;
     }
 
     public void update(String id, String name, String image, String idSong) {
-        this.id = id;
+        super.setId(id);
         this.name = name;
         this.image = image;
         this.idSong = idSong;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {

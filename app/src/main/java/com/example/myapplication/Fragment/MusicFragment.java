@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.SongDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
 import com.example.myapplication.Activity.PlaybaihatActivity;
 import com.example.myapplication.Dao.Playlist_SongDao;
 import com.example.myapplication.Module.Playlist;
@@ -79,7 +79,7 @@ public class MusicFragment extends Fragment {
 
     private void getListMusicByHome() {
         SongDao songDao = new SongDao();
-        songDao.getAll(new RetrievalEventListener<List<Song>>() {
+        songDao.getAll(new RetrieValEventListener<List<Song>>() {
             @Override
             public void OnDataRetrieved(List<Song> Songs) {
                 Log.d("DAO",Songs.toString());
@@ -94,7 +94,7 @@ public class MusicFragment extends Fragment {
     private void getListMusicByPlaylist() {
         playlist = (Playlist) bundle.getSerializable("playlist");
         Playlist_SongDao playlist_songDao = new Playlist_SongDao();
-        playlist_songDao.getAll(new RetrievalEventListener<List<Playlist_Song>>() {
+        playlist_songDao.getAll(new RetrieValEventListener<List<Playlist_Song>>() {
             @Override
             public void OnDataRetrieved(List<Playlist_Song> Playlist_songs) {
                 ArrayList<String> musics = new ArrayList<>();
@@ -112,7 +112,7 @@ public class MusicFragment extends Fragment {
 
     private void getListMusicByPlaylistt(final ArrayList<String> musics) {
         SongDao songDao = new SongDao();
-        songDao.getAll(new RetrievalEventListener<List<Song>>() {
+        songDao.getAll(new RetrieValEventListener<List<Song>>() {
             @Override
             public void OnDataRetrieved(List<Song> Songs) {
                 songs = new ArrayList<>();

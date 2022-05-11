@@ -18,8 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplication.Adapter.admin.CustomAlbumDaoAdapter;
 import com.example.myapplication.Dao.AlbumDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
-import com.example.myapplication.Dialog.InputDialog;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Module.Album;
 import com.example.myapplication.R;
 
@@ -80,7 +79,7 @@ public class AlbumDaoActivity extends AppCompatActivity {
             public void run() {
                 baihats =new ArrayList<>();
                 AlbumDao baiHatDao = new AlbumDao();
-                baiHatDao.getAll(new RetrievalEventListener<List<Album>>() {
+                baiHatDao.getAll(new RetrieValEventListener<List<Album>>() {
                     @Override
                     public void OnDataRetrieved(List<Album> baiHats) {
                         baihats = new ArrayList<>();

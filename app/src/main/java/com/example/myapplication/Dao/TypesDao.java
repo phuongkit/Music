@@ -1,6 +1,6 @@
 package com.example.myapplication.Dao;
 
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Module.Types;
 import com.google.firebase.database.DataSnapshot;
 
@@ -11,7 +11,7 @@ public class TypesDao extends FirebaseDao<Types> {
     }
 
     @Override
-    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrievalEventListener<Types> retrievalEventListener) {
+    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrieValEventListener<Types> retrievalEventListener) {
         // Create a new Types object to populate data
         final Types types = new Types();
         types.key = dataSnapshot.getKey();

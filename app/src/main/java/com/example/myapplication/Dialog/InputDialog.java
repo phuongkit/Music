@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.myapplication.Activity.PlaylistActivity;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Dao.PlaylistDao;
 import com.example.myapplication.Module.MusicObject;
@@ -76,7 +76,7 @@ public class InputDialog extends AppCompatDialogFragment {
                     PlaylistDao playlistDao = new PlaylistDao();
                     if (isUpdate) {
                         playlist.setName(name);
-                        playlistDao.getAll(new RetrievalEventListener<List<Playlist>>() {
+                        playlistDao.getAll(new RetrieValEventListener<List<Playlist>>() {
                             @Override
                             public void OnDataRetrieved(List<Playlist> playlists) {
                                 playlistDao.save(playlist, playlist.key, new TaskListener() {
@@ -94,7 +94,7 @@ public class InputDialog extends AppCompatDialogFragment {
                             }
                         });
                     } else {
-                        playlistDao.getAll(new RetrievalEventListener<List<Playlist>>() {
+                        playlistDao.getAll(new RetrieValEventListener<List<Playlist>>() {
                             @Override
                             public void OnDataRetrieved(List<Playlist> playlists) {
                                 boolean isExist = false;

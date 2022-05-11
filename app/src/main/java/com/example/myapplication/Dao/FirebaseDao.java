@@ -1,8 +1,11 @@
 package com.example.myapplication.Dao;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieNewKeyEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Module.MusicObject;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,13 +29,13 @@ public abstract class FirebaseDao<T> {
         this.tableName = tableName;
     }
 
-    public void get(String id, final RetrievalEventListener<T> retrievalEventListener) {
+    public void get(String id, final RetrieValEventListener<T> retrievalEventListener) {
         DatabaseReference rowReference = dbReference.child(tableName).child(id);
         Query query = rowReference;
         rowReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                parseDataSnapshot(dataSnapshot, new RetrievalEventListener<T>() {
+                parseDataSnapshot(dataSnapshot, new RetrieValEventListener<T>() {
                     @Override
                     public void OnDataRetrieved(T t) {
                         retrievalEventListener.OnDataRetrieved(t);
@@ -50,9 +53,33 @@ public abstract class FirebaseDao<T> {
         return dbReference.child(tableName).push().getKey();
     }
 
-    protected abstract void parseDataSnapshot(DataSnapshot dataSnapshot, RetrievalEventListener<T> retrievalEventListener);
+    public void getNewKey(RetrieNewKeyEventListener retrieNewKeyEventListener) {
 
-    public void getAll(final RetrievalEventListener<List<T>> retrievalEventListener) {
+        this.getAll(new RetrieValEventListener<List<T>>() {
+            @Override
+            public void OnDataRetrieved(List<T> ts) {
+                long index = 0;
+                for (int i = 0; i < ts.size(); i++) {
+                    MusicObject musicObject = (MusicObject) ts.get(i);
+                    try {
+                        long Key = Integer.valueOf(musicObject.key);
+                        if (Key > index) {
+                            index = Key;
+                        }
+                    } catch (NumberFormatException ex) {
+                        Log.e("Error", ex.getMessage());
+                    }
+                }
+                index++;
+                String newKey = String.valueOf(index);
+                retrieNewKeyEventListener.OnNewKeyRetrieved(newKey);
+            }
+        });
+    }
+
+    protected abstract void parseDataSnapshot(DataSnapshot dataSnapshot, RetrieValEventListener<T> retrievalEventListener);
+
+    public void getAll(final RetrieValEventListener<List<T>> retrievalEventListener) {
         DatabaseReference rowReference = dbReference.child(tableName);
         rowReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -63,7 +90,7 @@ public abstract class FirebaseDao<T> {
                     retrievalEventListener.OnDataRetrieved(list);
                     return;
                 }
-                RetrievalEventListener<T> listRetrievalEventListener = new RetrievalEventListener<T>() {
+                RetrieValEventListener<T> listRetrieValEventListener = new RetrieValEventListener<T>() {
                     @Override
                     public void OnDataRetrieved(T t) {
                         list.add(t);
@@ -73,7 +100,7 @@ public abstract class FirebaseDao<T> {
                     }
                 };
                 for (DataSnapshot currentDataSnapshot : dataSnapshot.getChildren())
-                    parseDataSnapshot(currentDataSnapshot, listRetrievalEventListener);
+                    parseDataSnapshot(currentDataSnapshot, listRetrieValEventListener);
             }
 
             @Override

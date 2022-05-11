@@ -19,14 +19,13 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.SongDaoActivity;
 import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.SongDao;
 import com.example.myapplication.Dao.BannerDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Module.Song;
 import com.example.myapplication.Module.Banner;
 import com.example.myapplication.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,7 +118,7 @@ public class CustomSongDaoAdapter extends ArrayAdapter<Song> {
     }
     private void handle(){
         BannerDao bannerDao = new BannerDao();
-        bannerDao.getAll(new RetrievalEventListener<List<Banner>>() {
+        bannerDao.getAll(new RetrieValEventListener<List<Banner>>() {
             @Override
             public void OnDataRetrieved(List<Banner> Banners) {
                 banners = new ArrayList<>();

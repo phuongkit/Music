@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,7 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplication.Adapter.admin.CustomBannerDaoAdapter;
 import com.example.myapplication.Dao.BannerDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Module.Banner;
 import com.example.myapplication.R;
 
@@ -81,7 +80,7 @@ public class BannerDaoActivity extends AppCompatActivity {
             public void run() {
                 baihats = new ArrayList<>();
                 BannerDao baiHatDao = new BannerDao();
-                baiHatDao.getAll(new RetrievalEventListener<List<Banner>>() {
+                baiHatDao.getAll(new RetrieValEventListener<List<Banner>>() {
                     @Override
                     public void OnDataRetrieved(List<Banner> baiHats) {
                         baihats = new ArrayList<>();

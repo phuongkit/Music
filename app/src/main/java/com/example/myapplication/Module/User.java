@@ -4,11 +4,8 @@ import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
-    @Exclude
-    public String key;
+public class User extends MusicObject implements Serializable {
 
-    private String id;
     private String displayName;
     private String password;
     private String email;
@@ -20,7 +17,7 @@ public class User implements Serializable {
     }
 
     public User(String id, String displayName, String password, String email, String phone, String avatar) {
-        this.id = id;
+        super(id);
         this.displayName = displayName;
         this.password = password;
         this.email = email;
@@ -29,20 +26,12 @@ public class User implements Serializable {
     }
 
     public void update(String id, String displayName, String password, String email, String phone, String avatar) {
-        this.id = id;
+        super.setId(id);
         this.displayName = displayName;
         this.password = password;
         this.email = email;
         this.phone = phone;
         this.avatar = avatar;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getDisplayName() {

@@ -20,13 +20,12 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.ThemeDaoActivity;
 import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
 import com.example.myapplication.Dao.ThemeDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Dao.TypesDao;
 import com.example.myapplication.Module.Theme;
 import com.example.myapplication.Module.Types;
 import com.example.myapplication.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,7 +119,7 @@ public class CustomThemeDaoAdapter extends ArrayAdapter<Theme> {
 
     private void handle() {
         TypesDao typesDao = new TypesDao();
-        typesDao.getAll(new RetrievalEventListener<List<Types>>() {
+        typesDao.getAll(new RetrieValEventListener<List<Types>>() {
             @Override
             public void OnDataRetrieved(List<Types> Typess) {
                 typess = new ArrayList<>();

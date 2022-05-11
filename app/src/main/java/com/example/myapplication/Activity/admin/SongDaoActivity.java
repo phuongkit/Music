@@ -16,8 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplication.Adapter.admin.CustomSongDaoAdapter;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.SongDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
 import com.example.myapplication.Module.Song;
 import com.example.myapplication.R;
 
@@ -80,7 +80,7 @@ public class SongDaoActivity extends AppCompatActivity {
     private void GetDetail() {
         songs = new ArrayList<>();
         SongDao songDao = new SongDao();
-        songDao.getAll(new RetrievalEventListener<List<Song>>() {
+        songDao.getAll(new RetrieValEventListener<List<Song>>() {
             @Override
             public void OnDataRetrieved(List<Song> Songs) {
                 songs = new ArrayList<>();

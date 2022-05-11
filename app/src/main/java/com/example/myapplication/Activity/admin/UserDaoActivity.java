@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplication.Adapter.admin.CustomUserDaoAdapter;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.UserDao;
 import com.example.myapplication.Module.User;
 import com.example.myapplication.R;
@@ -93,7 +92,7 @@ public class UserDaoActivity extends AppCompatActivity {
             public void run() {
                 users = new ArrayList<>();
                 UserDao userDao = new UserDao();
-                userDao.getAll(new RetrievalEventListener<List<User>>() {
+                userDao.getAll(new RetrieValEventListener<List<User>>() {
                     @Override
                     public void OnDataRetrieved(List<User> userss) {
                         users = new ArrayList<>();

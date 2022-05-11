@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Adapter.PlaylistAdapter;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.PlaylistDao;
 import com.example.myapplication.Dialog.InputDialog;
 import com.example.myapplication.Module.Playlist;
@@ -102,7 +101,7 @@ public class PlaylistActivity extends AppCompatActivity {
         if (user != null) {
             String uid = user.getUid();
             PlaylistDao playlistDao = new PlaylistDao();
-            playlistDao.getAll(new RetrievalEventListener<List<Playlist>>() {
+            playlistDao.getAll(new RetrieValEventListener<List<Playlist>>() {
                 @Override
                 public void OnDataRetrieved(List<Playlist> playlists) {
                     ArrayList<Playlist> playlists1 = new ArrayList<>();

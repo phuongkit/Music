@@ -4,11 +4,7 @@ import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
 
-public class Playlist_Song implements Serializable {
-    @Exclude
-    public String key;
-
-    private String id;
+public class Playlist_Song extends MusicObject implements Serializable {
     private String idSong;
     private String idPlaylist;
 
@@ -16,17 +12,9 @@ public class Playlist_Song implements Serializable {
     }
 
     public Playlist_Song(String id, String idSong, String idPlaylist) {
-        this.id = id;
+        super(id);
         this.idSong = idSong;
         this.idPlaylist = idPlaylist;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getIdSong() {

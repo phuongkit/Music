@@ -10,8 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.SongDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
 import com.example.myapplication.Module.Song;
 import com.example.myapplication.R;
 import com.example.myapplication.Module.Banner;
@@ -52,10 +53,10 @@ public class CustomBannerAdapter extends PagerAdapter {
         TextView tvTitleSongBanner = view.findViewById(R.id.TitleBaiHat1);
         TextView tvNoiDung = view.findViewById(R.id.NoiDung1);
 
-        Picasso.with(context).load(arrayListBanner.get(position).getImage()).into(imageBackgroundBanner);
+        Glide.with(context).load(arrayListBanner.get(position).getImage()).error(R.drawable.no_image).into(imageBackgroundBanner);
         song = new Song();
         SongDao songDao = new SongDao();
-        songDao.get(arrayListBanner.get(position).getIdSong(), new RetrievalEventListener<Song>() {
+        songDao.get(arrayListBanner.get(position).getIdSong(), new RetrieValEventListener<Song>() {
             @Override
             public void OnDataRetrieved(Song Song) {
                 song = Song;

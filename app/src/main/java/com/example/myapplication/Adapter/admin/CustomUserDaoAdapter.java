@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,15 +18,12 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
 import com.example.myapplication.Activity.admin.UserDaoActivity;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Dao.UserDao;
 import com.example.myapplication.Module.User;
 import com.example.myapplication.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CustomUserDaoAdapter extends ArrayAdapter<User> {
     String control;
@@ -119,7 +115,7 @@ public class CustomUserDaoAdapter extends ArrayAdapter<User> {
 
     private void handle() {
 //        UserDao userDao = new UserDao();
-//        userDao.getAll(new RetrievalEventListener<List<User>>() {
+//        userDao.getAll(new RetrieValEventListener<List<User>>() {
 //            @Override
 //            public void OnDataRetrieved(List<User> userss) {
 //                users = new ArrayList<>();

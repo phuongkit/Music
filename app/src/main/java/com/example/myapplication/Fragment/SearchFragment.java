@@ -12,8 +12,8 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.Activity.PlaybaihatActivity;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.SongDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
 import com.example.myapplication.R;
 import com.example.myapplication.Adapter.CustomBaihatAdapter;
 import com.example.myapplication.Module.Song;
@@ -72,7 +72,7 @@ public class SearchFragment extends Fragment {
         String textSearch = query;
 //        baihats = new ArrayList<>();
         SongDao songDao = new SongDao();
-        songDao.getAll(new RetrievalEventListener<List<Song>>() {
+        songDao.getAll(new RetrieValEventListener<List<Song>>() {
             @Override
             public void OnDataRetrieved(List<Song> baihats) {
                 songs = new ArrayList<>();
@@ -94,7 +94,7 @@ public class SearchFragment extends Fragment {
         String textSearch = filter;
 //        baihats = new ArrayList<>();
         SongDao songDao = new SongDao();
-        songDao.getAll(new RetrievalEventListener<List<Song>>() {
+        songDao.getAll(new RetrieValEventListener<List<Song>>() {
             @Override
             public void OnDataRetrieved(List<Song> Songs) {
                 customBaihatAdapter.clear();

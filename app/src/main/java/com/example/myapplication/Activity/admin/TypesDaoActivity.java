@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplication.Adapter.admin.CustomTypesDaoAdapter;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.TypesDao;
 import com.example.myapplication.Module.Types;
 import com.example.myapplication.R;
@@ -80,7 +80,7 @@ public class TypesDaoActivity extends AppCompatActivity {
             public void run() {
                 typess =new ArrayList<>();
                 TypesDao baiHatDao = new TypesDao();
-                baiHatDao.getAll(new RetrievalEventListener<List<Types>>() {
+                baiHatDao.getAll(new RetrieValEventListener<List<Types>>() {
                     @Override
                     public void OnDataRetrieved(List<Types> Typess) {
                         typess = new ArrayList<>();

@@ -1,17 +1,17 @@
 package com.example.myapplication.Dao;
 
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Module.Banner;
 import com.google.firebase.database.DataSnapshot;
 
-public class BannerDao  extends FirebaseDao<Banner>{
+public class BannerDao extends FirebaseDao<Banner>{
     public BannerDao(){
         // Specify the table name for the class
         super("banner");
     }
 
     @Override
-    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrievalEventListener<Banner> retrievalEventListener) {
+    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrieValEventListener<Banner> retrievalEventListener) {
         // Create a new banner object to populate data
         final Banner banner = new Banner();
         banner.key = dataSnapshot.getKey();

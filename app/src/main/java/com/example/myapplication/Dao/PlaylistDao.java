@@ -1,14 +1,8 @@
 package com.example.myapplication.Dao;
 
-import android.util.Log;
-
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Module.Playlist;
 import com.google.firebase.database.DataSnapshot;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class PlaylistDao  extends FirebaseDao<Playlist> {
     public PlaylistDao(){
@@ -17,7 +11,7 @@ public class PlaylistDao  extends FirebaseDao<Playlist> {
     }
 
     @Override
-    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrievalEventListener<Playlist> retrievalEventListener) {
+    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrieValEventListener<Playlist> retrievalEventListener) {
         // Create a new Chude object to populate data
         final Playlist playlist = new Playlist();
         playlist.key = dataSnapshot.getKey();

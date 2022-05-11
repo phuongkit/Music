@@ -4,11 +4,7 @@ import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
 
-public class Theme  implements Serializable {
-    @Exclude
-    public String key;
-
-    private String id;
+public class Theme extends MusicObject implements Serializable {
     private String name;
     private String image;
 
@@ -16,13 +12,13 @@ public class Theme  implements Serializable {
     }
 
     public Theme(String id, String name, String image) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.image = image;
     }
 
     public void update(String id, String name, String image) {
-        this.id = id;
+        super.setId(id);
         this.name = name;
         this.image = image;
     }

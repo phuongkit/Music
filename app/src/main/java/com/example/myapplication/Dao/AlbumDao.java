@@ -1,6 +1,6 @@
 package com.example.myapplication.Dao;
 
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Module.Album;
 import com.google.firebase.database.DataSnapshot;
 
@@ -11,7 +11,7 @@ public class AlbumDao extends FirebaseDao<Album> {
     }
 
     @Override
-    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrievalEventListener<Album> retrievalEventListener) {
+    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrieValEventListener<Album> retrievalEventListener) {
         // Create a new Album object to populate data
         final Album album = new Album();
         album.key = dataSnapshot.getKey();

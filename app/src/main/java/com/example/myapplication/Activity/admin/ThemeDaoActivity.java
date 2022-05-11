@@ -18,7 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplication.Adapter.admin.CustomThemeDaoAdapter;
 import com.example.myapplication.Dao.ThemeDao;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Module.Theme;
 import com.example.myapplication.R;
 
@@ -80,7 +80,7 @@ public class ThemeDaoActivity extends AppCompatActivity {
             public void run() {
                 themes =new ArrayList<>();
                 ThemeDao baiHatDao = new ThemeDao();
-                baiHatDao.getAll(new RetrievalEventListener<List<Theme>>() {
+                baiHatDao.getAll(new RetrieValEventListener<List<Theme>>() {
                     @Override
                     public void OnDataRetrieved(List<Theme> Themes) {
                         themes = new ArrayList<>();

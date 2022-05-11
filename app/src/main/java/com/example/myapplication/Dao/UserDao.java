@@ -1,12 +1,8 @@
 package com.example.myapplication.Dao;
 
-import android.util.Log;
-
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Module.User;
 import com.google.firebase.database.DataSnapshot;
-
-import java.io.Serializable;
 
 public class UserDao extends FirebaseDao<User> {
     public UserDao(){
@@ -15,7 +11,7 @@ public class UserDao extends FirebaseDao<User> {
     }
 
     @Override
-    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrievalEventListener<User> retrievalEventListener) {
+    protected void parseDataSnapshot(DataSnapshot dataSnapshot, RetrieValEventListener<User> retrievalEventListener) {
         // Create a new user object to populate data
         final User user = new User();
         user.key = dataSnapshot.getKey();

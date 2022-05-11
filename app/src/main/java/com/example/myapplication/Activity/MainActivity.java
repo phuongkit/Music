@@ -30,7 +30,7 @@ import com.example.myapplication.Activity.admin.BannerDaoActivity;
 import com.example.myapplication.Activity.admin.ThemeDaoActivity;
 import com.example.myapplication.Activity.admin.TypesDaoActivity;
 import com.example.myapplication.Activity.admin.UserDaoActivity;
-import com.example.myapplication.Dao.Listeners.RetrievalEventListener;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.UserDao;
 import com.example.myapplication.Dialog.changePassworDialog;
 import com.example.myapplication.Dialog.LoginDialog;
@@ -296,7 +296,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (user != null) {
             String uid = user.getUid();
             UserDao userDao = new UserDao();
-            userDao.getAll(new RetrievalEventListener<List<User>>() {
+            userDao.getAll(new RetrieValEventListener<List<User>>() {
                 @Override
                 public void OnDataRetrieved(List<User> users) {
                     for (User userDb : users) {
@@ -308,9 +308,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 Log.i("Info", "Node User");
                                 searchItem.setVisible(false);
                             }
-                            break;
+                            return;
                         }
                     }
+                    Log.i("Info", "Node User not in DB");
+                    searchItem.setVisible(false);
                 }
             });
         }
