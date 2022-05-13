@@ -46,10 +46,12 @@ public class SearchFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        searchFilter("");
         return view;
     }
 
     public void setBundle() {
+        Log.d("Test", "Node G");
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             if (bundle.getString("query") != null) {
@@ -59,17 +61,20 @@ public class SearchFragment extends Fragment {
                 search(query);
             }
             else {
-                Log.d("Test", "nodeB");
                 String filter = bundle.getString("filter");
                 Log.d("Info", "Search Filter: " + filter);
                 filter = filter.toLowerCase();
                 searchFilter(filter);
             }
         }
+        else {
+            Log.d("Test", "Node K");
+        }
     }
 
     private void search(String query) {
         String textSearch = query;
+        Log.d("Test", query);
 //        baihats = new ArrayList<>();
         SongDao songDao = new SongDao();
         songDao.getAll(new RetrieValEventListener<List<Song>>() {
@@ -91,8 +96,7 @@ public class SearchFragment extends Fragment {
     }
 
     private void searchFilter(String filter) {
-        String textSearch = filter;
-//        baihats = new ArrayList<>();
+        Log.d("Test", "Node A");
         SongDao songDao = new SongDao();
         songDao.getAll(new RetrieValEventListener<List<Song>>() {
             @Override
@@ -100,7 +104,6 @@ public class SearchFragment extends Fragment {
                 customSongAdapter.clear();
                 customSongAdapter.addAll(Songs);
                 customSongAdapter.getFilter().filter(filter);
-
             }
         });
     }

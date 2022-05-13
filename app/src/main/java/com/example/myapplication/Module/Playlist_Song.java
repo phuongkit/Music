@@ -3,6 +3,8 @@ package com.example.myapplication.Module;
 import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Playlist_Song extends MusicObject implements Serializable {
     private String idSong;
@@ -41,5 +43,13 @@ public class Playlist_Song extends MusicObject implements Serializable {
                 ", idSong='" + idSong + '\'' +
                 ", idPlaylist='" + idPlaylist + '\'' +
                 '}';
+    }
+
+    public List<MusicObject> upCastList(List<Playlist_Song> playlist_songs) {
+        List<MusicObject> musicObjects = new ArrayList<>();
+        for (Playlist_Song playlist_song : playlist_songs) {
+            musicObjects.add(playlist_song);
+        }
+        return musicObjects;
     }
 }

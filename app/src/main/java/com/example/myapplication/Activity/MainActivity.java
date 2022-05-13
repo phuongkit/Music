@@ -9,14 +9,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.DragEvent;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout mdrawerLayout;
     NavigationView navigationView;
     TextView txtAccountName, txtAccountEmail;
-    public  static ImageView imgAvatar;
+    public static ImageView imgAvatar;
     Toolbar toolbar;
     Menu menuNav;
 
@@ -95,31 +99,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         MenuItem searchItem = menu.findItem(R.id.appbarSearch);
         SearchView searchView = (SearchView) searchItem.getActionView();
-        searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem menuItem) {
-                Toast.makeText(MainActivity.this, "Expanding", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-
-            @Override
-            public boolean onMenuItemActionCollapse(MenuItem menuItem) {
-                Toast.makeText(MainActivity.this, "Collapsing", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
                 Bundle args = new Bundle();
                 args.putString("query", s);
-                if (fragmentList.get(FRAGMENT_SEARCH) instanceof SearchFragment) {
-                    fragmentList.get(FRAGMENT_SEARCH).setArguments(args);
-                    ((SearchFragment) fragmentList.get(2)).setBundle();
-
+                for (int i = 0; i < fragmentList.size(); i++) {
+                    if (fragmentList.get(i) instanceof SearchFragment) {
+                        fragmentList.get(i).setArguments(args);
+                        ((SearchFragment) fragmentList.get(i)).setBundle();
+                        break;
+                    }
                 }
-                return false;
+                return true;
             }
 
             @Override
@@ -127,18 +120,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
                 Bundle args = new Bundle();
                 args.putString("filter", s);
-                if (fragmentList.get(FRAGMENT_SEARCH) instanceof SearchFragment) {
-                    fragmentList.get(FRAGMENT_SEARCH).setArguments(args);
-                    ((SearchFragment) fragmentList.get(2)).setBundle();
-
+                for (int i = 0; i < fragmentList.size(); i++) {
+                    if (fragmentList.get(i) instanceof SearchFragment) {
+                        fragmentList.get(i).setArguments(args);
+                        ((SearchFragment) fragmentList.get(i)).setBundle();
+                        break;
+                    }
                 }
-                return false;
+                return true;
             }
         });
         searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 tabLayout.selectTab(tabLayout.getTabAt(FRAGMENT_SEARCH));
+//                List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
+//                Bundle args = new Bundle();
+//                Log.d("Test", String.valueOf(searchView.getQuery()));
+//                args.putString("filter", String.valueOf(searchView.getQuery()));
+//                for (int i = 0; i < fragmentList.size(); i++) {
+//                    if (fragmentList.get(i) instanceof SearchFragment) {
+//                        Log.d("Test", "Size: " + fragmentList.size());
+//                        fragmentList.get(i).setArguments(args);
+//                        ((SearchFragment) fragmentList.get(i)).setBundle();
+//                        break;
+//                    }
+//                }
             }
         });
         return super.onCreateOptionsMenu(menu);
@@ -315,8 +322,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     searchItem.setVisible(false);
                 }
             });
-        }
-        else {
+        } else {
             Log.i("Info", "Node Anonymous");
             searchItem.setVisible(false);
         }

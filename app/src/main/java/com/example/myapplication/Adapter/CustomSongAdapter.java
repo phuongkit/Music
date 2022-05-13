@@ -2,6 +2,7 @@ package com.example.myapplication.Adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
@@ -29,6 +30,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.PlaylistDao;
 import com.example.myapplication.Dao.Playlist_SongDao;
+import com.example.myapplication.Dialog.Add_Playlist_Dialog;
 import com.example.myapplication.Module.Playlist;
 import com.example.myapplication.Module.Playlist_Song;
 import com.example.myapplication.R;
@@ -152,51 +154,54 @@ public class CustomSongAdapter extends ArrayAdapter<Song> {
     private void addToPlaylist(Song song) {
         user = FirebaseAuth.getInstance().getCurrentUser();
         playlists = new ArrayList<>();
-        ArrayList<Playlist> playlists_bysong = new ArrayList<>();
 
         String uid = user.getUid();
         PlaylistDao playlistDao = new PlaylistDao();
         playlistDao.getAll(new RetrieValEventListener<List<Playlist>>() {
             @Override
             public void OnDataRetrieved(List<Playlist> Playlists) {
-                getData(Playlists, uid);
-            }
-        });
-        Log.d("Test", playlists.toString());
-        Playlist_SongDao playlist_songDao = new Playlist_SongDao();
-        playlist_songDao.getAll(new RetrieValEventListener<List<Playlist_Song>>() {
-            @Override
-            public void OnDataRetrieved(List<Playlist_Song> playlist_songs) {
                 ArrayList<String> playlist_ids = new ArrayList<>();
-                for (Playlist_Song playlist_song: playlist_songs) {
-                    if (playlist_song.getIdSong().equals(song.id)) {
-                        for (Playlist Playlist : playlists) {
-                            if (playlist_song.getIdPlaylist().equals(Playlist.getId())) {
-                                playlist_ids.add(Playlist.getId());
-                            }
-                        }
+                ArrayList<Playlist> playlists_bysong = new ArrayList<>();
+                for (Playlist Playlist: Playlists) {
+                    if (Playlist.getUid().equals(uid)) {
+                        playlists.add(Playlist);
                     }
+                    Playlist_SongDao playlist_songDao = new Playlist_SongDao();
+                    playlist_songDao.getAll(new RetrieValEventListener<List<Playlist_Song>>() {
+                        @Override
+                        public void OnDataRetrieved(List<Playlist_Song> playlist_songs) {
+                            for (Playlist_Song Playlist_Song : playlist_songs) {
+                                for (Playlist Playlist : playlists) {
+                                    if (Playlist_Song.getIdPlaylist().equals(Playlist.getId()) && Playlist_Song.getIdSong().equals(song.id)) {
+                                        playlists_bysong.add(Playlist);
+                                    }
+                                }
+                            }
+                            Add_Playlist_Dialog dialog = new Add_Playlist_Dialog((Activity) getContext(), playlists, playlists_bysong, song);
+                            dialog.show();
+                        }
+                    });
                 }
             }
         });
-        //Items
-        String[] items = {"Rajesh", "Mahesh", "Vijayakumar"};
-        AlertDialog.Builder b = new AlertDialog.Builder(activity);
-        //Thiết lập title
-        b.setTitle("Make your selection");
-        //Thiết lập item
-        b.setMultiChoiceItems(items, null,new DialogInterface.OnMultiChoiceClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                //Nếu người dùng chọn
-                if (isChecked) {
-                    //Thêm người dùng người dùng chọn vào ArrayList
-//                    al.add(datas[which]);
-                }
-            }
-        });
-        //Hiển thị dialog
-        b.show();
+//        //Items
+//        String[] items = {"Rajesh", "Mahesh", "Vijayakumar"};
+//        AlertDialog.Builder b = new AlertDialog.Builder(activity);
+//        //Thiết lập title
+//        b.setTitle("Make your selection");
+//        //Thiết lập item
+//        b.setMultiChoiceItems(items, null,new DialogInterface.OnMultiChoiceClickListener(){
+//            @Override
+//            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+//                //Nếu người dùng chọn
+//                if (isChecked) {
+//                    //Thêm người dùng người dùng chọn vào ArrayList
+////                    al.add(datas[which]);
+//                }
+//            }
+//        });
+//        //Hiển thị dialog
+//        b.show();
     }
 
     private void getData(List<Playlist> Playlists, String uid) {

@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:elevation="5dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,14 +22,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginBottom="15dp"
             android:text="1"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="5dp" />
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/imageViewtop"
             android:layout_width="70dp"
@@ -67,22 +69,22 @@
 
         <ImageButton
             android:id="@+id/imgBtnUpdate"
-            android:layout_width="30dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="110dp"
-            android:layout_toRightOf="@+id/imageViewtop"
+            android:layout_marginLeft="105dp"
             android:layout_marginTop="40dp"
+            android:layout_toRightOf="@+id/imageViewtop"
             android:scaleType="fitXY"
             android:src="@drawable/pen"
-            android:text="S"/>
+            android:text="S" />
 
         <ImageButton
             android:id="@+id/imgBtnDelete"
-            android:layout_width="30dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="230dp"
-            android:layout_toRightOf="@+id/imageViewtop"
+            android:layout_marginLeft="200dp"
             android:layout_marginTop="40dp"
+            android:layout_toRightOf="@+id/imageViewtop"
             android:scaleType="fitXY"
             android:src="@drawable/remove"
             android:text="X" />

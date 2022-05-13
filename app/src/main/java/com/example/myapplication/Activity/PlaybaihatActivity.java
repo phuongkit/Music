@@ -17,11 +17,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.RequiresApi;
@@ -32,6 +34,7 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.Adapter.CircularDianhacAdapter;
+import com.example.myapplication.Dialog.InputDialog;
 import com.example.myapplication.Module.Song;
 import com.example.myapplication.Module.Hinhdianhac;
 import com.example.myapplication.R;
@@ -482,6 +485,16 @@ public class PlaybaihatActivity extends AppCompatActivity {
             btnPause.setImageResource(R.drawable.avd_pause_to_play);
             circularDianhacAdapter.setUrl(songs.get(index).getImage());
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setBackgroud(String url) {
