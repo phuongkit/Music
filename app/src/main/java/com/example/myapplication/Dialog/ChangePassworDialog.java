@@ -27,12 +27,12 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class changePassworDialog extends Dialog {
+public class ChangePassworDialog extends Dialog {
     Activity context;
     EditText passOld, passNew, passRetype;
     Button btnUpdate, btnCancel;
     FirebaseAuth mAuth;
-    public changePassworDialog(Activity context){
+    public ChangePassworDialog(Activity context){
         super(context);
         this.context=context;
         setContentView(R.layout.dialog_changepassword);

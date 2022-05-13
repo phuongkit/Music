@@ -7,13 +7,11 @@
     android:padding="16dp"
     android:gravity="bottom|center"
     android:background="@drawable/radius_topleft_topright"
-    android:alpha="0.86"
-    >
+    android:alpha="0.86">
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="100dp"
-        >
+        app:cardCornerRadius="100dp">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgAvatar"
             android:layout_width="100dp"
@@ -45,6 +43,5 @@
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_marginTop="7dp"
-        android:background="@drawable/circle_view"
-        />
+        android:background="@drawable/circle_view" />
 </LinearLayout>

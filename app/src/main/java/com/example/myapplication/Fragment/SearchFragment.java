@@ -15,14 +15,14 @@ import com.example.myapplication.Activity.PlaybaihatActivity;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.SongDao;
 import com.example.myapplication.R;
-import com.example.myapplication.Adapter.CustomBaihatAdapter;
+import com.example.myapplication.Adapter.CustomSongAdapter;
 import com.example.myapplication.Module.Song;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchFragment extends Fragment {
-    CustomBaihatAdapter customBaihatAdapter;
+    CustomSongAdapter customSongAdapter;
     ListView lvSearch;
     View view;
     ArrayList<Song> songs = new ArrayList<>();
@@ -33,8 +33,8 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_search, container, false);
         lvSearch = view.findViewById(R.id.lvSearch);
-        customBaihatAdapter = new CustomBaihatAdapter(getActivity(), android.R.layout.simple_list_item_1, songs);
-        lvSearch.setAdapter(customBaihatAdapter);
+        customSongAdapter = new CustomSongAdapter(getActivity(), android.R.layout.simple_list_item_1, songs);
+        lvSearch.setAdapter(customSongAdapter);
         lvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -83,8 +83,8 @@ public class SearchFragment extends Fragment {
                             songs.add(song);
                         }
                     }
-                    customBaihatAdapter.clear();
-                    customBaihatAdapter.addAll(songs);
+                    customSongAdapter.clear();
+                    customSongAdapter.addAll(songs);
                 }
             }
         });
@@ -97,9 +97,9 @@ public class SearchFragment extends Fragment {
         songDao.getAll(new RetrieValEventListener<List<Song>>() {
             @Override
             public void OnDataRetrieved(List<Song> Songs) {
-                customBaihatAdapter.clear();
-                customBaihatAdapter.addAll(Songs);
-                customBaihatAdapter.getFilter().filter(filter);
+                customSongAdapter.clear();
+                customSongAdapter.addAll(Songs);
+                customSongAdapter.getFilter().filter(filter);
 
             }
         });

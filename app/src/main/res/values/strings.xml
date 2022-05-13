@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Music6</string>
+    <string name="todo">TODO</string>
     <!-- TODO: Remove or change this placeholder text -->
 
     <string name="strHeaderAdmin">Admin</string>
     <string name="strHeaderCustomer">Customer</string>
+
+    <string name="strMessageSuccessDownload">Successfully downloaded the song</string>
+    <string name="strMessageFailDownload">Failed to download the song</string>
 
     <string name="strBtnAdd">Add</string>
     <string name="strBtnSave">Save</string>
@@ -66,8 +70,16 @@
     <string name="strHeaderBanner">Banner</string>
     <string name="strHeaderAlbum">Album</string>
     <string name="strHeaderTheme">Theme</string>
-    <string name="strHeaderCategory">Category</string>
+    <string name="strHeaderTypes">Types</string>
     <string name="strHeaderPlaylist">Playlist</string>
+
+    <string name="strHeaderUserManager">User Manager</string>
+    <string name="strHeaderSongManager">Song Manager</string>
+    <string name="strHeaderBannerManager">Banner Manager</string>
+    <string name="strHeaderAlbumManager">Album Manager</string>
+    <string name="strHeaderThemeManager">Theme Manager</string>
+    <string name="strHeaderTypesManager">Types Manager</string>
+    <string name="strHeaderPlaylistManager">Playlist Manager</string>
 
     <string name="strHeaderId">id</string>
     <string name="strHeaderName">Name</string>
@@ -97,5 +109,10 @@
     <string name="strHintSinger">Enter singer</string>
     <string name="strHintLinkSong">Link song</string>
     <string name="strHintDateCreated">Date created</string>
+
+    <string name="strHeaderDownload">Download</string>
+    <string name="strHeaderAddToPlaylist">Add to Playlist</string>
+    <string name="strHeaderRemoveFromPlaylist">Remove from this playlist</string>
+    <string name="strHeaderAddToFavorites">Add to Favorites</string>
 
 </resources>

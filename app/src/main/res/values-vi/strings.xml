@@ -71,7 +71,7 @@
     <string name="strHeaderUser">Người dùng</string>
     <string name="strHeaderBanner">Ảnh bìa</string>
     <string name="strHeaderTheme">Chu đề</string>
-    <string name="strHeaderCategory">Thể loại</string>
+    <string name="strHeaderTypes">Thể loại</string>
     <string name="strHintName">Nhập vào tên</string>
     <string name="strHintImage">Nhập vào hình ảnh</string>
     <string name="strHeaderDateCreated">Ngày tạo</string>
@@ -85,6 +85,20 @@
     <string name="strBtnSave">Lưu</string>
     <string name="strBtnAdd">Thêm</string>
     <string name="strBtnCancel">Hủy bỏ</string>
+    <string name="strHeaderUserManager">Quản lý Người dùng</string>
+    <string name="strHeaderSongManager">Quản lý Bài hát</string>
+    <string name="strHeaderBannerManager">Quản lý Banner</string>
+    <string name="strHeaderAlbumManager">Quản lý Album</string>
+    <string name="strHeaderThemeManager">Quản lý Chủ đề</string>
+    <string name="strHeaderTypesManager">Quản lý Thể loại</string>
+    <string name="strHeaderPlaylistManager">Quản lý Danh sách phát</string>
+    <string name="todo">TODO</string>
+    <string name="strHeaderDownload">Tải xuống</string>
+    <string name="strHeaderAddToPlaylist">Thêm vào danh sách phát</string>
+    <string name="strHeaderAddToFavorites">Thêm vào yêu thích</string>
+    <string name="strMessageSuccessDownload">Đã tải xuống thành công bài hát</string>
+    <string name="strMessageFailDownload">Đã tải xuống thất bại bài hát</string>
+    <string name="strHeaderRemoveFromPlaylist">Xóa khỏi danh sách phát này</string>
 
 
 </resources>

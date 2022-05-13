@@ -37,7 +37,7 @@ public class UserDaoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_listbaihat_dao);
+        setContentView(R.layout.fragment_list_item_dao);
         activity = this;
         mapping();
         GetDetail();

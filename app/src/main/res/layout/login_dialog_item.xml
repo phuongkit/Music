@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -16,7 +15,8 @@
             android:id="@+id/imgBtnBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/ic_back" />
+            android:background="@drawable/ic_back"
+            android:contentDescription="@string/todo" />
 
         <Space
             android:layout_width="0dp"
@@ -28,7 +28,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="end"
-            android:background="@drawable/ic_info" />
+            android:background="@drawable/ic_info"
+            android:contentDescription="@string/todo" />
     </LinearLayout>
 
     <LinearLayout
@@ -43,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
-            android:text="Đăng ký nghe nhạc"
+            android:text="@string/strHeaderSignIn"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -55,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center_horizontal"
-            android:text="Tạo hồ sơ, theo dõi các tài khoản khác, nghe nhạc của chính bạn,v.v."
+            android:text="@string/strSignInDetail"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="14sp" />
@@ -68,11 +69,12 @@
 
         <ImageButton
             android:id="@+id/imgBtnLoadMore"
-            android:layout_width="wrap_content"
+            android:layout_width="18dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:background="@drawable/ic_loadmore" />
+            android:background="@drawable/ic_loadmore"
+            android:contentDescription="@string/todo" />
 
     </LinearLayout>
     <Space
@@ -97,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="Button" />
+            android:text="@string/strHeaderSignUp" />
 
     </LinearLayout>
 

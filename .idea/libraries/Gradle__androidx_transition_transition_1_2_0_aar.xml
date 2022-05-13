@@ -2,15 +2,15 @@
   <library name="Gradle: androidx.transition:transition:1.2.0@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0d52ae22c010d6381d66a087124df7d4/transition-1.2.0/annotations.zip!/" />
-      <root url="jar://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-2/files-2.1/0d52ae22c010d6381d66a087124df7d4/transition-1.2.0/annotations.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-3/9a2a0ecf086e3f5f3ac87aa34f64ea6b/transformed/transition-1.2.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0d52ae22c010d6381d66a087124df7d4/transition-1.2.0/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0d52ae22c010d6381d66a087124df7d4/transition-1.2.0/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0d52ae22c010d6381d66a087124df7d4/transition-1.2.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-2/files-2.1/0d52ae22c010d6381d66a087124df7d4/transition-1.2.0/AndroidManifest.xml" />
-      <root url="file://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-2/files-2.1/0d52ae22c010d6381d66a087124df7d4/transition-1.2.0/res" />
-      <root url="jar://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-2/files-2.1/0d52ae22c010d6381d66a087124df7d4/transition-1.2.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-3/9a2a0ecf086e3f5f3ac87aa34f64ea6b/transformed/transition-1.2.0/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-3/9a2a0ecf086e3f5f3ac87aa34f64ea6b/transformed/transition-1.2.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../AndroidStudioProjects/gradle-6.9.2/caches/transforms-3/9a2a0ecf086e3f5f3ac87aa34f64ea6b/transformed/transition-1.2.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

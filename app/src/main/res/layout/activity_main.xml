@@ -2,33 +2,31 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layout"
-    tools:openDrawer="start"
-    tools:context=".Activity.MainActivity">
+    tools:context=".Activity.MainActivity"
+    tools:openDrawer="start">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@drawable/gradien_home"
-        >
+        android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            >
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-            </androidx.appcompat.widget.Toolbar>
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -45,8 +43,8 @@
             android:id="@+id/myTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#333"
             android:alpha="0.8"
+            android:background="#333"
             app:tabIconTint="#9E9E9E"
             app:tabIndicatorColor="#f21"
             app:tabIndicatorHeight="2dp"
@@ -62,10 +60,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:itemTextColor="@color/white"
         android:alpha="0.86"
         android:background="@drawable/radius_topleft_topright"
         app:headerLayout="@layout/layout_header_nav"
-        app:menu="@menu/nav_menu">
-    </com.google.android.material.navigation.NavigationView>
+        app:itemTextColor="@color/white"
+        app:menu="@menu/nav_menu"/>
 </androidx.drawerlayout.widget.DrawerLayout>

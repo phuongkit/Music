@@ -6,6 +6,5 @@
         android:id="@+id/menuInsert"
         android:title="Insert"
         android:icon="@drawable/ic_insert"
-        app:showAsAction="always"
-        />
+        app:showAsAction="always" />
 </menu>

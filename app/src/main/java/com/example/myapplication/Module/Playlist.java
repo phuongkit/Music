@@ -85,10 +85,10 @@ public class Playlist extends MusicObject implements Serializable {
     @Override
     public String toString() {
         return "Playlist{" +
-                "id='" + id + '\'' +
-//                ", idPlaylist='" + idPlaylist + '\'' +
+                "key='" + key + '\'' +
+                ", id='" + id + '\'' +
                 ", isAdmin=" + isAdmin +
-                ", dateCreated=" + dateCreated +
+                ", dateCreated='" + dateCreated + '\'' +
                 ", name='" + name + '\'' +
                 ", uid='" + uid + '\'' +
                 ", image='" + image + '\'' +

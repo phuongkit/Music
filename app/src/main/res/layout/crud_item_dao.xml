@@ -38,7 +38,7 @@
                 android:gravity="center_horizontal"
                 android:text="@string/strHeaderSignIn"
                 android:textAlignment="center"
-                android:textSize="25dp"
+                android:textSize="25sp"
                 tools:ignore="MissingConstraints" />
 
             <TableLayout
@@ -73,7 +73,8 @@
                     android:layout_margin="8dp"
                     android:paddingTop="5dp"
                     android:text="@string/strBtnAdd"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    style="?android:attr/buttonBarButtonStyle" />
 
                 <Button
                     android:id="@+id/btnCancel"
@@ -81,7 +82,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:text="@string/strBtnCancel"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    style="?android:attr/buttonBarButtonStyle" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

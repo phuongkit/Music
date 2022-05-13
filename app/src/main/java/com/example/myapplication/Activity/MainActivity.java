@@ -32,7 +32,7 @@ import com.example.myapplication.Activity.admin.TypesDaoActivity;
 import com.example.myapplication.Activity.admin.UserDaoActivity;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.UserDao;
-import com.example.myapplication.Dialog.changePassworDialog;
+import com.example.myapplication.Dialog.ChangePassworDialog;
 import com.example.myapplication.Dialog.LoginDialog;
 import com.example.myapplication.Fragment.SearchFragment;
 import com.example.myapplication.Module.User;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     Activity context;
     LoginDialog dialog;
-    changePassworDialog changePassworDialog;
+    ChangePassworDialog changePassworDialog;
     private ArrayList<String> titles = new ArrayList<>();
 
     @Override
@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
                 return true;
             case R.id.nav_changepassword:
-                changePassworDialog = new changePassworDialog(context);
+                changePassworDialog = new ChangePassworDialog(context);
                 changePassworDialog.show();
                 return true;
             case R.id.nav_signout:
@@ -258,11 +258,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
             case R.id.nav_admin:
                 return true;
-            case R.id.nav_account_manager:
+            case R.id.nav_user_manager:
                 intent = new Intent(getApplication(), UserDaoActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.nav_music_manager:
+            case R.id.nav_song_manager:
                 intent = new Intent(this, SongDaoActivity.class);
                 startActivity(intent);
                 return true;
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(this, ThemeDaoActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.nav_category_manager:
+            case R.id.nav_types_manager:
                 intent = new Intent(this, TypesDaoActivity.class);
                 startActivity(intent);
                 return true;

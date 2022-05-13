@@ -20,13 +20,13 @@ import com.example.myapplication.Module.Playlist;
 import com.example.myapplication.Module.Playlist_Song;
 import com.example.myapplication.Module.Song;
 import com.example.myapplication.R;
-import com.example.myapplication.Adapter.CustomBaihatAdapter;
+import com.example.myapplication.Adapter.CustomSongAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MusicFragment extends Fragment {
-    CustomBaihatAdapter customBaihatAdapter;
+    CustomSongAdapter customSongAdapter;
     View view;
     ListView lvPlayList;
     TextView tvTitlePlayList, tvXemThem;
@@ -85,8 +85,8 @@ public class MusicFragment extends Fragment {
                 Log.d("DAO",Songs.toString());
                 songs = new ArrayList<>();
                 songs = (ArrayList<Song>) Songs;
-                customBaihatAdapter = new CustomBaihatAdapter(getActivity(),android.R.layout.simple_list_item_1, songs);
-                lvPlayList.setAdapter(customBaihatAdapter);
+                customSongAdapter = new CustomSongAdapter(getActivity(),android.R.layout.simple_list_item_1, songs);
+                lvPlayList.setAdapter(customSongAdapter);
             }
         });
     }
@@ -104,13 +104,13 @@ public class MusicFragment extends Fragment {
                     }
                 }
                 if (musics.size() > 0) {
-                    getListMusicByPlaylistt(musics);
+                    getListMusicByPlaylistt(playlist, musics);
                 }
             }
         });
     }
 
-    private void getListMusicByPlaylistt(final ArrayList<String> musics) {
+    private void getListMusicByPlaylistt(Playlist playlist, final ArrayList<String> musics) {
         SongDao songDao = new SongDao();
         songDao.getAll(new RetrieValEventListener<List<Song>>() {
             @Override
@@ -127,8 +127,8 @@ public class MusicFragment extends Fragment {
                     }
                 }
                 Log.d("DAO","get Playlist " + playlist.getName() + ": "  + songs.toString());
-                customBaihatAdapter = new CustomBaihatAdapter(getActivity(),android.R.layout.simple_list_item_1, songs);
-                lvPlayList.setAdapter(customBaihatAdapter);
+                customSongAdapter = new CustomSongAdapter(getActivity(),android.R.layout.simple_list_item_1, songs, playlist);
+                lvPlayList.setAdapter(customSongAdapter);
             }
         });
     }

@@ -117,7 +117,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.themsua_baihat_dao);
+        setContentView(R.layout.crud_item_dao);
         activity = this;
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("bundle");
@@ -338,8 +338,8 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 }
                 break;
             case MODULE_CATEGORY:
-                actionBar.setTitle(R.string.strHeaderCategory);
-                txtTitle.setText(R.string.strHeaderCategory);
+                actionBar.setTitle(R.string.strHeaderTypes);
+                txtTitle.setText(R.string.strHeaderTypes);
                 textCategory.add(getString(R.string.strHeaderId));
                 textCategory.add(getString(R.string.strHeaderName));
                 textCategory.add(getString(R.string.strHeaderImage));

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
@@ -31,29 +30,29 @@
     </item>
     <item
         android:id="@+id/nav_admin"
-        android:title="Admin">
+        android:title="@string/strHeaderAdmin">
         <menu>
             <item
-                android:id="@+id/nav_account_manager"
-                android:title="Quản lý tài khoản" />
+                android:id="@+id/nav_user_manager"
+                android:title="@string/strHeaderUserManager" />
             <item
-                android:id="@+id/nav_music_manager"
-                android:title="Quản lý bài hát" />
+                android:id="@+id/nav_song_manager"
+                android:title="@string/strHeaderSongManager" />
             <item
                 android:id="@+id/nav_banner_manager"
-                android:title="Quản lý banner" />
-            <item
-                android:id="@+id/nav_theme_manager"
-                android:title="Quản lý chủ đề" />
-            <item
-                android:id="@+id/nav_category_manager"
-                android:title="Quản lý thể loại" />
+                android:title="@string/strHeaderBannerManager" />
             <item
                 android:id="@+id/nav_album_manager"
-                android:title="Quản lý album" />
+                android:title="@string/strHeaderAlbumManager" />
+            <item
+                android:id="@+id/nav_theme_manager"
+                android:title="@string/strHeaderThemeManager" />
+            <item
+                android:id="@+id/nav_types_manager"
+                android:title="@string/strHeaderTypesManager" />
             <item
                 android:id="@+id/nav_playlist_manager"
-                android:title="Quản lý danh sách nhạc" />
+                android:title="@string/strHeaderPlaylistManager" />
         </menu>
     </item>
 </menu>
