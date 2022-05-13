@@ -150,54 +150,53 @@ public class CustomSongAdapter extends ArrayAdapter<Song> {
     }
 
     private void addToPlaylist(Song song) {
-//        getString();
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        playlists = new ArrayList<>();
-//        ArrayList<Playlist> playlists_bysong = new ArrayList<>();
-//
-//        String uid = user.getUid();
-//        PlaylistDao playlistDao = new PlaylistDao();
-//        playlistDao.getAll(new RetrieValEventListener<List<Playlist>>() {
-//            @Override
-//            public void OnDataRetrieved(List<Playlist> Playlists) {
-//                getData(Playlists, uid);
-//            }
-//        });
-//        Log.d("Test", playlists.toString());
-//        Playlist_SongDao playlist_songDao = new Playlist_SongDao();
-//        playlist_songDao.getAll(new RetrieValEventListener<List<Playlist_Song>>() {
-//            @Override
-//            public void OnDataRetrieved(List<Playlist_Song> playlist_songs) {
-//                ArrayList<String> playlist_ids = new ArrayList<>();
-//                for (Playlist_Song playlist_song: playlist_songs) {
-//                    if (playlist_song.getIdSong().equals(song.id)) {
-//                        for (Playlist Playlist : playlists) {
-//                            if (playlist_song.getIdPlaylist().equals(Playlist.getId())) {
-//                                playlist_ids.add(Playlist.getId());
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        });
-//        //Items
-//        String[] items = {"Rajesh", "Mahesh", "Vijayakumar"};
-//        AlertDialog.Builder b = new AlertDialog.Builder(activity);
-//        //Thiết lập title
-//        b.setTitle("Make your selection");
-//        //Thiết lập item
-//        b.setMultiChoiceItems(items, null,new DialogInterface.OnMultiChoiceClickListener(){
-//            @Override
-//            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-//                //Nếu người dùng chọn
-//                if (isChecked) {
-//                    //Thêm người dùng người dùng chọn vào ArrayList
-////                    al.add(datas[which]);
-//                }
-//            }
-//        });
-//        //Hiển thị dialog
-//        b.show();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        playlists = new ArrayList<>();
+        ArrayList<Playlist> playlists_bysong = new ArrayList<>();
+
+        String uid = user.getUid();
+        PlaylistDao playlistDao = new PlaylistDao();
+        playlistDao.getAll(new RetrieValEventListener<List<Playlist>>() {
+            @Override
+            public void OnDataRetrieved(List<Playlist> Playlists) {
+                getData(Playlists, uid);
+            }
+        });
+        Log.d("Test", playlists.toString());
+        Playlist_SongDao playlist_songDao = new Playlist_SongDao();
+        playlist_songDao.getAll(new RetrieValEventListener<List<Playlist_Song>>() {
+            @Override
+            public void OnDataRetrieved(List<Playlist_Song> playlist_songs) {
+                ArrayList<String> playlist_ids = new ArrayList<>();
+                for (Playlist_Song playlist_song: playlist_songs) {
+                    if (playlist_song.getIdSong().equals(song.id)) {
+                        for (Playlist Playlist : playlists) {
+                            if (playlist_song.getIdPlaylist().equals(Playlist.getId())) {
+                                playlist_ids.add(Playlist.getId());
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        //Items
+        String[] items = {"Rajesh", "Mahesh", "Vijayakumar"};
+        AlertDialog.Builder b = new AlertDialog.Builder(activity);
+        //Thiết lập title
+        b.setTitle("Make your selection");
+        //Thiết lập item
+        b.setMultiChoiceItems(items, null,new DialogInterface.OnMultiChoiceClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                //Nếu người dùng chọn
+                if (isChecked) {
+                    //Thêm người dùng người dùng chọn vào ArrayList
+//                    al.add(datas[which]);
+                }
+            }
+        });
+        //Hiển thị dialog
+        b.show();
     }
 
     private void getData(List<Playlist> Playlists, String uid) {
@@ -242,21 +241,4 @@ public class CustomSongAdapter extends ArrayAdapter<Song> {
             }
         });
     }
-
-//    public Boolean getString() {
-//        isPlaylist = false;
-//        PlaylistDao playlistDao = new PlaylistDao();
-//        vlistener vlistener = new vlistener();
-//        playlists = new ArrayList<>();
-//        playlistDao.getAll(vlistener);
-//        vlistener.OnDataRetrieved(playlists);
-//        return isPlaylist;
-//    }
-//
-//    class vlistener extends RetrieValEventListener<List<Playlist>>{
-//        @Override
-//        public void OnDataRetrieved(List<Playlist> playlists) {
-//            isPlaylist = true;
-//        }
-//    }
 }

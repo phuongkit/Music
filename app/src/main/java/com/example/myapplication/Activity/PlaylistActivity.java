@@ -45,6 +45,7 @@ public class PlaylistActivity extends AppCompatActivity {
 
     private void addEvents() {
         btnAutoPlay.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
