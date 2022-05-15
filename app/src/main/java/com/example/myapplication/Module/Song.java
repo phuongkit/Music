@@ -8,9 +8,11 @@ public class Song extends MusicObject implements Serializable {
 
     private String name;
     private String image;
+    private String singer;
+    private String idTheme;
+    private String idTypes;
     private String idAlbum;
     private String idPlaylist;
-    private String singer;
     private String linkSong;
 
 
@@ -18,43 +20,44 @@ public class Song extends MusicObject implements Serializable {
 
     }
 
-    public Song(String id, String name, String image, String singer, String linkSong) {
+    public Song(String id, String name, String image, String singer, String idTheme, String idTypes, String idAlbum, String idPlaylist, String linkSong) {
         super(id);
         this.name = name;
         this.image = image;
         this.singer = singer;
+        this.idTheme = idTheme;
+        this.idTypes = idTypes;
+        this.idAlbum = idAlbum;
+        this.idPlaylist = idPlaylist;
         this.linkSong = linkSong;
     }
 
-    public Song(String id, String name, String image, String idAlbum, String idPlaylist, String singer, String linkSong) {
+    public void update(String id, String name, String image, String singer, String idTheme, String idTypes, String idAlbum, String idPlaylist, String linkSong) {
         super.setId(id);
         this.name = name;
         this.image = image;
+        this.singer = singer;
+        this.idTheme = idTheme;
+        this.idTypes = idTypes;
         this.idAlbum = idAlbum;
         this.idPlaylist = idPlaylist;
-        this.singer = singer;
         this.linkSong = linkSong;
     }
 
-    public void update(String id, String name, String image, String idAlbum, String idPlaylist, String singer, String linkSong) {
-        super.setId(id);
-        this.name = name;
-        this.image = image;
-        this.idAlbum = idAlbum;
-        this.idPlaylist = idPlaylist;
-        this.singer = singer;
-        this.linkSong = linkSong;
+    public String getIdTheme() {
+        return idTheme;
     }
 
-    public Song(String name, String singer, String image, String idAlbum, String idPlaylist, String linkSong) {
+    public void setIdTheme(String idTheme) {
+        this.idTheme = idTheme;
+    }
 
-        this.name = name;
-        this.singer = singer;
-        this.image = image;
-        this.idAlbum = idAlbum;
-        this.idPlaylist = idPlaylist;
+    public String getIdTypes() {
+        return idTypes;
+    }
 
-        this.linkSong = linkSong;
+    public void setIdTypes(String idTypes) {
+        this.idTypes = idTypes;
     }
 
     public String getName() {

@@ -7,23 +7,20 @@ import java.io.Serializable;
 public class Types extends MusicObject implements Serializable {
     private String name;
     private String image;
-    private String idTheme;
 
     public Types() {
     }
 
-    public Types(String id, String name, String image, String idTheme) {
+    public Types(String id, String name, String image) {
         super(id);
         this.name = name;
         this.image = image;
-        this.idTheme = idTheme;
     }
 
-    public void update(String id, String name, String image, String idTheme) {
+    public void update(String id, String name, String image) {
         super.setId(id);
         this.name = name;
         this.image = image;
-        this.idTheme = idTheme;
     }
 
     public String getName() {
@@ -42,14 +39,6 @@ public class Types extends MusicObject implements Serializable {
         this.image = image;
     }
 
-    public String getIdTheme() {
-        return idTheme;
-    }
-
-    public void setIdTheme(String idTheme) {
-        this.idTheme = idTheme;
-    }
-
     @Override
     public String toString() {
         return "Types{" +
@@ -57,7 +46,6 @@ public class Types extends MusicObject implements Serializable {
                 ", id='" + id + '\'' +
                 ", image='" + image + '\'' +
                 ", name='" + name + '\'' +
-                ", idTheme='" + idTheme + '\'' +
                 '}';
     }
 }

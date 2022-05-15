@@ -77,8 +77,8 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
 
     Types types;
     ArrayList<Types> typess;
-    ArrayList<String> textCategory = new ArrayList<>();
-    ArrayList<String> hintCategory = new ArrayList<>();
+    ArrayList<String> textTypes = new ArrayList<>();
+    ArrayList<String> hintTypes = new ArrayList<>();
 
     Playlist playlist;
     ArrayList<Playlist> playlists;
@@ -106,7 +106,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
     private static final int MODULE_SONG = 1;
     private static final int MODULE_BANNER = 2;
     private static final int MODULE_THEME = 3;
-    private static final int MODULE_CATEGORY = 4;
+    private static final int MODULE_TYPES = 4;
     private static final int MODULE_ALBUM = 5;
     private static final int MODULE_PLAYLIST = 6;
 
@@ -337,36 +337,28 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     tableLayout.addView(tableRow, i, paramTableRows);
                 }
                 break;
-            case MODULE_CATEGORY:
+            case MODULE_TYPES:
                 actionBar.setTitle(R.string.strHeaderTypes);
                 txtTitle.setText(R.string.strHeaderTypes);
-                textCategory.add(getString(R.string.strHeaderId));
-                textCategory.add(getString(R.string.strHeaderName));
-                textCategory.add(getString(R.string.strHeaderImage));
-                textCategory.add(getString(R.string.strHeaderTheme));
-                hintCategory.add(getString(R.string.strHintId));
-                hintCategory.add(getString(R.string.strHintName));
-                hintCategory.add(getString(R.string.strHintImage));
-                for (int i = 0; i < 4; i++) {
+                textTypes.add(getString(R.string.strHeaderId));
+                textTypes.add(getString(R.string.strHeaderName));
+                textTypes.add(getString(R.string.strHeaderImage));
+                hintTypes.add(getString(R.string.strHintId));
+                hintTypes.add(getString(R.string.strHintName));
+                hintTypes.add(getString(R.string.strHintImage));
+                for (int i = 0; i < 3; i++) {
                     TableRow tableRow = new TableRow(this);
 
                     TextView textView = new TextView(this);
-                    textView.setText(textCategory.get(i) + ":");
+                    textView.setText(textTypes.get(i) + ":");
                     tableRow.addView(textView, 0, paramElements);
                     textViews.add(textView);
 
-                    if (i == 3) {
-                        Spinner spinner = new Spinner(this);
-                        tableRow.addView(spinner, 1, paramElements);
-                        spinners.add(spinner);
-                        tableRow.setPadding(0, paddingPixel, 0, paddingPixel);
-                    } else {
-                        EditText editText = new EditText(this);
-                        editText.setHint(hintCategory.get(i < 3 ? i : i - 1));
-                        editText.setEms(10);
-                        tableRow.addView(editText, 1, paramElements);
-                        editTexts.add(editText);
-                    }
+                    EditText editText = new EditText(this);
+                    editText.setHint(hintTypes.get(i));
+                    editText.setEms(10);
+                    tableRow.addView(editText, 1, paramElements);
+                    editTexts.add(editText);
 
                     tableLayout.addView(tableRow, i, paramTableRows);
                 }
@@ -399,7 +391,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                         tableRow.setPadding(0, paddingPixel, 0, paddingPixel);
                     } else {
                         EditText editText = new EditText(this);
-                        editText.setHint(hintCategory.get(i < 3 ? i : i - 2));
+                        editText.setHint(hintTypes.get(i < 3 ? i : i - 2));
                         editText.setEms(10);
                         tableRow.addView(editText, 1, paramElements);
                         editTexts.add(editText);
@@ -557,43 +549,6 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     }
                 });
                 break;
-            case MODULE_CATEGORY:
-                ThemeDao chudeDao = new ThemeDao();
-                chudeDao.getAll(new RetrieValEventListener<List<Theme>>() {
-                    @Override
-                    public void OnDataRetrieved(List<Theme> chudess) {
-                        themes = new ArrayList<>();
-                        themes = (ArrayList<Theme>) chudess;
-                        int position = 0;
-                        for (int i = 0; i < themes.size(); i++) {
-                            String id = themes.get(i).getId();
-                            String name = themes.get(i).getName();
-                            if (!isAdd && id.equals(types.getIdTheme())) {
-                                position = i;
-                            }
-                            item = new Item(id, name);
-                            items.add(item);
-                        }
-                        spinnerDaoAdapter = new SpinnerDaoAdapter(ThemSuaDaoActivity.this, android.R.layout.simple_spinner_item, items);
-                        spinnerDaoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        spinners.get(0).setAdapter(spinnerDaoAdapter);
-                        spinners.get(0).setSelection(position);
-                        spinners.get(0).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                            @SuppressLint("ResourceAsColor")
-                            @Override
-                            public void onItemSelected(AdapterView<?> arg0, View view, int arg2, long arg3) {
-                                spinnerDaoAdapter.setSelectedItem(arg2);
-                            }
-
-                            @Override
-                            public void onNothingSelected(AdapterView<?> arg0) {
-                                spinnerDaoAdapter.setSelectedItem(-1);
-                                // TODO Auto-generated method stub
-                            }
-                        });
-                    }
-                });
-                break;
         }
     }
 
@@ -669,7 +624,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     }
                 });
                 break;
-            case MODULE_CATEGORY:
+            case MODULE_TYPES:
                 TypesDao typesDao = new TypesDao();
                 typesDao.save(types, key, new TaskListener() {
                     @Override
@@ -746,7 +701,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     }
                 });
                 break;
-            case MODULE_CATEGORY:
+            case MODULE_TYPES:
                 TypesDao typesDao = new TypesDao();
                 typesDao.save(types, typesDao.getNewKey(), new TaskListener() {
                     @Override
@@ -792,13 +747,15 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                         String id = editTexts.get(0).getText().toString();
                         String name = editTexts.get(1).getText().toString();
                         String image = editTexts.get(2).getText().toString();
+                        String idTheme = "";
+                        String idTypes = "";
                         item = (Item) spinners.get(0).getSelectedItem();
                         String idAlbum = item.getId();
                         item1 = (Item) spinners.get(1).getSelectedItem();
                         String idPlaylist = item1.getId();
                         String singer = editTexts.get(3).getText().toString();
                         String linkSong = editTexts.get(4).getText().toString();
-                        song = new Song(id, name, image, idAlbum, idPlaylist, singer, linkSong);
+                        song = new Song(id, name, image, singer, idTheme, idTypes, idAlbum, idPlaylist, linkSong);
 
                         postDao();
                         Intent intent1 = new Intent(activity, SongDaoActivity.class);
@@ -861,16 +818,14 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     }
                 });
                 break;
-            case MODULE_CATEGORY:
+            case MODULE_TYPES:
                 btnUpdate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         String id = editTexts.get(0).getText().toString();
                         String name = editTexts.get(1).getText().toString();
                         String image = editTexts.get(2).getText().toString();
-                        item = (Item) spinners.get(0).getSelectedItem();
-                        String idChude = item.getId();
-                        types = new Types(id, name, image, idChude);
+                        types = new Types(id, name, image);
 
                         postDao();
                         Intent intent1 = new Intent(activity, TypesDaoActivity.class);
@@ -949,13 +904,15 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                         String id = editTexts.get(0).getText().toString();
                         String name = editTexts.get(1).getText().toString();
                         String image = editTexts.get(2).getText().toString();
+                        String idTheme = "";
+                        String idTypes = "";
                         item = (Item) spinners.get(0).getSelectedItem();
                         String idAlbum = item.getId();
                         item1 = (Item) spinners.get(1).getSelectedItem();
                         String idPlaylist = item1.getId();
                         String singer = editTexts.get(3).getText().toString();
                         String linkSong = editTexts.get(4).getText().toString();
-                        song.update(id, name, image, idAlbum, idPlaylist, singer, linkSong);
+                        song.update(id, name, image, singer, idTheme, idTypes, idAlbum, idPlaylist, linkSong);
 
                         repairDao();
                         Intent intent1 = new Intent(activity, SongDaoActivity.class);
@@ -1059,7 +1016,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     }
                 });
                 break;
-            case MODULE_CATEGORY:
+            case MODULE_TYPES:
                 TypesDao typesDao = new TypesDao();
                 typesDao.get(key, new RetrieValEventListener<Types>() {
                     @Override
@@ -1070,7 +1027,6 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                         editTexts.get(0).setText(types.getId());
                         editTexts.get(1).setText(types.getName());
                         editTexts.get(2).setText(types.getImage());
-                        spinners.get(0).setAdapter(spinnerDaoAdapter);
 
                         initData();
                     }
@@ -1082,8 +1038,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                         String name = editTexts.get(1).getText().toString();
                         String image = editTexts.get(2).getText().toString();
                         item = (Item) spinners.get(0).getSelectedItem();
-                        String idChude = item.getId();
-                        types.update(id, name, image, idChude);
+                        types.update(id, name, image);
 
                         repairDao();
                         Intent intent1 = new Intent(activity, TypesDaoActivity.class);
@@ -1123,7 +1078,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
         if (module.equals(Theme.class.getName()))
             return MODULE_THEME;
         if (module.equals(Types.class.getName()))
-            return MODULE_CATEGORY;
+            return MODULE_TYPES;
         if (module.equals(Playlist.class.getName()))
             return MODULE_PLAYLIST;
         return -1;

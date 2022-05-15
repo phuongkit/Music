@@ -24,8 +24,6 @@ public class TypesDao extends FirebaseDao<Types> {
         types.setImage(dataSnapshot.child("image").getValue().toString());
         //       ↓                           ↓
         types.setName(dataSnapshot.child("name").getValue().toString());
-        //       ↓                           ↓
-        types.setIdTheme(dataSnapshot.child("idTheme").getValue().toString());
 
         // Now we have parsed all of the attributes of the types object. We will feed it to the callback
         retrievalEventListener.OnDataRetrieved(types);

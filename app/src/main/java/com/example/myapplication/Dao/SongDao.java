@@ -25,11 +25,15 @@ public class SongDao extends FirebaseDao<Song>{
         //       ↓                           ↓
         song.setImage(dataSnapshot.child("image").getValue().toString());
         //       ↓                           ↓
+        song.setSinger(dataSnapshot.child("singer").getValue().toString());
+        //       ↓                           ↓
+        song.setIdTheme(dataSnapshot.child("idTheme").getValue().toString());
+        //       ↓                           ↓
+        song.setIdTypes(dataSnapshot.child("idTypes").getValue().toString());
+        //       ↓                           ↓
         song.setIdAlbum(dataSnapshot.child("idAlbum").getValue().toString());
         //       ↓                           ↓
         song.setIdPlaylist(dataSnapshot.child("idPlaylist").getValue().toString());
-        //       ↓                           ↓
-        song.setSinger(dataSnapshot.child("singer").getValue().toString());
         //       ↓                           ↓
         song.setLinkSong(dataSnapshot.child("linkSong").getValue().toString());
 

@@ -97,7 +97,6 @@ public class CustomThemeDaoAdapter extends ArrayAdapter<Theme> {
                 baiHatDao.delete(theme.key, new TaskListener() {
                     @Override
                     public void OnSuccess() {
-                        handle();
                     }
 
                     @Override
@@ -115,35 +114,6 @@ public class CustomThemeDaoAdapter extends ArrayAdapter<Theme> {
         viewHolder.txtHeaderItemDao.setText(theme.getName());
 
         return convertView;
-    }
-
-    private void handle() {
-        TypesDao typesDao = new TypesDao();
-        typesDao.getAll(new RetrieValEventListener<List<Types>>() {
-            @Override
-            public void OnDataRetrieved(List<Types> Typess) {
-                typess = new ArrayList<>();
-                typess = (ArrayList<Types>) Typess;
-                int size = typess.size();
-                for (int i = 0; i < size; i++) {
-                    if (typess.get(i).getIdTheme().equals(baihatId)) {
-                        Log.d("TTT", typess.get(i).key);
-                        TypesDao bannerDao = new TypesDao();
-                        bannerDao.delete(typess.get(i).key, new TaskListener() {
-                            @Override
-                            public void OnSuccess() {
-
-                            }
-
-                            @Override
-                            public void OnFail() {
-
-                            }
-                        });
-                    }
-                }
-            }
-        });
     }
 
 }
