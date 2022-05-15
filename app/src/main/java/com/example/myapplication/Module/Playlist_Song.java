@@ -38,7 +38,7 @@ public class Playlist_Song extends MusicObject implements Serializable {
     @Override
     public String toString() {
         return "Playlist_Song{" +
-                "id='" + id + '\'' +
+                "key='" + key + '\'' +
                 ", id='" + id + '\'' +
                 ", idSong='" + idSong + '\'' +
                 ", idPlaylist='" + idPlaylist + '\'' +

@@ -31,11 +31,6 @@ public class PlaylistAdapter  extends ArrayAdapter<Playlist> {
     TextView txtPlaylist, txtAuthor;
     ImageButton imgBtnRename, imgBtnDelete;
 
-    View view;
-    int position;
-
-    Playlist playlist;
-
     Activity activity;
     int resource;
 
@@ -48,14 +43,14 @@ public class PlaylistAdapter  extends ArrayAdapter<Playlist> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        this.position = position;
-        view = activity.getLayoutInflater().inflate(this.resource, null);
-        addControls();
-        addEvents();
+        View view = activity.getLayoutInflater().inflate(this.resource, null);
+        Playlist playlist = getItem(position);
+        addControls(view, playlist);
+        addEvents(view, playlist);
         return view;
     }
 
-    private void addEvents() {
+    private void addEvents(View view, Playlist playlist) {
         imgBtnRename.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,14 +94,13 @@ public class PlaylistAdapter  extends ArrayAdapter<Playlist> {
         });
     }
 
-    private void addControls() {
+    private void addControls(View view, Playlist playlist) {
         imgPlaylist = view.findViewById(R.id.imgPlaylist);
         txtPlaylist = view.findViewById(R.id.txtPlaylist);
         txtAuthor = view.findViewById(R.id.txtAuthor);
         imgBtnRename = view.findViewById(R.id.imgBtnRename);
         imgBtnDelete = view.findViewById(R.id.imgBtnDelete);
 
-        playlist = getItem(position);
         Glide.with(getContext()).load(playlist.getImage()).error(R.drawable.ic_playlist).into(imgPlaylist);
         txtPlaylist.setText(playlist.getName());
         FirebaseAuth auth = FirebaseAuth.getInstance();

@@ -692,96 +692,71 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
         switch (mCurrentModule) {
             case MODULE_SONG:
                 SongDao songDao = new SongDao();
-                songDao.getNewKey(new RetrieNewKeyEventListener() {
+                songDao.save(song, songDao.getNewKey(), new TaskListener() {
                     @Override
-                    public void OnNewKeyRetrieved(String newKey) {
-                        songDao.save(song, newKey, new TaskListener() {
-                            @Override
-                            public void OnSuccess() {
-                                Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
-                            }
+                    public void OnSuccess() {
+                        Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                    }
 
-                            @Override
-                            public void OnFail() {
-                                Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    @Override
+                    public void OnFail() {
+                        Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
             case MODULE_BANNER:
                 BannerDao bannerDao = new BannerDao();
-                bannerDao.getNewKey(new RetrieNewKeyEventListener() {
+                bannerDao.save(banner, bannerDao.getNewKey(), new TaskListener() {
                     @Override
-                    public void OnNewKeyRetrieved(String newKey) {
-                        bannerDao.save(banner, newKey, new TaskListener() {
-                            @Override
-                            public void OnSuccess() {
-                                Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
-                            }
+                    public void OnSuccess() {
+                        Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                    }
 
-                            @Override
-                            public void OnFail() {
-                                Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    @Override
+                    public void OnFail() {
+                        Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
             case MODULE_ALBUM:
                 AlbumDao albumDao = new AlbumDao();
-                albumDao.getNewKey(new RetrieNewKeyEventListener() {
+                albumDao.save(album, albumDao.getNewKey(), new TaskListener() {
                     @Override
-                    public void OnNewKeyRetrieved(String newKey) {
-                        albumDao.save(album, newKey, new TaskListener() {
-                            @Override
-                            public void OnSuccess() {
-                                Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
-                            }
+                    public void OnSuccess() {
+                        Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                    }
 
-                            @Override
-                            public void OnFail() {
-                                Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    @Override
+                    public void OnFail() {
+                        Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
             case MODULE_THEME:
                 ThemeDao themeDao = new ThemeDao();
-                themeDao.getNewKey(new RetrieNewKeyEventListener() {
+                themeDao.save(theme, themeDao.getNewKey(), new TaskListener() {
                     @Override
-                    public void OnNewKeyRetrieved(String newKey) {
-                        themeDao.save(theme, newKey, new TaskListener() {
-                            @Override
-                            public void OnSuccess() {
-                                Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
-                            }
+                    public void OnSuccess() {
+                        Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                    }
 
-                            @Override
-                            public void OnFail() {
-                                Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    @Override
+                    public void OnFail() {
+                        Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
             case MODULE_CATEGORY:
                 TypesDao typesDao = new TypesDao();
-                typesDao.getNewKey(new RetrieNewKeyEventListener() {
+                typesDao.save(types, typesDao.getNewKey(), new TaskListener() {
                     @Override
-                    public void OnNewKeyRetrieved(String newKey) {
-                        typesDao.save(types, newKey, new TaskListener() {
-                            @Override
-                            public void OnSuccess() {
-                                Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
-                            }
+                    public void OnSuccess() {
+                        Toast.makeText(ThemSuaDaoActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                    }
 
-                            @Override
-                            public void OnFail() {
-                                Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    @Override
+                    public void OnFail() {
+                        Toast.makeText(ThemSuaDaoActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;

@@ -99,6 +99,9 @@
     <string name="strMessageSuccessDownload">Đã tải xuống thành công bài hát</string>
     <string name="strMessageFailDownload">Đã tải xuống thất bại bài hát</string>
     <string name="strHeaderRemoveFromPlaylist">Xóa khỏi danh sách phát này</string>
+    <string name="strSelectAll">Chọn tất cả</string>
+    <string name="strMessageDeleteSongFromPlaylist">Bạn có muốn xóa bài hát này khỏi danh sách phát này không?</string>
+    <string name="strtitleWarning">Cảnh báo</string>
 
 
 </resources>

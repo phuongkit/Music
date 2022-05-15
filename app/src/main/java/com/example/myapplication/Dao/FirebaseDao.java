@@ -49,33 +49,34 @@ public abstract class FirebaseDao<T> {
         });
     }
 
-    public String GetNewKey() {
+    public String getNewKey() {
         return dbReference.child(tableName).push().getKey();
     }
 
-    public void getNewKey(RetrieNewKeyEventListener retrieNewKeyEventListener) {
-
-        this.getAll(new RetrieValEventListener<List<T>>() {
-            @Override
-            public void OnDataRetrieved(List<T> ts) {
-                long index = 0;
-                for (int i = 0; i < ts.size(); i++) {
-                    MusicObject musicObject = (MusicObject) ts.get(i);
-                    try {
-                        long Key = Integer.valueOf(musicObject.key);
-                        if (Key > index) {
-                            index = Key;
-                        }
-                    } catch (NumberFormatException ex) {
-                        Log.e("Error", ex.getMessage());
-                    }
-                }
-                index++;
-                String newKey = String.valueOf(index);
-                retrieNewKeyEventListener.OnNewKeyRetrieved(newKey);
-            }
-        });
-    }
+//    public void getNewKey(RetrieNewKeyEventListener retrieNewKeyEventListener) {
+//
+//        this.getAll(new RetrieValEventListener<List<T>>() {
+//            @Override
+//            public void OnDataRetrieved(List<T> ts) {
+//                long index = 0;
+//                for (int i = 0; i < ts.size(); i++) {
+//                    MusicObject musicObject = (MusicObject) ts.get(i);
+//                    try {
+//                        long Key = Integer.valueOf(musicObject.key);
+//                        if (Key > index) {
+//                            index = Key;
+//                        }
+//                    } catch (NumberFormatException ex) {
+//                        Log.e("Error", ex.getMessage());
+//                    }
+//                }
+//                index++;
+//                String newKey = String.valueOf(index);
+//                dbReference.child(newKey).push();
+//                retrieNewKeyEventListener.OnNewKeyRetrieved(newKey);
+//            }
+//        });
+//    }
 
     protected abstract void parseDataSnapshot(DataSnapshot dataSnapshot, RetrieValEventListener<T> retrievalEventListener);
 

@@ -67,7 +67,7 @@ public class CustomBannerAdapter extends PagerAdapter {
         tvNoiDung.setText(arrayListBanner.get(position).getName());
 
 
-        Picasso.with(context).load(arrayListBanner.get(position).getImage()).into(imageBackgroundBanner);
+        Glide.with(context).load(arrayListBanner.get(position).getImage()).into(imageBackgroundBanner);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -194,7 +194,7 @@ public class LoginActivity extends AppCompatActivity {
                                     String avatar = "";
                                     User user = new User(authResult.getUser().getUid(), displayName, password, email, phone, avatar);
                                     UserDao userDao = new UserDao();
-                                    userDao.save(user, userDao.GetNewKey(), new TaskListener() {
+                                    userDao.save(user, userDao.getNewKey(), new TaskListener() {
                                         @Override
                                         public void OnSuccess() {
                                             Log.d("Info", "Register successed for user UID: " + authResult.getUser().getUid());

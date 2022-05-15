@@ -112,7 +112,7 @@ public class InputDialog extends AppCompatDialogFragment {
                                     List<MusicObject> musicObjects = playlist.upCastList(playlists);
                                     String new_id = playlist.GetNewId(musicObjects);
                                     playlist = new Playlist(new_id, false, dateString, name, uid, "");
-                                    playlistDao.save(playlist, playlistDao.GetNewKey(), new TaskListener() {
+                                    playlistDao.save(playlist, playlistDao.getNewKey(), new TaskListener() {
                                         @Override
                                         public void OnSuccess() {
                                             Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show();

@@ -47,7 +47,7 @@ public class MusicFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_music, container, false);
         mapping();
         GetDetail();
-        songs =new ArrayList<>();
+        songs = new ArrayList<>();
         lvPlayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -63,14 +63,15 @@ public class MusicFragment extends Fragment {
     }
 
     private void GetDetail() {
-        songs =new ArrayList<>();
+        songs = new ArrayList<>();
         int typeListMusic = bundle.getInt("TypeMusic", HOME);
         switch (typeListMusic) {
             case HOME:
                 getListMusicByHome();
                 break;
             case PLAYLIST:
-                getListMusicByPlaylist();
+                playlist = (Playlist) bundle.getSerializable("playlist");
+                getListMusicByPlaylist(playlist);
                 break;
             default:
                 break;
@@ -82,52 +83,49 @@ public class MusicFragment extends Fragment {
         songDao.getAll(new RetrieValEventListener<List<Song>>() {
             @Override
             public void OnDataRetrieved(List<Song> Songs) {
-                Log.d("DAO",Songs.toString());
+                Log.d("DAO", Songs.toString());
                 songs = new ArrayList<>();
                 songs = (ArrayList<Song>) Songs;
-                customSongAdapter = new CustomSongAdapter(getActivity(),android.R.layout.simple_list_item_1, songs);
+                customSongAdapter = new CustomSongAdapter(getActivity(), android.R.layout.simple_list_item_1, songs);
                 lvPlayList.setAdapter(customSongAdapter);
             }
         });
     }
 
-    private void getListMusicByPlaylist() {
-        playlist = (Playlist) bundle.getSerializable("playlist");
+    public void getListMusicByPlaylist(Playlist Playlist) {
         Playlist_SongDao playlist_songDao = new Playlist_SongDao();
         playlist_songDao.getAll(new RetrieValEventListener<List<Playlist_Song>>() {
             @Override
             public void OnDataRetrieved(List<Playlist_Song> Playlist_songs) {
-                ArrayList<String> musics = new ArrayList<>();
-                for (Playlist_Song playlist_song :  Playlist_songs) {
-                    if (playlist_song.getIdPlaylist().equals(playlist.getId())) {
-                        musics.add(playlist_song.getIdSong());
+                ArrayList<String> song_ids = new ArrayList<>();
+                for (Playlist_Song playlist_song : Playlist_songs) {
+                    if (playlist_song.getIdPlaylist().equals(Playlist.getId())) {
+                        song_ids.add(playlist_song.getIdSong());
                     }
                 }
-                if (musics.size() > 0) {
-                    getListMusicByPlaylistt(playlist, musics);
+                if (song_ids.size() > 0) {
+                    getListMusicByPlaylistt(Playlist, song_ids);
                 }
             }
         });
     }
 
-    private void getListMusicByPlaylistt(Playlist playlist, final ArrayList<String> musics) {
+    private void getListMusicByPlaylistt(Playlist Playlist, final ArrayList<String> song_ids) {
         SongDao songDao = new SongDao();
         songDao.getAll(new RetrieValEventListener<List<Song>>() {
             @Override
             public void OnDataRetrieved(List<Song> Songs) {
                 songs = new ArrayList<>();
-                for (Song song : Songs) {
-                    for (String id : musics) {
+                for (String id : song_ids) {
+                    for (Song song : Songs) {
                         if (song.getId().equals(id)) {
-                            Log.d("Test", "Playlist:" + id);
                             songs.add(song);
-                            musics.remove(id);
                             break;
                         }
                     }
                 }
-                Log.d("DAO","get Playlist " + playlist.getName() + ": "  + songs.toString());
-                customSongAdapter = new CustomSongAdapter(getActivity(),android.R.layout.simple_list_item_1, songs, playlist);
+                Log.d("DAO", "get Playlist " + Playlist.getName() + ": " + songs.toString());
+                customSongAdapter = new CustomSongAdapter(getActivity(), android.R.layout.simple_list_item_1, songs, Playlist, MusicFragment.this);
                 lvPlayList.setAdapter(customSongAdapter);
             }
         });

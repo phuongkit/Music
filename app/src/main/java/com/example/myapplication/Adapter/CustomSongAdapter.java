@@ -26,11 +26,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
+import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Dao.PlaylistDao;
 import com.example.myapplication.Dao.Playlist_SongDao;
 import com.example.myapplication.Dialog.Add_Playlist_Dialog;
+import com.example.myapplication.Fragment.MusicFragment;
 import com.example.myapplication.Module.Playlist;
 import com.example.myapplication.Module.Playlist_Song;
 import com.example.myapplication.R;
@@ -52,6 +56,7 @@ import java.util.List;
 
 public class CustomSongAdapter extends ArrayAdapter<Song> {
 
+    MusicFragment musicFragment;
     Activity activity;
     ViewHolder viewHolder;
     FirebaseUser user;
@@ -65,10 +70,11 @@ public class CustomSongAdapter extends ArrayAdapter<Song> {
         this.isPlaylist = false;
     }
 
-    public CustomSongAdapter(Activity activity, int resource, List<Song> objects, Playlist playlist) {
+    public CustomSongAdapter(Activity activity, int resource, List<Song> objects, Playlist playlist, MusicFragment musicFragment) {
         super(activity, resource, objects);
         this.activity = activity;
         this.playlist = playlist;
+        this.musicFragment = musicFragment;
         this.isPlaylist = true;
     }
 
@@ -95,7 +101,7 @@ public class CustomSongAdapter extends ArrayAdapter<Song> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Song song = getItem(position);
-        Picasso.with(getContext()).load(song.getImage()).into(viewHolder.imgTopsong);
+        Glide.with(getContext()).load(song.getImage()).into(viewHolder.imgTopsong);
 
         viewHolder.tvMusicListIndex.setText(String.valueOf(song.getId()));
         viewHolder.tvTenBaiHatMusicList.setText(song.getName());
@@ -162,46 +168,28 @@ public class CustomSongAdapter extends ArrayAdapter<Song> {
             public void OnDataRetrieved(List<Playlist> Playlists) {
                 ArrayList<String> playlist_ids = new ArrayList<>();
                 ArrayList<Playlist> playlists_bysong = new ArrayList<>();
-                for (Playlist Playlist: Playlists) {
+                for (Playlist Playlist : Playlists) {
                     if (Playlist.getUid().equals(uid)) {
                         playlists.add(Playlist);
                     }
-                    Playlist_SongDao playlist_songDao = new Playlist_SongDao();
-                    playlist_songDao.getAll(new RetrieValEventListener<List<Playlist_Song>>() {
-                        @Override
-                        public void OnDataRetrieved(List<Playlist_Song> playlist_songs) {
-                            for (Playlist_Song Playlist_Song : playlist_songs) {
-                                for (Playlist Playlist : playlists) {
-                                    if (Playlist_Song.getIdPlaylist().equals(Playlist.getId()) && Playlist_Song.getIdSong().equals(song.id)) {
-                                        playlists_bysong.add(Playlist);
-                                    }
+                }
+                Playlist_SongDao playlist_songDao = new Playlist_SongDao();
+                playlist_songDao.getAll(new RetrieValEventListener<List<Playlist_Song>>() {
+                    @Override
+                    public void OnDataRetrieved(List<Playlist_Song> playlist_songs) {
+                        for (Playlist_Song Playlist_Song : playlist_songs) {
+                            for (Playlist Playlist : playlists) {
+                                if (Playlist_Song.getIdPlaylist().equals(Playlist.getId()) && Playlist_Song.getIdSong().equals(song.id)) {
+                                    playlists_bysong.add(Playlist);
                                 }
                             }
-                            Add_Playlist_Dialog dialog = new Add_Playlist_Dialog((Activity) getContext(), playlists, playlists_bysong, song);
-                            dialog.show();
                         }
-                    });
-                }
+                        Add_Playlist_Dialog dialog = new Add_Playlist_Dialog(activity, playlists, playlists_bysong, song);
+                        dialog.show();
+                    }
+                });
             }
         });
-//        //Items
-//        String[] items = {"Rajesh", "Mahesh", "Vijayakumar"};
-//        AlertDialog.Builder b = new AlertDialog.Builder(activity);
-//        //Thiết lập title
-//        b.setTitle("Make your selection");
-//        //Thiết lập item
-//        b.setMultiChoiceItems(items, null,new DialogInterface.OnMultiChoiceClickListener(){
-//            @Override
-//            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-//                //Nếu người dùng chọn
-//                if (isChecked) {
-//                    //Thêm người dùng người dùng chọn vào ArrayList
-////                    al.add(datas[which]);
-//                }
-//            }
-//        });
-//        //Hiển thị dialog
-//        b.show();
     }
 
     private void getData(List<Playlist> Playlists, String uid) {
@@ -210,10 +198,59 @@ public class CustomSongAdapter extends ArrayAdapter<Song> {
                 playlists.add(Playlist);
             }
         }
-        Log.d("Test", "Node B");
     }
 
     private void removeFromPlaylist(Song song) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        // Thiết lập tiêu đề
+        builder.setTitle(activity.getString(R.string.strtitleWarning));
+        // Thiết lập icon
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        // Thiết lập nội dung cho dialog
+        builder.setMessage(activity.getString(R.string.strMessageDeleteSongFromPlaylist));
+        // Thiết lập các nút lệnh cho người dùng tương tác
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Playlist_SongDao playlist_songDao = new Playlist_SongDao();
+                playlist_songDao.getAll(new RetrieValEventListener<List<Playlist_Song>>() {
+                    @Override
+                    public void OnDataRetrieved(List<Playlist_Song> playlist_songs) {
+                        for (Playlist_Song playlist_song : playlist_songs) {
+                            if (playlist_song.getIdPlaylist().equals(playlist.getId()) && playlist_song.getIdSong().equals(song.id)) {
+                                playlist_songDao.delete(playlist_song.key, new TaskListener() {
+                                    @Override
+                                    public void OnSuccess() {
+                                        musicFragment.getListMusicByPlaylist(playlist);
+                                        Toast.makeText(getContext(), "Successfully deleted the song + " + song.getName() + " to the deselected playlists", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void OnFail() {
+                                        Toast.makeText(getContext(), "Failed to delete the song + " + song.getName() + " to deselected playlists", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                break;
+                            }
+                        }
+                    }
+                });
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                clear();
+            }
+        });
+        // Tạo cửa sổ Dialog
+        AlertDialog dialog = builder.create();
+        // Tắt tự động đóng cửa sổ khi nhấn ngoài vùng Dialog
+        dialog.setCanceledOnTouchOutside(false);
+        // Hiển thị cửa sổ
+        dialog.show();
     }
 
     private void download(Song song) {
