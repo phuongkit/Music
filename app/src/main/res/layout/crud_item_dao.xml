@@ -4,43 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="#444">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/design_default_color_primary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolBar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-        </com.google.android.material.appbar.AppBarLayout>
-
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/radius_bottomleft_bottomright"
+            app:popupTheme="@style/Theme.Design.NoActionBar" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/txtTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/strHeaderSignIn"
-                android:textAlignment="center"
-                android:textSize="25sp"
-                tools:ignore="MissingConstraints" />
-
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="50dp"
+            >
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="match_parent"
@@ -68,22 +52,23 @@
 
                 <Button
                     android:id="@+id/btnUpdate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:paddingTop="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_custom_orange"
                     android:text="@string/strBtnAdd"
-                    tools:ignore="MissingConstraints"
-                    style="?android:attr/buttonBarButtonStyle" />
+                    tools:ignore="MissingConstraints" />
 
                 <Button
                     android:id="@+id/btnCancel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_custom_orange"
                     android:layout_margin="8dp"
                     android:text="@string/strBtnCancel"
-                    tools:ignore="MissingConstraints"
-                    style="?android:attr/buttonBarButtonStyle" />
+                    tools:ignore="MissingConstraints" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

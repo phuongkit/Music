@@ -3,6 +3,7 @@ package com.example.myapplication.Activity.admin;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -172,7 +173,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
         switch (mCurrentModule) {
             case MODULE_USER:
                 actionBar.setTitle(R.string.strHeaderUser);
-                txtTitle.setText(R.string.strHeaderUser);
+//                txtTitle.setText(R.string.strHeaderUser);
                 textUser.add(getString(R.string.strHeaderId));
                 textUser.add(getString(R.string.strHeaderDisplayName));
                 textUser.add(getString(R.string.strHeaderPassword));
@@ -191,6 +192,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
 
                     TextView textView = new TextView(this);
                     textView.setText(textUser.get(i) + ":");
+                    textView.setTextColor(Color.WHITE);
                     tableRow.addView(textView, 0, paramElements);
                     textViews.add(textView);
 
@@ -212,7 +214,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_SONG:
                 actionBar.setTitle(R.string.strHeaderSong);
-                txtTitle.setText(R.string.strHeaderSong);
+//                txtTitle.setText(R.string.strHeaderSong);
                 textSong.add(getString(R.string.strHeaderId));
                 textSong.add(getString(R.string.strHeaderName));
                 textSong.add(getString(R.string.strHeaderImage));
@@ -230,6 +232,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
 
                     TextView textView = new TextView(this);
                     textView.setText(textSong.get(i) + ":");
+                    textView.setTextColor(Color.WHITE);
                     tableRow.addView(textView, 0, paramElements);
                     textViews.add(textView);
 
@@ -251,7 +254,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_BANNER:
                 actionBar.setTitle(R.string.strHeaderBanner);
-                txtTitle.setText(R.string.strHeaderBanner);
+//                txtTitle.setText(R.string.strHeaderBanner);
                 textBanner.add(getString(R.string.strHeaderId));
                 textBanner.add(getString(R.string.strHeaderName));
                 textBanner.add(getString(R.string.strHeaderImage));
@@ -264,6 +267,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
 
                     TextView textView = new TextView(this);
                     textView.setText(textBanner.get(i) + ":");
+                    textView.setTextColor(Color.WHITE);
                     tableRow.addView(textView, 0, paramElements);
                     textViews.add(textView);
 
@@ -285,7 +289,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_ALBUM:
                 actionBar.setTitle(R.string.strHeaderAlbum);
-                txtTitle.setText(R.string.strHeaderAlbum);
+//                txtTitle.setText(R.string.strHeaderAlbum);
                 textAlbum.add(getString(R.string.strHeaderId));
                 textAlbum.add(getString(R.string.strHeaderName));
                 textAlbum.add(getString(R.string.strHeaderImage));
@@ -299,6 +303,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
 
                     TextView textView = new TextView(this);
                     textView.setText(textAlbum.get(i) + ":");
+                    textView.setTextColor(Color.WHITE);
                     tableRow.addView(textView, 0, paramElements);
                     textViews.add(textView);
 
@@ -313,7 +318,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_THEME:
                 actionBar.setTitle(R.string.strHeaderTheme);
-                txtTitle.setText(R.string.strHeaderTheme);
+//                txtTitle.setText(R.string.strHeaderTheme);
                 textTheme.add(getString(R.string.strHeaderId));
                 textTheme.add(getString(R.string.strHeaderName));
                 textTheme.add(getString(R.string.strHeaderImage));
@@ -325,6 +330,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
 
                     TextView textView = new TextView(this);
                     textView.setText(textTheme.get(i) + ":");
+                    textView.setTextColor(Color.WHITE);
                     tableRow.addView(textView, 0, paramElements);
                     textViews.add(textView);
 
@@ -339,7 +345,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_TYPES:
                 actionBar.setTitle(R.string.strHeaderTypes);
-                txtTitle.setText(R.string.strHeaderTypes);
+//                txtTitle.setText(R.string.strHeaderTypes);
                 textTypes.add(getString(R.string.strHeaderId));
                 textTypes.add(getString(R.string.strHeaderName));
                 textTypes.add(getString(R.string.strHeaderImage));
@@ -351,6 +357,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
 
                     TextView textView = new TextView(this);
                     textView.setText(textTypes.get(i) + ":");
+                    textView.setTextColor(Color.WHITE);
                     tableRow.addView(textView, 0, paramElements);
                     textViews.add(textView);
 
@@ -365,7 +372,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 break;
             case MODULE_PLAYLIST:
                 actionBar.setTitle(R.string.strHeaderPlaylist);
-                txtTitle.setText(R.string.strHeaderPlaylist);
+//                txtTitle.setText(R.string.strHeaderPlaylist);
                 textPlaylist.add(getString(R.string.strHeaderId));
                 textPlaylist.add(getString(R.string.strHeaderName));
                 textPlaylist.add(getString(R.string.strHeaderImage));
@@ -381,6 +388,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
 
                     TextView textView = new TextView(this);
                     textView.setText(textPlaylist.get(i) + ":");
+                    textView.setTextColor(Color.WHITE);
                     tableRow.addView(textView, 0, paramElements);
                     textViews.add(textView);
 
@@ -849,6 +857,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     public void OnDataRetrieved(User User) {
                         user = new User();
                         user = User;
+                        setUiEdittexts(5);
                         editTexts.get(0).setText(user.getId());
                         editTexts.get(1).setText(user.getDisplayName());
                         editTexts.get(2).setText(user.getPassword());
@@ -886,6 +895,8 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     public void OnDataRetrieved(Song Song) {
                         song = new Song();
                         song = (Song) Song;
+                        setUiEdittexts(4);
+                        setUiSpiners(1);
                         editTexts.get(0).setText(song.getId());
                         editTexts.get(1).setText(song.getName());
                         editTexts.get(2).setText(song.getImage());
@@ -929,6 +940,9 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                         banner = new Banner();
                         banner = (Banner) Banner;
 
+                        setUiEdittexts(2);
+                        setUiSpiners(0);
+
                         editTexts.get(0).setText(banner.getId());
                         editTexts.get(1).setText(banner.getName());
                         editTexts.get(2).setText(banner.getImage());
@@ -961,6 +975,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     public void OnDataRetrieved(Album Album) {
                         album = new Album();
                         album = (Album) Album;
+                        setUiEdittexts(3);
 
                         editTexts.get(0).setText(album.getId());
                         editTexts.get(1).setText(album.getName());
@@ -993,6 +1008,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     public void OnDataRetrieved(Theme Theme) {
                         theme = new Theme();
                         theme = (Theme) Theme;
+                        setUiEdittexts(2);
 
                         editTexts.get(0).setText(theme.getId());
                         editTexts.get(1).setText(theme.getName());
@@ -1023,6 +1039,9 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                     public void OnDataRetrieved(Types Types) {
                         types = new Types();
                         types = (Types) Types;
+
+                        setUiEdittexts(2);
+                        setUiSpiners(0);
 
                         editTexts.get(0).setText(types.getId());
                         editTexts.get(1).setText(types.getName());
@@ -1061,7 +1080,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        txtTitle = findViewById(R.id.txtTitle);
+//        txtTitle = findViewById(R.id.txtTitle);
         btnUpdate = findViewById(R.id.btnUpdate);
         btnCancel = findViewById(R.id.btnCancel);
     }
@@ -1082,5 +1101,18 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
         if (module.equals(Playlist.class.getName()))
             return MODULE_PLAYLIST;
         return -1;
+    }
+
+    private void setUiEdittexts(int n) {
+        for (int i = 0; i <= n; i++) {
+            editTexts.get(i).setBackgroundResource(R.drawable.circle_view);
+        }
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private void setUiSpiners(int n) {
+        for (int i = 0; i <= n; i++) {
+            spinners.get(i).setBackgroundResource(R.drawable.circle_view);
+        }
     }
 }

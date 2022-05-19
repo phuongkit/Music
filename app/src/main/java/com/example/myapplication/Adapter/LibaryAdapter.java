@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.myapplication.Activity.PlaylistActivity;
+import com.example.myapplication.Activity.SongOnDeviceActivity;
 import com.example.myapplication.Module.Libary;
 import com.example.myapplication.R;
 
@@ -40,15 +41,18 @@ public class LibaryAdapter extends ArrayAdapter<Libary> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent;
                 switch (libary.getIdLibary()) {
                     case "0":
                         break;
                     case "1":
                         break;
                     case "2":
+                        intent = new Intent(context, SongOnDeviceActivity.class);
+                        context.startActivity(intent);
                         break;
                     case "3":
-                        Intent intent = new Intent(context, PlaylistActivity.class);
+                        intent = new Intent(context, PlaylistActivity.class);
                         context.startActivity(intent);
                         break;
                     case "4":

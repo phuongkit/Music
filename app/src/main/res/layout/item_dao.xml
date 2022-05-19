@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
+    app:cardCornerRadius="7dp"
     android:elevation="5dp">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +20,7 @@
         <!--            android:layout_marginRight="5dp"/>-->
         <TextView
             android:id="@+id/txtListIndex"
-            android:layout_width="wrap_content"
+            android:layout_width="25dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
@@ -27,14 +28,16 @@
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="15dp"
+            android:gravity="center_horizontal"
             android:text="1"
-            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imageViewtop"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="75dp"
+            android:layout_height="65dp"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
@@ -58,7 +61,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageViewtop"
-            android:layout_marginLeft="17dp"
             android:layout_marginTop="-32dp"
             android:layout_toRightOf="@+id/imageViewtop"
             android:ellipsize="end"
@@ -71,9 +73,8 @@
             android:id="@+id/imgBtnUpdate"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="105dp"
-            android:layout_marginTop="40dp"
-            android:layout_toRightOf="@+id/imageViewtop"
+            android:layout_marginLeft="270dp"
+            android:layout_marginTop="20dp"
             android:scaleType="fitXY"
             android:src="@drawable/pen"
             android:text="S" />
@@ -82,9 +83,8 @@
             android:id="@+id/imgBtnDelete"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="40dp"
-            android:layout_toRightOf="@+id/imageViewtop"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="20dp"
             android:scaleType="fitXY"
             android:src="@drawable/remove"
             android:text="X" />
