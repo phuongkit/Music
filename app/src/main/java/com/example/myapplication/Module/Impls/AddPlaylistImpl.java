@@ -1,4 +1,4 @@
-package com.example.myapplication.Service;
+package com.example.myapplication.Module.Impls;
 
 public interface AddPlaylistImpl {
     void setSelectAll(Boolean isCheck);

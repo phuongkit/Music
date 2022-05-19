@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Fragment.MusicFragment;
 import com.example.myapplication.Module.Playlist;
 import com.example.myapplication.R;
@@ -20,6 +22,7 @@ import com.example.myapplication.R;
 public class ListMusicActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    ImageView imgPlaylistAvatar;
 
     Playlist playlist;
 
@@ -30,6 +33,11 @@ public class ListMusicActivity extends AppCompatActivity {
         initData();
         addControls();
         addEvents();
+        initControl();
+    }
+
+    private void initControl() {
+        Glide.with(ListMusicActivity.this).load(playlist.getImage()).error(R.drawable.ic_playlist).into(imgPlaylistAvatar);
     }
 
     private void addEvents() {
@@ -45,6 +53,9 @@ public class ListMusicActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(playlist.getName());
 
+        Log.d("Test", "Node A");
+        imgPlaylistAvatar = findViewById(R.id.imgPlaylistAvatar);
+        Log.d("Test", "Node B");
         // Begin the transaction
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         // Replace the contents of the container with the new fragment

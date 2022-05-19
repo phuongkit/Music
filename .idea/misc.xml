@@ -31,6 +31,7 @@
         <entry key="..\:/Git/Music/app/src/main/res/layout/dialog.xml" value="0.10989583333333333" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/dialog_changepassword.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/dianhac_item.xml" value="0.10989583333333333" />
+        <entry key="..\:/Git/Music/app/src/main/res/layout/fragment__khampha.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_banner.xml" value="0.10989583333333333" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_blank.xml" value="0.10989583333333333" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_home.xml" value="0.10989583333333333" />
@@ -39,6 +40,7 @@
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_music.xml" value="0.10989583333333333" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_music_disc.xml" value="0.10989583333333333" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_personal.xml" value="0.10989583333333333" />
+        <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_play_music_list.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_playlist.xml" value="0.264" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/input_dialog.xml" value="0.10989583333333333" />

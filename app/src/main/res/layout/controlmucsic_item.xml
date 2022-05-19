@@ -21,9 +21,12 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerPlayMusic2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
 
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPlayMusic"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"/>
 
     <LinearLayout
@@ -88,7 +91,7 @@
                 android:layout_marginRight="15dp"
                 android:background="@null"
                 android:scaleType="fitXY"
-                android:src="@drawable/iconshuffled" />
+                android:src="@drawable/iconsuffle" />
 
             <ImageButton
                 android:id="@+id/btnPrevious"

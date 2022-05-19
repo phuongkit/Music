@@ -2,27 +2,18 @@ package com.example.myapplication.Dialog;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDialogFragment;
-
 import com.example.myapplication.Adapter.AddPlaylistAdapter;
 import com.example.myapplication.Module.Playlist;
 import com.example.myapplication.Module.Song;
 import com.example.myapplication.R;
-import com.example.myapplication.Service.AddPlaylistImpl;
+import com.example.myapplication.Module.Impls.AddPlaylistImpl;
 
 import java.util.ArrayList;
 

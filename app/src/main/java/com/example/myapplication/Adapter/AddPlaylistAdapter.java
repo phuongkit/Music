@@ -1,9 +1,6 @@
 package com.example.myapplication.Adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,28 +13,20 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
-import com.example.myapplication.Activity.admin.SongDaoActivity;
-import com.example.myapplication.Dao.Listeners.RetrieNewKeyEventListener;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Dao.Playlist_SongDao;
-import com.example.myapplication.Dao.SongDao;
 import com.example.myapplication.Dao.UserDao;
-import com.example.myapplication.Fragment.MusicFragment;
-import com.example.myapplication.Module.Album;
 import com.example.myapplication.Module.MusicObject;
 import com.example.myapplication.Module.Playlist;
 import com.example.myapplication.Module.Playlist_Song;
 import com.example.myapplication.Module.Song;
-import com.example.myapplication.Module.Types;
 import com.example.myapplication.Module.User;
 import com.example.myapplication.R;
-import com.example.myapplication.Service.AddPlaylistImpl;
+import com.example.myapplication.Module.Impls.AddPlaylistImpl;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 

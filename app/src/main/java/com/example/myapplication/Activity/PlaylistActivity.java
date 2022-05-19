@@ -32,7 +32,6 @@ public class PlaylistActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     TextView txtTitleLibary;
-    Button btnAutoPlay;
     ListView lvDataPlaylist;
     PlaylistAdapter playlistAdapter;
 
@@ -45,13 +44,6 @@ public class PlaylistActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-        btnAutoPlay.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     private void addControls() {
@@ -65,7 +57,6 @@ public class PlaylistActivity extends AppCompatActivity {
         actionBar.setTitle(R.string.strHeaderPlaylist);
 
         txtTitleLibary = findViewById(R.id.txtTitleLibary);
-        btnAutoPlay = findViewById(R.id.btnAutoPlay);
         lvDataPlaylist = findViewById(R.id.lvDataPlaylist);
         playlistAdapter = new PlaylistAdapter(PlaylistActivity.this, R.layout.playlist_item);
         lvDataPlaylist.setAdapter(playlistAdapter);

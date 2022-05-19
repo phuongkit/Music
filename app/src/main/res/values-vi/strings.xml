@@ -102,6 +102,7 @@
     <string name="strSelectAll">Chọn tất cả</string>
     <string name="strMessageDeleteSongFromPlaylist">Bạn có muốn xóa bài hát này khỏi danh sách phát này không?</string>
     <string name="strtitleWarning">Cảnh báo</string>
+    <string name="strHeaderExplore">Khám phá</string>
 
 
 </resources>

@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final int FRAGMENT_PERSONAL = 0;
     private static final int FRAGMENT_HOME = 1;
     private static final int FRAGMENT_SEARCH = 2;
-    private static final int FRAGMENT_PLAYLIST = 3;
+    private static final int FRAGMENT_EXPLORE = 3;
 
     public static final int ROLE_ADMIN = 0;
     public static final int ROLE_USER = 1;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         titles.add(getString(R.string.strHeaderPersonal));
         titles.add(getString(R.string.strHeaderHomePage));
         titles.add(getString(R.string.strHeaderSearch));
-        titles.add(getString(R.string.strHeaderPlaylist));
+        titles.add(getString(R.string.strHeaderExplore));
         mapping();
         init();
     }
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.getTabAt(FRAGMENT_PERSONAL).setIcon(R.drawable.ic_person);
         tabLayout.getTabAt(FRAGMENT_HOME).setIcon(R.drawable.icontrangchu);
         tabLayout.getTabAt(FRAGMENT_SEARCH).setIcon(R.drawable.icontimkiem);
-        tabLayout.getTabAt(FRAGMENT_PLAYLIST).setIcon(R.drawable.iconmoreplaylist);
+        tabLayout.getTabAt(FRAGMENT_EXPLORE).setIcon(R.drawable.iconmoreplaylist);
         tabLayout.selectTab(tabLayout.getTabAt(mCurrentFragment));
 
         setSupportActionBar(toolbar);
@@ -245,8 +245,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 return true;
             case R.id.nav_playlist:
-                if (mCurrentFragment != FRAGMENT_PLAYLIST) {
-                    tabLayout.selectTab(tabLayout.getTabAt(FRAGMENT_PLAYLIST));
+                if (mCurrentFragment != FRAGMENT_EXPLORE) {
+                    tabLayout.selectTab(tabLayout.getTabAt(FRAGMENT_EXPLORE));
                 }
                 return true;
             case R.id.nav_myprofile:

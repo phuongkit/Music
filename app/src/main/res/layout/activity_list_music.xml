@@ -22,10 +22,27 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ImageView
+        android:id="@+id/imgPlaylistAvatar"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txtHeaderSong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/strHeaderSong"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
     <FrameLayout
         android:id="@+id/fragmentBaihat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        >
+
+    </FrameLayout>
 
 </LinearLayout>

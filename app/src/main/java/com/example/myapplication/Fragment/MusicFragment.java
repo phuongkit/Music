@@ -46,7 +46,7 @@ public class MusicFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_music, container, false);
         mapping();
-        GetDetail();
+        getDetail();
         songs = new ArrayList<>();
         lvPlayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -62,9 +62,10 @@ public class MusicFragment extends Fragment {
         return view;
     }
 
-    private void GetDetail() {
+    private void getDetail() {
         songs = new ArrayList<>();
         int typeListMusic = bundle.getInt("TypeMusic", HOME);
+        Log.d("Test", "Node B");
         switch (typeListMusic) {
             case HOME:
                 getListMusicByHome();

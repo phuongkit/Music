@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.AnimatedImageDrawable;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -16,27 +14,24 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.StrictMode;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.myapplication.Adapter.CircularDianhacAdapter;
-import com.example.myapplication.Dialog.InputDialog;
-import com.example.myapplication.Module.Song;
+import com.example.myapplication.Adapter.DSViewpagerSongAdapter;
+import com.example.myapplication.Fragment.Fragment_DiaNhac;
+import com.example.myapplication.Fragment.Fragment_PlaySongList;
 import com.example.myapplication.Module.Hinhdianhac;
+import com.example.myapplication.Module.Song;
 import com.example.myapplication.R;
 
 import java.io.IOException;
@@ -49,16 +44,20 @@ import java.util.Random;
 public class PlaybaihatActivity extends AppCompatActivity {
     Context context;
     ConstraintLayout layout_controlMusic;
-    CircularDianhacAdapter circularDianhacAdapter;
+
     ArrayList<Hinhdianhac> hinhbaihats;
-    ArrayList<Song> songs = new ArrayList<>();
+    public static ArrayList<Song> songs = new ArrayList<>();
     int index;
-    MediaPlayer mediaPlayer = new MediaPlayer();
+    public MediaPlayer mediaPlayer = new MediaPlayer();
     View view;
     Toolbar toolbarPlayMusic;
+
     //    CircleImageView imageViewDiaNhac;;
     SeekBar seekBarTime;
 
+    DSViewpagerSongAdapter viewPagerPlayListSong;
+    Fragment_DiaNhac fragmentDiaNhac;
+    Fragment_PlaySongList fragmentPlayMusicList;
     TextView tvTimeSong, tvTotalTimeSong;
     ImageButton btnPause, btnNext, btnPrevious, imgRepeat, imgRandom;
     String url, urlImage;
@@ -87,8 +86,6 @@ public class PlaybaihatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         hinhbaihats = new ArrayList<>();
         setContentView(R.layout.controlmucsic_item);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
         mapping();
         UNI();
         init();
@@ -147,17 +144,13 @@ public class PlaybaihatActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (songs.size() > 0) {
-//                        Bundle bundle=new Bundle();
-//                        setCheckIndex(songs.get(index).getImage());
-//                        bundle.putString("imageDianhac",getCheckIndex());
-//                        bundle.putString("animator","start");
-//                        fragment_dianhac.setArguments(bundle);
-//                        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-//                        fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
-                    handler.removeCallbacks(this);
-                } else {
-                    handler.postDelayed(this, 300);
+                if (viewPagerPlayListSong.getItem(1) != null) {
+                    if (songs.size() > 0) {
+                        fragmentDiaNhac.playMusic(songs.get(position).getImage());
+                        handler.removeCallbacks(this);
+                    } else {
+                        handler.postDelayed(this, 300);
+                    }
                 }
             }
         }, 100);
@@ -174,6 +167,7 @@ public class PlaybaihatActivity extends AppCompatActivity {
                         avd2 = (AnimatedVectorDrawable) drawable;
                         avd2.start();
                     }
+
                     count++;
 
                 } else {
@@ -192,7 +186,7 @@ public class PlaybaihatActivity extends AppCompatActivity {
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                        circularDianhacAdapter.objectAnimator.pause();
+                        fragmentDiaNhac.objectAnimator.pause();
                     }
 
 //                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
@@ -205,7 +199,7 @@ public class PlaybaihatActivity extends AppCompatActivity {
                 } else {
                     mediaPlayer.start();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                        circularDianhacAdapter.objectAnimator.resume();
+                        fragmentDiaNhac.objectAnimator.resume();
                     }
 
 //                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
@@ -278,17 +272,26 @@ public class PlaybaihatActivity extends AppCompatActivity {
                         mediaPlayer.release();
                         mediaPlayer = null;
                     }
-                    if (checkRandom == true) {
+                    if (checkRandom) {
                         Random random = new Random();
                         int vitri = random.nextInt(songs.size());
                         position = vitri;
                     } else {
-                        position = (position + 1) % songs.size();
+                        if (repeat){
+                            Log.d("OOO", String.valueOf(position));
+                            position = (position) % songs.size();
+                            Log.d("OOO", String.valueOf(position));
+                        }
+                        else{
+                            position = (position + 1) % songs.size();
+                        }
                     }
                     tvTotalTimeSong.setText("");
                     new PlayMp3().execute(songs.get(position).getLinkSong());
                     hinhbaihats.add(new Hinhdianhac(songs.get(position).getImage()));
-                    circularDianhacAdapter.setUrl(songs.get(position).getImage());
+                    fragmentDiaNhac.playMusic(songs.get(position).getImage());
+                    fragmentPlayMusicList.loaddata(position);
+                    fragmentDiaNhac.objectAnimator.start();
 //                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
 //                    Bundle bundle=new Bundle();
 //                    setCheckIndex(songs.get(position).getImage());
@@ -330,11 +333,18 @@ public class PlaybaihatActivity extends AppCompatActivity {
                         int vitri = random.nextInt(songs.size());
                         position = vitri;
                     } else {
-                        position = position - 1 < 0 ? songs.size() - 1 : position - 1;
-                    }
+                        if (repeat){
+                            position = (position) % songs.size();
+                        }
+                        else{
+                            position = position - 1 < 0 ? songs.size() - 1 : position - 1;
+                        }
+                   }
+                    fragmentDiaNhac.objectAnimator.start();
                     new PlayMp3().execute(songs.get(position).getLinkSong());
                     hinhbaihats.add(new Hinhdianhac(songs.get(position).getImage()));
-                    circularDianhacAdapter.setUrl(songs.get(position).getImage());
+                    fragmentDiaNhac.playMusic(songs.get(position).getImage());
+                    fragmentPlayMusicList.loaddata(position);
 
 //                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
 //                    Bundle bundle=new Bundle();
@@ -407,17 +417,25 @@ public class PlaybaihatActivity extends AppCompatActivity {
                             }
                             position = index;
                         } else {
-                            position = (position + 1) % songs.size();
+                            if (repeat){
+                                position = (position) % songs.size();
+                            }
+                            else{
+                                position = (position + 1) % songs.size();
+                            }
+
                         }
+                        fragmentDiaNhac.objectAnimator.start();
                         new PlayMp3().execute(songs.get(position).getLinkSong());
                         hinhbaihats.add(new Hinhdianhac(songs.get(position).getImage()));
-                        circularDianhacAdapter.setUrl(songs.get(position).getImage());
 //                        Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
 //                        Bundle bundle=new Bundle();
 //                        bundle.putString("imageDianhac",songs.get(position).getImage());
 //                        fragment_dianhac.setArguments(bundle);
 //                        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
 //                        fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
+                        fragmentDiaNhac.playMusic(songs.get(position).getImage());
+                        fragmentPlayMusicList.loaddata(position);
                         getSupportActionBar().setTitle(songs.get(position).getName());
                         viewPagerPlayMusic.getAdapter().notifyDataSetChanged();
                     }
@@ -465,36 +483,23 @@ public class PlaybaihatActivity extends AppCompatActivity {
                 songs.clear();
             }
         });
-//        toolbarPlayMusic.setTitleTextColor(Color.WHITE);
-
-//        ArrayList<Fragment> fragmentArrayList=new ArrayList<>();
-//        fragmentArrayList.add(fragmentPlayMusicList);
-//        fragmentArrayList.add(fragment_dianhac);
         hinhbaihats.add(new Hinhdianhac(songs.get(index).getImage()));
-
-        circularDianhacAdapter = new CircularDianhacAdapter(this, hinhbaihats);
-
-
-//        viewPagerPlayListMusicAdapter.addFragment(fragment_dianhac);
-        viewPagerPlayMusic.setAdapter(circularDianhacAdapter);
-//        viewPagerPlayMusic.setCurrentItem(1);
-//        fragment_dianhac = (Fragment_dianhac) viewPagerPlayListMusicAdapter.getItem(0);
+        fragmentDiaNhac = new Fragment_DiaNhac();
+        fragmentPlayMusicList = new Fragment_PlaySongList(index);
+        viewPagerPlayListSong = new DSViewpagerSongAdapter(getSupportFragmentManager());
+        viewPagerPlayListSong.addFragment(fragmentPlayMusicList);
+        viewPagerPlayListSong.addFragment(fragmentDiaNhac);
+        viewPagerPlayMusic.setAdapter(viewPagerPlayListSong);
+        viewPagerPlayMusic.setCurrentItem(1);
+        fragmentPlayMusicList = (Fragment_PlaySongList) viewPagerPlayListSong.getItem(0);
+        fragmentDiaNhac = (Fragment_DiaNhac) viewPagerPlayListSong.getItem(1);
         if (songs.size() > 0) {
+            position = index;
             getSupportActionBar().setTitle(songs.get(index).getName());
             new PlayMp3().execute(songs.get(index).getLinkSong());
             btnPause.setImageResource(R.drawable.avd_pause_to_play);
-            circularDianhacAdapter.setUrl(songs.get(index).getImage());
-        }
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
         }
-        return super.onOptionsItemSelected(item);
     }
 
     private void setBackgroud(String url) {

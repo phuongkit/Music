@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.myapplication.Dao.Impl.GenericDao;
 import com.example.myapplication.Dao.Listeners.RetrieNewKeyEventListener;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
@@ -21,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class FirebaseDao<T> {
+public abstract class FirebaseDao<T> implements GenericDao<T> {
     protected static final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
     protected String tableName;
 

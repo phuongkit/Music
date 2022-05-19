@@ -3,6 +3,7 @@ package com.example.myapplication.Adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -85,10 +86,12 @@ public class PlaylistAdapter  extends ArrayAdapter<Playlist> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("Test", "Node C");
                 Intent intent = new Intent(activity, ListMusicActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("playlist", playlist);
                 intent.putExtra("bundle", bundle);
+                Log.d("Test", "Node D");
                 activity.startActivity(intent);
             }
         });

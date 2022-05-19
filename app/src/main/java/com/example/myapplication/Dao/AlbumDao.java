@@ -1,13 +1,41 @@
 package com.example.myapplication.Dao;
 
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
+import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Module.Album;
 import com.google.firebase.database.DataSnapshot;
 
-public class AlbumDao extends FirebaseDao<Album> {
+import java.util.List;
+
+public class AlbumDao extends FirebaseDao<Album> implements IAlbumDAO{
     public AlbumDao(){
         // Specify the table name for the class
         super("album");
+    }
+
+    @Override
+    public String getNewKey() {
+        return super.getNewKey();
+    }
+
+    @Override
+    public void getAll(RetrieValEventListener<List<Album>> retrievalEventListener) {
+        super.getAll(retrievalEventListener);
+    }
+
+    @Override
+    public void get(String id, RetrieValEventListener<Album> retrievalEventListener) {
+        super.get(id, retrievalEventListener);
+    }
+
+    @Override
+    public void save(Album album, String id, TaskListener taskListener) {
+        super.save(album, id, taskListener);
+    }
+
+    @Override
+    public void delete(String id, TaskListener taskListener) {
+        super.delete(id, taskListener);
     }
 
     @Override

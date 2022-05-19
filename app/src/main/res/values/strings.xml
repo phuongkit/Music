@@ -21,6 +21,7 @@
     <string name="strHeaderPersonal">Personal</string>
     <string name="strHeaderHomePage">Home Page</string>
     <string name="strHeaderSearch">Search</string>
+    <string name="strHeaderExplore">Explore</string>
 
     <string name="strSignInDetail">Manage accounts, check notifications, interact, comment on songs, and more.</string>
     <string name="strSignUpDetail">Create profiles, follow other accounts, listen to your own music, and more.</string>
