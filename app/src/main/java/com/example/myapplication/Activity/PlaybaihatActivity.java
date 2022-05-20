@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -127,7 +128,12 @@ public class PlaybaihatActivity extends AppCompatActivity {
                         mediaPlayer.release();
                     }
                 });
-                mediaPlayer.setDataSource(Song);
+                Log.d("Test", "URI: " + Song);
+                if(Song.length()>4 && (Song.substring(0,4).equals("http"))){
+                    mediaPlayer.setDataSource(Song);
+                }else {
+                    mediaPlayer.setDataSource(PlaybaihatActivity.this, Uri.parse(Song));
+                }
                 mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
                     @Override
                     public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {

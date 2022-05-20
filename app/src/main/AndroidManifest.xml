@@ -31,6 +31,7 @@
         <activity android:name=".Activity.admin.TypesDaoActivity" />
         <activity android:name=".Activity.admin.ThemeDaoActivity" />
         <activity android:name=".Activity.admin.ThemSuaDaoActivity" />
+        <activity android:name=".Activity.SongOnDeviceActivity"/>
         <activity
             android:name=".Activity.MainActivity"
             android:exported="true">

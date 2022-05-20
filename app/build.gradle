@@ -6,7 +6,7 @@ plugins {
 android {
     signingConfigs {
         myconfig {
-            storeFile file('D:\\OneDrive - Unicorn\\Desktop\\file text\\Music_keystore.jks')
+            storeFile file('C:\\Users\\84942\\Downloads\\Music_keystore.jks')
             storePassword '123456'
             keyAlias 'phuongkit'
             keyPassword '123456'
