@@ -25,7 +25,7 @@ import java.util.List;
 
 
 
-public class ThemTypeAlbumPlaylistActivity extends AppCompatActivity {
+public class ExploreActivity extends AppCompatActivity {
     Theme theme;
     Types types;
     Album album;
@@ -70,8 +70,8 @@ public class ThemTypeAlbumPlaylistActivity extends AppCompatActivity {
                             songsByTheme.add((song));
                         }
                     }
-                    songAdapter = new ThemTypeAdapter(ThemTypeAlbumPlaylistActivity.this, songsByTheme);
-                    recyclerViewsong.setLayoutManager(new GridLayoutManager(ThemTypeAlbumPlaylistActivity.this, 2));
+                    songAdapter = new ThemTypeAdapter(ExploreActivity.this, songsByTheme);
+                    recyclerViewsong.setLayoutManager(new GridLayoutManager(ExploreActivity.this, 2));
                     recyclerViewsong.setAdapter(songAdapter);
                 }
             });
@@ -87,8 +87,8 @@ public class ThemTypeAlbumPlaylistActivity extends AppCompatActivity {
                             songsByType.add((song));
                         }
                     }
-                    songAdapter = new ThemTypeAdapter(ThemTypeAlbumPlaylistActivity.this, songsByType);
-                    recyclerViewsong.setLayoutManager(new GridLayoutManager(ThemTypeAlbumPlaylistActivity.this, 2));
+                    songAdapter = new ThemTypeAdapter(ExploreActivity.this, songsByType);
+                    recyclerViewsong.setLayoutManager(new GridLayoutManager(ExploreActivity.this, 2));
                     recyclerViewsong.setAdapter(songAdapter);
                 }
             });
@@ -104,8 +104,8 @@ public class ThemTypeAlbumPlaylistActivity extends AppCompatActivity {
                             songsByAlbum.add((song));
                         }
                     }
-                    songAdapter = new ThemTypeAdapter(ThemTypeAlbumPlaylistActivity.this, songsByAlbum);
-                    recyclerViewsong.setLayoutManager(new GridLayoutManager(ThemTypeAlbumPlaylistActivity.this, 2));
+                    songAdapter = new ThemTypeAdapter(ExploreActivity.this, songsByAlbum);
+                    recyclerViewsong.setLayoutManager(new GridLayoutManager(ExploreActivity.this, 2));
                     recyclerViewsong.setAdapter(songAdapter);
                 }
             });
@@ -121,8 +121,8 @@ public class ThemTypeAlbumPlaylistActivity extends AppCompatActivity {
                             songsByPlaylist.add((song));
                         }
                     }
-                    songAdapter = new ThemTypeAdapter(ThemTypeAlbumPlaylistActivity.this, songsByPlaylist);
-                    recyclerViewsong.setLayoutManager(new GridLayoutManager(ThemTypeAlbumPlaylistActivity.this, 2));
+                    songAdapter = new ThemTypeAdapter(ExploreActivity.this, songsByPlaylist);
+                    recyclerViewsong.setLayoutManager(new GridLayoutManager(ExploreActivity.this, 2));
                     recyclerViewsong.setAdapter(songAdapter);
                 }
             });

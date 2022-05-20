@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:orientation="vertical"
     android:elevation="5dp">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#333"
         android:orientation="horizontal"
+        android:background="@drawable/radius_black"
         android:padding="10dp">
-
         <TextView
             android:id="@+id/tvMusicListIndex"
             android:layout_width="25dp"
@@ -55,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxWidth="250dp"
+                android:maxWidth="180dp"
                 android:maxLines="1"
                 android:text="Ten Ca Khúc"
                 android:textColor="#F0F0F0"
@@ -66,6 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:maxWidth="160dp"
                 android:maxLines="1"
                 android:text="Ca sĩ"
                 android:textColor="#979797"
@@ -87,4 +86,4 @@
             android:textAppearance="?android:textAppearanceLarge"
             android:textColor="#F0F0F0" />
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</LinearLayout>

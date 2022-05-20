@@ -15,29 +15,29 @@
 
 
         <fragment
-            android:id="@+id/framentBanner"
+            android:id="@+id/fragmentBanner"
             android:name="com.example.myapplication.Fragment.BannerFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <fragment
-            android:id="@+id/framentCD"
-            android:name="com.example.myapplication.Fragment.Fragment_Them"
+            android:id="@+id/fragmentCD"
+            android:name="com.example.myapplication.Fragment.ThemeFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <fragment
-            android:id="@+id/framentTL"
-            android:name="com.example.myapplication.Fragment.Fragment_Type"
+            android:id="@+id/fragmentTL"
+            android:name="com.example.myapplication.Fragment.TypeFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <fragment
-            android:id="@+id/framentAB"
-            android:name="com.example.myapplication.Fragment.Fragment_Album"
+            android:id="@+id/fragmentAB"
+            android:name="com.example.myapplication.Fragment.AlbumFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <fragment
-            android:id="@+id/framentPL"
-            android:name="com.example.myapplication.Fragment.Fragment_Playlist"
+            android:id="@+id/fragmentPL"
+            android:name="com.example.myapplication.Fragment.PlaylistFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

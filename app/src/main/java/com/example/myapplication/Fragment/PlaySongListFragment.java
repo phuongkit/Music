@@ -15,14 +15,14 @@ import com.example.myapplication.Activity.PlaybaihatActivity;
 import com.example.myapplication.Adapter.SongsListAdapter;
 import com.example.myapplication.R;
 
-public class Fragment_PlaySongList extends Fragment {
+public class PlaySongListFragment extends Fragment {
     View view;
     int index;
     public RecyclerView recyclerViewPlayMusicList;
     SongsListAdapter playMusicListAdapter;
     int position;
 
-    public Fragment_PlaySongList(int position) {
+    public PlaySongListFragment(int position) {
         this.position = position;
     }
 

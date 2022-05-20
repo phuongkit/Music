@@ -93,7 +93,7 @@ public class CircularDianhacAdapter extends PagerAdapter {
         imageViewDiaNhac = view.findViewById(R.id.imageViewDiaNhac2);
         layout_discMusic = view.findViewById(R.id.layout_discMusic);
 
-        Glide.with(context).load(getUrl()).error(R.drawable.ic_launcher_background).into(imageViewDiaNhac);
+        Glide.with(context).load(getUrl()).error(R.drawable.disc_music).into(imageViewDiaNhac);
         objectAnimator = ObjectAnimator.ofFloat(imageViewDiaNhac, "rotation", 0f, 360f);
         objectAnimator.setDuration(10000);
         objectAnimator.setRepeatCount(ValueAnimator.INFINITE);

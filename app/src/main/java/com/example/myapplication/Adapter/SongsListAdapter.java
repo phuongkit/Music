@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Fragment.Fragment_PlaySongList;
+import com.example.myapplication.Fragment.PlaySongListFragment;
 import com.example.myapplication.Module.Song;
 import com.example.myapplication.R;
 
@@ -65,7 +65,7 @@ public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.View
 //            }
     }
     public Fragment getItem(int position) {
-        return new Fragment_PlaySongList(position);
+        return new PlaySongListFragment(position);
     }
     @Override
     public int getItemCount() {

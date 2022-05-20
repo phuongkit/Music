@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,8 +32,8 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.Adapter.DSViewpagerSongAdapter;
-import com.example.myapplication.Fragment.Fragment_DiaNhac;
-import com.example.myapplication.Fragment.Fragment_PlaySongList;
+import com.example.myapplication.Fragment.MusicDiscFragment;
+import com.example.myapplication.Fragment.PlaySongListFragment;
 import com.example.myapplication.Module.Hinhdianhac;
 import com.example.myapplication.Module.Song;
 import com.example.myapplication.R;
@@ -61,8 +61,8 @@ public class PlaybaihatActivity extends AppCompatActivity {
     SeekBar seekBarTime;
 
     DSViewpagerSongAdapter viewPagerPlayListSong;
-    Fragment_DiaNhac fragmentDiaNhac;
-    Fragment_PlaySongList fragmentPlayMusicList;
+    MusicDiscFragment fragmentDiaNhac;
+    PlaySongListFragment fragmentPlayMusicList;
     TextView tvTimeSong, tvTotalTimeSong;
     ImageButton btnPause, btnNext, btnPrevious, imgRepeat, imgRandom;
     String url, urlImage;
@@ -118,6 +118,7 @@ public class PlaybaihatActivity extends AppCompatActivity {
             try {
                 mediaPlayer = new MediaPlayer();
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
@@ -127,7 +128,12 @@ public class PlaybaihatActivity extends AppCompatActivity {
                         mediaPlayer.release();
                     }
                 });
-                mediaPlayer.setDataSource(Song);
+                if (Song.length() > 4 && (Song.substring(0, 4).equals("http"))) {
+                    // Dùng cho URL
+                    mediaPlayer.setDataSource(Song);
+                } else {
+                    mediaPlayer.setDataSource(PlaybaihatActivity.this, Uri.parse(Song));
+                }
                 mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
                     @Override
                     public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
@@ -136,7 +142,6 @@ public class PlaybaihatActivity extends AppCompatActivity {
                 });
                 mediaPlayer.prepare();
             } catch (FileNotFoundException e) {
-//                Log.d("Test", "Node 1");
                 e.printStackTrace();
                 Toast.makeText(PlaybaihatActivity.this, getString(R.string.strMessageFailPlayMusic), Toast.LENGTH_LONG).show();
                 Handler handler = new Handler();
@@ -214,27 +219,11 @@ public class PlaybaihatActivity extends AppCompatActivity {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                         fragmentDiaNhac.objectAnimator.pause();
                     }
-
-//                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
-//                    Bundle bundle=new Bundle();
-//                    bundle.putString("imageDianhac", getCheckIndex());
-//                    bundle.putString("animator","pause");
-//                    fragment_dianhac.setArguments(bundle);
-//                    FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-//                    fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
                 } else {
                     mediaPlayer.start();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                         fragmentDiaNhac.objectAnimator.resume();
                     }
-
-//                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
-//                    Bundle bundle=new Bundle();
-//                    bundle.putString("imageDianhac",getCheckIndex());
-//                    bundle.putString("animator","resume");
-//                    fragment_dianhac.setArguments(bundle);
-//                    FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-//                    fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
                 }
             }
         });
@@ -332,14 +321,6 @@ public class PlaybaihatActivity extends AppCompatActivity {
             fragmentDiaNhac.playMusic(songs.get(position).getImage());
             fragmentPlayMusicList.loaddata(position);
             fragmentDiaNhac.objectAnimator.start();
-//                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
-//                    Bundle bundle=new Bundle();
-//                    setCheckIndex(songs.get(position).getImage());
-//                    bundle.putString("imageDianhac",getCheckIndex());
-//                    bundle.putString("animator","resume");
-//                    fragment_dianhac.setArguments(bundle);
-//                    FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-//                    fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
             getSupportActionBar().setTitle(songs.get(position).getName());
 
             updateTime();
@@ -381,14 +362,6 @@ public class PlaybaihatActivity extends AppCompatActivity {
             fragmentDiaNhac.playMusic(songs.get(position).getImage());
             fragmentPlayMusicList.loaddata(position);
 
-//                    Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
-//                    Bundle bundle=new Bundle();
-//                    setCheckIndex(songs.get(position).getImage());
-//                    bundle.putString("imageDianhac",getCheckIndex());
-//                    bundle.putString("animator","resume");
-//                    fragment_dianhac.setArguments(bundle);
-//                    FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-//                    fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
             getSupportActionBar().setTitle(songs.get(position).getName());
             updateTime();
         }
@@ -459,12 +432,6 @@ public class PlaybaihatActivity extends AppCompatActivity {
                         fragmentDiaNhac.objectAnimator.start();
                         new PlayMp3().execute(songs.get(position).getLinkSong());
                         hinhbaihats.add(new Hinhdianhac(songs.get(position).getImage()));
-//                        Fragment_dianhac fragment_dianhac = new Fragment_dianhac();
-//                        Bundle bundle=new Bundle();
-//                        bundle.putString("imageDianhac",songs.get(position).getImage());
-//                        fragment_dianhac.setArguments(bundle);
-//                        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-//                        fragmentTransaction.replace(R.id.viewPagerPlayMusic2,fragment_dianhac).commit();
                         fragmentDiaNhac.playMusic(songs.get(position).getImage());
                         fragmentPlayMusicList.loaddata(position);
                         getSupportActionBar().setTitle(songs.get(position).getName());
@@ -515,15 +482,15 @@ public class PlaybaihatActivity extends AppCompatActivity {
             }
         });
         hinhbaihats.add(new Hinhdianhac(songs.get(index).getImage()));
-        fragmentDiaNhac = new Fragment_DiaNhac();
-        fragmentPlayMusicList = new Fragment_PlaySongList(index);
+        fragmentDiaNhac = new MusicDiscFragment();
+        fragmentPlayMusicList = new PlaySongListFragment(index);
         viewPagerPlayListSong = new DSViewpagerSongAdapter(getSupportFragmentManager());
         viewPagerPlayListSong.addFragment(fragmentPlayMusicList);
         viewPagerPlayListSong.addFragment(fragmentDiaNhac);
         viewPagerPlayMusic.setAdapter(viewPagerPlayListSong);
         viewPagerPlayMusic.setCurrentItem(1);
-        fragmentPlayMusicList = (Fragment_PlaySongList) viewPagerPlayListSong.getItem(0);
-        fragmentDiaNhac = (Fragment_DiaNhac) viewPagerPlayListSong.getItem(1);
+        fragmentPlayMusicList = (PlaySongListFragment) viewPagerPlayListSong.getItem(0);
+        fragmentDiaNhac = (MusicDiscFragment) viewPagerPlayListSong.getItem(1);
         if (songs.size() > 0) {
             position = index;
             getSupportActionBar().setTitle(songs.get(index).getName());
@@ -564,14 +531,6 @@ public class PlaybaihatActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        finish();
-//        mediaPlayer.stop();
-//        songs.clear();
-//    }
 
     @Override
     public void onBackPressed() {

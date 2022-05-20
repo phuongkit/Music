@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.myapplication.Fragment.Fragment_Explore;
+import com.example.myapplication.Fragment.ExploreFragment;
 import com.example.myapplication.Fragment.HomeFragment;
 import com.example.myapplication.Fragment.SearchFragment;
 import com.example.myapplication.Fragment.PersonalFragment;
@@ -41,7 +41,7 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
         registeredFragments.append(0, new PersonalFragment());
         registeredFragments.append(1, new HomeFragment());
         registeredFragments.append(2, new SearchFragment());
-        registeredFragments.append(3, new Fragment_Explore());
+        registeredFragments.append(3, new ExploreFragment());
     }
     @NonNull
     @Override

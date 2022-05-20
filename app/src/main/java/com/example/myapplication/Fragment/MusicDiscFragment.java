@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Fragment_DiaNhac extends Fragment {
+public class MusicDiscFragment extends Fragment {
     View view;
     CircleImageView circleImageView;
     public ObjectAnimator objectAnimator;
@@ -37,6 +37,6 @@ public class Fragment_DiaNhac extends Fragment {
     }
 
     public void playMusic(String image){
-        Glide.with(getActivity()).load(image).error(R.drawable.ic_launcher_background).into(circleImageView);
+        Glide.with(getActivity()).load(image).error(R.drawable.ic_music).into(circleImageView);
     }
 }

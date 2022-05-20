@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putInt("TypeMusic", 0);
         musicFragment.setArguments(bundle);
-        ft.replace(R.id.framentBaihat, musicFragment);
+        ft.replace(R.id.fragmentBaihat, musicFragment);
         // or ft.add(R.id.your_placeholder, new FooFragment());
         // Complete the changes added above
         ft.commit();
@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         FragmentManager mFragmentMgr = getChildFragmentManager();
         FragmentTransaction mTransaction = mFragmentMgr.beginTransaction();
-        Fragment childFragment = mFragmentMgr.findFragmentById(R.id.framentBaihat);
+        Fragment childFragment = mFragmentMgr.findFragmentById(R.id.fragmentBaihat);
         mTransaction.remove(childFragment);
         mTransaction.commit();
         super.onDestroyView();

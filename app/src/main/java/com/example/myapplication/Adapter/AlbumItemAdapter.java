@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.myapplication.Activity.ThemTypeAlbumPlaylistActivity;
+import com.example.myapplication.Activity.ExploreActivity;
 import com.example.myapplication.Module.Album;
 import com.example.myapplication.R;
 
@@ -54,7 +54,7 @@ public class AlbumItemAdapter extends RecyclerView.Adapter<AlbumItemAdapter.View
         holder.imageViewSongtheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ThemTypeAlbumPlaylistActivity.class);
+                Intent intent = new Intent(context, ExploreActivity.class);
                 intent.putExtra("album", album);
                 intent.putExtra("check", "album");
                 context.startActivity(intent);

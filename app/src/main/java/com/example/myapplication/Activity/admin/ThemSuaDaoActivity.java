@@ -167,8 +167,10 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
         );
 
         int paddingDp = 8;
+        int paddingDpTableRow = 16;
         float density = getResources().getDisplayMetrics().density;
         int paddingPixel = (int) (paddingDp * density);
+        int paddingPixelTableRow = (int) (paddingDpTableRow * density);
 
         switch (mCurrentModule) {
             case MODULE_USER:
@@ -189,6 +191,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 hintUser.add(getString(R.string.strHintAvatar));
                 for (int i = 0; i < 7; i++) {
                     TableRow tableRow = new TableRow(this);
+                    tableRow.setPadding(0, paddingDpTableRow, 0, paddingDpTableRow);
 
                     TextView textView = new TextView(this);
                     textView.setText(textUser.get(i) + ":");
@@ -229,6 +232,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 hintSong.add(getString(R.string.strHintLinkSong));
                 for (int i = 0; i < 7; i++) {
                     TableRow tableRow = new TableRow(this);
+                    tableRow.setPadding(0, paddingDpTableRow, 0, paddingDpTableRow);
 
                     TextView textView = new TextView(this);
                     textView.setText(textSong.get(i) + ":");
@@ -264,6 +268,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 hintBanner.add(getString(R.string.strHintImage));
                 for (int i = 0; i < 4; i++) {
                     TableRow tableRow = new TableRow(this);
+                    tableRow.setPadding(0, paddingDpTableRow, 0, paddingDpTableRow);
 
                     TextView textView = new TextView(this);
                     textView.setText(textBanner.get(i) + ":");
@@ -300,6 +305,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 hintAlbum.add(getString(R.string.strHintSinger));
                 for (int i = 0; i < 4; i++) {
                     TableRow tableRow = new TableRow(this);
+                    tableRow.setPadding(0, paddingDpTableRow, 0, paddingDpTableRow);
 
                     TextView textView = new TextView(this);
                     textView.setText(textAlbum.get(i) + ":");
@@ -327,6 +333,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 hintTheme.add(getString(R.string.strHintImage));
                 for (int i = 0; i < 3; i++) {
                     TableRow tableRow = new TableRow(this);
+                    tableRow.setPadding(0, paddingDpTableRow, 0, paddingDpTableRow);
 
                     TextView textView = new TextView(this);
                     textView.setText(textTheme.get(i) + ":");
@@ -354,6 +361,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 hintTypes.add(getString(R.string.strHintImage));
                 for (int i = 0; i < 3; i++) {
                     TableRow tableRow = new TableRow(this);
+                    tableRow.setPadding(0, paddingDpTableRow, 0, paddingDpTableRow);
 
                     TextView textView = new TextView(this);
                     textView.setText(textTypes.get(i) + ":");
@@ -385,6 +393,7 @@ public class ThemSuaDaoActivity extends AppCompatActivity {
                 hintPlaylist.add(getString(R.string.strHintDateCreated));
                 for (int i = 0; i < 5; i++) {
                     TableRow tableRow = new TableRow(this);
+                    tableRow.setPadding(0, paddingDpTableRow, 0, paddingDpTableRow);
 
                     TextView textView = new TextView(this);
                     textView.setText(textPlaylist.get(i) + ":");

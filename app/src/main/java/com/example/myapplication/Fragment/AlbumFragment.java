@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Fragment_Album extends Fragment {
+public class AlbumFragment extends Fragment {
     View view;
     RecyclerView recyclerView;
     TextView tvTitle;
@@ -38,8 +38,9 @@ public class Fragment_Album extends Fragment {
     RecyclerView adapter;
 
     public ListView lvPlayList;
-    ArrayList<Album> albums=new ArrayList<>();
+    ArrayList<Album> albums = new ArrayList<>();
     Activity activity;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,11 +50,11 @@ public class Fragment_Album extends Fragment {
         return view;
     }
 
-
     private void bindingView() {
         recyclerView = view.findViewById(R.id.recyclerView);
         tvTitle = view.findViewById(R.id.tvTitle);
     }
+
     private void GetDetail() {
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -68,7 +69,7 @@ public class Fragment_Album extends Fragment {
                     @Override
                     public void OnDataRetrieved(List<Album> Albums) {
                         albums = (ArrayList<Album>) Albums;
-                        albumItemAdapter = new AlbumItemAdapter(getActivity(),albums);
+                        albumItemAdapter = new AlbumItemAdapter(getActivity(), albums);
                         recyclerView.setAdapter(albumItemAdapter);
                     }
                 });

@@ -53,9 +53,7 @@ public class ListMusicActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(playlist.getName());
 
-        Log.d("Test", "Node A");
         imgPlaylistAvatar = findViewById(R.id.imgPlaylistAvatar);
-        Log.d("Test", "Node B");
         // Begin the transaction
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         // Replace the contents of the container with the new fragment

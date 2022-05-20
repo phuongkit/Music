@@ -86,6 +86,7 @@ public class CustomSongAdapter extends ArrayAdapter<Song> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        Log.d("Test", "Node F");
         viewHolder = null;
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -101,9 +102,9 @@ public class CustomSongAdapter extends ArrayAdapter<Song> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Song song = getItem(position);
-        Glide.with(getContext()).load(song.getImage()).into(viewHolder.imgTopsong);
+        Glide.with(getContext()).load(song.getImage()).error(R.drawable.song).into(viewHolder.imgTopsong);
 
-        viewHolder.tvMusicListIndex.setText(String.valueOf(song.getId()));
+        viewHolder.tvMusicListIndex.setText(String.valueOf(position + 1));
         viewHolder.tvTenBaiHatMusicList.setText(song.getName());
         viewHolder.tvTenCaSiMusicList.setText(song.getSinger());
 

@@ -6,20 +6,10 @@
     android:orientation="vertical"
     tools:context=".Fragment.SearchFragment">
 
-    <TableLayout
+    <ListView
+        android:id="@+id/lvSearch"
+        android:background="@drawable/radius_black"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ListView
-                android:id="@+id/lvSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
-
-    </TableLayout>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Fragment_Them extends Fragment {
+public class ThemeFragment extends Fragment {
     View view;
     RecyclerView recyclerView;
     TextView tvTitle;

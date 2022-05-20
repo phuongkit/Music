@@ -13,12 +13,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-        <!--        <fragment-->
-        <!--            android:id="@+id/framentBanner"-->
-        <!--            android:name="com.example.myapplication.Fragment.BannerFragment"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"/>-->
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="200dp">
@@ -31,10 +25,9 @@
         </androidx.cardview.widget.CardView>
 
         <FrameLayout
-            android:id="@+id/framentBaihat"
+            android:id="@+id/fragmentBaihat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
 
     </LinearLayout>
 

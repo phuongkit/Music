@@ -36,6 +36,7 @@ public class MusicFragment extends Fragment {
     Bundle bundle;
     private static final int HOME = 0;
     private static final int PLAYLIST = 1;
+    public static final int ON_DEVICE = 2;
 
     public MusicFragment() {
     }
@@ -47,13 +48,14 @@ public class MusicFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_music, container, false);
         mapping();
         getDetail();
-        songs = new ArrayList<>();
         lvPlayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getActivity(), PlaybaihatActivity.class);
                 Bundle bundle = new Bundle();
+                Log.d("Test","Song: \n" + songs.toString());
                 bundle.putSerializable("songs", songs);
+                Log.d("Test", "index: " + i);
                 bundle.putInt("index", i);
                 intent.putExtra("bundle", bundle);
                 startActivity(intent);
@@ -65,7 +67,6 @@ public class MusicFragment extends Fragment {
     private void getDetail() {
         songs = new ArrayList<>();
         int typeListMusic = bundle.getInt("TypeMusic", HOME);
-        Log.d("Test", "Node B");
         switch (typeListMusic) {
             case HOME:
                 getListMusicByHome();
@@ -74,9 +75,20 @@ public class MusicFragment extends Fragment {
                 playlist = (Playlist) bundle.getSerializable("playlist");
                 getListMusicByPlaylist(playlist);
                 break;
+            case ON_DEVICE:
+                songs = new ArrayList<>();
+                songs = (ArrayList<Song>) bundle.getSerializable("songs");
+                getListMusicByOnDevice(songs);
+                break;
             default:
                 break;
         }
+    }
+
+    private void getListMusicByOnDevice(ArrayList<Song> songs1) {
+        customSongAdapter = new CustomSongAdapter(getActivity(), android.R.layout.simple_list_item_1, songs1);
+        lvPlayList.setAdapter(customSongAdapter);
+        Log.d("Test", "Song1: \n" + songs.toString());
     }
 
     private void getListMusicByHome() {
