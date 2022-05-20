@@ -9,6 +9,8 @@
     <string name="strMessageSuccessDownload">Successfully downloaded the song</string>
     <string name="strMessageFailDownload">Failed to download the song</string>
 
+    <string name="strMessageFailPlayMusic">An error occurred while playing this song. We\'ll move on to the next song ourselves</string>
+
     <string name="strBtnAdd">Add</string>
     <string name="strBtnSave">Save</string>
     <string name="strBtnCancel">Cancel</string>

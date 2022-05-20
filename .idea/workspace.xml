@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
@@ -37,25 +37,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a74400b-26de-4a97-92e9-643db9a92054" name="Default Changelist" comment="add playlist for play music, add exlore GUI">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/IntroductoryActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/SongOnDeviceActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_custom_orange.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/intro.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/radius_bottomleft_bottomright.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_introductory.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_song_on_device.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_songondevice.xml" afterDir="false" />
+    <list default="true" id="1a74400b-26de-4a97-92e9-643db9a92054" name="Default Changelist" comment="fix GUI Profile, fix GUI Update DAO">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/admin/ThemSuaDaoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/admin/ThemSuaDaoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/LibaryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Adapter/LibaryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/crud_item_dao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/crud_item_dao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_dao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_dao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/myprofile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/myprofile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/PlaybaihatActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/Activity/PlaybaihatActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-vi/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-vi/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,8 +176,8 @@
       <recent name="com.example.myapplication" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Git\Music\app\src\main\res\drawable" />
       <recent name="D:\Git\Music\app\src\main\res\drawable-v24" />
+      <recent name="D:\Git\Music\app\src\main\res\drawable" />
       <recent name="E:\Users\colal\AndroidStudioProjects\Music6\app\src\main\res\drawable-v24" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -439,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652974288647</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fix GUI Profile, fix GUI Update DAO">
+      <created>1652980036698</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1652980036698</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -487,6 +481,7 @@
     <MESSAGE value="update playlist" />
     <MESSAGE value="fix database" />
     <MESSAGE value="add playlist for play music, add exlore GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="add playlist for play music, add exlore GUI" />
+    <MESSAGE value="fix GUI Profile, fix GUI Update DAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix GUI Profile, fix GUI Update DAO" />
   </component>
 </project>

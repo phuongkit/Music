@@ -103,6 +103,7 @@
     <string name="strMessageDeleteSongFromPlaylist">Bạn có muốn xóa bài hát này khỏi danh sách phát này không?</string>
     <string name="strtitleWarning">Cảnh báo</string>
     <string name="strHeaderExplore">Khám phá</string>
+    <string name="strMessageFailPlayMusic">Xảy ra lỗi khi phát bài hát này. Chúng tôi sẽ tự chuyển sang bài hát tiếp theo</string>
 
 
 </resources>
