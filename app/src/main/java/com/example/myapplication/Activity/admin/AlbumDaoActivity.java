@@ -19,7 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.myapplication.Adapter.admin.CustomAlbumDaoAdapter;
 import com.example.myapplication.Dao.AlbumDao;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
-import com.example.myapplication.Module.Album;
+import com.example.myapplication.Model.Album;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -54,19 +54,24 @@ public class AlbumDaoActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Handler handler = new Handler();
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 return true;
             case R.id.menuInsert:
-                String control="add";
-                Intent intent = new Intent(this, ThemSuaDaoActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("control", control);
-                bundle.putString("module",customAlbumDaoAdapter.getCheck());
-                intent.putExtra("bundle", bundle);
-                finish();
-                startActivity(intent);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        String control="add";
+                        Intent intent = new Intent(AlbumDaoActivity.this, CRUDDaoActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("control", control);
+                        bundle.putString("module",customAlbumDaoAdapter.getCheck());
+                        intent.putExtra("bundle", bundle);
+                        startActivity(intent);
+                    }
+                }, 500);
                 return true;
         }
         return super.onOptionsItemSelected(item);

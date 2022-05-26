@@ -19,7 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.myapplication.Adapter.admin.CustomBannerDaoAdapter;
 import com.example.myapplication.Dao.BannerDao;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
-import com.example.myapplication.Module.Banner;
+import com.example.myapplication.Model.Banner;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -61,12 +61,11 @@ public class BannerDaoActivity extends AppCompatActivity {
                 return true;
             case R.id.menuInsert:
                 String control = "add";
-                Intent intent = new Intent(this, ThemSuaDaoActivity.class);
+                Intent intent = new Intent(this, CRUDDaoActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("control", control);
                 bundle.putString("module", CustomBaihatDAOAdapter.getCheck());
                 intent.putExtra("bundle", bundle);
-                finish();
                 startActivity(intent);
                 return true;
         }

@@ -1,22 +1,22 @@
 package com.example.myapplication.Activity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Fragment.MusicFragment;
-import com.example.myapplication.Module.Playlist;
+import com.example.myapplication.Model.Playlist;
 import com.example.myapplication.R;
 
 public class ListMusicActivity extends AppCompatActivity {
@@ -49,6 +49,7 @@ public class ListMusicActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         //Toobar đã như ActionBar
+        assert actionBar != null;
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(playlist.getName());
@@ -82,6 +83,7 @@ public class ListMusicActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

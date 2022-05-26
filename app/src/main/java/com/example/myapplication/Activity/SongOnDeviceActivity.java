@@ -1,41 +1,34 @@
 package com.example.myapplication.Activity;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.myapplication.Fragment.MusicFragment;
-import com.example.myapplication.Module.Song;
+import com.example.myapplication.Model.Song;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SongOnDeviceActivity extends AppCompatActivity {
-    ActivityResultLauncher<Intent> activityResultLauncher;
-    String[] permission = {READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE};
+//    ActivityResultLauncher<Intent> activityResultLauncher;
+//    String[] permission = {READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE};
     ContentResolver contentResolver;
     Cursor cursor;
     Context context;
@@ -43,7 +36,7 @@ public class SongOnDeviceActivity extends AppCompatActivity {
     ArrayList<String> arrayList;
     Toolbar toolbar;
     Uri uri;
-    ArrayList<Song> songs = new ArrayList<Song>();
+    ArrayList<Song> songs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +54,7 @@ public class SongOnDeviceActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> finish());
     }
 
     private void addControls() {
@@ -75,9 +63,9 @@ public class SongOnDeviceActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         //Toobar đã như ActionBar
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
-
 
 
     private void initData() {
@@ -98,7 +86,7 @@ public class SongOnDeviceActivity extends AppCompatActivity {
     private void getMp3() {
         contentResolver = context.getContentResolver();
         uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        String o = MediaStore.Audio.Media.DATA;
+//        String o = MediaStore.Audio.Media.DATA;
 
         cursor = contentResolver.query(uri, null, null, null, null);
         if (cursor == null) {
@@ -106,23 +94,21 @@ public class SongOnDeviceActivity extends AppCompatActivity {
         } else if (!cursor.moveToFirst()) {
             Toast.makeText(context, "Không tìm thấy", Toast.LENGTH_SHORT).show();
         } else {
-            int title = cursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
-            int data = cursor.getColumnIndex(MediaStore.Audio.Media.DATA);
-            int key = cursor.getColumnIndex(MediaStore.Audio.Media._ID);
+            int mTitle = cursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
+            int mData = cursor.getColumnIndex(MediaStore.Audio.Media.DATA);
+            int mKey = cursor.getColumnIndex(MediaStore.Audio.Media._ID);
             int id = 1;
             do {
                 Song song = new Song();
-                String st = cursor.getString(title);
-                String st1 = cursor.getString(data);
-                String st2 = cursor.getString(key);
-                song.key = st2;
+                String name = cursor.getString(mTitle);
+                String linkSong = cursor.getString(mData);
+                song.key = cursor.getString(mKey);
                 song.setId(id + "");
-                song.setName(st);
-                song.setLinkSong(st1);
+                song.setName(name);
+                song.setLinkSong(linkSong);
                 songs.add(song);
                 id++;
             } while (cursor.moveToNext());
-
         }
     }
 
@@ -133,12 +119,7 @@ public class SongOnDeviceActivity extends AppCompatActivity {
                     AlertDialog.Builder alert = new AlertDialog.Builder(SongOnDeviceActivity.this);
                     alert.setTitle("Warning");
                     alert.setMessage("Cho phép quyền truy cập");
-                    alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            ActivityCompat.requestPermissions(SongOnDeviceActivity.this, new String[]{READ_EXTERNAL_STORAGE}, 30);
-                        }
-                    });
+                    alert.setPositiveButton("ok", (dialogInterface, i) -> ActivityCompat.requestPermissions(SongOnDeviceActivity.this, new String[]{READ_EXTERNAL_STORAGE}, 30));
                     alert.setNegativeButton("cancel", null);
                     AlertDialog alertDialog = alert.create();
                     alertDialog.show();

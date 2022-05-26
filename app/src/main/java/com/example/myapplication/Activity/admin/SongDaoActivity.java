@@ -18,7 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.myapplication.Adapter.admin.CustomSongDaoAdapter;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.SongDao;
-import com.example.myapplication.Module.Song;
+import com.example.myapplication.Model.Song;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -60,12 +60,11 @@ public class SongDaoActivity extends AppCompatActivity {
                 return true;
             case R.id.menuInsert:
                 String control = "add";
-                Intent intent = new Intent(this, ThemSuaDaoActivity.class);
+                Intent intent = new Intent(this, CRUDDaoActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("control", control);
                 bundle.putString("module", customSongDaoAdapter.getCheck());
                 intent.putExtra("bundle", bundle);
-                finish();
                 startActivity(intent);
                 return true;
         }

@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"/>
         <fragment
             android:id="@+id/fragmentTL"
-            android:name="com.example.myapplication.Fragment.TypeFragment"
+            android:name="com.example.myapplication.Fragment.TypesFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <fragment

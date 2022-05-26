@@ -6,11 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.Adapter.CustomBannerAdapter;
-import com.example.myapplication.Module.Banner;
+import com.example.myapplication.Model.Banner;
 import com.example.myapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import me.relex.circleindicator.CircleIndicator;
 
@@ -45,7 +47,7 @@ public class BannerFragment extends Fragment {
         DatabaseReference myRef = database.getReference("banner");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<Banner> banners =new ArrayList<>();
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
@@ -55,27 +57,20 @@ public class BannerFragment extends Fragment {
                 }
                 customBannerAdapter = new CustomBannerAdapter(getActivity(), banners);
                 viewPager.setAdapter(customBannerAdapter);
-//                viewPager.getAdapter().notifyDataSetChanged();
 
                 circleIndicator.setViewPager(viewPager);
                 handler = new Handler();
-                runnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        currentItem = viewPager.getCurrentItem();
-                        currentItem = (currentItem+1) % viewPager.getAdapter().getCount();
-                        viewPager.setCurrentItem(currentItem, true);
-                        handler.postDelayed(runnable, 4500);
-                    }
-
+                runnable = () -> {
+                    currentItem = viewPager.getCurrentItem();
+                    currentItem = (currentItem+1) % Objects.requireNonNull(viewPager.getAdapter()).getCount();
+                    viewPager.setCurrentItem(currentItem, true);
+                    handler.postDelayed(runnable, 4500);
                 };
                 handler.postDelayed(runnable, 3000);
-
-//                editText.setText(value.toString());
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error) {
                 // Failed to read value
             }
         });

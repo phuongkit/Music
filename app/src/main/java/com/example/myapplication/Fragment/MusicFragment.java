@@ -6,19 +6,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.SongDao;
-import com.example.myapplication.Activity.PlaybaihatActivity;
+import com.example.myapplication.Activity.PlayMusicActivity;
 import com.example.myapplication.Dao.Playlist_SongDao;
-import com.example.myapplication.Module.Playlist;
-import com.example.myapplication.Module.Playlist_Song;
-import com.example.myapplication.Module.Song;
+import com.example.myapplication.Model.Playlist;
+import com.example.myapplication.Model.Playlist_Song;
+import com.example.myapplication.Model.Song;
 import com.example.myapplication.R;
 import com.example.myapplication.Adapter.CustomSongAdapter;
 
@@ -29,7 +27,6 @@ public class MusicFragment extends Fragment {
     CustomSongAdapter customSongAdapter;
     View view;
     ListView lvPlayList;
-    TextView tvTitlePlayList, tvXemThem;
     ArrayList<Song> songs;
 
     Playlist playlist = new Playlist();
@@ -48,18 +45,13 @@ public class MusicFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_music, container, false);
         mapping();
         getDetail();
-        lvPlayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(), PlaybaihatActivity.class);
-                Bundle bundle = new Bundle();
-                Log.d("Test","Song: \n" + songs.toString());
-                bundle.putSerializable("songs", songs);
-                Log.d("Test", "index: " + i);
-                bundle.putInt("index", i);
-                intent.putExtra("bundle", bundle);
-                startActivity(intent);
-            }
+        lvPlayList.setOnItemClickListener((adapterView, view, i, l) -> {
+            Intent intent = new Intent(getActivity(), PlayMusicActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("songs", songs);
+            bundle.putInt("index", i);
+            intent.putExtra("bundle", bundle);
+            startActivity(intent);
         });
         return view;
     }
@@ -88,7 +80,6 @@ public class MusicFragment extends Fragment {
     private void getListMusicByOnDevice(ArrayList<Song> songs1) {
         customSongAdapter = new CustomSongAdapter(getActivity(), android.R.layout.simple_list_item_1, songs1);
         lvPlayList.setAdapter(customSongAdapter);
-        Log.d("Test", "Song1: \n" + songs.toString());
     }
 
     private void getListMusicByHome() {

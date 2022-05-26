@@ -2,7 +2,6 @@ package com.example.myapplication.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,16 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Adapter.ThemTypeAdapter;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.SongDao;
-import com.example.myapplication.Module.Album;
-import com.example.myapplication.Module.Playlist;
-import com.example.myapplication.Module.Song;
-import com.example.myapplication.Module.Theme;
-import com.example.myapplication.Module.Types;
+import com.example.myapplication.Model.Album;
+import com.example.myapplication.Model.Playlist;
+import com.example.myapplication.Model.Song;
+import com.example.myapplication.Model.Theme;
+import com.example.myapplication.Model.Types;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 
 
 public class ExploreActivity extends AppCompatActivity {
@@ -66,7 +65,7 @@ public class ExploreActivity extends AppCompatActivity {
                 @Override
                 public void OnDataRetrieved(List<Song> songs) {
                     for (Song song:songs) {
-                        if(song.getIdTheme().equals(theme.id)){
+                        if(song.getIdTheme().equals(theme.getId())){
                             songsByTheme.add((song));
                         }
                     }
@@ -83,7 +82,7 @@ public class ExploreActivity extends AppCompatActivity {
                 @Override
                 public void OnDataRetrieved(List<Song> songs) {
                     for (Song song : songs) {
-                        if (song.getIdTypes().equals(types.id)) {
+                        if (song.getIdTypes().equals(types.getId())) {
                             songsByType.add((song));
                         }
                     }
@@ -100,7 +99,7 @@ public class ExploreActivity extends AppCompatActivity {
                 @Override
                 public void OnDataRetrieved(List<Song> songs) {
                     for (Song song : songs) {
-                        if (song.getIdAlbum().equals(album.id)) {
+                        if (song.getIdAlbum().equals(album.getId())) {
                             songsByAlbum.add((song));
                         }
                     }
@@ -117,7 +116,7 @@ public class ExploreActivity extends AppCompatActivity {
                 @Override
                 public void OnDataRetrieved(List<Song> songs) {
                     for (Song song : songs) {
-                        if (song.getIdPlaylist().equals(playlist.id)) {
+                        if (song.getIdPlaylist().equals(playlist.getId())) {
                             songsByPlaylist.add((song));
                         }
                     }
@@ -133,51 +132,31 @@ public class ExploreActivity extends AppCompatActivity {
     private void init() {
         if(check.equals("theme")) {
             setSupportActionBar(toolbarsong);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(theme.getName());
-            toolbarsong.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            toolbarsong.setNavigationOnClickListener(v -> finish());
         } if(check.equals("type")) {
             setSupportActionBar(toolbarsong);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(types.getName());
-            toolbarsong.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            toolbarsong.setNavigationOnClickListener(v -> finish());
         }
         if(check.equals("album")) {
             setSupportActionBar(toolbarsong);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(album.getName());
-            toolbarsong.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            toolbarsong.setNavigationOnClickListener(v -> finish());
         }
         if(check.equals("playlist")) {
             setSupportActionBar(toolbarsong);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(playlist.getName());
-            toolbarsong.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            toolbarsong.setNavigationOnClickListener(v -> finish());
         }
     }
     private void viewBinding() {
         recyclerViewsong= findViewById(R.id.recyclerViewSong);
-        toolbarsong = findViewById(R.id.toolBarSong);
+        toolbarsong = findViewById(R.id.toolBar);
     }
 
 }

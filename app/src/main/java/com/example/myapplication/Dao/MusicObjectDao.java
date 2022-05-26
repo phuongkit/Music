@@ -3,7 +3,7 @@ package com.example.myapplication.Dao;
 import android.util.Log;
 
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
-import com.example.myapplication.Module.MusicObject;
+import com.example.myapplication.Model.MusicObject;
 import com.google.firebase.database.DataSnapshot;
 
 import java.util.concurrent.CountDownLatch;

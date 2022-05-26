@@ -19,7 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.myapplication.Adapter.admin.CustomUserDaoAdapter;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.UserDao;
-import com.example.myapplication.Module.User;
+import com.example.myapplication.Model.User;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -43,17 +43,6 @@ public class UserDaoActivity extends AppCompatActivity {
         GetDetail();
 
         users = new ArrayList<>();
-//        lvPlayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(mainActivity, PlaybaihatActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable("baihats", baihats);
-//                bundle.putInt("index", i);
-//                intent.putExtra("bundle", bundle);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     @Override
@@ -72,12 +61,11 @@ public class UserDaoActivity extends AppCompatActivity {
                 return true;
             case R.id.menuInsert:
                 String control = "add";
-                Intent intent = new Intent(this, ThemSuaDaoActivity.class);
+                Intent intent = new Intent(this, CRUDDaoActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("control", control);
                 bundle.putString("module", customUserDaoAdapter.getCheck());
                 intent.putExtra("bundle", bundle);
-                finish();
                 startActivity(intent);
                 return true;
         }

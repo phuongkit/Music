@@ -22,7 +22,7 @@ import com.example.myapplication.Activity.PlaylistActivity;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Dao.PlaylistDao;
 import com.example.myapplication.Dialog.InputDialog;
-import com.example.myapplication.Module.Playlist;
+import com.example.myapplication.Model.Playlist;
 import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 

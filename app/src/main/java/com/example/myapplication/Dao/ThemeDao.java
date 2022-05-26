@@ -1,7 +1,7 @@
 package com.example.myapplication.Dao;
 
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
-import com.example.myapplication.Module.Theme;
+import com.example.myapplication.Model.Theme;
 import com.google.firebase.database.DataSnapshot;
 
 public class ThemeDao extends FirebaseDao<Theme> {

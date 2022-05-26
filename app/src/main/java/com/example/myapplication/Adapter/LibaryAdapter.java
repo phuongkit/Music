@@ -1,19 +1,23 @@
 package com.example.myapplication.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Paint;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.myapplication.Activity.PlaylistActivity;
 import com.example.myapplication.Activity.SongOnDeviceActivity;
-import com.example.myapplication.Module.Libary;
+import com.example.myapplication.Generic.Beans.Libary;
 import com.example.myapplication.R;
 
 public class LibaryAdapter extends ArrayAdapter<Libary> {
@@ -29,7 +33,7 @@ public class LibaryAdapter extends ArrayAdapter<Libary> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = this.context.getLayoutInflater().inflate(this.resource, null);
+        @SuppressLint("ViewHolder") View view = this.context.getLayoutInflater().inflate(this.resource, null);
         ImageView imgContentLibary = view.findViewById(R.id.imgContentLibary);
         TextView txtContenLibary = view.findViewById(R.id.txtContentLibary);
 
@@ -38,27 +42,22 @@ public class LibaryAdapter extends ArrayAdapter<Libary> {
         imgContentLibary.setBackgroundResource(libary.getIdIcon());
         txtContenLibary.setText(libary.getName());
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                switch (libary.getIdLibary()) {
-                    case "0":
-                        break;
-                    case "1":
-                        break;
-                    case "2":
-                        intent = new Intent(context, SongOnDeviceActivity.class);
-                        context.startActivity(intent);
-                        break;
-                    case "3":
-                        intent = new Intent(context, PlaylistActivity.class);
-                        context.startActivity(intent);
-                        break;
-                    case "4":
-                        break;
-                    default: break;
-                }
+        view.setOnClickListener(view1 -> {
+            Intent intent;
+            switch (libary.getIdLibary()) {
+                case "1":
+                case "4":
+                    Toast.makeText(context.getApplication(), context.getString(R.string.strMessageComingSoon), Toast.LENGTH_SHORT).show();
+                    break;
+                case "2":
+                    intent = new Intent(context, SongOnDeviceActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case "3":
+                    intent = new Intent(context, PlaylistActivity.class);
+                    context.startActivity(intent);
+                    break;
+                default: break;
             }
         });
         return view;

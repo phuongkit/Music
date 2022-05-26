@@ -14,7 +14,8 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
-import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -37,6 +38,6 @@ public class MusicDiscFragment extends Fragment {
     }
 
     public void playMusic(String image){
-        Glide.with(getActivity()).load(image).error(R.drawable.ic_music).into(circleImageView);
+        Glide.with(requireActivity()).load(image).error(R.drawable.music_disc).into(circleImageView);
     }
 }

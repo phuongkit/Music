@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.ExploreActivity;
-import com.example.myapplication.Module.Playlist;
+import com.example.myapplication.Model.Playlist;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;

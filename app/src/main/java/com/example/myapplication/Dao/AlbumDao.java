@@ -2,7 +2,7 @@ package com.example.myapplication.Dao;
 
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
-import com.example.myapplication.Module.Album;
+import com.example.myapplication.Model.Album;
 import com.google.firebase.database.DataSnapshot;
 
 import java.util.List;

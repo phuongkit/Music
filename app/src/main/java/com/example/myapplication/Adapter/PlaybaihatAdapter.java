@@ -24,7 +24,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.R;
-import com.example.myapplication.Module.Song;
+import com.example.myapplication.Model.Song;
 
 import java.io.IOException;
 import java.util.ArrayList;

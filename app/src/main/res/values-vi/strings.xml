@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Music6</string>
+    <string name="app_name">Music Enthusiasts</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">Mở navigation drawer</string>
@@ -42,7 +42,7 @@
     <string name="strContentChangePassword">Thay đổi mật khẩu</string>
     <string name="strContentSignout">Đăng xuất</string>
 
-    <string name="strHeaderLibary">Thư viện</string>
+    <string name="strHeaderLibrary">Thư viện</string>
     <string name="strHeaderSong">Bài hát</string>
     <string name="strHeaderOnDevice">Trên thiết bị</string>
     <string name="strHeaderPlaylist">Danh sách nhạc</string>
@@ -55,11 +55,11 @@
     <string name="strRequiredEmail">Địa chỉ email không hợp lệ</string>
     <string name="noValue">Chưa có giá trị ban đầu</string>
     <string name="strHeaderId">id</string>
-    <string name="strHeaderDisplayName">Tên hiển thị</string>
+    <string name="strHeaderUsername">Tên người dùng</string>
     <string name="strHeaderPhone">Số điện thoại</string>
     <string name="strHeaderAvatar">Ảnh đại diện</string>
     <string name="strHintId">Nhập vào id</string>
-    <string name="strHintDisplayName">Nhập vào tên hiển thị</string>
+    <string name="strHintUsername">Nhập vào tên người dùng</string>
     <string name="strHintPhone">Nhập vào số điện thoại</string>
     <string name="strHintAvatar">Nhập vào đường dẫn ảnh đại diện</string>
 
@@ -80,7 +80,6 @@
     <string name="strHintDateCreated">Nhập vào ngày tạo</string>
     <string name="strHeaderPermission">Quyền</string>
     <string name="strHeaderAdmin">Người quản trị</string>
-    <string name="strHeaderCustomer">Khách hàng</string>
     <string name="strBtnDelete">Xóa</string>
     <string name="strBtnSave">Lưu</string>
     <string name="strBtnAdd">Thêm</string>
@@ -101,9 +100,32 @@
     <string name="strHeaderRemoveFromPlaylist">Xóa khỏi danh sách phát này</string>
     <string name="strSelectAll">Chọn tất cả</string>
     <string name="strMessageDeleteSongFromPlaylist">Bạn có muốn xóa bài hát này khỏi danh sách phát này không?</string>
-    <string name="strtitleWarning">Cảnh báo</string>
     <string name="strHeaderExplore">Khám phá</string>
     <string name="strMessageFailPlayMusic">Xảy ra lỗi khi phát bài hát này. Chúng tôi sẽ tự chuyển sang bài hát tiếp theo</string>
+    <string name="strMessageDeleteObject">Bạn có muốn để xóa đối tượng này không?</string>
+    <string name="strTitleWarning">Cảnh báo</string>
+    <string name="strTitleInformation">Thông tin</string>
+    <string name="strTitleError">Lỗi</string>
+    <string name="strResultDialogYes">Đồng ý</string>
+    <string name="strResultDialogNo">Không</string>
+    <string name="strResultDialogCancel">Hủy bỏ</string>
+    <string name="strResultDialogOK">OK</string>
 
+    <string name="strNotifySuccessAdd">Đã thêm thành công</string>
+    <string name="strNotifyFailAdd">Đã thêm thất bại</string>
 
+    <string name="strNotifySuccessFixed">Đã sửa thành công</string>
+    <string name="strNotifyFailFixed">Đã sửa thất bại</string>
+
+    <string name="strNotifySuccessDelete">Đã xóa thành công</string>
+    <string name="strNotifyFailDelete">Đã xóa thất bại</string>
+    <string name="strHintNotTypeId">Trường này được tự động tạo bởi firebase</string>
+    <string name="strHeaderProfile">Hồ sơ</string>
+    <string name="strNotifyFail">Thành công</string>
+    <string name="strNotifySuccess">Thất bại</string>
+    <string name="strHeaderListOfSong">Danh sách các bài hát</string>
+    <string name="strMessageComingSoon">Sắp có</string>
+    <string name="strNotifyActionError">Có lỗi xảy ra khi thực hiện hành động này</string>
+    <string name="strSelectImage">Chọn hình ảnh</string>
+    <string name="strRequiredUsername">Tên người dùng không hợp lệ</string>
 </resources>

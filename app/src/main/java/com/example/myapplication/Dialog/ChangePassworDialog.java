@@ -2,8 +2,6 @@ package com.example.myapplication.Dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.os.Handler;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -12,20 +10,21 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.GravityCompat;
 
+import com.example.myapplication.Activity.MainActivity;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
+import com.example.myapplication.Dao.Listeners.TaskListener;
+import com.example.myapplication.Dao.UserDao;
+import com.example.myapplication.Model.User;
 import com.example.myapplication.R;
-import com.google.android.gms.tasks.OnCanceledListener;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.List;
 
 public class ChangePassworDialog extends Dialog {
     Activity context;
@@ -90,18 +89,39 @@ public class ChangePassworDialog extends Dialog {
             if(txtpassNew.equals(txtpassRetype)){
                 AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(),txtpassOld);
                 user.reauthenticate(credential)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-
-                            }
-                        })
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 //Toast.makeText(context,"ngu2", Toast.LENGTH_SHORT).show();
                                 user.updatePassword(txtpassNew);
+                                UserDao userDao = new UserDao();
+                                userDao.getAll(new RetrieValEventListener<List<User>>() {
+                                    @Override
+                                    public void OnDataRetrieved(List<User> users) {
+                                        for (User user1 : users) {
+                                            if (user1.getId().equals(user.getUid())) {
+                                                user1.setPassword(txtpassNew);
+                                                userDao.save(user1, user1.key, new TaskListener() {
+                                                    @Override
+                                                    public void OnSuccess() {
+                                                    }
+
+                                                    @Override
+                                                    public void OnFail() {
+
+                                                    }
+                                                });
+                                            }
+                                            break;
+                                        }
+                                    }
+                                });
                                 Toast.makeText(context, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                                FirebaseAuth auth = FirebaseAuth.getInstance();
+                                auth.signOut();
+                                dismiss();
+                                MainActivity mainActivity = (MainActivity) context;
+                                mainActivity.onBackPressed();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

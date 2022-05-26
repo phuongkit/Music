@@ -1,14 +1,10 @@
 package com.example.myapplication.Dao;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.example.myapplication.Dao.Impl.GenericDao;
-import com.example.myapplication.Dao.Listeners.RetrieNewKeyEventListener;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
-import com.example.myapplication.Module.MusicObject;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -30,8 +26,8 @@ public abstract class FirebaseDao<T> implements GenericDao<T> {
         this.tableName = tableName;
     }
 
-    public void get(String id, final RetrieValEventListener<T> retrievalEventListener) {
-        DatabaseReference rowReference = dbReference.child(tableName).child(id);
+    public void get(String key, final RetrieValEventListener<T> retrievalEventListener) {
+        DatabaseReference rowReference = dbReference.child(tableName).child(key);
         Query query = rowReference;
         rowReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -53,31 +49,6 @@ public abstract class FirebaseDao<T> implements GenericDao<T> {
     public String getNewKey() {
         return dbReference.child(tableName).push().getKey();
     }
-
-//    public void getNewKey(RetrieNewKeyEventListener retrieNewKeyEventListener) {
-//
-//        this.getAll(new RetrieValEventListener<List<T>>() {
-//            @Override
-//            public void OnDataRetrieved(List<T> ts) {
-//                long index = 0;
-//                for (int i = 0; i < ts.size(); i++) {
-//                    MusicObject musicObject = (MusicObject) ts.get(i);
-//                    try {
-//                        long Key = Integer.valueOf(musicObject.key);
-//                        if (Key > index) {
-//                            index = Key;
-//                        }
-//                    } catch (NumberFormatException ex) {
-//                        Log.e("Error", ex.getMessage());
-//                    }
-//                }
-//                index++;
-//                String newKey = String.valueOf(index);
-//                dbReference.child(newKey).push();
-//                retrieNewKeyEventListener.OnNewKeyRetrieved(newKey);
-//            }
-//        });
-//    }
 
     protected abstract void parseDataSnapshot(DataSnapshot dataSnapshot, RetrieValEventListener<T> retrievalEventListener);
 
@@ -112,8 +83,8 @@ public abstract class FirebaseDao<T> implements GenericDao<T> {
         });
     }
 
-    public void save(T t, String id, final TaskListener taskListener) {
-        Task<Void> task = dbReference.child(tableName).child(id).setValue(t);
+    public void save(T t, String key, final TaskListener taskListener) {
+        Task<Void> task = dbReference.child(tableName).child(key).setValue(t);
         task.addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -128,7 +99,7 @@ public abstract class FirebaseDao<T> implements GenericDao<T> {
         });
     }
 
-    public void delete(String id, TaskListener taskListener) {
-        save(null, id, taskListener);
+    public void delete(String key, TaskListener taskListener) {
+        save(null, key, taskListener);
     }
 }

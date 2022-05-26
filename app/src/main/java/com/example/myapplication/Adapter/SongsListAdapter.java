@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Fragment.PlaySongListFragment;
-import com.example.myapplication.Module.Song;
+import com.example.myapplication.Model.Song;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;

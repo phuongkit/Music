@@ -1,10 +1,11 @@
 package com.example.myapplication.Adapter.admin;
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,10 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.BannerDaoActivity;
-import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
+import com.example.myapplication.Activity.admin.CRUDDaoActivity;
 import com.example.myapplication.Dao.BannerDao;
 import com.example.myapplication.Dao.Listeners.TaskListener;
-import com.example.myapplication.Module.Banner;
+import com.example.myapplication.Model.Banner;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class CustomBannerDaoAdapter extends ArrayAdapter<Banner> {
     String control;
     String check;
     ArrayList<Banner> banners;
+
     public String getCheck() {
         return check;
     }
@@ -37,10 +39,12 @@ public class CustomBannerDaoAdapter extends ArrayAdapter<Banner> {
     public void setCheck(String check) {
         this.check = check;
     }
+
     public CustomBannerDaoAdapter(@NonNull Context context, int resource, ArrayList<Banner> banners) {
         super(context, resource, banners);
     }
-    class ViewHolder{
+
+    class ViewHolder {
         TextView txtListIndex, txtHeaderItemDao, txtTitleItemDao;
         ImageButton imgBtnAdd, imgBtnUpdate, imgBtnDelete;
         ImageView imgViewtop;
@@ -50,7 +54,7 @@ public class CustomBannerDaoAdapter extends ArrayAdapter<Banner> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         ViewHolder viewHolder = null;
-        if(convertView == null){
+        if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_dao, null);
             viewHolder = new ViewHolder();
@@ -66,38 +70,54 @@ public class CustomBannerDaoAdapter extends ArrayAdapter<Banner> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Banner banner = getItem(position);
-        Glide.with(getContext()).load(banner.getImage()).into(viewHolder.imgViewtop);
+        Glide.with(getContext()).load(banner.getImage()).error(R.drawable.banner).into(viewHolder.imgViewtop);
         viewHolder.imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                control="repair";
-                Intent intent = new Intent(getContext(), ThemSuaDaoActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("control", control);
-                bundle.putString("key", banner.key);
-                bundle.putString("module",getCheck());
-                intent.putExtra("bundle", bundle);
-                ((Activity)getContext()).finish();
-                getContext().startActivity(intent);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        control = "repair";
+                        Intent intent = new Intent(getContext(), CRUDDaoActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("control", control);
+                        bundle.putString("key", banner.key);
+                        bundle.putString("module", getCheck());
+                        intent.putExtra("bundle", bundle);
+                        getContext().startActivity(intent);
+                    }
+                }, 500);
             }
         });
         viewHolder.imgBtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BannerDao baiHatDao = new BannerDao();
-                baiHatDao.delete(banner.key, new TaskListener() {
+                Context context = getContext();
+                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                alert.setTitle(context.getString(R.string.strTitleWarning));
+                alert.setMessage(context.getString(R.string.strMessageDeleteObject));
+                alert.setPositiveButton(context.getString(R.string.strResultDialogOK), new DialogInterface.OnClickListener() {
                     @Override
-                    public void OnSuccess() {
-                        Intent intent = new Intent(getContext(), BannerDaoActivity.class);
-                        ((Activity)getContext()).finish();
-                        getContext().startActivity(intent);
-                    }
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        BannerDao baiHatDao = new BannerDao();
+                        baiHatDao.delete(banner.key, new TaskListener() {
+                            @Override
+                            public void OnSuccess() {
+                                Intent intent = new Intent(getContext(), BannerDaoActivity.class);
+                                getContext().startActivity(intent);
+                            }
 
-                    @Override
-                    public void OnFail() {
+                            @Override
+                            public void OnFail() {
 
+                            }
+                        });
                     }
                 });
+                alert.setNegativeButton(context.getString(R.string.strResultDialogCancel), null);
+                AlertDialog alertDialog = alert.create();
+                alertDialog.show();
             }
         });
 //

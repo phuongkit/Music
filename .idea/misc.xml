@@ -24,6 +24,7 @@
         <entry key="..\:/Git/Music/app/src/main/res/drawable/radius_bottomleft_bottomright.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable/radius_gray.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/account_type_item.xml" value="0.25" />
+        <entry key="..\:/Git/Music/app/src/main/res/layout/activity_crud_dao.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/activity_introductory.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/activity_list_music.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/activity_login.xml" value="0.10989583333333333" />
@@ -73,11 +74,14 @@
         <entry key="..\:/Git/Music/app/src/main/res/layout/song_item.xml" value="0.4" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/song_on_device_item.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/themsua_baihat_dao.xml" value="0.16111111111111112" />
+        <entry key="..\:/Git/Music/app/src/main/res/layout/view_song_of_theme_type_album_playlist.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/menu/libary_menu.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/menu/main_menu.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/menu/nav_menu.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/menu/playlist_menu.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/menu/song_menu.xml" value="0.25" />
+        <entry key="..\:/Git/Music/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.245" />
+        <entry key="..\:/Git/Music/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.245" />
       </map>
     </option>
   </component>

@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/strHeaderLibary"
+            android:text="@string/strHeaderLibrary"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -42,6 +42,6 @@
             android:id="@+id/txtHeaderLibary2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/strHeaderLibary" />
+            android:text="@string/strHeaderLibrary" />
     </LinearLayout>
 </ScrollView>

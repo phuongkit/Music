@@ -1,9 +1,10 @@
 package com.example.myapplication.Adapter.admin;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +12,32 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
-import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
+import com.example.myapplication.Activity.admin.CRUDDaoActivity;
 import com.example.myapplication.Activity.admin.UserDaoActivity;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
+import com.example.myapplication.Dao.PlaylistDao;
+import com.example.myapplication.Dao.Playlist_SongDao;
 import com.example.myapplication.Dao.UserDao;
-import com.example.myapplication.Module.User;
+import com.example.myapplication.Model.Playlist;
+import com.example.myapplication.Model.Playlist_Song;
+import com.example.myapplication.Model.User;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomUserDaoAdapter extends ArrayAdapter<User> {
+
+    Context context;
+
     String control;
     String check, key;
     ArrayList<User> users;
@@ -41,6 +53,7 @@ public class CustomUserDaoAdapter extends ArrayAdapter<User> {
 
     public CustomUserDaoAdapter(@NonNull Context context, int resource, ArrayList<User> users) {
         super(context, resource, users);
+        this.context = context;
     }
 
     class ViewHolder {
@@ -72,36 +85,52 @@ public class CustomUserDaoAdapter extends ArrayAdapter<User> {
         viewHolder.imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                control = "repair";
-                Intent intent = new Intent(getContext(), ThemSuaDaoActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("control", control);
-                bundle.putString("key", user.key);
-                bundle.putString("module", getCheck());
-                intent.putExtra("bundle", bundle);
-                ((Activity) getContext()).finish();
-                getContext().startActivity(intent);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        control = "repair";
+                        Intent intent = new Intent(getContext(), CRUDDaoActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("control", control);
+                        bundle.putString("key", user.key);
+                        bundle.putString("module", getCheck());
+                        intent.putExtra("bundle", bundle);
+                        getContext().startActivity(intent);
+                    }
+                }, 500);
             }
         });
         viewHolder.imgBtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserDao userDao = new UserDao();
-                key = user.key;
-                userDao.delete(user.key, new TaskListener() {
+                Context context = getContext();
+                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                alert.setTitle(context.getString(R.string.strTitleWarning));
+                alert.setMessage(context.getString(R.string.strMessageDeleteObject));
+                alert.setPositiveButton(context.getString(R.string.strResultDialogOK), new DialogInterface.OnClickListener() {
                     @Override
-                    public void OnSuccess() {
-                        handle();
-                    }
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        UserDao userDao = new UserDao();
+                        key = user.key;
+                        userDao.delete(user.key, new TaskListener() {
+                            @Override
+                            public void OnSuccess() {
+                                handle(user);
+                            }
 
-                    @Override
-                    public void OnFail() {
+                            @Override
+                            public void OnFail() {
 
+                            }
+                        });
+                        Intent intent = new Intent(getContext(), UserDaoActivity.class);
+                        getContext().startActivity(intent);
                     }
                 });
-                Intent intent = new Intent(getContext(), UserDaoActivity.class);
-                ((Activity) getContext()).finish();
-                getContext().startActivity(intent);
+                alert.setNegativeButton(context.getString(R.string.strResultDialogCancel), null);
+                AlertDialog alertDialog = alert.create();
+                alertDialog.show();
             }
         });
 
@@ -113,33 +142,53 @@ public class CustomUserDaoAdapter extends ArrayAdapter<User> {
         return convertView;
     }
 
-    private void handle() {
-//        UserDao userDao = new UserDao();
-//        userDao.getAll(new RetrieValEventListener<List<User>>() {
-//            @Override
-//            public void OnDataRetrieved(List<User> userss) {
-//                users = new ArrayList<>();
-//                users = (ArrayList<User>) userss;
-//                int size = users.size();
-//                for (int i = 0; i < size; i++) {
-//                    if (users.get(i).getId().equals(key)) {
-//                        Log.d("TTT", users.get(i).key);
-//                        UserDao userDaoo = new UserDao();
-//                        userDaoo.delete(users.get(i).key, new TaskListener() {
-//                            @Override
-//                            public void OnSuccess() {
-//
-//                            }
-//
-//                            @Override
-//                            public void OnFail() {
-//
-//                            }
-//                        });
-//                    }
-//                }
-//            }
-//        });
+    private void handle(User user) {
+        PlaylistDao playlistDao = new PlaylistDao();
+        playlistDao.getAll(new RetrieValEventListener<List<Playlist>>() {
+            @Override
+            public void OnDataRetrieved(List<Playlist> playlists) {
+                ArrayList<String> playlist_ids = new ArrayList<>();
+                for (Playlist playlist : playlists) {
+                    if (playlist.getUid().equals(user.getId())) {
+                        playlist_ids.add(playlist.getId());
+                        playlistDao.delete(playlist.key, new TaskListener() {
+                            @Override
+                            public void OnSuccess() {
+                                Toast.makeText(context, context.getString(R.string.strNotifySuccessDelete) + " " + Playlist.class.getName() + " " + playlist.getName(), Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void OnFail() {
+                                Toast.makeText(context, context.getString(R.string.strNotifyFailDelete) + " " + Playlist.class.getName() + " " + playlist.getName(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+                Playlist_SongDao playlist_songDao = new Playlist_SongDao();
+                playlist_songDao.getAll(new RetrieValEventListener<List<Playlist_Song>>() {
+                    @Override
+                    public void OnDataRetrieved(List<Playlist_Song> playlist_songs) {
+                        for (String playlist_id : playlist_ids) {
+                            for (Playlist_Song playlist_song : playlist_songs) {
+                                if (playlist_song.getIdPlaylist().equals(playlist_id)) {
+                                    playlist_songDao.delete(playlist_song.key, new TaskListener() {
+                                        @Override
+                                        public void OnSuccess() {
+                                            
+                                        }
+
+                                        @Override
+                                        public void OnFail() {
+
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
     }
 
 }

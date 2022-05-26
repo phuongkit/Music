@@ -19,8 +19,8 @@ import com.example.myapplication.Activity.PlaylistActivity;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
 import com.example.myapplication.Dao.PlaylistDao;
-import com.example.myapplication.Module.MusicObject;
-import com.example.myapplication.Module.Playlist;
+import com.example.myapplication.Model.MusicObject;
+import com.example.myapplication.Model.Playlist;
 import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -109,9 +109,9 @@ public class InputDialog extends AppCompatDialogFragment {
                                     Date date = new Date();
                                     String dateString = formatter.format(date);
                                     Playlist playlist = new Playlist();
-                                    List<MusicObject> musicObjects = playlist.upCastList(playlists);
-                                    String new_id = playlist.GetNewId(musicObjects);
-                                    playlist = new Playlist(new_id, false, dateString, name, uid, "");
+                                    MusicObject musicObject = new MusicObject();
+                                    String new_id = musicObject.getNewId(musicObject.upCastListPlaylist(playlists));
+                                    playlist = new Playlist(new_id, name, "", false, uid , dateString);
                                     playlistDao.save(playlist, playlistDao.getNewKey(), new TaskListener() {
                                         @Override
                                         public void OnSuccess() {

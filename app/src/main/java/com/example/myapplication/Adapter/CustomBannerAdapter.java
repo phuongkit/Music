@@ -13,9 +13,9 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.SongDao;
-import com.example.myapplication.Module.Song;
+import com.example.myapplication.Model.Song;
 import com.example.myapplication.R;
-import com.example.myapplication.Module.Banner;
+import com.example.myapplication.Model.Banner;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

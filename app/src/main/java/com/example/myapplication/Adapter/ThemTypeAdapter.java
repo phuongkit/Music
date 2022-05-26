@@ -15,10 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
-import com.example.myapplication.Activity.PlaybaihatActivity;
-import com.example.myapplication.Module.Song;
+import com.example.myapplication.Activity.PlayMusicActivity;
+import com.example.myapplication.Model.Song;
 import com.example.myapplication.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -57,7 +56,7 @@ public class ThemTypeAdapter extends RecyclerView.Adapter<ThemTypeAdapter.ViewHo
         holder.imageViewSongtheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PlaybaihatActivity.class);
+                Intent intent = new Intent(context, PlayMusicActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("songs", songs);
                 bundle.putInt("index", position);

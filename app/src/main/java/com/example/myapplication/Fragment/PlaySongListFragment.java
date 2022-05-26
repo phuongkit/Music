@@ -11,13 +11,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Activity.PlaybaihatActivity;
+import com.example.myapplication.Activity.PlayMusicActivity;
 import com.example.myapplication.Adapter.SongsListAdapter;
 import com.example.myapplication.R;
 
 public class PlaySongListFragment extends Fragment {
     View view;
-    int index;
     public RecyclerView recyclerViewPlayMusicList;
     SongsListAdapter playMusicListAdapter;
     int position;
@@ -32,33 +31,15 @@ public class PlaySongListFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_play_music_list, container, false);
         recyclerViewPlayMusicList = view.findViewById(R.id.recyclerViewPlayMusicList);
 
-//        recyclerViewPlayMusicList.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                index=position;
-//                recyclerViewPlayMusicList.setBackgroundColor(Color.parseColor("#567845"));
-//            }
-//        });
-
-//        if(index==position){
-//            recyclerViewPlayMusicList.setBackgroundColor(Color.parseColor("#567845"));
-////            recyclerViewPlayMusicList.tvSongName.setTextColor(Color.parseColor("#ffffff"));
-//        }
-//        else
-//        {
-//            recyclerViewPlayMusicList.setBackgroundColor(Color.parseColor("#ffffff"));
-////            holder.tvSongName.setTextColor(Color.parseColor("#000000"));
-//        }
         loaddata(position);
         return view;
     }
     public void loaddata(int position){
-        if(PlaybaihatActivity.songs.size() > 0){
-            playMusicListAdapter = new SongsListAdapter(getActivity(), PlaybaihatActivity.songs,position);
+        if(PlayMusicActivity.songs.size() > 0){
+            playMusicListAdapter = new SongsListAdapter(getActivity(), PlayMusicActivity.songs,position);
             recyclerViewPlayMusicList.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerViewPlayMusicList.setAdapter(playMusicListAdapter);
         }
-//        recyclerViewPlayMusicList.getAdapter().notifyDataSetChanged();
     }
 
     @Override

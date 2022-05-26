@@ -5,10 +5,6 @@ package com.example.myapplication.Adapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +19,8 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.Module.Hinhdianhac;
+import com.example.myapplication.Generic.Beans.Hinhdianhac;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -93,7 +86,7 @@ public class CircularDianhacAdapter extends PagerAdapter {
         imageViewDiaNhac = view.findViewById(R.id.imageViewDiaNhac2);
         layout_discMusic = view.findViewById(R.id.layout_discMusic);
 
-        Glide.with(context).load(getUrl()).error(R.drawable.disc_music).into(imageViewDiaNhac);
+        Glide.with(context).load(getUrl()).error(R.drawable.music_disc).into(imageViewDiaNhac);
         objectAnimator = ObjectAnimator.ofFloat(imageViewDiaNhac, "rotation", 0f, 360f);
         objectAnimator.setDuration(10000);
         objectAnimator.setRepeatCount(ValueAnimator.INFINITE);

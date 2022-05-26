@@ -1,10 +1,10 @@
 package com.example.myapplication.Adapter.admin;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,20 +15,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Activity.admin.ThemeDaoActivity;
-import com.example.myapplication.Activity.admin.ThemSuaDaoActivity;
+import com.example.myapplication.Activity.admin.CRUDDaoActivity;
 import com.example.myapplication.Dao.ThemeDao;
-import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.Listeners.TaskListener;
-import com.example.myapplication.Dao.TypesDao;
-import com.example.myapplication.Module.Theme;
-import com.example.myapplication.Module.Types;
+import com.example.myapplication.Model.Theme;
+import com.example.myapplication.Model.Types;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CustomThemeDaoAdapter extends ArrayAdapter<Theme> {
     String control;
@@ -74,39 +72,55 @@ public class CustomThemeDaoAdapter extends ArrayAdapter<Theme> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Theme theme = getItem(position);
-        Glide.with(getContext()).load(theme.getImage()).into(viewHolder.imgViewtop);
+        Glide.with(getContext()).load(theme.getImage()).error(R.drawable.theme).into(viewHolder.imgViewtop);
         viewHolder.imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                control = "repair";
-                Intent intent = new Intent(getContext(), ThemSuaDaoActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("control", control);
-                bundle.putString("key", theme.key);
-                bundle.putString("module", getCheck());
-                intent.putExtra("bundle", bundle);
-                ((Activity) getContext()).finish();
-                getContext().startActivity(intent);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        control = "repair";
+                        Intent intent = new Intent(getContext(), CRUDDaoActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("control", control);
+                        bundle.putString("key", theme.key);
+                        bundle.putString("module", getCheck());
+                        intent.putExtra("bundle", bundle);
+                        getContext().startActivity(intent);
+                    }
+                }, 500);
             }
         });
         viewHolder.imgBtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ThemeDao baiHatDao = new ThemeDao();
-                baihatId = theme.key;
-                baiHatDao.delete(theme.key, new TaskListener() {
+                Context context = getContext();
+                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                alert.setTitle(context.getString(R.string.strTitleWarning));
+                alert.setMessage(context.getString(R.string.strMessageDeleteObject));
+                alert.setPositiveButton(context.getString(R.string.strResultDialogOK), new DialogInterface.OnClickListener() {
                     @Override
-                    public void OnSuccess() {
-                    }
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ThemeDao baiHatDao = new ThemeDao();
+                        baihatId = theme.key;
+                        baiHatDao.delete(theme.key, new TaskListener() {
+                            @Override
+                            public void OnSuccess() {
+                            }
 
-                    @Override
-                    public void OnFail() {
+                            @Override
+                            public void OnFail() {
 
+                            }
+                        });
+                        Intent intent = new Intent(getContext(), ThemeDaoActivity.class);
+                        getContext().startActivity(intent);
                     }
                 });
-                Intent intent = new Intent(getContext(), ThemeDaoActivity.class);
-                ((Activity) getContext()).finish();
-                getContext().startActivity(intent);
+                alert.setNegativeButton(context.getString(R.string.strResultDialogCancel), null);
+                AlertDialog alertDialog = alert.create();
+                alertDialog.show();
             }
         });
 

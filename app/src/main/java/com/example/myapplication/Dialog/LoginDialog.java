@@ -1,28 +1,28 @@
 package com.example.myapplication.Dialog;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.text.method.LinkMovementMethod;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Activity.LoginActivity;
-import com.example.myapplication.Module.AccountType;
-import com.example.myapplication.Module.Listeners.OnLoadMoreListener;
+import com.example.myapplication.Generic.Beans.AccountType;
+import com.example.myapplication.Generic.Listeners.OnLoadMoreListener;
 import com.example.myapplication.R;
 import com.klinker.android.link_builder.Link;
 import com.klinker.android.link_builder.LinkBuilder;
@@ -48,7 +48,7 @@ public class LoginDialog extends Dialog {
         addControls();
         init();
         addEvents();
-        ViewGroup.LayoutParams params = getWindow().getAttributes();
+//        ViewGroup.LayoutParams params = getWindow().getAttributes();
         int width = (int) (context.getResources().getDisplayMetrics().widthPixels * 1.00);
         int height = (int) (context.getResources().getDisplayMetrics().heightPixels * 0.90);
         getWindow().setLayout(width, height);
@@ -58,6 +58,7 @@ public class LoginDialog extends Dialog {
         return context.getString(resId);
     }
 
+    @SuppressLint("SetTextI18n")
     private void init() {
         if (login) {
             txtTittleLogin.setText((getString(R.string.strHeaderSignIn) + " " + getString(R.string.app_name)));
@@ -81,13 +82,10 @@ public class LoginDialog extends Dialog {
                     .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
                     .setUnderlined(false)                                       // optional, defaults to true
                     .setBold(true)                                              // optional, defaults to false
-                    .setOnClickListener(new Link.OnClickListener() {
-                        @Override
-                        public void onClick(String clickedText) {
-                            // single clicked
-                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://policies.google.com/terms?hl=vi&amp;gl=VN"));
-                            context.startActivity(browserIntent);
-                        }
+                    .setOnClickListener(clickedText -> {
+                        // single clicked
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://policies.google.com/terms?hl=vi&amp;gl=VN"));
+                        context.startActivity(browserIntent);
                     });
             Link privacy_Policy_Link = new Link(getString(R.string.strPrivacyPolicy))
                     .setTextColor(Color.parseColor("#000000"))                  // optional, defaults to holo blue
@@ -95,13 +93,10 @@ public class LoginDialog extends Dialog {
                     .setHighlightAlpha(.4f)                                     // optional, defaults to .15f
                     .setUnderlined(false)                                       // optional, defaults to true
                     .setBold(true)                                              // optional, defaults to false
-                    .setOnClickListener(new Link.OnClickListener() {
-                        @Override
-                        public void onClick(String clickedText) {
-                            // single clicked
-                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://policies.google.com/privacy?hl=vi&amp;gl=VN"));
-                            context.startActivity(browserIntent);
-                        }
+                    .setOnClickListener(clickedText -> {
+                        // single clicked
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://policies.google.com/privacy?hl=vi&amp;gl=VN"));
+                        context.startActivity(browserIntent);
                     });
 
             txtPolicy.setText(getString(R.string.strTermsAndPermissions));
@@ -121,36 +116,26 @@ public class LoginDialog extends Dialog {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void addEvents() {
-        imgBtnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
-        accountTypeAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                accountTypess.add(null);
-                accountTypeAdapter.notifyItemInserted(accountTypess.size() - 1);
-                accountTypess.remove(accountTypess.size() - 1);
-                accountTypeAdapter.notifyItemRemoved(accountTypess.size());
-                int index = accountTypess.size();
+        imgBtnBack.setOnClickListener(view -> dismiss());
+        accountTypeAdapter.setOnLoadMoreListener(() -> {
+            accountTypess.add(null);
+            accountTypeAdapter.notifyItemInserted(accountTypess.size() - 1);
+            accountTypess.remove(accountTypess.size() - 1);
+            accountTypeAdapter.notifyItemRemoved(accountTypess.size());
+            int index = accountTypess.size();
 //                        int end = index + 5 > accountTypes.size() ? accountTypes.size() : index + 5;
-                int end = accountTypes.size();
-                for (int i = index; i < end; i++) {
-                    accountTypess.add(accountTypes.get(i));
-                }
-                accountTypeAdapter.notifyDataSetChanged();
-                accountTypeAdapter.isLoading = false;
+            int end = accountTypes.size();
+            for (int i = index; i < end; i++) {
+                accountTypess.add(accountTypes.get(i));
             }
+            accountTypeAdapter.notifyDataSetChanged();
+            accountTypeAdapter.isLoading = false;
         });
-        btnOtherLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                login = !login;
-                init();
-            }
+        btnOtherLogin.setOnClickListener(view -> {
+            login = !login;
+            init();
         });
     }
 
@@ -207,19 +192,17 @@ public class LoginDialog extends Dialog {
 
         public AccountTypeAdapter() {
             LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerViewAccountType.getLayoutManager();
-            imgBtnLoadMore.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ImageButton btn = (ImageButton) view;
-                    btn.setVisibility(View.GONE);
-                    totalItem = linearLayoutManager.getItemCount();
-                    lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
-                    if (!isLoading && totalItem <= (lastVisibleItem + visibleThrehold)) {
-                        if (onLoadMoreListener != null) {
-                            onLoadMoreListener.onLoadMore();
-                        }
-                        isLoading = true;
+            imgBtnLoadMore.setOnClickListener(view -> {
+                ImageButton btn = (ImageButton) view;
+                btn.setVisibility(View.GONE);
+                assert linearLayoutManager != null;
+                totalItem = linearLayoutManager.getItemCount();
+                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+                if (!isLoading && totalItem <= (lastVisibleItem + visibleThrehold)) {
+                    if (onLoadMoreListener != null) {
+                        onLoadMoreListener.onLoadMore();
                     }
+                    isLoading = true;
                 }
             });
 //            recyclerViewAccountType.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -263,21 +246,20 @@ public class LoginDialog extends Dialog {
         @Override
         public void onBindViewHolder(@NonNull AccountTypeViewHolder holder, int position) {
             AccountType accountType = accountTypess.get(position);
-            AccountTypeViewHolder accountTypeViewHolder = (AccountTypeViewHolder) holder;
-            accountTypeViewHolder.imgAccountType.setImageResource(accountType.getIdIcon());
-            accountTypeViewHolder.txtAccountType.setText(accountType.getName());
+            holder.imgAccountType.setImageResource(accountType.getIdIcon());
+            holder.txtAccountType.setText(accountType.getName());
 
-            holder.setItemClickListener(new ItemClickListener() {
-                @Override
-                public void onClick(View view, int position, boolean isLongClick) {
-                    if (!isLongClick) {
-                        switch (accountType.getIdAccountType()) {
-                            case "1":
-                                Intent intent = new Intent(context, LoginActivity.class);
-                                intent.putExtra("login", login);
-                                context.startActivity(intent);
-                                break;
-                        }
+            holder.setItemClickListener((view, position1, isLongClick) -> {
+                if (!isLongClick) {
+                    switch (accountType.getIdAccountType()) {
+                        case "1":
+                            Intent intent = new Intent(context, LoginActivity.class);
+                            intent.putExtra("login", login);
+                            context.startActivity(intent);
+                            break;
+                        default:
+                            Toast.makeText(context.getBaseContext(), getString(R.string.strMessageComingSoon), Toast.LENGTH_SHORT).show();
+                            break;
                     }
                 }
             });

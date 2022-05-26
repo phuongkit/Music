@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.Module.Item;
-import com.example.myapplication.R;
+import com.example.myapplication.Generic.Beans.Item;
 
 import java.util.ArrayList;
 

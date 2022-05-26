@@ -19,7 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.myapplication.Adapter.admin.CustomTypesDaoAdapter;
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
 import com.example.myapplication.Dao.TypesDao;
-import com.example.myapplication.Module.Types;
+import com.example.myapplication.Model.Types;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -60,12 +60,11 @@ public class TypesDaoActivity extends AppCompatActivity {
                 return true;
             case R.id.menuInsert:
                 String control = "add";
-                Intent intent = new Intent(this, ThemSuaDaoActivity.class);
+                Intent intent = new Intent(this, CRUDDaoActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("control", control);
                 bundle.putString("module", customTypesDaoAdapter.getCheck());
                 intent.putExtra("bundle", bundle);
-                finish();
                 startActivity(intent);
                 return true;
         }

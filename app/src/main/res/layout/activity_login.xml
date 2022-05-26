@@ -21,6 +21,27 @@
         android:layout_height="wrap_content">
 
         <TableRow
+            android:id="@+id/tableRowUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/strHeaderUsername" />
+
+            <EditText
+                android:id="@+id/edtUsername"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/strHintUsername"
+                android:imeOptions="actionDone"
+                android:ems="10"
+                tools:ignore="TouchTargetSizeCheck" />
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp">

@@ -1,8 +1,12 @@
 package com.example.myapplication.Dao;
 
+import android.util.Log;
+
 import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
-import com.example.myapplication.Module.User;
+import com.example.myapplication.Model.User;
 import com.google.firebase.database.DataSnapshot;
+
+import java.util.List;
 
 public class UserDao extends FirebaseDao<User> {
     public UserDao(){
@@ -35,5 +39,20 @@ public class UserDao extends FirebaseDao<User> {
 
         // Now we have parsed all of the attributes of the user object. We will feed it to the callback
         retrievalEventListener.OnDataRetrieved(user);
+    }
+
+    public void getOneById(String id,final RetrieValEventListener<User> retrieValEventListener) {
+        this.getAll(new RetrieValEventListener<List<User>>() {
+            @Override
+            public void OnDataRetrieved(List<User> users) {
+                Log.d("Test", "User: " + users.size());
+                for (User user : users) {
+                    if (user.getId().equals(id)) {
+                        retrieValEventListener.OnDataRetrieved(user);
+                        break;
+                    }
+                }
+            }
+        });
     }
 }

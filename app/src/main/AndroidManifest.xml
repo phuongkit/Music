@@ -23,15 +23,16 @@
         <activity android:name=".Activity.PlaylistActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.ProfileActivity" />
-        <activity android:name=".Activity.PlaybaihatActivity" />
+        <activity android:name=".Activity.PlayMusicActivity" />
         <activity android:name=".Activity.SongOnDeviceActivity"/>
         <activity android:name=".Activity.admin.UserDaoActivity" />
         <activity android:name=".Activity.admin.SongDaoActivity" />
         <activity android:name=".Activity.admin.BannerDaoActivity" />
         <activity android:name=".Activity.admin.AlbumDaoActivity" />
+        <activity android:name=".Activity.admin.PlaylistDaoActivity" />
         <activity android:name=".Activity.admin.TypesDaoActivity" />
         <activity android:name=".Activity.admin.ThemeDaoActivity" />
-        <activity android:name=".Activity.admin.ThemSuaDaoActivity" />
+        <activity android:name=".Activity.admin.CRUDDaoActivity" />
         <activity
             android:name=".Activity.MainActivity"
             android:exported="true">

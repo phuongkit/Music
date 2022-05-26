@@ -20,13 +20,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        FragmentTransaction ft2 = getChildFragmentManager().beginTransaction();
-//        MusicFragment musicFragment2 = new MusicFragment();
-//        Bundle bundle2 = new Bundle();
-//        bundle2.putInt("TypeMusic", 0);
-//        musicFragment2.setArguments(bundle2);
-//        ft2.replace(R.id.framentCDTL, musicFragment2);
-//        ft2.commit();
         FragmentTransaction ft = getChildFragmentManager().beginTransaction();
         // Replace the contents of the container with the new fragment
         MusicFragment musicFragment = new MusicFragment();
@@ -46,6 +39,7 @@ public class HomeFragment extends Fragment {
         FragmentManager mFragmentMgr = getChildFragmentManager();
         FragmentTransaction mTransaction = mFragmentMgr.beginTransaction();
         Fragment childFragment = mFragmentMgr.findFragmentById(R.id.fragmentBaihat);
+        assert childFragment != null;
         mTransaction.remove(childFragment);
         mTransaction.commit();
         super.onDestroyView();
