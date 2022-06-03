@@ -88,7 +88,7 @@ public class CustomAlbumDaoAdapter extends ArrayAdapter<Album> {
             Context context = getContext();
             AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
             alert.setTitle(context.getString(R.string.strTitleWarning));
-            alert.setMessage(context.getString(R.string.strMessageDeleteObject));
+            alert.setMessage(context.getString(R.string.strNotifyDeleteObject));
             alert.setPositiveButton(context.getString(R.string.strResultDialogOK), (dialogInterface, i) -> {
                 AlbumDao baiHatDao = new AlbumDao();
                 baiHatDao.delete(album.key, new TaskListener() {

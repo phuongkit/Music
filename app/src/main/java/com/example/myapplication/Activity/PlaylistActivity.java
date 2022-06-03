@@ -57,7 +57,7 @@ public class PlaylistActivity extends AppCompatActivity {
 
         txtTitleLibary = findViewById(R.id.txtTitleLibary);
         lvDataPlaylist = findViewById(R.id.lvDataPlaylist);
-        playlistAdapter = new PlaylistAdapter(PlaylistActivity.this, R.layout.playlist_item);
+        playlistAdapter = new PlaylistAdapter(PlaylistActivity.this, R.layout.item_playlist);
         lvDataPlaylist.setAdapter(playlistAdapter);
 //        FirebaseAuth auth = FirebaseAuth.getInstance();
         initData();

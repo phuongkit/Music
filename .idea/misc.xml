@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/avd_pause_to_play.xml" value="0.2335" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/avd_play_to_pause.xml" value="0.2335" />
+        <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/circle_button.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/circle_view.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/custom_background_banner.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/custom_libary_button.xml" value="0.245" />
@@ -12,9 +13,14 @@
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/gradient_backgroud.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.245" />
+        <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/radius_black.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/radius_bottomleft_bottomright.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/radius_topleft_topright.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable-v24/rounded_edge.xml" value="0.245" />
+        <entry key="..\:/Git/Music/app/src/main/res/drawable/bg_edittext.xml" value="0.245" />
+        <entry key="..\:/Git/Music/app/src/main/res/drawable/bg_edittext_focused.xml" value="0.245" />
+        <entry key="..\:/Git/Music/app/src/main/res/drawable/bg_edittext_normal.xml" value="0.245" />
+        <entry key="..\:/Git/Music/app/src/main/res/drawable/button_custom_blue.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable/button_custom_orange.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable/circle_view.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable/ic_launcher_background.xml" value="0.245" />
@@ -23,11 +29,12 @@
         <entry key="..\:/Git/Music/app/src/main/res/drawable/radius_blue.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable/radius_bottomleft_bottomright.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/drawable/radius_gray.xml" value="0.245" />
+        <entry key="..\:/Git/Music/app/src/main/res/drawable/rounded_edittext.xml" value="0.245" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/account_type_item.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/activity_crud_dao.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/activity_introductory.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/activity_list_music.xml" value="0.25" />
-        <entry key="..\:/Git/Music/app/src/main/res/layout/activity_login.xml" value="0.10989583333333333" />
+        <entry key="..\:/Git/Music/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/activity_playlist.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/activity_playmucsic.xml" value="0.25" />
@@ -50,6 +57,7 @@
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_blank.xml" value="0.10989583333333333" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_explore.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_home.xml" value="0.10989583333333333" />
+        <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_list_item_dao.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_listbaihat_dao.xml" value="0.264" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_listsong_dao.xml" value="0.25" />
         <entry key="..\:/Git/Music/app/src/main/res/layout/fragment_music.xml" value="0.264" />

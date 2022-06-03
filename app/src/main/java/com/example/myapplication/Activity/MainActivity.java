@@ -272,6 +272,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     for (User userDb : users) {
                         if (userDb.getId().equals(uid)) {
 
+                            if (dialog != null && dialog.isShowing()) {
+                                dialog.dismiss();
+                            }
+
                             toolbar.setNavigationIcon(R.drawable.ic_exists_user);
                             if (userDb.getRole() == ROLE_ADMIN) {
                                 Log.i("Info", "Node Admin");
@@ -308,5 +312,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onRestart() {
         super.onRestart();
         setIfAdmin();
+        Log.d("Test", "Node A");
     }
 }

@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#282828"
     android:orientation="vertical"
     tools:context=".Activity.LoginActivity">
 
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/flat_music" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="50dp" />
 
     <TextView
         android:id="@+id/txtTitleLogin"
@@ -14,76 +36,61 @@
         android:gravity="center_horizontal"
         android:text="@string/strHeaderSignIn"
         android:textAlignment="center"
-        android:textSize="25dp" />
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
-    <TableLayout
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="20dp" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical">
 
-        <TableRow
-            android:id="@+id/tableRowUsername"
+        <EditText
+            android:id="@+id/edtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp">
+            android:background="@drawable/bg_edittext"
+            android:drawableLeft="@drawable/username"
+            android:ems="10"
+            android:hint="@string/strHintUsername"
+            android:imeOptions="actionDone"
+            tools:ignore="TouchTargetSizeCheck" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/strHeaderUsername" />
-
-            <EditText
-                android:id="@+id/edtUsername"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/strHintUsername"
-                android:imeOptions="actionDone"
-                android:ems="10"
-                tools:ignore="TouchTargetSizeCheck" />
-        </TableRow>
-
-        <TableRow
+        <EditText
+            android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp">
+            android:background="@drawable/bg_edittext"
+            android:drawableLeft="@drawable/email"
+            android:ems="10"
+            android:hint="@string/strHintEmail"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:maxLength="50"
+            tools:ignore="TouchTargetSizeCheck" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/strHeaderEmail" />
-
-            <EditText
-                android:id="@+id/edtEmail"
-                android:layout_width="319dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/strHintEmail"
-                android:imeOptions="actionNext"
-                android:maxLength="50"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                tools:ignore="TouchTargetSizeCheck" />
-        </TableRow>
-
-        <TableRow
+        <EditText
+            android:id="@+id/edtPassWord"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp">
+            android:background="@drawable/bg_edittext"
+            android:drawableLeft="@drawable/password"
+            android:ems="10"
+            android:hint="@string/strHintPassword"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/strHeaderPassword" />
-
-            <EditText
-                android:id="@+id/edtPassWord"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/strHintPassword"
-                android:imeOptions="actionDone"
-                android:ems="10"
-                android:inputType="textPassword"
-                tools:ignore="TouchTargetSizeCheck" />
-        </TableRow>
-    </TableLayout>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="50dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -96,23 +103,32 @@
             android:layout_width="176dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="Login" />
+            android:background="@drawable/button_custom_blue"
+            android:text="Login"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="177dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="CANCEL" />
+            android:background="@drawable/button_custom_blue"
+            android:text="CANCEL"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <TextView
-        android:padding="16dp"
         android:id="@+id/txtLogNotify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:padding="16dp"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
 </LinearLayout>

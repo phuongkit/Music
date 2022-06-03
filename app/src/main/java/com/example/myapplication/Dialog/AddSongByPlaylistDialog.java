@@ -3,9 +3,8 @@ package com.example.myapplication.Dialog;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.myapplication.Adapter.AddSongByPlaylistAdapter;
@@ -27,7 +26,7 @@ public class AddSongByPlaylistDialog extends AlertDialog {
     ListView lvPlaylist;
     AddSongByPlaylistAdapter addSongByPlaylistAdapter;
     CheckBox cbSelectAll;
-    ImageButton imgBtnSave, imgBtnClose;
+    Button btnSave, btnCancel;
     Boolean isAdd = false;
 
 
@@ -50,7 +49,7 @@ public class AddSongByPlaylistDialog extends AlertDialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_playlist_dialog);
+        setContentView(R.layout.dialog_add_playlist);
         setTitle(activity.getString(R.string.strHeaderPlaylist));
         addControls();
         addEvents();
@@ -68,23 +67,23 @@ public class AddSongByPlaylistDialog extends AlertDialog {
                 addPlaylistOrSongImpls.get(i).setSelectAll(b);
             }
         });
-        imgBtnSave.setOnClickListener(view -> addSongByPlaylistAdapter.saveChange());
+        btnSave.setOnClickListener(view -> addSongByPlaylistAdapter.saveChange());
 
-        imgBtnClose.setOnClickListener(view -> dismiss());
+        btnCancel.setOnClickListener(view -> dismiss());
     }
 
     private void addControls() {
         lvPlaylist = findViewById(R.id.lvPlaylist);
         if (isAdd) {
-            addSongByPlaylistAdapter = new AddSongByPlaylistAdapter(activity, R.layout.add_playlist_item, songs, songByPlaylists);
+            addSongByPlaylistAdapter = new AddSongByPlaylistAdapter(activity, R.layout.item_add_playlist, songs, songByPlaylists);
         }
         else {
-            addSongByPlaylistAdapter = new AddSongByPlaylistAdapter(activity, R.layout.add_playlist_item, songs, songByPlaylists, playlist);
+            addSongByPlaylistAdapter = new AddSongByPlaylistAdapter(activity, R.layout.item_add_playlist, songs, songByPlaylists, playlist);
         }
         lvPlaylist.setAdapter(addSongByPlaylistAdapter);
         addSongByPlaylistAdapter.addAll(songs);
         cbSelectAll = findViewById(R.id.cbSelectAll);
-        imgBtnSave = findViewById(R.id.imgBtnSave);
-        imgBtnClose = findViewById(R.id.imgBtnClose);
+        btnSave = findViewById(R.id.btnSave);
+        btnCancel = findViewById(R.id.btnCancel);
     }
 }

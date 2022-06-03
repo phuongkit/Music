@@ -45,7 +45,6 @@ public class UserDao extends FirebaseDao<User> {
         this.getAll(new RetrieValEventListener<List<User>>() {
             @Override
             public void OnDataRetrieved(List<User> users) {
-                Log.d("Test", "User: " + users.size());
                 for (User user : users) {
                     if (user.getId().equals(id)) {
                         retrieValEventListener.OnDataRetrieved(user);

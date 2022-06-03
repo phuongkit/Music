@@ -68,7 +68,7 @@ public class AddPlaylistBySongAdapter extends ArrayAdapter<Playlist> {
         ViewHolder viewHolder;
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(activity);
-            convertView = inflater.inflate(R.layout.add_playlist_item, null);
+            convertView = inflater.inflate(R.layout.item_add_playlist, null);
             viewHolder = new ViewHolder();
             viewHolder.txtListIndex = convertView.findViewById(R.id.txtListIndex);
             viewHolder.txtName = convertView.findViewById(R.id.txtName);

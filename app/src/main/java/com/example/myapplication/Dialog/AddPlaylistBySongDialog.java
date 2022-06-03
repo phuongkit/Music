@@ -3,8 +3,8 @@ package com.example.myapplication.Dialog;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.myapplication.Adapter.AddPlaylistBySongAdapter;
@@ -26,7 +26,7 @@ public class AddPlaylistBySongDialog extends AlertDialog {
     ListView lvPlaylist;
     AddPlaylistBySongAdapter addPlaylistBySongAdapter;
     CheckBox cbSelectAll;
-    ImageButton imgBtnSave, imgBtnClose;
+    Button btnSave, btnCancel;
 
 
     public AddPlaylistBySongDialog(Activity activity, ArrayList<Playlist> playlists, ArrayList<Playlist> playlists_by_song, Song song) {
@@ -40,7 +40,7 @@ public class AddPlaylistBySongDialog extends AlertDialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_playlist_dialog);
+        setContentView(R.layout.dialog_add_playlist);
         setTitle(activity.getString(R.string.strHeaderPlaylist));
         addControls();
         addEvents();
@@ -58,18 +58,18 @@ public class AddPlaylistBySongDialog extends AlertDialog {
                 addPlaylistOrSongImpls.get(i).setSelectAll(b);
             }
         });
-        imgBtnSave.setOnClickListener(view -> addPlaylistBySongAdapter.saveChange());
+        btnSave.setOnClickListener(view -> addPlaylistBySongAdapter.saveChange());
 
-        imgBtnClose.setOnClickListener(view -> dismiss());
+        btnCancel.setOnClickListener(view -> dismiss());
     }
 
     private void addControls() {
         lvPlaylist = findViewById(R.id.lvPlaylist);
-        addPlaylistBySongAdapter = new AddPlaylistBySongAdapter(activity, R.layout.add_playlist_item, playlists, playlists_by_song, song);
+        addPlaylistBySongAdapter = new AddPlaylistBySongAdapter(activity, R.layout.item_add_playlist, playlists, playlists_by_song, song);
         lvPlaylist.setAdapter(addPlaylistBySongAdapter);
         addPlaylistBySongAdapter.addAll(playlists);
         cbSelectAll = findViewById(R.id.cbSelectAll);
-        imgBtnSave = findViewById(R.id.imgBtnSave);
-        imgBtnClose = findViewById(R.id.imgBtnClose);
+        btnSave = findViewById(R.id.btnSave);
+        btnCancel = findViewById(R.id.btnCancel);
     }
 }

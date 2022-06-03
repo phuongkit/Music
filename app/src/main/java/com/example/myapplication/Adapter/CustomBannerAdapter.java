@@ -45,7 +45,7 @@ public class CustomBannerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.banner_item, null);
+        View view = inflater.inflate(R.layout.item_banner, null);
 
         ImageView imageBackgroundBanner = view.findViewById(R.id.imageViewBackgroundBanner);
         imageBackgroundBanner.setScaleType(ImageView.ScaleType.FIT_XY);

@@ -1,6 +1,7 @@
 package com.example.myapplication.Activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
@@ -39,6 +40,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class PlayMusicActivity extends AppCompatActivity {
+    Context context;
     ConstraintLayout layout_controlMusic;
 
     ArrayList<Hinhdianhac> hinhbaihats;
@@ -68,7 +70,7 @@ public class PlayMusicActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hinhbaihats = new ArrayList<>();
-        setContentView(R.layout.controlmucsic_item);
+        setContentView(R.layout.item_controlmucsic);
         mapping();
         UNI();
         init();
@@ -114,7 +116,7 @@ public class PlayMusicActivity extends AppCompatActivity {
                 mediaPlayer.prepare();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(PlayMusicActivity.this, getString(R.string.strMessageFailPlayMusic), Toast.LENGTH_LONG).show();
+                Toast.makeText(PlayMusicActivity.this, getString(R.string.strNotifyFailPlayMusic), Toast.LENGTH_LONG).show();
                 Handler handler = new Handler();
                 handler.postDelayed(PlayMusicActivity.this::nextMusic, 4500);
                 return;
@@ -325,7 +327,7 @@ public class PlayMusicActivity extends AppCompatActivity {
                     }
                     catch (IllegalStateException e) {
                         e.printStackTrace();
-                        Toast.makeText(PlayMusicActivity.this, getString(R.string.strMessageFailPlayMusic), Toast.LENGTH_LONG).show();
+                        Toast.makeText(PlayMusicActivity.this, getString(R.string.strNotifyFailPlayMusic), Toast.LENGTH_LONG).show();
                         Handler handler = new Handler();
                         handler.postDelayed(() -> nextMusic(), 4500);
                         return;

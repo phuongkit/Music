@@ -44,7 +44,7 @@ public class InputDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.input_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_input, null);
 
         Bundle bundle = getArguments();
         isUpdate = bundle.getBoolean("isUpdate", false);

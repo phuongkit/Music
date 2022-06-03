@@ -19,13 +19,13 @@
         <menu>
             <item
                 android:id="@+id/nav_myprofile"
-                android:title="@string/strContentMyProfile" />
+                android:title="@string/strHeaderMyProfile" />
             <item
                 android:id="@+id/nav_changepassword"
-                android:title="@string/strContentChangePassword" />
+                android:title="@string/strHeaderChangePassword" />
             <item
                 android:id="@+id/nav_signout"
-                android:title="@string/strContentSignout" />
+                android:title="@string/strHeaderSignout" />
         </menu>
     </item>
     <item

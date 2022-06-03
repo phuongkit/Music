@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -30,16 +29,10 @@ import com.example.myapplication.Dao.PlaylistDao;
 import com.example.myapplication.Dao.Playlist_SongDao;
 import com.example.myapplication.Dialog.AddPlaylistBySongDialog;
 import com.example.myapplication.Fragment.MusicFragment;
-import com.example.myapplication.Generic.GeneralHandling;
-import com.example.myapplication.Generic.ThreadDao.GetSongWithListThemeAndListTypes;
-import com.example.myapplication.Generic.ThreadDao.GetTheme;
-import com.example.myapplication.Generic.ThreadDao.GetTypes;
 import com.example.myapplication.Model.Playlist;
 import com.example.myapplication.Model.Playlist_Song;
-import com.example.myapplication.Model.Theme;
-import com.example.myapplication.Model.Types;
-import com.example.myapplication.R;
 import com.example.myapplication.Model.Song;
+import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
@@ -84,7 +77,7 @@ public class CustomSongAdapter extends ArrayAdapter<Song> implements Filterable 
         viewHolder = null;
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.song_item, null);
+            convertView = inflater.inflate(R.layout.item_song, null);
             viewHolder = new ViewHolder();
             viewHolder.tvMusicListIndex = convertView.findViewById(R.id.tvMusicListIndex);
             viewHolder.tvTenBaiHatMusicList = convertView.findViewById(R.id.tvTenBaiHatMusicList);
@@ -113,10 +106,20 @@ public class CustomSongAdapter extends ArrayAdapter<Song> implements Filterable 
                 popup.inflate(R.menu.song_menu);
                 popup.setGravity(Gravity.NO_GRAVITY);
 
-                MenuItem menuItem = popup.getMenu().findItem(R.id.item_remove_from_playlist);
+                MenuItem menuAddFavorites = popup.getMenu().findItem(R.id.item_add_to_favorites);
+                MenuItem menuAddPlaylist = popup.getMenu().findItem(R.id.item_add_to_playlist);
+                MenuItem menuRemovePlaylist = popup.getMenu().findItem(R.id.item_remove_from_playlist);
+
                 if (!isPlaylist) {
-                    menuItem.setVisible(false);
+                    menuRemovePlaylist.setVisible(false);
                 }
+
+                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                if (firebaseUser == null) {
+                    menuAddPlaylist.setVisible(false);
+                    menuAddFavorites.setVisible(false);
+                }
+
                 //adding click listener
                 popup.setOnMenuItemClickListener(menuItem1 -> {
                     switch (menuItem1.getItemId()) {
@@ -144,7 +147,7 @@ public class CustomSongAdapter extends ArrayAdapter<Song> implements Filterable 
     }
 
     private void addToFavorites(Song song) {
-
+        Toast.makeText(activity, activity.getString(R.string.strNotifyComingSoon), Toast.LENGTH_SHORT).show();
     }
 
     private void addToPlaylist(Song song) {
@@ -184,7 +187,7 @@ public class CustomSongAdapter extends ArrayAdapter<Song> implements Filterable 
         // Thiết lập icon
         builder.setIcon(android.R.drawable.ic_dialog_alert);
         // Thiết lập nội dung cho dialog
-        builder.setMessage(activity.getString(R.string.strMessageDeleteSongFromPlaylist));
+        builder.setMessage(activity.getString(R.string.strNotifyDeleteSongFromPlaylist));
         // Thiết lập các nút lệnh cho người dùng tương tác
         builder.setPositiveButton("Có", (dialogInterface, i) -> {
             Playlist_SongDao playlist_songDao = new Playlist_SongDao();
@@ -240,10 +243,10 @@ public class CustomSongAdapter extends ArrayAdapter<Song> implements Filterable 
         ref.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
             Log.i("firebase", ";local tem file created  created " + localFile);
             //  updateDb(timestamp,localFile.toString(),position);
-            Toast.makeText(activity, activity.getString(R.string.strMessageSuccessDownload) + " " + song.getName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, activity.getString(R.string.strNotifySuccessDownload) + " " + song.getName(), Toast.LENGTH_SHORT).show();
         }).addOnFailureListener(exception -> {
             Log.i("firebase", ";local tem file not created  created " + exception);
-            Toast.makeText(activity, activity.getString(R.string.strMessageFailDownload) + " " + song.getName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, activity.getString(R.string.strNotifyFailDownload) + " " + song.getName(), Toast.LENGTH_SHORT).show();
         });
     }
 }

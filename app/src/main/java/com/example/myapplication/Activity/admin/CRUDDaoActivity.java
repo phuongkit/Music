@@ -165,7 +165,6 @@ public class CRUDDaoActivity extends AppCompatActivity {
 
     @SuppressLint({"SetTextI18n", "ResourceAsColor"})
     private void initGUI() {
-
         TableLayout tableLayout = findViewById(R.id.tableLayout);
         LinearLayout linearLayout = findViewById(R.id.linearLayout);
         linearLayout.setVisibility(View.GONE);
@@ -695,7 +694,7 @@ public class CRUDDaoActivity extends AppCompatActivity {
                         });
                     }
                 });
-                ImageButton imgBtnInsertSong =  findViewById(R.id.imgBtnInsertSong);
+                ImageButton imgBtnInsertSong = findViewById(R.id.imgBtnInsertSong);
                 imgBtnInsertSong.setOnClickListener(view -> {
                     SongDao songDao1 = new SongDao();
                     songDao1.getAll(new RetrieValEventListener<List<Song>>() {
@@ -705,8 +704,7 @@ public class CRUDDaoActivity extends AppCompatActivity {
                             if (isAdd) {
                                 AddSongByPlaylistDialog dialog = new AddSongByPlaylistDialog(activity, songs, songByPlaylists);
                                 dialog.show();
-                            }
-                            else {
+                            } else {
                                 songDao1.getSongByPlaylist(playlist.getId(), new RetrieValEventListener<List<Song>>() {
                                     @Override
                                     public void OnDataRetrieved(List<Song> mSongs) {
@@ -917,6 +915,8 @@ public class CRUDDaoActivity extends AppCompatActivity {
                 });
                 break;
             case MODULE_SONG:
+                SongDao songDao = new SongDao();
+                editTexts.get(0).setText(songDao.getNewKey());
                 btnUpdate.setOnClickListener(view -> {
                     String id = editTexts.get(0).getText().toString();
                     String name = editTexts.get(1).getText().toString();
@@ -938,6 +938,8 @@ public class CRUDDaoActivity extends AppCompatActivity {
                 });
                 break;
             case MODULE_BANNER:
+                BannerDao bannerDao = new BannerDao();
+                editTexts.get(0).setText(bannerDao.getNewKey());
                 btnUpdate.setOnClickListener(view -> {
                     String id = editTexts.get(0).getText().toString();
                     String name = editTexts.get(1).getText().toString();
@@ -953,6 +955,8 @@ public class CRUDDaoActivity extends AppCompatActivity {
                 });
                 break;
             case MODULE_ALBUM:
+                AlbumDao albumDao = new AlbumDao();
+                editTexts.get(0).setText(albumDao.getNewKey());
                 btnUpdate.setOnClickListener(view -> {
                     String id = editTexts.get(0).getText().toString();
                     String name = editTexts.get(1).getText().toString();
@@ -967,6 +971,8 @@ public class CRUDDaoActivity extends AppCompatActivity {
                 });
                 break;
             case MODULE_THEME:
+                ThemeDao themeDao = new ThemeDao();
+                editTexts.get(0).setText(themeDao.getNewKey());
                 btnUpdate.setOnClickListener(view -> {
                     String id = editTexts.get(0).getText().toString();
                     String name = editTexts.get(1).getText().toString();
@@ -980,6 +986,8 @@ public class CRUDDaoActivity extends AppCompatActivity {
                 });
                 break;
             case MODULE_TYPES:
+                TypesDao typesDao = new TypesDao();
+                editTexts.get(0).setText(typesDao.getNewKey());
                 btnUpdate.setOnClickListener(view -> {
                     String id = editTexts.get(0).getText().toString();
                     String name = editTexts.get(1).getText().toString();
@@ -993,6 +1001,8 @@ public class CRUDDaoActivity extends AppCompatActivity {
                 });
                 break;
             case MODULE_PLAYLIST:
+                PlaylistDao playlistDao = new PlaylistDao();
+                editTexts.get(0).setText(playlistDao.getNewKey());
                 btnUpdate.setOnClickListener(view -> {
                     String id = editTexts.get(0).toString();
                     String name = editTexts.get(1).toString();
@@ -1274,7 +1284,7 @@ public class CRUDDaoActivity extends AppCompatActivity {
         songDao.getSongByPlaylist(playlist.getId(), new RetrieValEventListener<List<Song>>() {
             @Override
             public void OnDataRetrieved(List<Song> songs) {
-                customSongByPlaylistAdapter = new CustomSongByPlaylistAdapter(activity, R.layout.song_item, songs, playlist);
+                customSongByPlaylistAdapter = new CustomSongByPlaylistAdapter(activity, R.layout.item_song, songs, playlist);
                 lvSong.setAdapter(customSongByPlaylistAdapter);
             }
         });

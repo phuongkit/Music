@@ -3,8 +3,6 @@ package com.example.myapplication.Adapter;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Paint;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -47,7 +45,7 @@ public class LibaryAdapter extends ArrayAdapter<Libary> {
             switch (libary.getIdLibary()) {
                 case "1":
                 case "4":
-                    Toast.makeText(context.getApplication(), context.getString(R.string.strMessageComingSoon), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context.getApplication(), context.getString(R.string.strNotifyComingSoon), Toast.LENGTH_SHORT).show();
                     break;
                 case "2":
                     intent = new Intent(context, SongOnDeviceActivity.class);

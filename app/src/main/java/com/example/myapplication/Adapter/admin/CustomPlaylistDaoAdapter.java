@@ -30,7 +30,6 @@ import java.util.ArrayList;
 public class CustomPlaylistDaoAdapter extends ArrayAdapter<Playlist> {
     String control;
     String check;
-    ArrayList<Playlist> playlists;
 
     public String getCheck() {
         return check;
@@ -44,7 +43,7 @@ public class CustomPlaylistDaoAdapter extends ArrayAdapter<Playlist> {
         super(context, resource, playlists);
     }
 
-    class ViewHolder {
+    static class ViewHolder {
         TextView txtListIndex, txtHeaderItemDao, txtTitleItemDao;
         ImageButton imgBtnUpdate;
         ImageButton imgBtnDelete;
@@ -59,7 +58,7 @@ public class CustomPlaylistDaoAdapter extends ArrayAdapter<Playlist> {
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_dao, null);
-            viewHolder = new CustomPlaylistDaoAdapter.ViewHolder();
+            viewHolder = new ViewHolder();
             viewHolder.txtListIndex = convertView.findViewById(R.id.txtListIndex);
             viewHolder.txtHeaderItemDao = convertView.findViewById(R.id.txtHeaderItemDao);
             viewHolder.txtTitleItemDao = convertView.findViewById(R.id.txtTitleItemDao);
@@ -89,7 +88,7 @@ public class CustomPlaylistDaoAdapter extends ArrayAdapter<Playlist> {
             Context context = getContext();
             AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
             alert.setTitle(context.getString(R.string.strTitleWarning));
-            alert.setMessage(context.getString(R.string.strMessageDeleteObject));
+            alert.setMessage(context.getString(R.string.strNotifyDeleteObject));
             alert.setPositiveButton(context.getString(R.string.strResultDialogOK), (dialogInterface, i) -> {
                 TypesDao baiHatDao = new TypesDao();
                 baiHatDao.delete(playlist.key, new TaskListener() {

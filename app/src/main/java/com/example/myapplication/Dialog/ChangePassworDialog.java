@@ -38,7 +38,7 @@ public class ChangePassworDialog extends Dialog {
         mapping();
         addEvents();
         int width = (int) (context.getResources().getDisplayMetrics().widthPixels * 1.00);
-        int paddingDp = 400;
+        int paddingDp = 450;
         float density = context.getResources().getDisplayMetrics().density;
         int height = (int) (paddingDp * density);
 //        int height = (int) (context.getResources().getDisplayMetrics().densityDpi);

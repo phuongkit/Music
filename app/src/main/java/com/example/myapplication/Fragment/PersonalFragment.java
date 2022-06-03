@@ -43,7 +43,7 @@ public class PersonalFragment extends Fragment {
 
     private void addControls() {
         gvLibary = view.findViewById(R.id.gvLibary);
-        libaryAdapter = new LibaryAdapter(requireActivity(), R.layout.libary_item);
+        libaryAdapter = new LibaryAdapter(requireActivity(), R.layout.item_libary);
         gvLibary.setAdapter(libaryAdapter);
         libaryAdapter.add(new Libary("1", getString(R.string.strHeaderSong), R.drawable.ic_music));
         libaryAdapter.add(new Libary("2", getString(R.string.strHeaderOnDevice), R.drawable.ic_on_device));

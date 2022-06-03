@@ -44,7 +44,7 @@ public class LoginDialog extends Dialog {
     public LoginDialog(Activity context) {
         super(context);
         this.context = context;
-        setContentView(R.layout.login_dialog);
+        setContentView(R.layout.dialog_login);
         addControls();
         init();
         addEvents();
@@ -182,9 +182,9 @@ public class LoginDialog extends Dialog {
         int lastVisibleItem;
         int totalItem;
 
-        public OnLoadMoreListener getOnLoadMoreListener() {
-            return onLoadMoreListener;
-        }
+//        public OnLoadMoreListener getOnLoadMoreListener() {
+//            return onLoadMoreListener;
+//        }
 
         public void setOnLoadMoreListener(OnLoadMoreListener onLoadMoreListener) {
             this.onLoadMoreListener = onLoadMoreListener;
@@ -225,7 +225,7 @@ public class LoginDialog extends Dialog {
         @NonNull
         @Override
         public AccountTypeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View accountTypeView = LayoutInflater.from(context).inflate(R.layout.account_type_item, parent, false);
+            View accountTypeView = LayoutInflater.from(context).inflate(R.layout.item_account_type, parent, false);
             return new AccountTypeViewHolder(accountTypeView);
         }
 
@@ -258,7 +258,7 @@ public class LoginDialog extends Dialog {
                             context.startActivity(intent);
                             break;
                         default:
-                            Toast.makeText(context.getBaseContext(), getString(R.string.strMessageComingSoon), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context.getBaseContext(), getString(R.string.strNotifyComingSoon), Toast.LENGTH_SHORT).show();
                             break;
                     }
                 }

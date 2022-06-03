@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
 
     GeneralHandling generalHandling = new GeneralHandling();
 
-    TableRow tableRowUsername;
     TextView txtTitleLogin, txtLogNotify;
     EditText edtUsername, edtEmail, edtPassword;
     Button btnLogin, btnCancel;
@@ -181,7 +180,7 @@ public class LoginActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void init() {
         if (login) {
-            tableRowUsername.setVisibility(View.GONE);
+            edtUsername.setVisibility(View.GONE);
             txtTitleLogin.setText(getString(R.string.strHeaderSignIn));
             btnLogin.setText(getString(R.string.strHeaderSignIn));
             Link log_Link = new Link(getString(R.string.strHeaderSignUp))
@@ -197,7 +196,7 @@ public class LoginActivity extends AppCompatActivity {
             txtLogNotify.setText(getString(R.string.strIsSignIn) + " " + getString(R.string.strHeaderSignUp));
             LinkBuilder.on(txtLogNotify).addLink(log_Link).build();
         } else {
-            tableRowUsername.setVisibility(View.VISIBLE);
+            edtUsername.setVisibility(View.VISIBLE);
             txtTitleLogin.setText(getString(R.string.strHeaderSignUp));
             btnLogin.setText(getString(R.string.strHeaderSignUp));
             Link log_Link = new Link(getString(R.string.strHeaderSignIn))
@@ -216,8 +215,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void addControls() {
-        tableRowUsername = findViewById(R.id.tableRowUsername);
-
         txtTitleLogin = findViewById(R.id.txtTitleLogin);
         edtUsername = findViewById(R.id.edtUsername);
         edtEmail = findViewById(R.id.edtEmail);

@@ -72,7 +72,7 @@ public class PlaybaihatAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        view = inflater.inflate(layout.dianhac_item, null);
+        view = inflater.inflate(layout.item_music_disc, null);
         mapping();
         control();
         PlayNhacMp3(url, urlImage);

@@ -1,7 +1,7 @@
 package com.example.myapplication.Adapter.admin;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,7 +40,6 @@ public class CustomUserDaoAdapter extends ArrayAdapter<User> {
 
     String control;
     String check, key;
-    ArrayList<User> users;
     public static int indexOf = 1;
 
     public String getCheck() {
@@ -56,16 +55,18 @@ public class CustomUserDaoAdapter extends ArrayAdapter<User> {
         this.context = context;
     }
 
-    class ViewHolder {
+    static class ViewHolder {
         TextView txtListIndex, txtHeaderItemDao, txtTitleItemDao;
-        ImageButton imgBtnAdd, imgBtnUpdate, imgBtnDelete;
+        ImageButton imgBtnUpdate;
+        ImageButton imgBtnDelete;
         ImageView imgViewtop;
     }
 
+    @SuppressLint("InflateParams")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        CustomUserDaoAdapter.ViewHolder viewHolder = null;
+        CustomUserDaoAdapter.ViewHolder viewHolder;
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_dao, null);
@@ -82,56 +83,44 @@ public class CustomUserDaoAdapter extends ArrayAdapter<User> {
         }
         User user = getItem(position);
         Glide.with(getContext()).load(user.getAvatar()).error(R.drawable.ic_person).into(viewHolder.imgViewtop);
-        viewHolder.imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        control = "repair";
-                        Intent intent = new Intent(getContext(), CRUDDaoActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("control", control);
-                        bundle.putString("key", user.key);
-                        bundle.putString("module", getCheck());
-                        intent.putExtra("bundle", bundle);
-                        getContext().startActivity(intent);
-                    }
-                }, 500);
-            }
+        viewHolder.imgBtnUpdate.setOnClickListener(view -> {
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                control = "repair";
+                Intent intent = new Intent(getContext(), CRUDDaoActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("control", control);
+                bundle.putString("key", user.key);
+                bundle.putString("module", getCheck());
+                intent.putExtra("bundle", bundle);
+                getContext().startActivity(intent);
+            }, 500);
         });
-        viewHolder.imgBtnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context context = getContext();
-                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-                alert.setTitle(context.getString(R.string.strTitleWarning));
-                alert.setMessage(context.getString(R.string.strMessageDeleteObject));
-                alert.setPositiveButton(context.getString(R.string.strResultDialogOK), new DialogInterface.OnClickListener() {
+        viewHolder.imgBtnDelete.setOnClickListener(view -> {
+            Context context = getContext();
+            AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+            alert.setTitle(context.getString(R.string.strTitleWarning));
+            alert.setMessage(context.getString(R.string.strNotifyDeleteObject));
+            alert.setPositiveButton(context.getString(R.string.strResultDialogOK), (dialogInterface, i) -> {
+                UserDao userDao = new UserDao();
+                key = user.key;
+                userDao.delete(user.key, new TaskListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        UserDao userDao = new UserDao();
-                        key = user.key;
-                        userDao.delete(user.key, new TaskListener() {
-                            @Override
-                            public void OnSuccess() {
-                                handle(user);
-                            }
+                    public void OnSuccess() {
+                        handle(user);
+                    }
 
-                            @Override
-                            public void OnFail() {
+                    @Override
+                    public void OnFail() {
 
-                            }
-                        });
-                        Intent intent = new Intent(getContext(), UserDaoActivity.class);
-                        getContext().startActivity(intent);
                     }
                 });
-                alert.setNegativeButton(context.getString(R.string.strResultDialogCancel), null);
-                AlertDialog alertDialog = alert.create();
-                alertDialog.show();
-            }
+                Intent intent = new Intent(getContext(), UserDaoActivity.class);
+                getContext().startActivity(intent);
+            });
+            alert.setNegativeButton(context.getString(R.string.strResultDialogCancel), null);
+            AlertDialog alertDialog = alert.create();
+            alertDialog.show();
         });
 
         indexOf++;

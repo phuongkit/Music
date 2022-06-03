@@ -1,6 +1,7 @@
 package com.example.myapplication.Activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,11 +16,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.Dao.Listeners.RetrieValEventListener;
+import com.example.myapplication.Dao.SongDao;
+import com.example.myapplication.Dialog.AddSongByPlaylistDialog;
 import com.example.myapplication.Fragment.MusicFragment;
 import com.example.myapplication.Model.Playlist;
+import com.example.myapplication.Model.Song;
 import com.example.myapplication.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListMusicActivity extends AppCompatActivity {
+    Activity activity;
 
     Toolbar toolbar;
     ImageView imgPlaylistAvatar;
@@ -29,6 +38,7 @@ public class ListMusicActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activity = this;
         setContentView(R.layout.activity_list_music);
         initData();
         addControls();
@@ -91,7 +101,20 @@ public class ListMusicActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.menuInsert:
+                SongDao songDao = new SongDao();
+                songDao.getAll(new RetrieValEventListener<List<Song>>() {
+                    @Override
+                    public void OnDataRetrieved(List<Song> songs1) {
+                        songDao.getSongByPlaylist(playlist.getId(), new RetrieValEventListener<List<Song>>() {
+                            @Override
+                            public void OnDataRetrieved(List<Song> songs2) {
 
+                                AddSongByPlaylistDialog dialog = new AddSongByPlaylistDialog(activity, (ArrayList<Song>) songs1, (ArrayList<Song>) songs2, playlist);
+                                dialog.show();
+                            }
+                        });
+                    }
+                });
                 return true;
         }
         return super.onOptionsItemSelected(item);
