@@ -1,8 +1,10 @@
 package com.example.myapplication.Activity;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
@@ -22,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import androidx.viewpager.widget.ViewPager;
 
@@ -31,6 +34,7 @@ import com.example.myapplication.Fragment.PlaySongListFragment;
 import com.example.myapplication.Generic.Beans.Hinhdianhac;
 import com.example.myapplication.Model.Song;
 import com.example.myapplication.R;
+import com.example.myapplication.Service.MyPlayMusicService;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -40,7 +44,6 @@ import java.util.Objects;
 import java.util.Random;
 
 public class PlayMusicActivity extends AppCompatActivity {
-    Context context;
     ConstraintLayout layout_controlMusic;
 
     ArrayList<Hinhdianhac> hinhbaihats;
@@ -63,8 +66,40 @@ public class PlayMusicActivity extends AppCompatActivity {
     boolean next = false;
     int position = 0;
     int count = 0;
+    boolean isPlaying = true;
     AnimatedVectorDrawableCompat avd;
     AnimatedVectorDrawable avd2;
+
+    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @SuppressLint("UseCompatLoadingForDrawables")
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Bundle bundle = intent.getExtras();
+            if (bundle == null) {
+                return;
+            }
+            int actionMusic = bundle.getInt("action");
+            Log.d("NNNN", actionMusic + "");
+            switch (actionMusic) {
+                case MyPlayMusicService.ACTION_PAUSE:
+                    btnPause.setImageDrawable(getResources().getDrawable(R.drawable.iconplay));
+                    mediaPlayer.pause();
+                    fragmentDiaNhac.objectAnimator.pause();
+                    break;
+                case MyPlayMusicService.ACTION_PLAY:
+                    btnPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause));
+                    mediaPlayer.start();
+                    fragmentDiaNhac.objectAnimator.resume();
+                    break;
+                case MyPlayMusicService.ACTION_NEXT:
+                    nextMusic();
+                    break;
+                case MyPlayMusicService.ACTION_PREVIOUS:
+                    previousMusic();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,9 +215,11 @@ public class PlayMusicActivity extends AppCompatActivity {
             if (mediaPlayer.isPlaying()) {
                 mediaPlayer.pause();
                 fragmentDiaNhac.objectAnimator.pause();
+                isPlaying = false;
             } else {
                 mediaPlayer.start();
                 fragmentDiaNhac.objectAnimator.resume();
+                isPlaying = true;
             }
         });
         imgRepeat.setOnClickListener(v -> {
@@ -266,6 +303,8 @@ public class PlayMusicActivity extends AppCompatActivity {
             fragmentDiaNhac.playMusic(songs.get(position).getImage());
             fragmentPlayMusicList.loaddata(position);
             fragmentDiaNhac.objectAnimator.start();
+            isPlaying = true;
+            clickStartService(songs.get(position),MyPlayMusicService.ACTION_PLAY);
             Objects.requireNonNull(getSupportActionBar()).setTitle(songs.get(position).getName());
 
             updateTime();
@@ -302,7 +341,8 @@ public class PlayMusicActivity extends AppCompatActivity {
             hinhbaihats.add(new Hinhdianhac(songs.get(position).getImage()));
             fragmentDiaNhac.playMusic(songs.get(position).getImage());
             fragmentPlayMusicList.loaddata(position);
-
+            isPlaying = true;
+            clickStartService(songs.get(position),MyPlayMusicService.ACTION_PLAY);
             Objects.requireNonNull(getSupportActionBar()).setTitle(songs.get(position).getName());
             updateTime();
         }
@@ -409,6 +449,7 @@ public class PlayMusicActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         btnPrevious = findViewById(R.id.btnPrevious);
         layout_controlMusic = findViewById(R.id.layout_controlmusic);
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, new IntentFilter("send_data"));
     }
 
     private void init() {
@@ -434,8 +475,18 @@ public class PlayMusicActivity extends AppCompatActivity {
             Objects.requireNonNull(getSupportActionBar()).setTitle(songs.get(index).getName());
             new PlayMp3().execute(songs.get(index).getLinkSong());
             btnPause.setImageResource(R.drawable.avd_pause_to_play);
-
+            clickStartService(songs.get(index), MyPlayMusicService.ACTION_PLAY);
         }
+    }
+
+    private void clickStartService(Song song, int action) {
+        Intent intent = new Intent(this, MyPlayMusicService.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("song", song);
+        bundle.putInt("action_music", action);
+        bundle.putBoolean("isplaying", isPlaying);
+        intent.putExtras(bundle);
+        startService(intent);
     }
 
     @Override

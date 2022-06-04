@@ -36,8 +36,11 @@ import com.example.myapplication.Dao.UserDao;
 import com.example.myapplication.Dialog.ChangePassworDialog;
 import com.example.myapplication.Dialog.LoginDialog;
 import com.example.myapplication.Fragment.SearchFragment;
+import com.example.myapplication.Generic.Beans.NotifyObject;
+import com.example.myapplication.Generic.Download.PRDownloader;
 import com.example.myapplication.Model.User;
 import com.example.myapplication.R;
+import com.example.myapplication.Service.MyDownloadService;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -47,6 +50,8 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static final int MY_REQUEST_CODE = 10;
@@ -54,9 +59,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final int FRAGMENT_HOME = 1;
     private static final int FRAGMENT_SEARCH = 2;
     private static final int FRAGMENT_EXPLORE = 3;
+    public static final int mCurrentFragment = 3;
 
     public static final int ROLE_ADMIN = 0;
     public static final int ROLE_USER = 1;
+
+    public int downloadId;
+    public boolean downloading = false;
 
     MainViewPagerAdapter mainViewPagerAdapter;
     TabLayout tabLayout;
@@ -139,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Objects.requireNonNull(tabLayout.getTabAt(FRAGMENT_HOME)).setIcon(R.drawable.icontrangchu);
         Objects.requireNonNull(tabLayout.getTabAt(FRAGMENT_SEARCH)).setIcon(R.drawable.icontimkiem);
         Objects.requireNonNull(tabLayout.getTabAt(FRAGMENT_EXPLORE)).setIcon(R.drawable.iconmoreplaylist);
-        int mCurrentFragment = 1;
         tabLayout.selectTab(tabLayout.getTabAt(mCurrentFragment));
 
         setSupportActionBar(toolbar);
@@ -312,6 +320,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onRestart() {
         super.onRestart();
         setIfAdmin();
-        Log.d("Test", "Node A");
+    }
+
+    public void pauseOrResumeDownload() {
+        downloading = !downloading;
+        if (downloading) {
+            Log.i("Info", "runned  main resumeDownload");
+            PRDownloader.resume(downloadId);
+            startService("", MyDownloadService.ACTION_RESUME, -1);
+        } else {
+            Log.i("Info", "runned  main pauseDownload");
+            PRDownloader.pause(downloadId);
+            startService("", MyDownloadService.ACTION_PAUSE, -1);
+        }
+    }
+
+    public void cancelDownload() {
+        Log.i("Info", "runned  main cancelDownload");
+        PRDownloader.cancel(downloadId);
+        startService("", MyDownloadService.ACTION_CANCEL, -1);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                stopService();
+            }
+        }, 10000);
+    }
+
+    public void startService(String link, int status, int progress) {
+        Intent intent = new Intent(this, MyDownloadService.class);
+        NotifyObject notifyObject = new NotifyObject(link, status, progress);
+        intent.putExtra("notifyObject", notifyObject);
+        startService(intent);
+    }
+
+    public void stopService() {
+        Intent intent = new Intent(this, MyDownloadService.class);
+        stopService(intent);
     }
 }
